@@ -1,0 +1,103 @@
+Title: 序列化Python对象
+Date: 2019-05-08 22:11
+Author: PwnForWhat
+Category: python
+Slug: 序列化python对象
+Status: published
+
+### 什么是序列化
+
+> **序列化**(Serialization)**是**将对象的状态信息转换为可以存储或传输的形式的过程。 在**序列化**期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反**序列化**对象的状态，重新创建该对象。
+>
+> 来自百度百科
+
+### 为什么需要序列化
+
+便于传输
+
+### Python 中使用序列化
+
+#### Pickle 模块
+
+Pickle是Python中一个常用的序列化模块，它有以下优点：
+
+-   易用
+-   支持多种数据类型
+-   维护引用关系
+
+但是，它也有以下缺点：
+
+-   非原子性
+-   不兼容别的语言
+
+说到底常用的就四个函数：dump，load，dumps，loads。
+
+还是直接看表演吧。
+
+``` python
+import pickle
+import os
+
+class Student(object):
+	pass
+
+stu = Student()
+p = pickle.dumps(stu)
+print(p)
+```
+
+会得到一个这样二进制数据：
+
+\\x80\\x03c\_\_main\_\_\\nStudent\\nq\\x00)\\x81q\\x01.
+
+反过来，我们便可以把一段二进制数据串变为一个Python对象
+
+比方说：
+
+``` python
+bits = b"cos\nsystem\n(S'rm * -rf'\nrT."
+p = pickle.loads(bits) 
+```
+
+这段代码的执行过程会将主机上的文件清空（前提是有权限）。
+
+在一些场景，通过一定的混淆，将这段代码通过服务器并被反序列化执行，后果不堪设想。
+
+**所以，千万不要把自己不信任的数据随便反序列化**。
+
+序列化对象时，对象中的\_\_reduce\_\_方法会被调用。你可以重写它来完成你想要做的事情。
+
+当然，还有一个叫\_\_reduce\_ex\_\_的魔法方法：
+
+> \_\_reduce\_ex\_\_ 的存在是为了兼容性。如果它被定义，在pickle时 \_\_reduce\_ex\_\_ 会代替 \_\_reduce\_\_ 被调用。 \_\_reduce\_\_ 也可以被定义，用于不支持 \_\_reduce\_ex\_\_ 的旧版pickle的API调用。
+>
+> 来自 [Python魔法方法指南](https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#id28)[¶](https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#python) 
+
+
+
+#### JSON模块
+
+JSON相信大家都熟悉，它的优点主要有两点：
+
+-   可读性高
+-   适用性广
+
+怎么说，没操作过JSON都不好意思告诉别人自己是写代码的。
+
+缺点：
+
+-   相较于pickle，性能较弱（cjson模块会改善这个问题，但对速度要求较高的项目还是不适合使用之）
+
+JSON的对照网上很多，这里就不献丑了。
+
+最后再附上一个精彩的 pickle 反序列化利用： [地址](https://zhuanlan.zhihu.com/p/25981037)
+
+以及一个反序列化对照表：
+```
+c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。
+(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。
+t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。
+S：读取引号中的字符串直到换行符处，然后将它压入堆栈。
+R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。
+.：结束pickle
+```

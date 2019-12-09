@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="PwnForWhat" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content=", linux, " />
+
+<meta property="og:title" content="忘记root的密码如何解决 "/>
+<meta property="og:url" content="/忘记了ubuntu的root用户的密码如何解决.html" />
+<meta property="og:description" content="昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。 首先是在开机3秒内按下ESC键 然后就会出现一个菜单，选择进入恢复模式 （recovery mode） 进入恢复模式以后，启用root shell 将目录改为可写 mount -o rw,remount 查看home下的用户 ls /home 修改密码 passwd 输入两次密码（一次是确认）即修改完成 重启" />
+<meta property="og:site_name" content="Weilet&#39;s Workshop" />
+<meta property="og:article:author" content="PwnForWhat" />
+<meta property="og:article:published_time" content="2018-08-05T22:47:00+08:00" />
+<meta name="twitter:title" content="忘记root的密码如何解决 ">
+<meta name="twitter:description" content="昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。 首先是在开机3秒内按下ESC键 然后就会出现一个菜单，选择进入恢复模式 （recovery mode） 进入恢复模式以后，启用root shell 将目录改为可写 mount -o rw,remount 查看home下的用户 ls /home 修改密码 passwd 输入两次密码（一次是确认）即修改完成 重启">
+
+        <title>忘记root的密码如何解决  · Weilet&#39;s Workshop
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Weilet&#39;s Workshop - Full Atom Feed" />
+        <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Weilet&#39;s Workshop - Full RSS Feed" />
+
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>Weilet's Workshop</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >主页</a>
+                                </li>
+                                <li ><a href="/categories.html">分类</a></li>
+                                <li ><a href="/tags.html">标签</a></li>
+                                <li ><a href="/archives.html">归档</a></li>
+                                <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="查找" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/忘记了ubuntu的root用户的密码如何解决.html">
+                忘记root的密码如何解决
+            </a>
+        </h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <h4>昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。</h4>
+<p>首先是在开机3秒内按下ESC键</p>
+<p>然后就会出现一个菜单，选择进入恢复模式 （recovery mode）</p>
+<p>进入恢复模式以后，启用root shell</p>
+<p>将目录改为可写<br>
+<code>mount -o rw,remount</code></p>
+<p>查看home下的用户<br>
+<code>ls /home</code></p>
+<p>修改密码<br>
+<code>passwd</code></p>
+<p>输入两次密码（一次是确认）即修改完成</p>
+<p>重启</p>
+
+
+             
+ 
+            
+            
+            
+
+
+
+
+
+
+            <hr/>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2018-08-05T22:47:00+08:00">Aug 5, 2018</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#linux-ref">linux</a>
+<h4>Contact</h4>
+<div id="sidebar-social-link">
+</div>
+            
+
+
+
+
+
+            
+
+
+
+
+
+        </section>
+</div>
+</article>
+                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+
+
+
+
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
+</script>
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
+</html>
