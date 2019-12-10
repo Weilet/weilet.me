@@ -25,6 +25,7 @@ MARKDOWN = {
     }
 }
 
+
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = [
     "extract_toc",
@@ -70,11 +71,6 @@ CATEGORY_FEED_RSS = None
 SOCIAL = (
     ("Github", "https://github.com/Pelican-Elegant/", "Elegant Github Repository"),
     ("RSS", SITEURL + "/feeds/all.atom.xml"),
-    (
-        "Calendar",
-        "https://github.com/Pelican-Elegant/elegant/milestones",
-        "Elegant Project Roadmap",
-    ),
 )
 
 # Elegant theme
@@ -92,17 +88,6 @@ TAG_SAVE_AS = ""
 AUTHOR_SAVE_AS = ""
 CATEGORY_SAVE_AS = ""
 USE_SHORTCUT_ICONS = True
-
-# Elegant Labels
-SOCIAL_PROFILE_LABEL = "Stay in Touch"
-RELATED_POSTS_LABEL = "Keep Reading"
-SHARE_POST_INTRO = "Like this post? Share on:"
-COMMENTS_INTRO = "So what do you think? Did I miss something? Is any part unclear? Leave your comments below."
-
-# Email Subscriptions
-EMAIL_SUBSCRIPTION_LABEL = "Get New Release Alert"
-EMAIL_FIELD_PLACEHOLDER = "Enter your email..."
-SUBSCRIBE_BUTTON_TITLE = "Notify me"
 
 FREELISTS_NAME = "oracle-l"
 FREELISTS_FILTER = True
@@ -133,25 +118,5 @@ PROJECTS = [
 
 LANDING_PAGE_TITLE = "Recent Activities"
 
-AUTHORS = {
-    "Talha Mansoor": {
-        "url": "https://www.oncrashreboot.com/",
-        "blurb": "is the creator and lead developer of Elegant theme.",
-        "avatar": "/images/avatars/talha131.png",
-    },
-    "Pablo Iranzo Gómez": {
-        "url": "http://iranzo.github.io",
-        "blurb": " opensource enthusiast and Lego fan doing some python simple programs like @redken_bot in telegram, etc",
-        "avatar": "https://avatars.githubusercontent.com/u/312463",
-    },
-    "Jack De Winter": {
-        "url": "http://jackdewinter.github.io",
-        "blurb": "ever evolving, ever learning",
-    },
-    "Matija Šuklje": {
-        "url": "https://matija.suklje.name",
-        "blurb": "FOSS lawyer by trade, hacker by heart.",
-    },
-}
 DISQUS_FILTER = True
 UTTERANCES_FILTER = True
