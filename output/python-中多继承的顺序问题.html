@@ -1,102 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="" />
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="PwnForWhat" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/stylesheet/style.min.css">
+<meta name="keywords" content=", python, " />
 
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/solid.css">
+<meta property="og:title" content="Python 中多继承的顺序问题 "/>
+<meta property="og:url" content="/python-中多继承的顺序问题" />
+<meta property="og:description" content="从左到右 class A(Object): def __init__(self): pass def say(self): print(&#39;I am a A&#39;) class B(Object): def __init__(self): pass def say(self): print(&#39;I am a B&#39;) class C(A, B): def __init__(self): pass c = C() c.say() # I am a A # 搜索过程如下，先搜索A，A中有say …" />
+<meta property="og:site_name" content="Weilet&#39;s Workshop" />
+<meta property="og:article:author" content="PwnForWhat" />
+<meta property="og:article:published_time" content="2019-04-23T22:47:00+08:00" />
+<meta name="twitter:title" content="Python 中多继承的顺序问题 ">
+<meta name="twitter:description" content="从左到右 class A(Object): def __init__(self): pass def say(self): print(&#39;I am a A&#39;) class B(Object): def __init__(self): pass def say(self): print(&#39;I am a B&#39;) class C(A, B): def __init__(self): pass c = C() c.say() # I am a A # 搜索过程如下，先搜索A，A中有say …">
 
+        <title>Python 中多继承的顺序问题  · Weilet&#39;s Workshop
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
 
-
-
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-
-
-
-<meta name="author" content="PwnForWhat" />
-<meta name="description" content="从左到右 class A(Object): def __init__(self): pass def say …" />
-<meta name="keywords" content="">
-
-
-<meta property="og:site_name" content="Weilet's Workshop"/>
-<meta property="og:title" content="Python 中多继承的顺序问题"/>
-<meta property="og:description" content="从左到右 class A(Object): def __init__(self): pass def say …"/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://weilet.github.io/python-中多继承的顺序问题.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-04-23 22:47:00+08:00"/>
-<meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://weilet.github.io/author/pwnforwhat.html">
-<meta property="article:section" content="python"/>
-<meta property="og:image" content="/images/rick.png">
-
-  <title>Weilet's Workshop &ndash; Python 中多继承的顺序问题</title>
-
-</head>
-<body>
-  <aside>
-    <div>
-      <a href="https://weilet.github.io">
-        <img src="/images/rick.png" alt="" title="">
-      </a>
-      <h1><a href="https://weilet.github.io"></a></h1>
-
-<p>Don't be evil</p>
-      <nav>
-        <ul class="list">
-
-            <li><a target="_blank" href="https://weilet.github.io/pages/about.html#about">About</a></li>
-            <li><a target="_blank" href="https://weilet.github.io/pages/contact.html#contact">Contact</a></li>
-
-            <li><a target="_blank" href="http://getpelican.com/" >Pelican</a></li>
-        </ul>
-      </nav>
-
-      <ul class="social">
-          <li>
-            <a  class="sc-github" href="https://weilet.github.io" target="_blank">
-            <i class="fab fa-github">
-            </i>
-          </a></li>
-          <li>
-            <a  class="sc-rss" href="https://weilet.github.io/feeds/all.rss.xml" target="_blank">
-            <i class="fas fa-rss">
-            </i>
-          </a></li>
-      </ul>
-    </div>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Weilet&#39;s Workshop - Full Atom Feed" />
 
 
-  </aside>
-  <main>
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>Weilet's Workshop</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >Home</a>
+                                </li>
+                                <li ><a href="/categories">Categories</a></li>
+                                <li ><a href="/tags">Tags</a></li>
+                                <li ><a href="/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/python-中多继承的顺序问题">
+                Python&nbsp;中多继承的顺序问题
+            </a>
+        </h1>
+    </header>
+</div>
 
-
-<article class="single">
-  <header>
-      
-    <h1 id="python-中多继承的顺序问题">Python 中多继承的顺序问题</h1>
-    <p>
-          Posted on Tue 23 April 2019 in <a href="https://weilet.github.io/category/python.html">python</a>
-
-
-    </p>
-  </header>
-
-
-  <div>
-    <h3>从左到右</h3>
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <h3 id="_1">从左到右<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -120,7 +110,7 @@
 </pre></div>
 
 
-<h3>广度优先</h3>
+<h3 id="_2">广度优先<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">():</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -146,53 +136,132 @@
 </pre></div>
 
 
-<h3>总结</h3>
-<p>以上两点是 Python 中关于继承顺序容易弄混的地方。</p>
-<p>你可以调用 __mro__ 查看继承的图谱，它是一个从子类出发，直到 Object 的元组</p>
-  </div>
-  <div class="tag-cloud">
-    <p>
+<h3 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
+<p>以上两点是 Python&nbsp;中关于继承顺序容易弄混的地方。</p>
+<p>你可以调用 __mro__ 查看继承的图谱，它是一个从子类出发，直到 Object&nbsp;的元组</p>
+
+
+             
+ 
+                <p id="post-share-links">
+    Like this post? Share on:
+    <a href="https://twitter.com/intent/tweet?text=Python%C2%A0%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98&url=/python-%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/python-%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="mailto:?subject=Python%C2%A0%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98&amp;body=/python-%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email">Email</a>
     </p>
-  </div>
+
+            
+            
 
 
 
 
 
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/python-中的-mixin-模式" title="Previous: Python 中的 Mixin 模式">Python 中的 Mixin 模式</a></li>
+                <li class="next-article"><a href="/良性取消定义" title="Next: 良性取消定义">良性取消定义</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2019-04-23T22:47:00+08:00">Apr 23, 2019</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories#python-ref">python</a>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/Pelican-Elegant/" title="Elegant Github Repository" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://github.com/Pelican-Elegant/elegant/milestones" title="Elegant Project Roadmap" target="_blank" rel="nofollow noopener noreferrer">
+        <svg onload="w()" xmlns="http://www.w3.org/2000/svg" aria-label="Calendar" role="img" viewBox="0 0 512 512" font-family="monospace" text-anchor="middle" fill="#667777"><script type="text/ecmascript"><![CDATA[w=()=>{c=0;for (i in e={weekday:"long",month:"short",day:'numeric'}) document.getElementsByTagName('text')[c++].textContent=(new Date).toLocaleString(undefined,{[i]:e[i]})}]]></script><defs><clipPath id="c"><rect width="512" height="512" rx="15%"/></clipPath></defs><g clip-path="url(#c)"><rect width="512" height="512" fill="#dee"/><rect width="512" height="180" fill="#d34"/></g><g id="b"><circle fill="#eab" cx="384" cy="100" r="14" id="a"/><use x="43"/><use x="86"/></g><use y="43"/><text font-size="64" x="256" y="480" id="w">Sunday</text><text fill="#fff" font-size="140" x="140" y="164" id="m">FEB</text><text font-size="256" x="256" y="400" id="d">29</text></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+        </section>
+</div>
 </article>
+                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        
+    Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    
+    </div>
 
-    <footer>
-<p>
-  &copy;   - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
-</p>
-<p>    Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
-</p><p>
-  <a rel="license"
-     href="http://creativecommons.org/licenses/by-sa/4.0/"
-     target="_blank">
-    <img alt="Creative Commons License"
-         title="Creative Commons License"
-         style="border-width:0"
-           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
-         width="80"
-         height="15"/>
-  </a>
-</p>    </footer>
-  </main>
+    <div>
+        <span class="site-name">Weilet's Workshop</span> - Don't be evil
+    </div>
 
 
 
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href=https://pages.github.com/ target="_blank" rel="nofollow noopener noreferrer">
+            Github Pages
+        </a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
 
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "Blog",
-  "name": " Weilet's Workshop ",
-  "url" : "https://weilet.github.io",
-  "image": "/images/rick.png",
-  "description": ""
-}
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
 </script>
 
-</body>
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
 </html>

@@ -1,107 +1,97 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="" />
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="PwnForWhat" />
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/stylesheet/style.min.css">
+<meta name="keywords" content=", Web安全, " />
 
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/solid.css">
+<meta property="og:title" content="浅谈CSRF攻击 "/>
+<meta property="og:url" content="/浅谈csrf攻击" />
+<meta property="og:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+<meta property="og:site_name" content="Weilet&#39;s Workshop" />
+<meta property="og:article:author" content="PwnForWhat" />
+<meta property="og:article:published_time" content="2019-06-04T21:26:00+08:00" />
+<meta name="twitter:title" content="浅谈CSRF攻击 ">
+<meta name="twitter:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …">
 
+        <title>浅谈CSRF攻击  · Weilet&#39;s Workshop
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
 
-
-
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-
-
-
-<meta name="author" content="PwnForWhat" />
-<meta name="description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为 …" />
-<meta name="keywords" content="">
-
-
-<meta property="og:site_name" content="Weilet's Workshop"/>
-<meta property="og:title" content="浅谈CSRF攻击"/>
-<meta property="og:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为 …"/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://weilet.github.io/浅谈csrf攻击.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-06-04 21:26:00+08:00"/>
-<meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://weilet.github.io/author/pwnforwhat.html">
-<meta property="article:section" content="Web安全"/>
-<meta property="og:image" content="/images/rick.png">
-
-  <title>Weilet's Workshop &ndash; 浅谈CSRF攻击</title>
-
-</head>
-<body>
-  <aside>
-    <div>
-      <a href="https://weilet.github.io">
-        <img src="/images/rick.png" alt="" title="">
-      </a>
-      <h1><a href="https://weilet.github.io"></a></h1>
-
-<p>Don't be evil</p>
-      <nav>
-        <ul class="list">
-
-            <li><a target="_blank" href="https://weilet.github.io/pages/about.html#about">About</a></li>
-            <li><a target="_blank" href="https://weilet.github.io/pages/contact.html#contact">Contact</a></li>
-
-            <li><a target="_blank" href="http://getpelican.com/" >Pelican</a></li>
-        </ul>
-      </nav>
-
-      <ul class="social">
-          <li>
-            <a  class="sc-github" href="https://weilet.github.io" target="_blank">
-            <i class="fab fa-github">
-            </i>
-          </a></li>
-          <li>
-            <a  class="sc-rss" href="https://weilet.github.io/feeds/all.rss.xml" target="_blank">
-            <i class="fas fa-rss">
-            </i>
-          </a></li>
-      </ul>
-    </div>
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-180x180.png" type="image/png" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Weilet&#39;s Workshop - Full Atom Feed" />
 
 
-  </aside>
-  <main>
+    </head>
+    <body>
+        <div id="content">
+            <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="/"><span class=site-name>Weilet's Workshop</span></a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right top-menu">
+                                <li >
+                                    <a href=
+                                       "/"
+                                    >Home</a>
+                                </li>
+                                <li ><a href="/categories">Categories</a></li>
+                                <li ><a href="/tags">Tags</a></li>
+                                <li ><a href="/archives">Archives</a></li>
+                                <li><form class="navbar-search" action="/search" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span10">
+<article itemscope>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+        <h1>
+            <a href="/浅谈csrf攻击">
+                浅谈CSRF攻击
+            </a>
+        </h1>
+    </header>
+</div>
 
-
-<article class="single">
-  <header>
-      
-    <h1 id="浅谈csrf攻击">浅谈CSRF攻击</h1>
-    <p>
-          Posted on Tue 04 June 2019 in <a href="https://weilet.github.io/category/weban-quan.html">Web安全</a>
-
-
-    </p>
-  </header>
-
-
-  <div>
-    <blockquote>
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+            
+            <blockquote>
 <p>跨过山和大海，伪装成熟悉的陌生人</p>
 </blockquote>
-<h3>什么是CSRF</h3>
-<p>CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。</p>
-<h3>有何危害</h3>
+<h3 id="csrf">什么是CSRF<a class="headerlink" href="#csrf" title="Permanent link"> </a></h3>
+<p><span class="caps">CSRF</span>（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：<span class="caps">CSRF</span>/<span class="caps">XSRF</span>。</p>
+<h3 id="_1">有何危害<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <p>故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。</p>
 <p>这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
 <p>为什么会发生这样的情况呢？我们来看看后台发生了什么：</p>
@@ -150,8 +140,8 @@
 
 
 <p>可是你仔细一想，这个敏感数据的修改，不应该用GET啊，这有问题。</p>
-<p>那么，让我们把时间再次回到三天前，这次的转账页面用的是表单，POST的那种。 与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。还没来得及点击，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
-<p>明明使用的就是POST表单啊，为什么还是会出现问题 ?</p>
+<p>那么，让我们把时间再次回到三天前，这次的转账页面用的是表单，POST的那种。&nbsp;与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。还没来得及点击，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
+<p>明明使用的就是POST表单啊，为什么还是会出现问题&nbsp;?</p>
 <p>我们不妨假设现在的转账函数变为这样：</p>
 <div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/transfer&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">withdraw</span><span class="p">():</span>
@@ -164,7 +154,7 @@
 </pre></div>
 
 
-<p>显而易见，我可以针对你的转账表单构造一个页面，使其在加载过程中提交一个POST请求，由于你的登录信息仍存储在cookie里面， 服务器以为这个请求是你发出的 ，最终达到邪恶的目的。</p>
+<p>显而易见，我可以针对你的转账表单构造一个页面，使其在加载过程中提交一个POST请求，由于你的登录信息仍存储在cookie里面， 服务器以为这个请求是你发出的&nbsp;，最终达到邪恶的目的。</p>
 <p>构建的页面：</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
@@ -191,76 +181,155 @@
 </pre></div>
 
 
-<h3>如何预防</h3>
-<p><strong>1. 尽量使用POST，限制GET</strong></p>
+<h3 id="_2">如何预防<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<p><strong>1.&nbsp;尽量使用POST，限制GET</strong></p>
 <p>GET接口太容易被拿来做CSRF攻击，看第一个示例就知道，只要构造一个img标签，而img标签又是不能过滤的数据。接口最好限制为POST使用，GET则无效，降低攻击风险。</p>
 <p>当然POST并不是万无一失，攻击者只要构造一个form就可以，但需要在第三方页面做，这样就增加暴露的可能性。</p>
-<p><strong>2. 浏览器Cookie策略</strong></p>
-<p>IE6、7、8、Safari会默认拦截第三方本地Cookie（Third-party Cookie）的发送。但是Firefox2、3、Opera、Chrome、Android等不会拦截，所以通过浏览器Cookie策略来防御CSRF攻击不靠谱，只能说是降低了风险。</p>
-<p>PS：Cookie分为两种，Session Cookie（在浏览器关闭后，就会失效，保存到内存里），Third-party Cookie（即只有到了Exprie时间后才会失效的Cookie，这种Cookie会保存到本地）。</p>
-<p>PS：另外如果网站返回HTTP头包含P3P Header，那么将允许浏览器发送第三方Cookie。</p>
-<p><strong>3. 加验证码</strong></p>
+<p><strong>2.&nbsp;浏览器Cookie策略</strong></p>
+<p><span class="caps">IE6</span>、7、8、Safari会默认拦截第三方本地Cookie（Third-party&nbsp;Cookie）的发送。但是Firefox2、3、Opera、Chrome、Android等不会拦截，所以通过浏览器Cookie策略来防御CSRF攻击不靠谱，只能说是降低了风险。</p>
+<p><span class="caps">PS</span>：Cookie分为两种，Session Cookie（在浏览器关闭后，就会失效，保存到内存里），Third-party&nbsp;Cookie（即只有到了Exprie时间后才会失效的Cookie，这种Cookie会保存到本地）。</p>
+<p><span class="caps">PS</span>：另外如果网站返回HTTP头包含P3P&nbsp;Header，那么将允许浏览器发送第三方Cookie。</p>
+<p><strong>3.&nbsp;加验证码</strong></p>
 <p>验证码，强制用户必须与应用进行交互，才能完成最终请求。在通常情况下，验证码能很好遏制CSRF攻击。但是出于用户体验考虑，网站不能给所有的操作都加上验证码。因此验证码只能作为一种辅助手段，不能作为主要解决方案。</p>
-<p><strong>4. Referer Check</strong></p>
-<p>Referer Check在Web最常见的应用就是“防止图片盗链”。同理，Referer Check也可以被用于检查请求是否来自合法的“源”（Referer值是否是指定页面，或者网站的域），如果都不是，那么就极可能是CSRF攻击。</p>
-<p>但是因为服务器并不是什么时候都能取到Referer，所以也无法作为CSRF防御的主要手段。但是用Referer Check来监控CSRF攻击的发生，倒是一种可行的方法。</p>
-<p><strong>5. Anti CSRF Token</strong></p>
-<p>现在业界对CSRF的防御，一致的做法是使用一个Token（Anti CSRF Token）。</p>
+<p><strong>4. Referer&nbsp;Check</strong></p>
+<p>Referer Check在Web最常见的应用就是“防止图片盗链”。同理，Referer&nbsp;Check也可以被用于检查请求是否来自合法的“源”（Referer值是否是指定页面，或者网站的域），如果都不是，那么就极可能是CSRF攻击。</p>
+<p>但是因为服务器并不是什么时候都能取到Referer，所以也无法作为CSRF防御的主要手段。但是用Referer&nbsp;Check来监控CSRF攻击的发生，倒是一种可行的方法。</p>
+<p><strong>5. Anti <span class="caps">CSRF</span>&nbsp;Token</strong></p>
+<p>现在业界对CSRF的防御，一致的做法是使用一个Token（Anti <span class="caps">CSRF</span>&nbsp;Token）。</p>
 <p>例子：</p>
-<p>1. 用户访问某个表单页面。</p>
-<p>2. 服务端生成一个Token，放在用户的Session中，或者浏览器的Cookie中。</p>
-<p>3. 在页面表单附带上Token参数。</p>
-<p>4. 用户提交请求后， 服务端验证表单中的Token是否与用户Session（或Cookies）中的Token一致，一致为合法</p>
+<p>1.&nbsp;用户访问某个表单页面。</p>
+<p>2.&nbsp;服务端生成一个Token，放在用户的Session中，或者浏览器的Cookie中。</p>
+<p>3.&nbsp;在页面表单附带上Token参数。</p>
+<p>4. 用户提交请求后，&nbsp;服务端验证表单中的Token是否与用户Session（或Cookies）中的Token一致，一致为合法</p>
 <p>这个Token的值必须是随机的，不可预测的。由于Token的存在，攻击者无法再构造一个带有合法Token的请求实施CSRF攻击。另外使用Token时应注意Token的保密性，尽量把敏感操作由GET改为POST，以form或AJAX形式提交，避免Token泄露。</p>
 <p>注意：</p>
 <p>CSRF的Token仅仅用于对抗CSRF攻击。当网站同时存在XSS漏洞时候，那这个方案也是空谈。所以XSS带来的问题，应该使用XSS的防御方案予以解决。</p>
 <blockquote>
-<p>预防手段摘抄自 <a href="https://www.cnblogs.com/hyddd/">hyddd</a> 的博客园</p>
+<p>预防手段摘抄自 <a href="https://www.cnblogs.com/hyddd/">hyddd</a>&nbsp;的博客园</p>
 </blockquote>
-  </div>
-  <div class="tag-cloud">
-    <p>
+
+
+             
+ 
+                <p id="post-share-links">
+    Like this post? Share on:
+    <a href="https://twitter.com/intent/tweet?text=%E6%B5%85%E8%B0%88CSRF%E6%94%BB%E5%87%BB&url=/%E6%B5%85%E8%B0%88csrf%E6%94%BB%E5%87%BB" target="_blank" rel="nofollow noopener noreferrer" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/%E6%B5%85%E8%B0%88csrf%E6%94%BB%E5%87%BB" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="mailto:?subject=%E6%B5%85%E8%B0%88CSRF%E6%94%BB%E5%87%BB&amp;body=/%E6%B5%85%E8%B0%88csrf%E6%94%BB%E5%87%BB" target="_blank" rel="nofollow noopener noreferrer" title="Share via Email">Email</a>
     </p>
-  </div>
+
+            
+            
 
 
 
 
 
+
+            <hr/>
+            <aside>
+            <nav>
+            <ul class="articles-timeline">
+                <li class="previous-article">« <a href="/哈希洪水攻击" title="Previous: 哈希洪水攻击">哈希洪水攻击</a></li>
+                <li class="next-article"><a href="/如何安全地使用字典" title="Next: 如何安全地使用字典">如何安全地使用字典</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section id="article-sidebar" class="span2">
+            <h4>Published</h4>
+            <time itemprop="dateCreated" datetime="2019-06-04T21:26:00+08:00">Jun 4, 2019</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories#weban-quan-ref">Web安全</a>
+<h4>Stay in Touch</h4>
+<div id="sidebar-social-link">
+    <a href="https://github.com/Pelican-Elegant/" title="Elegant Github Repository" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="GitHub" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#1B1817"/><path fill="#fff" d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+    </a>
+    <a href="/feeds/all.atom.xml" title="" target="_blank" rel="nofollow noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-label="RSS" role="img" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%" fill="#f80"/><circle cx="145" cy="367" r="35" fill="#fff"/><path fill="none" stroke="#fff" stroke-width="60" d="M109 241c89 0 162 73 162 162M109 127c152 0 276 124 276 276"/></svg>
+    </a>
+    <a href="https://github.com/Pelican-Elegant/elegant/milestones" title="Elegant Project Roadmap" target="_blank" rel="nofollow noopener noreferrer">
+        <svg onload="w()" xmlns="http://www.w3.org/2000/svg" aria-label="Calendar" role="img" viewBox="0 0 512 512" font-family="monospace" text-anchor="middle" fill="#667777"><script type="text/ecmascript"><![CDATA[w=()=>{c=0;for (i in e={weekday:"long",month:"short",day:'numeric'}) document.getElementsByTagName('text')[c++].textContent=(new Date).toLocaleString(undefined,{[i]:e[i]})}]]></script><defs><clipPath id="c"><rect width="512" height="512" rx="15%"/></clipPath></defs><g clip-path="url(#c)"><rect width="512" height="512" fill="#dee"/><rect width="512" height="180" fill="#d34"/></g><g id="b"><circle fill="#eab" cx="384" cy="100" r="14" id="a"/><use x="43"/><use x="86"/></g><use y="43"/><text font-size="64" x="256" y="480" id="w">Sunday</text><text fill="#fff" font-size="140" x="140" y="164" id="m">FEB</text><text font-size="256" x="256" y="400" id="d">29</text></svg>
+    </a>
+</div>
+            
+
+
+
+
+
+            
+
+
+
+        </section>
+</div>
 </article>
+                    </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+        </div>
+<footer>
+    <div>
+        
+    Content licensed under <a rel="license nofollow noopener noreferrer"
+    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+    Creative Commons Attribution 4.0 International License</a>.
+    
+    </div>
 
-    <footer>
-<p>
-  &copy;   - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
-</p>
-<p>    Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
-</p><p>
-  <a rel="license"
-     href="http://creativecommons.org/licenses/by-sa/4.0/"
-     target="_blank">
-    <img alt="Creative Commons License"
-         title="Creative Commons License"
-         style="border-width:0"
-           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
-         width="80"
-         height="15"/>
-  </a>
-</p>    </footer>
-  </main>
+    <div>
+        <span class="site-name">Weilet's Workshop</span> - Don't be evil
+    </div>
 
 
 
+    <div id="fpowered">
+        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
+        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
+        Hosted on:
+        <a href=https://pages.github.com/ target="_blank" rel="nofollow noopener noreferrer">
+            Github Pages
+        </a>
+    </div>
+</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
 
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "Blog",
-  "name": " Weilet's Workshop ",
-  "url" : "https://weilet.github.io",
-  "image": "/images/rick.png",
-  "description": ""
-}
+    <script>
+    (function () {
+        if (window.location.hash.match(/^#comment-\d+$/)) {
+            $('#comment_thread').collapse('show');
+        }
+    })();
+    window.onhashchange=function(){
+        if (window.location.hash.match(/^#comment-\d+$/))
+            window.location.reload(true);
+    }
+    $('#comment_thread').on('shown', function () {
+        var link = document.getElementById('comment-accordion-toggle');
+        var old_innerHTML = link.innerHTML;
+        $(link).fadeOut(200, function() {
+            $(this).text('Click here to hide comments').fadeIn(200);
+        });
+        $('#comment_thread').on('hidden', function () {
+            $(link).fadeOut(200, function() {
+                $(this).text(old_innerHTML).fadeIn(200);
+            });
+        })
+    })
 </script>
 
-</body>
+    </body>
+    <!-- Theme: Elegant built for Pelican
+        License : MIT -->
 </html>
