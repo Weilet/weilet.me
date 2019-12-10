@@ -6,7 +6,7 @@ import os
 AUTHOR = "Weilet"
 SITENAME = "Weilet's Workshop"
 SITESUBTITLE = "Don't be evil"
-SITEURL = ""
+SITEURL = "https://weilet.github.io"
 
 PATH = "content"
 
