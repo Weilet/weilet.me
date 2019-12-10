@@ -1,82 +1,102 @@
+
 <!DOCTYPE html>
-<html lang="zh_cn">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="PwnForWhat" />
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
 
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-<meta name="keywords" content=", python, " />
+    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/stylesheet/style.min.css">
 
-<meta property="og:title" content="Python中的GIL "/>
-<meta property="og:url" content="/python中的gil.html" />
-<meta property="og:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
-<meta property="og:site_name" content="Weilet&#39;s Workshop" />
-<meta property="og:article:author" content="PwnForWhat" />
-<meta property="og:article:published_time" content="2019-05-23T00:07:00+08:00" />
-<meta name="twitter:title" content="Python中的GIL ">
-<meta name="twitter:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …">
-
-        <title>Python中的GIL  · Weilet&#39;s Workshop
-</title>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.prod.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
-
-        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Weilet&#39;s Workshop - Full Atom Feed" />
-        <link href="/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Weilet&#39;s Workshop - Full RSS Feed" />
+  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/font-awesome/css/solid.css">
 
 
-    </head>
-    <body>
-        <div id="content">
-            <div class="navbar navbar-static-top">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        <a class="brand" href="/"><span class=site-name>Weilet's Workshop</span></a>
-                        <div class="nav-collapse collapse">
-                            <ul class="nav pull-right top-menu">
-                                <li >
-                                    <a href=
-                                       "/"
-                                    >主页</a>
-                                </li>
-                                <li ><a href="/categories.html">分类</a></li>
-                                <li ><a href="/tags.html">标签</a></li>
-                                <li ><a href="/archives.html">归档</a></li>
-                                <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="查找" name="q" id="tipue_search_input"></form></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span1"></div>
-                    <div class="span10">
-<article itemscope>
-<div class="row-fluid">
-    <header class="page-header span10 offset2">
-        <h1>
-            <a href="/python中的gil.html">
-                Python中的GIL
-            </a>
-        </h1>
-    </header>
-</div>
 
-<div class="row-fluid">
-        <div class="span8 offset2 article-content">
-            
-            <blockquote>
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="PwnForWhat" />
+<meta name="description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="Weilet's Workshop"/>
+<meta property="og:title" content="Python中的GIL"/>
+<meta property="og:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://weilet.github.io/python中的gil.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-05-23 00:07:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://weilet.github.io/author/pwnforwhat.html">
+<meta property="article:section" content="python"/>
+<meta property="og:image" content="/images/rick.png">
+
+  <title>Weilet's Workshop &ndash; Python中的GIL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://weilet.github.io">
+        <img src="/images/rick.png" alt="" title="">
+      </a>
+      <h1><a href="https://weilet.github.io"></a></h1>
+
+<p>Don't be evil</p>
+      <nav>
+        <ul class="list">
+
+            <li><a target="_blank" href="https://weilet.github.io/pages/about.html#about">About</a></li>
+            <li><a target="_blank" href="https://weilet.github.io/pages/contact.html#contact">Contact</a></li>
+
+            <li><a target="_blank" href="http://getpelican.com/" >Pelican</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://weilet.github.io" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-rss" href="https://weilet.github.io/feeds/all.rss.xml" target="_blank">
+            <i class="fas fa-rss">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="python中的gil">Python中的GIL</h1>
+    <p>
+          Posted on Thu 23 May 2019 in <a href="https://weilet.github.io/category/python.html">python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <blockquote>
 <p>人们只瞧见了上帝关了门，却没瞅到上帝也开了窗</p>
 </blockquote>
 <h3>什么是GIL？</h3>
@@ -284,92 +304,50 @@
 <blockquote>
 <p>虽然GIL给Python的性能关上了一扇门，但是这并不意味着我们就要忽略标准库里为我们打开的每一扇窗。</p>
 </blockquote>
-
-
-             
- 
-            
-            
-            
-
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
 
 
 
 
 
-            <hr/>
-        </div>
-        <section id="article-sidebar" class="span2">
-            <h4>Published</h4>
-            <time itemprop="dateCreated" datetime="2019-05-23T00:07:00+08:00">May 23, 2019</time>
-            <h4>Category</h4>
-            <a class="category-link" href="/categories.html#python-ref">python</a>
-<h4>Contact</h4>
-<div id="sidebar-social-link">
-</div>
-            
-
-
-
-
-
-            
-
-
-
-
-
-        </section>
-</div>
 </article>
-                    </div>
-                    <div class="span1"></div>
-                </div>
-            </div>
-        </div>
-<footer>
+
+    <footer>
+<p>
+  &copy;   - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>    Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
 
 
 
 
-    <div id="fpowered">
-        Powered by: <a href="http://getpelican.com/" title="Pelican Home Page" target="_blank" rel="nofollow noopener noreferrer">Pelican</a>
-        Theme: <a href="https://elegant.oncrashreboot.com/" title="Theme Elegant Home Page" target="_blank" rel="nofollow noopener noreferrer">Elegant</a>
-    </div>
-</footer>            <script src="//code.jquery.com/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
-
-    <script>
-    (function () {
-        if (window.location.hash.match(/^#comment-\d+$/)) {
-            $('#comment_thread').collapse('show');
-        }
-    })();
-    window.onhashchange=function(){
-        if (window.location.hash.match(/^#comment-\d+$/))
-            window.location.reload(true);
-    }
-    $('#comment_thread').on('shown', function () {
-        var link = document.getElementById('comment-accordion-toggle');
-        var old_innerHTML = link.innerHTML;
-        $(link).fadeOut(200, function() {
-            $(this).text('Click here to hide comments').fadeIn(200);
-        });
-        $('#comment_thread').on('hidden', function () {
-            $(link).fadeOut(200, function() {
-                $(this).text(old_innerHTML).fadeIn(200);
-            });
-        })
-    })
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Weilet's Workshop ",
+  "url" : "https://weilet.github.io",
+  "image": "/images/rick.png",
+  "description": ""
+}
 </script>
 
-    </body>
-    <!-- Theme: Elegant built for Pelican
-        License : MIT -->
+</body>
 </html>
