@@ -27,11 +27,11 @@ print(a)
 
 当a传递给x时，它对应的内存模型是这样的
 
-![示意图1](https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png){.wp-image-435}
+![](https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png){.wp-image-435}
 
 当切片时，产生了新的字符串，此时内存模型变为：
 
-![示意图2](https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png){.wp-image-436}
+![](https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png){.wp-image-436}
 
 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了
 
