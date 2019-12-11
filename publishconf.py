@@ -18,7 +18,6 @@ RELATIVE_URLS = False
 
 # filetime_from_git is very slow. Use it in production only
 # to avoid slow build times during development
-PLUGINS.append("filetime_from_git")
 PLUGINS.append("sitemap")
 
 DELETE_OUTPUT_DIRECTORY = True
