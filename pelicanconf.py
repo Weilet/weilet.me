@@ -102,21 +102,7 @@ HOSTED_ON = {"name": "Github Pages", "url": "https://pages.github.com/"}
 
 
 # Landing Page
-PROJECTS_TITLE = "Recent Repositories"
-PROJECTS = [
-      {
-        "name": "wox_ext",
-        "url": "https://github.com/Weilet/wox_ext",
-        "description": "self-made wox extension",
-    },
-    {
-        "name": "LBlog",
-        "url": "https://github.com/Weilet/LBlog",
-        "description": "a light blog powered by flask",
-    },
-]
-
-LANDING_PAGE_TITLE = "Recent Activities"
+LANDING_PAGE_TITLE = " "
 
 DISQUS_FILTER = True
 UTTERANCES_FILTER = True
