@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - 宏定义的常见的三种意外    <meta charset="utf-8">
+<title>宏定义的常见的三种意外</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/宏定义的常见的三种意外" rel="bookmark"
-         title="Permalink to 宏定义的常见的三种意外">宏定义的常见的三种意外</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-04-30T16:20:00+08:00">
-      Apr 30, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/ccpp.html">C&amp;CPP</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <h4 id="_1">宏拓展后的大小可能超乎你的想象<a class="headerlink" href="#_1" title="Permanent link"> </a></h4>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>宏定义的常见的三种意外</h1>
+                <div class="post-meta">
+                    <time class="date">Apr 30, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/ccpp.html" class="comment-link">
+                            C&amp;CPP
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <h4 id="_1">宏拓展后的大小可能超乎你的想象<a class="headerlink" href="#_1" title="Permanent link"> </a></h4>
 <p>这一点没想到例子，以后碰到再补充</p>
 <h4 id="_2">对参数的捆绑不如函数严实，会导致意料之外的结果<a class="headerlink" href="#_2" title="Permanent link"> </a></h4>
 <p>很常见的一个例子：</p>
@@ -92,8 +94,9 @@ Weilet's Workshop - 宏定义的常见的三种意外    <meta charset="utf-8">
 <p><strong>你应当尽量减少在宏中使用带副作用的参数</strong></p>
 <p>参考了这个博客：<br />
 <a href="https://onevcat.com/2014/01/black-magic-in-macro/">https://onevcat.com/2014/01/black-magic-in-macro/</a></p>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

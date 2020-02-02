@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - C 语言中的 extern&nbsp;关键字    <meta charset="utf-8">
+<title>C 语言中的 extern 关键字</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/c-语言中的-extern-关键字" rel="bookmark"
-         title="Permalink to C 语言中的 extern 关键字">C 语言中的 extern&nbsp;关键字</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-05-06T15:48:00+08:00">
-      May 06, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/ccpp.html">C&amp;CPP</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <blockquote>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>C 语言中的 extern&nbsp;关键字</h1>
+                <div class="post-meta">
+                    <time class="date">May 06, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/ccpp.html" class="comment-link">
+                            C&amp;CPP
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <blockquote>
 <p>如果不是选择重新学习&nbsp;C，我可能这辈子都不会碰到这个关键字</p>
 </blockquote>
 <p>extern&nbsp;用于声明一个外部变量，这个变量在项目的其他地方定义过。</p>
@@ -70,8 +72,9 @@ Weilet's Workshop - C 语言中的 extern&nbsp;关键字    <meta charset="utf-8
 <p>需要注意的点是，如果你使用不止一个外部变量，你应当保证它们的名字都不一样。（不要试图仅凭类型区分两个外部变量！！！）</p>
 <p>在声明外部变量时，一般避免直接定义，即不要写成 <strong>extern int a = 0;</strong>&nbsp;的形式。</p>
 <p>这样的变量不能进一步修改，不能循环利用，出于环保的缘故我们应当趋避之。</p>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

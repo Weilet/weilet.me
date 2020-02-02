@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+<title>{{ tag }}</title>
+{% endblock %}
+{% block content %}
+<main id="main-content">
+    <div class="container">
+        <h1><u>{{ tag }}</u></h1>
+        <section class="posts">
+            {% for article in articles %}
+            <a href="/{{ article.url }}">
+                <div class="each">
+                    <div>
+                        <h2>{{ article.title }}</h2>
+                        <div class="excerpt">{{ article.locale_date }}</div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </section>
+    </div>
+</main>
+{% endblock %}

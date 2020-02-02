@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - Python 中的 Mixin&nbsp;模式    <meta charset="utf-8">
+<title>Python 中的 Mixin 模式</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/python-中的-mixin-模式" rel="bookmark"
-         title="Permalink to Python 中的 Mixin 模式">Python 中的 Mixin&nbsp;模式</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-04-22T10:12:00+08:00">
-      Apr 22, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/python.html">python</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <h3 id="mixin">什么是Mixin<a class="headerlink" href="#mixin" title="Permanent link"> </a></h3>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>Python 中的 Mixin&nbsp;模式</h1>
+                <div class="post-meta">
+                    <time class="date">Apr 22, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/python.html" class="comment-link">
+                            python
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <h3 id="mixin">什么是Mixin<a class="headerlink" href="#mixin" title="Permanent link"> </a></h3>
 <p>Mixin是面向对象程序设计语言中的类，提供了方法的实现。</p>
 <h3 id="mixin_1">为什么需要 Mixin<a class="headerlink" href="#mixin_1" title="Permanent link"> </a></h3>
 <p>[首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&nbsp;NameMixin，而且它应该具备以下特点：</p>
@@ -67,8 +69,9 @@ Weilet's Workshop - Python 中的 Mixin&nbsp;模式    <meta charset="utf-8">
 
 <h3 id="_2">注意<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
 <p>由于继承顺序的问题，应当将主类放在子类继承的最左边。</p>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

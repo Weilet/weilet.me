@@ -8,20 +8,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
@@ -281,6 +284,9 @@
         </section>    
     </div>
 </main>
+<script>
+function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
+</script>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

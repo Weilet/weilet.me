@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - 快速幂和矩阵快速幂    <meta charset="utf-8">
+<title>快速幂和矩阵快速幂</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/快速幂和矩阵快速幂" rel="bookmark"
-         title="Permalink to 快速幂和矩阵快速幂">快速幂和矩阵快速幂</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2018-07-12T03:08:00+08:00">
-      Jul 12, 2018
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/algorithm.html">algorithm</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <p>快速幂，顾名思义就是快速求幂的算法。原理如下：</p>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>快速幂和矩阵快速幂</h1>
+                <div class="post-meta">
+                    <time class="date">Jul 12, 2018</time>
+                    /
+                    <span>
+                        <a href="/category/algorithm.html" class="comment-link">
+                            algorithm
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <p>快速幂，顾名思义就是快速求幂的算法。原理如下：</p>
 <p>假设求a的n次方，当n为偶数时，a的n次方可以由两个a的n/2次方相乘求得；当n为奇数时，a的n次方可以由两个a的n/2次方相乘的积再乘以a得到。</p>
 <p>在实现中，运用位运算判断奇偶和乘除2（第一个想到的简直就是天才）</p>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -96,8 +98,9 @@ Weilet's Workshop - 快速幂和矩阵快速幂    <meta charset="utf-8">
 
 
 <p>这个&nbsp;的应用就很考数学功底，知道原理就好。</p>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

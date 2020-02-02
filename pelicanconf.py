@@ -4,11 +4,14 @@ from __future__ import unicode_literals
 import os
 
 AUTHOR = "Weilet"
-SITENAME = "Weilet's Workshop"
-SITESUBTITLE = "Don't be evil"
-SITEURL = "https://weilet.github.io"
+SITEURL = "https://weilet.me"
 
+# Saving Settings
 PATH = "content"
+CATEGORY_URL = "category/{slug}.html"
+TAG_URL = "tag/{slug}.html"
+CATEGORY_SAVE_AS = CATEGORY_URL
+TAG_SAVE_AS = TAG_URL
 
 # Regional Settings
 TIMEZONE = "Asia/Shanghai"
@@ -28,14 +31,6 @@ MARKDOWN = {
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = [
-    "extract_toc",
-    "liquid_tags.img",
-    "neighbors",
-    "related_posts",
-    "render_math",
-    "series",
-    "share_post",
-    "tipue_search",
 ]
 
 SITEMAP = {
@@ -62,47 +57,7 @@ SEARCH_URL = "search"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'search']
 
 # Feeds
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-CATEGORY_FEED_ATOM = None
-CATEGORY_FEED_RSS = None
-
-# Social
-SOCIAL = (
-    ("Github", "https://github.com/Pelican-Elegant/", "Elegant Github Repository"),
-    ("RSS", SITEURL + "/feeds/all.atom.xml"),
-)
-
-# Elegant theme
-STATIC_PATHS = ["theme/images", "images", "extra/_redirects"]
-EXTRA_PATH_METADATA = {"extra/_redirects": {"path": "_redirects"}}
-
-if os.environ.get("CONTEXT") == "production":
-    STATIC_PATHS.append("extra/robots.txt")
-    EXTRA_PATH_METADATA["extra/robots.txt"] = {"path": "robots.txt"}
-else:
-    STATIC_PATHS.append("extra/robots_deny.txt")
-    EXTRA_PATH_METADATA["extra/robots_deny.txt"] = {"path": "robots.txt"}
-
-TAG_SAVE_AS = ""
-AUTHOR_SAVE_AS = ""
-CATEGORY_SAVE_AS = ""
-USE_SHORTCUT_ICONS = True
-
-FREELISTS_NAME = "oracle-l"
-FREELISTS_FILTER = True
-
-# Legal
-SITE_LICENSE = """
-    Content licensed under <a rel="license nofollow noopener noreferrer"
-    href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
-    Creative Commons Attribution 4.0 International License</a>.
-    """
-HOSTED_ON = {"name": "Github Pages", "url": "https://pages.github.com/"}
-
-
-# Landing Page
-LANDING_PAGE_TITLE = " "
+FEED_RSS = "index.xml"
 
 DISQUS_FILTER = True
 UTTERANCES_FILTER = True

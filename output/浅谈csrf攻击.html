@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - 浅谈CSRF攻击    <meta charset="utf-8">
+<title>浅谈CSRF攻击</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/浅谈csrf攻击" rel="bookmark"
-         title="Permalink to 浅谈CSRF攻击">浅谈CSRF攻击</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-06-04T21:26:00+08:00">
-      Jun 04, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/weban-quan.html">Web安全</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <blockquote>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>浅谈CSRF攻击</h1>
+                <div class="post-meta">
+                    <time class="date">Jun 04, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/weban-quan.html" class="comment-link">
+                            Web安全
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <blockquote>
 <p>跨过山和大海，伪装成熟悉的陌生人</p>
 </blockquote>
 <h3 id="csrf">什么是CSRF<a class="headerlink" href="#csrf" title="Permanent link"> </a></h3>
@@ -164,8 +166,9 @@ Weilet's Workshop - 浅谈CSRF攻击    <meta charset="utf-8">
 <blockquote>
 <p>预防手段摘抄自 <a href="https://www.cnblogs.com/hyddd/">hyddd</a>&nbsp;的博客园</p>
 </blockquote>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

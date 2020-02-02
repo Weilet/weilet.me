@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+    <title>Weilet's Blog</title>
+{% endblock %}
 {% block content %}
 <main id="main-content">
     <div class="container front-page">
@@ -8,7 +11,7 @@
             {% for article in articles %}
             {% if loop.index0 < 5 %} 
             <section class="posts simple">
-                <a href="{{ SITEURL }}/{{ article.url }}">
+                <a href="/{{ article.url }}">
                     <div class="each">
                         <div>
                             <h2>{{ article.title }}</h2>

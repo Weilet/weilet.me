@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+    <title>标签</title>
+{% endblock %}
 {% block content %}
 <main id="main-content">
     <div class="container">
@@ -13,10 +16,4 @@
         </div>
     </div>
 </main>
-{% for tag, articles in tags|sort %}
-<li>
-    {% set num = articles|count %}
-    <a href="#{{ tag.slug }}-ref">{{ tag }}<span>{{ num }}</span></a>
-</li>
-{% endfor %}
 {% endblock %}

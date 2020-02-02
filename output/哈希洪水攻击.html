@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - 哈希洪水攻击    <meta charset="utf-8">
+<title>哈希洪水攻击</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/哈希洪水攻击" rel="bookmark"
-         title="Permalink to 哈希洪水攻击">哈希洪水攻击</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-05-29T00:55:00+08:00">
-      May 29, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/weban-quan.html">Web安全</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <h3 id="_1">哈希洪水攻击的原理<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>哈希洪水攻击</h1>
+                <div class="post-meta">
+                    <time class="date">May 29, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/weban-quan.html" class="comment-link">
+                            Web安全
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <h3 id="_1">哈希洪水攻击的原理<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <p>在各种常用的数据结构里，有些数据结构的“平均运行时间”和“最差运行时间”会差很远，比如<strong>哈希表（Hash Table）</strong>。</p>
 <ul>
 <li>如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需O(n)的时间。</li>
@@ -65,8 +67,9 @@ Weilet's Workshop - 哈希洪水攻击    <meta charset="utf-8">
 <blockquote>
 <p>顺带一提的是，有些语言在设计之初就考虑了哈希洪水攻击的防御，比如Python、Rust等，你可以选择使用它们来规避风险。</p>
 </blockquote>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

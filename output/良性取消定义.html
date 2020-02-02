@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - 良性取消定义    <meta charset="utf-8">
+<title>良性取消定义</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/良性取消定义" rel="bookmark"
-         title="Permalink to 良性取消定义">良性取消定义</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-04-27T22:45:00+08:00">
-      Apr 27, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/ccpp.html">C&amp;CPP</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <p>在 C 标准库里面，\&lt;assert.h> 中有一段这样的代码：</p>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>良性取消定义</h1>
+                <div class="post-meta">
+                    <time class="date">Apr 27, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/ccpp.html" class="comment-link">
+                            C&amp;CPP
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <p>在 C 标准库里面，\&lt;assert.h> 中有一段这样的代码：</p>
 <div class="highlight"><pre><span></span><span class="cp">#undef assert</span>
 <span class="cp">#ifdef NDEBUG</span>
 <span class="cp">#define assert (test) ((void)0)</span>
@@ -54,8 +56,9 @@ Weilet's Workshop - 良性取消定义    <meta charset="utf-8">
 
 
 <p>这里面第一行就是 <strong>良性取消定义</strong>，它是用来保证先前已经 define 的 assert 不会影响接下来的 assert。如果先前没有 define assert，那么这个语句也不会产生任何副作用。当使用一些可变的定义时，<strong>良性取消定义</strong>是必要的。</p>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>

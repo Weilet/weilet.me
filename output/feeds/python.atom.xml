@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog - python</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/python.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2019-09-21T23:19:00+08:00</updated><entry><title>如何安全地使用字典</title><link href="https://weilet.me/%E5%A6%82%E4%BD%95%E5%AE%89%E5%85%A8%E5%9C%B0%E4%BD%BF%E7%94%A8%E5%AD%97%E5%85%B8" rel="alternate"></link><published>2019-09-21T23:19:00+08:00</published><updated>2019-09-21T23:19:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-09-21:/如何安全地使用字典</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;安全地使用字典，和安全地使用套套一样重要&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Python中的字典数据类型经常被用到，但当我们期待一个不存在的key的value时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？&lt;/p&gt;
+&lt;h4 id="_1"&gt;最开始的时候&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当我们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个&lt;strong&gt;默认值默认是None&lt;/strong&gt;，你也可以通过设置default的值改变这个默认值。&lt;/p&gt;
+&lt;p&gt;需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。&lt;/p&gt;
+&lt;h4 id="_2"&gt;笨拙且安全的&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？）&lt;/p&gt;
+&lt;p&gt;可是，当你多年回来review你的代码，你也许会感叹它的笨拙。&lt;/p&gt;
+&lt;h4 id="_3"&gt;是时候使用魔法的力量了&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。&lt;/p&gt;
+&lt;h4 id="_4"&gt;用些现成的&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;鉴于collections中defaultdict的易用性，我向你强烈推荐 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;安全地使用字典，和安全地使用套套一样重要&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Python中的字典数据类型经常被用到，但当我们期待一个不存在的key的value时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？&lt;/p&gt;
+&lt;h4 id="_1"&gt;最开始的时候&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当我们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个&lt;strong&gt;默认值默认是None&lt;/strong&gt;，你也可以通过设置default的值改变这个默认值。&lt;/p&gt;
+&lt;p&gt;需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。&lt;/p&gt;
+&lt;h4 id="_2"&gt;笨拙且安全的&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？）&lt;/p&gt;
+&lt;p&gt;可是，当你多年回来review你的代码，你也许会感叹它的笨拙。&lt;/p&gt;
+&lt;h4 id="_3"&gt;是时候使用魔法的力量了&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。&lt;/p&gt;
+&lt;h4 id="_4"&gt;用些现成的&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;鉴于collections中defaultdict的易用性，我向你强烈推荐。&lt;/p&gt;
+&lt;p&gt;简单地说，它的构造函数接受两个参数，一个是默认值的生成函数（即官方文档中的工厂函数），另一个则是一个字典。通过包装，它成为一个会返回默认值的字典。&lt;/p&gt;
+&lt;p&gt;这个工厂函数可以是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构造函数&lt;/li&gt;
+&lt;li&gt;返回你生日的函数&lt;/li&gt;
+&lt;li&gt;…………&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实际上，它基本没有限制。&lt;/p&gt;
+&lt;p&gt;举个栗子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;defaultdict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DevelopmentConfig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;development&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DevelopmentConfig&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ProductionConfig&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;heroku&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;HerokuConfig&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;docker&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DockerConfig&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;unix&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;UnixConfig&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; 
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;最近在读PyDictObject，没准哪天会写一写&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="python"></category></entry><entry><title>Python中的GIL</title><link href="https://weilet.me/python%E4%B8%AD%E7%9A%84gil" rel="alternate"></link><published>2019-05-23T00:07:00+08:00</published><updated>2019-05-23T00:07:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-05-23:/python中的gil</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;人们只瞧见了上帝关了门，却没瞅到上帝也开了窗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="gil"&gt;什么是GIL？&lt;a class="headerlink" href="#gil" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;即&lt;strong&gt;全局解释器锁&lt;/strong&gt;（英语：Global Interpreter Lock，缩写&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;），是&lt;a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"&gt;计算机程序设计语言&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8"&gt;解释器&lt;/a&gt;用于&lt;a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5"&gt;同步&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B"&gt;线程&lt;/a&gt;的一种机制，它使得任何时刻仅有一个线程在执行。即便在&lt;a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8"&gt;多核心处理器&lt;/a&gt;上，使用 &lt;span class="caps"&gt;GIL&lt;/span&gt;&amp;nbsp;的解释器也只允许同一时间执行一个线程。&lt;/p&gt;
+&lt;p&gt;From &lt;a href="https://zh.wikipedia.org/zh-hans/%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81"&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：&lt;/p&gt;
+&lt;p&gt;进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。&lt;/p&gt;
+&lt;p&gt;因此，GIL的重要性不言而喻。但也是因为它 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;人们只瞧见了上帝关了门，却没瞅到上帝也开了窗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="gil"&gt;什么是GIL？&lt;a class="headerlink" href="#gil" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;即&lt;strong&gt;全局解释器锁&lt;/strong&gt;（英语：Global Interpreter Lock，缩写&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;），是&lt;a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"&gt;计算机程序设计语言&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8"&gt;解释器&lt;/a&gt;用于&lt;a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5"&gt;同步&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B"&gt;线程&lt;/a&gt;的一种机制，它使得任何时刻仅有一个线程在执行。即便在&lt;a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8"&gt;多核心处理器&lt;/a&gt;上，使用 &lt;span class="caps"&gt;GIL&lt;/span&gt;&amp;nbsp;的解释器也只允许同一时间执行一个线程。&lt;/p&gt;
+&lt;p&gt;From &lt;a href="https://zh.wikipedia.org/zh-hans/%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81"&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：&lt;/p&gt;
+&lt;p&gt;进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。&lt;/p&gt;
+&lt;p&gt;因此，GIL的重要性不言而喻。但也是因为它，使得Python的多线程活生生地由并行变成了并发。&lt;/p&gt;
+&lt;p&gt;为了减少GIL所带来的性能损耗，我们能做什么呢？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;关于Python内存管理机制，你可以查看这篇文章： https://www.cnblogs.com/geaozhang/p/7111961.html#yinyongjishu &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="gil_1"&gt;被GIL削弱的多线程&lt;a class="headerlink" href="#gil_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于全局解释锁（&lt;span class="caps"&gt;GIL&lt;/span&gt;）的原因，Python 的线程被限制到同一时刻只允许一个线程执行这样一个执行模型。所以，Python&amp;nbsp;的线程更适用于处理I/O和其他需要并发执行的阻塞操作（比如等待I/O、等待从数据库获取数据等等），而不是需要多处理器并行的计算密集型任务。&lt;/p&gt;
+&lt;p&gt;From &lt;a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p01_start_stop_thread.html"&gt;Python&amp;nbsp;cookbook&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面是一例实验：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;queue&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
+
+&lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;队列初始化完成&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;job&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;任务完成&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====单线程十次作业开始=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;start_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;作业时间：{time.time() - start_time}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====单线程十次作业完成=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====多线程十次作业开始=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;start_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;thread_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;threading&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Thread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;thread_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;thread_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_alive&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+                &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;作业时间：{time.time() - start_time}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====多线程十次作业完成=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;队列初始化完成&lt;/span&gt;
+&lt;span class="err"&gt;=====单线程十次作业开始=====&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;作业时间：10.010543823242188&lt;/span&gt;
+&lt;span class="err"&gt;=====单线程十次作业完成=====&lt;/span&gt;
+&lt;span class="err"&gt;队列初始化完成&lt;/span&gt;
+&lt;span class="err"&gt;=====多线程十次作业开始=====&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+&lt;span class="err"&gt;作业时间：1.0054144859313965&lt;/span&gt;
+&lt;span class="err"&gt;=====多线程十次作业完成=====&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;值得注意的是，如果将job函数中后面一个sleep函数去掉，会导致多线程测试不能完成。具体原因还未弄清。&lt;/p&gt;
+&lt;h3 id="_1"&gt;那么，计算密集型任务呢？&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;对于IO密集型任务，Python的伪多线程可以解决，但是对于计算密集型任务，它仍旧无法真正在同一时间调用多个函数。这个时候，多线程的作用就出来了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;multiprocessing&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;queue&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;队列初始化完成&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;job&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+            &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;任务完成&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====单线程十次作业开始=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;start_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;作业时间：{time.time() - start_time}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====单线程十次作业完成=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;init_queue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====多进程十次作业开始=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;start_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;process_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;multiprocessing&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;process_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;process_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_alive&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+                &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;作业时间：{time.time() - start_time}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;=====多进程十次作业完成=====&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;队列初始化完成&lt;/span&gt;
+
+&lt;span class="o"&gt;=====&lt;/span&gt;&lt;span class="err"&gt;单线程十次作业开始&lt;/span&gt;&lt;span class="o"&gt;=====&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;作业时间：&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;008376598358154&lt;/span&gt;
+
+&lt;span class="o"&gt;=====&lt;/span&gt;&lt;span class="err"&gt;单线程十次作业完成&lt;/span&gt;&lt;span class="o"&gt;=====&lt;/span&gt;
+
+&lt;span class="err"&gt;队列初始化完成&lt;/span&gt;
+
+&lt;span class="o"&gt;=====&lt;/span&gt;&lt;span class="err"&gt;多进程十次作业开始&lt;/span&gt;&lt;span class="o"&gt;=====&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;任务完成&lt;/span&gt;
+
+&lt;span class="err"&gt;作业时间：&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4181747436523438&lt;/span&gt;
+
+&lt;span class="o"&gt;=====&lt;/span&gt;&lt;span class="err"&gt;多进程十次作业完成&lt;/span&gt;&lt;span class="o"&gt;=====&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;虽然GIL给Python的性能关上了一扇门，但是这并不意味着我们就要忽略标准库里为我们打开的每一扇窗。&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="python"></category></entry><entry><title>Python参数传递的问题</title><link href="https://weilet.me/python%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%9A%84%E9%97%AE%E9%A2%98" rel="alternate"></link><published>2019-05-11T10:31:00+08:00</published><updated>2019-05-11T10:31:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-05-11:/python参数传递的问题</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;传参不规范，亲人两行泪&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Python中的参数传递并非传值也非传引用，传的是对象的引用。&lt;/p&gt;
+&lt;p&gt;这是一个结论，如果想要知道更多的细节，请阅读&lt;a href="https://book.douban.com/subject/25910544/"&gt;《编写高质量代码：改善Python程序的91个建议》&lt;/a&gt;的第31条建议。&lt;/p&gt;
+&lt;p&gt;在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。&lt;/p&gt;
+&lt;p&gt;假设有下面代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ichxx&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当a传递给x时，它对应的内存模型是这样的&lt;/p&gt;
+&lt;p&gt;&lt;img alt="示意图1" class="wp-image-435" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;当切片时，产生了新的字符串，此时内存模型变为：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="示意图2" class="wp-image-436" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;现在，a与x就没有关联了，自然对x的更改就不会反馈到a了&lt;/p&gt;
+&lt;p&gt;那么，什么样的改变会反馈到实参呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;传参不规范，亲人两行泪&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Python中的参数传递并非传值也非传引用，传的是对象的引用。&lt;/p&gt;
+&lt;p&gt;这是一个结论，如果想要知道更多的细节，请阅读&lt;a href="https://book.douban.com/subject/25910544/"&gt;《编写高质量代码：改善Python程序的91个建议》&lt;/a&gt;的第31条建议。&lt;/p&gt;
+&lt;p&gt;在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。&lt;/p&gt;
+&lt;p&gt;假设有下面代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ichxx&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当a传递给x时，它对应的内存模型是这样的&lt;/p&gt;
+&lt;p&gt;&lt;img alt="示意图1" class="wp-image-435" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;当切片时，产生了新的字符串，此时内存模型变为：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="示意图2" class="wp-image-436" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;现在，a与x就没有关联了，自然对x的更改就不会反馈到a了&lt;/p&gt;
+&lt;p&gt;那么，什么样的改变会反馈到实参呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西”的目的，但原来的商品有没有变呢？没有。&lt;/p&gt;
+&lt;p&gt;最后附上引起我思考这个问题的一段代码（最短寻道算法的实现）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;SCAN&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;NoArrayError&lt;/span&gt;
+
+    &lt;span class="n"&gt;new_arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 原先是写arr.sort()，这样会改变原来的arr，而arr是全局共用的。这会导致别的调度算法测试时的序列改变。 &lt;/span&gt;
+    &lt;span class="n"&gt;pos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="n"&gt;movement&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;FCFS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+        &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;FCFS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+                &lt;span class="n"&gt;pos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+                &lt;span class="n"&gt;movement&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+                &lt;span class="k"&gt;break&lt;/span&gt;
+                &lt;span class="n"&gt;movement&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:])])&lt;/span&gt;
+                &lt;span class="n"&gt;movement&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+                &lt;span class="n"&gt;movement&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;new_arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;])])&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;movement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry><entry><title>序列化Python对象</title><link href="https://weilet.me/%E5%BA%8F%E5%88%97%E5%8C%96python%E5%AF%B9%E8%B1%A1" rel="alternate"></link><published>2019-05-08T22:11:00+08:00</published><updated>2019-05-08T22:11:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-05-08:/序列化python对象</id><summary type="html">&lt;h3 id="_1"&gt;什么是序列化&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;序列化&lt;/strong&gt;(Serialization)&lt;strong&gt;是&lt;/strong&gt;将对象的状态信息转换为可以存储或传输的形式的过程。 在&lt;strong&gt;序列化&lt;/strong&gt;期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反&lt;strong&gt;序列化&lt;/strong&gt;对象的状态，重新创建该对象。&lt;/p&gt;
+&lt;p&gt;来自百度百科&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_2"&gt;为什么需要序列化&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;便于传输&lt;/p&gt;
+&lt;h3 id="python"&gt;Python 中使用序列化&lt;a class="headerlink" href="#python" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="pickle"&gt;Pickle 模块&lt;a class="headerlink" href="#pickle" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Pickle是Python中一个常用的序列化模块，它有以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;易用&lt;/li&gt;
+&lt;li&gt;支持多种数据类型&lt;/li&gt;
+&lt;li&gt;维护引用关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是，它也有以下缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非原子性&lt;/li&gt;
+&lt;li&gt;不兼容别的语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;说到底常用的就四个函数：dump，load，dumps，loads。&lt;/p&gt;
+&lt;p&gt;还是直接看表演吧。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Student&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;stu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Student&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stu …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3 id="_1"&gt;什么是序列化&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;序列化&lt;/strong&gt;(Serialization)&lt;strong&gt;是&lt;/strong&gt;将对象的状态信息转换为可以存储或传输的形式的过程。 在&lt;strong&gt;序列化&lt;/strong&gt;期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反&lt;strong&gt;序列化&lt;/strong&gt;对象的状态，重新创建该对象。&lt;/p&gt;
+&lt;p&gt;来自百度百科&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_2"&gt;为什么需要序列化&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;便于传输&lt;/p&gt;
+&lt;h3 id="python"&gt;Python 中使用序列化&lt;a class="headerlink" href="#python" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="pickle"&gt;Pickle 模块&lt;a class="headerlink" href="#pickle" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Pickle是Python中一个常用的序列化模块，它有以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;易用&lt;/li&gt;
+&lt;li&gt;支持多种数据类型&lt;/li&gt;
+&lt;li&gt;维护引用关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但是，它也有以下缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非原子性&lt;/li&gt;
+&lt;li&gt;不兼容别的语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;说到底常用的就四个函数：dump，load，dumps，loads。&lt;/p&gt;
+&lt;p&gt;还是直接看表演吧。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Student&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;stu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Student&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stu&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;会得到一个这样二进制数据：&lt;/p&gt;
+&lt;p&gt;\x80\x03c__main__\nStudent\nq\x00)\x81q\x01.&lt;/p&gt;
+&lt;p&gt;反过来，我们便可以把一段二进制数据串变为一个Python对象&lt;/p&gt;
+&lt;p&gt;比方说：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;bits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;cos&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;system&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;(S&amp;#39;rm * -rf&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;rT.&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bits&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这段代码的执行过程会将主机上的文件清空（前提是有权限）。&lt;/p&gt;
+&lt;p&gt;在一些场景，通过一定的混淆，将这段代码通过服务器并被反序列化执行，后果不堪设想。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;所以，千万不要把自己不信任的数据随便反序列化&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;序列化对象时，对象中的__reduce__方法会被调用。你可以重写它来完成你想要做的事情。&lt;/p&gt;
+&lt;p&gt;当然，还有一个叫__reduce_ex__的魔法方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;__reduce_ex__ 的存在是为了兼容性。如果它被定义，在pickle时 __reduce_ex__ 会代替 __reduce__ 被调用。 __reduce__ 也可以被定义，用于不支持 __reduce_ex__&amp;nbsp;的旧版pickle的API调用。&lt;/p&gt;
+&lt;p&gt;来自 &lt;a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#id28"&gt;Python魔法方法指南&lt;/a&gt;&lt;a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#python"&gt;¶&lt;/a&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id="json"&gt;JSON模块&lt;a class="headerlink" href="#json" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;JSON相信大家都熟悉，它的优点主要有两点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可读性高&lt;/li&gt;
+&lt;li&gt;适用性广&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;怎么说，没操作过JSON都不好意思告诉别人自己是写代码的。&lt;/p&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相较于pickle，性能较弱（cjson模块会改善这个问题，但对速度要求较高的项目还是不适合使用之）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;JSON的对照网上很多，这里就不献丑了。&lt;/p&gt;
+&lt;p&gt;最后再附上一个精彩的 pickle 反序列化利用： &lt;a href="https://zhuanlan.zhihu.com/p/25981037"&gt;地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以及一个反序列化对照表：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。&lt;/span&gt;
+&lt;span class="err"&gt;(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。&lt;/span&gt;
+&lt;span class="err"&gt;t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。&lt;/span&gt;
+&lt;span class="err"&gt;S：读取引号中的字符串直到换行符处，然后将它压入堆栈。&lt;/span&gt;
+&lt;span class="err"&gt;R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。&lt;/span&gt;
+&lt;span class="err"&gt;.：结束pickle&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry><entry><title>Python 中多继承的顺序问题</title><link href="https://weilet.me/python-%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98" rel="alternate"></link><published>2019-04-23T22:47:00+08:00</published><updated>2019-04-23T22:47:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-04-23:/python-中多继承的顺序问题</id><summary type="html">&lt;h3 id="_1"&gt;从左到右&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a A&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;B&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a B&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# I am a A&lt;/span&gt;
+&lt;span class="c1"&gt;# 搜索过程如下，先搜索A，A中有say …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3 id="_1"&gt;从左到右&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a A&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;B&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a B&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# I am a A&lt;/span&gt;
+&lt;span class="c1"&gt;# 搜索过程如下，先搜索A，A中有say()，调用A类中的say()，结束&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_2"&gt;广度优先&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a A&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;B&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;C&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;say&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;I am a C&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;D&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# I am a A&lt;/span&gt;
+&lt;span class="c1"&gt;# 搜索过程如下，先搜索B，B中没有，搜索C，C中有say()，结束&lt;/span&gt;
+&lt;span class="c1"&gt;# 事实上，调用的方法会先从子类的父类遍历寻找，然后是父类的父类，直到寻找完所有的超类&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_3"&gt;总结&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;以上两点是 Python&amp;nbsp;中关于继承顺序容易弄混的地方。&lt;/p&gt;
+&lt;p&gt;你可以调用 __mro__ 查看继承的图谱，它是一个从子类出发，直到 Object&amp;nbsp;的元组&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Python 中的 Mixin 模式</title><link href="https://weilet.me/python-%E4%B8%AD%E7%9A%84-mixin-%E6%A8%A1%E5%BC%8F" rel="alternate"></link><published>2019-04-22T10:12:00+08:00</published><updated>2019-04-22T10:12:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-04-22:/python-中的-mixin-模式</id><summary type="html">&lt;h3 id="mixin"&gt;什么是Mixin&lt;a class="headerlink" href="#mixin" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Mixin是面向对象程序设计语言中的类，提供了方法的实现。&lt;/p&gt;
+&lt;h3 id="mixin_1"&gt;为什么需要 Mixin&lt;a class="headerlink" href="#mixin_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;[首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&amp;nbsp;NameMixin，而且它应该具备以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先它必须表示某一种功能，而不是某个物品 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h3 id="mixin"&gt;什么是Mixin&lt;a class="headerlink" href="#mixin" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Mixin是面向对象程序设计语言中的类，提供了方法的实现。&lt;/p&gt;
+&lt;h3 id="mixin_1"&gt;为什么需要 Mixin&lt;a class="headerlink" href="#mixin_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;[首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&amp;nbsp;NameMixin，而且它应该具备以下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先它必须表示某一种功能，而不是某个物品，如同Java中的Runnable，Callable等&lt;/li&gt;
+&lt;li&gt;其次它必须责任单一，如果有多个功能，那就写多个Mixin类&lt;/li&gt;
+&lt;li&gt;然后，它不依赖于子类的实现&lt;/li&gt;
+&lt;li&gt;最后，子类即便没有继承这个Mixin类，也照样可以工作，就是缺少了某个功能。&amp;nbsp;（参考思诚之道）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="_1"&gt;具体例子&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FlyMixin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fly&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Airplane&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Transportation&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;FlyMixin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# 将 FlyMixin 中的 fly 实现&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fly&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{self}&lt;/span&gt;&lt;span class="s1"&gt; is flying&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# 其他代码&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_2"&gt;注意&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;由于继承顺序的问题，应当将主类放在子类继承的最左边。&lt;/p&gt;</content><category term="python"></category></entry><entry><title>两个下划线和 Python 的故事</title><link href="https://weilet.me/%E4%B8%A4%E4%B8%AA%E4%B8%8B%E5%88%92%E7%BA%BF%E5%92%8C-python-%E7%9A%84%E6%95%85%E4%BA%8B" rel="alternate"></link><published>2019-04-16T12:38:00+08:00</published><updated>2019-04-16T12:38:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-04-16:/两个下划线和-python-的故事</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;从前，有两个孤独的下划线，走进了 Python&amp;nbsp;的世界&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;魔法方法&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;是的，他们不幸地进入了面向对象编程的世界，并成为了魔法方法中的一部分。&lt;/p&gt;
+&lt;p&gt;在 Python&amp;nbsp;的世界里面，有以下常见的魔法方法：&lt;/p&gt;
+&lt;p&gt;1. __init__&amp;nbsp;初始化对象时会被调用&lt;/p&gt;
+&lt;p&gt;2. __del__&amp;nbsp;对象释放时会被调用&lt;/p&gt;
+&lt;p&gt;3. __new__&amp;nbsp;对象被创建时会被调用；注意，创建的时机早于初始化&lt;/p&gt;
+&lt;p&gt;4. __str__&amp;nbsp;使用print()时会被调用&lt;/p&gt;
+&lt;p&gt;5. __len__&amp;nbsp;使用len()时会被调用&lt;/p&gt;
+&lt;p&gt;6. __call__&amp;nbsp;将对象当作函数使用时会被调用&lt;/p&gt;
+&lt;p&gt;7. __add__, __sub__, __mul__, __div__&amp;nbsp;加、减、乘、除时会被调用&lt;/p&gt;
+&lt;p&gt;8. __mod__, __pow__&amp;nbsp;取模、求幂时会被调用&lt;/p&gt;
+&lt;p&gt;9 …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;从前，有两个孤独的下划线，走进了 Python&amp;nbsp;的世界&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;魔法方法&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;是的，他们不幸地进入了面向对象编程的世界，并成为了魔法方法中的一部分。&lt;/p&gt;
+&lt;p&gt;在 Python&amp;nbsp;的世界里面，有以下常见的魔法方法：&lt;/p&gt;
+&lt;p&gt;1. __init__&amp;nbsp;初始化对象时会被调用&lt;/p&gt;
+&lt;p&gt;2. __del__&amp;nbsp;对象释放时会被调用&lt;/p&gt;
+&lt;p&gt;3. __new__&amp;nbsp;对象被创建时会被调用；注意，创建的时机早于初始化&lt;/p&gt;
+&lt;p&gt;4. __str__&amp;nbsp;使用print()时会被调用&lt;/p&gt;
+&lt;p&gt;5. __len__&amp;nbsp;使用len()时会被调用&lt;/p&gt;
+&lt;p&gt;6. __call__&amp;nbsp;将对象当作函数使用时会被调用&lt;/p&gt;
+&lt;p&gt;7. __add__, __sub__, __mul__, __div__&amp;nbsp;加、减、乘、除时会被调用&lt;/p&gt;
+&lt;p&gt;8. __mod__, __pow__&amp;nbsp;取模、求幂时会被调用&lt;/p&gt;
+&lt;p&gt;9. __getitem__, __setitem__, __delitem__&amp;nbsp;取值、赋值、删除时调用&lt;/p&gt;
+&lt;p&gt;10. __iter__&amp;nbsp;for循环遍历对象时会被调用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;__repr__&lt;/strong&gt; 与 __str__&amp;nbsp;相似，网上的资料显示前者主要针对开发者，而后者则囊括所有人群&lt;/p&gt;
+&lt;h3 id="_2"&gt;特殊成员&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在面向对象的世界里面，他们有时也会变成特殊成员的一部分&lt;/p&gt;
+&lt;p&gt;1. __doc__&amp;nbsp;说明性文档&lt;/p&gt;
+&lt;p&gt;2. __author__&amp;nbsp;作者信息&lt;/p&gt;
+&lt;p&gt;3. __dict__ 类或对象的所有成员，Python&amp;nbsp;自建&lt;/p&gt;
+&lt;p&gt;4. __slots__&amp;nbsp;定义允许修改的属性，该成员不会继承和被继承&lt;/p&gt;
+&lt;p&gt;5. __module__&amp;nbsp;当前对象所属模块&lt;/p&gt;
+&lt;p&gt;6. __class__&amp;nbsp;当前对象所属类&lt;/p&gt;
+&lt;p&gt;事实上，你可以通过在变量前添加两条孤独的下划线来使成员变为私有成员&amp;nbsp;。&lt;/p&gt;
+&lt;h2 id="_3"&gt;内置变量&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;走出面向对象的世界，他们变成了内置变量的一部分&lt;/p&gt;
+&lt;p&gt;1. __file__&amp;nbsp;文件路径&lt;/p&gt;
+&lt;p&gt;2. __package__&amp;nbsp;获取导入文件的路径，多层目录以点分割，注意：对当前文件返回None&lt;/p&gt;
+&lt;p&gt;3. __cached__&amp;nbsp;获取导入文件的缓存路径&lt;/p&gt;
+&lt;p&gt;4. __name__&amp;nbsp;获取导入文件的路径加文件名称，路径以点分割，当前运行的文件为__main__&lt;/p&gt;
+&lt;p&gt;5. __builtins__&amp;nbsp;内置函数&lt;/p&gt;
+&lt;p&gt;就这样，这两个孤独的下划线，在 Python&amp;nbsp;的世界里，无端漫游。&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Python 函数注释</title><link href="https://weilet.me/python-%E5%87%BD%E6%95%B0%E6%B3%A8%E9%87%8A" rel="alternate"></link><published>2019-03-03T22:18:00+08:00</published><updated>2019-03-03T22:18:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-03-03:/python-函数注释</id><summary type="html">&lt;p&gt;相较于以往采用文档字符串去注释函数，现在 Python&amp;nbsp;提供了更为轻便的，为小型功能函数准备的函数注释功能。&lt;/p&gt;
+&lt;h3 id="_1"&gt;如何添加函数注释&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在参数后添加英文半角冒号，注释类型&lt;br /&gt;
+在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型&lt;br /&gt;&amp;nbsp;下面是例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_2"&gt;注意&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing&amp;nbsp;中相应的模块，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当然，你仍然可以给参数添加默认值：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;相较于以往采用文档字符串去注释函数，现在 Python&amp;nbsp;提供了更为轻便的，为小型功能函数准备的函数注释功能。&lt;/p&gt;
+&lt;h3 id="_1"&gt;如何添加函数注释&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在参数后添加英文半角冒号，注释类型&lt;br /&gt;
+在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型&lt;br /&gt;&amp;nbsp;下面是例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_2"&gt;注意&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing&amp;nbsp;中相应的模块，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当然，你仍然可以给参数添加默认值：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry><entry><title>Jinja2 模板引擎学习总结</title><link href="https://weilet.me/jinja2-%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93" rel="alternate"></link><published>2018-10-28T21:56:00+08:00</published><updated>2018-10-28T21:56:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-10-28:/jinja2-模板引擎学习总结</id><summary type="html">&lt;h2 id="jinja2"&gt;Jinja2 模板引擎 学习&lt;a class="headerlink" href="#jinja2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="_1"&gt;变量绑定&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;输出变量为 &lt;code&gt;name&lt;/code&gt; 的变量  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出对象 &lt;code&gt;user&lt;/code&gt; 中的变量名为 &lt;code&gt;name&lt;/code&gt; 的变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;user.name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;user&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="if-else"&gt;if - else 选择语句&lt;a class="headerlink" href="#if-else" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;与其他语言的 if - else&amp;nbsp;语句并无太大区别&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;欢迎进入管理界面&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;欢迎你 &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;需要登陆&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="for"&gt;for 循环&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要注意内置的loop&amp;nbsp;方法，非常好用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;后台爬取到广州各区的天气存储在 …&lt;/p&gt;</summary><content type="html">&lt;h2 id="jinja2"&gt;Jinja2 模板引擎 学习&lt;a class="headerlink" href="#jinja2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="_1"&gt;变量绑定&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;输出变量为 &lt;code&gt;name&lt;/code&gt; 的变量  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出对象 &lt;code&gt;user&lt;/code&gt; 中的变量名为 &lt;code&gt;name&lt;/code&gt; 的变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;user.name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;user&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="if-else"&gt;if - else 选择语句&lt;a class="headerlink" href="#if-else" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;与其他语言的 if - else&amp;nbsp;语句并无太大区别&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;欢迎进入管理界面&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;欢迎你 &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;需要登陆&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="for"&gt;for 循环&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;需要注意内置的loop&amp;nbsp;方法，非常好用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;后台爬取到广州各区的天气存储在 &lt;code&gt;weather_list&lt;/code&gt; 中，想要输出它们&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;data&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;weather_list&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;loop&lt;/span&gt;&lt;span class="nv"&gt;.first&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;天气列表&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;今天 &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;data.area&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt; 的天气是 &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;data.weather&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;loop&lt;/span&gt;&lt;span class="nv"&gt;.last&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;共&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nb"&gt;loop&lt;/span&gt;&lt;span class="nv"&gt;.length&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;条数据&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;目前用到的就这么多，日后用到更多的功能会更新此文。&lt;/p&gt;</content><category term="python"></category></entry><entry><title>用python，查快递</title><link href="https://weilet.me/%E7%94%A8python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92" rel="alternate"></link><published>2018-08-07T06:18:00+08:00</published><updated>2018-08-07T06:18:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-08-07:/用python，查快递</id><summary type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;` {.EnlighterJSRAW&amp;nbsp;enlighter-language=&amp;#8221;python&amp;#8221;}&lt;/p&gt;
+&lt;h1 id="-coding-utf-8-"&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;a class="headerlink" href="#-coding-utf-8-" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="author-lily_sun"&gt;@Author: Lily_Sun&lt;a class="headerlink" href="#author-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="date-2018-08-07-013150"&gt;@Date:   2018-08-07 01:31:50&lt;a class="headerlink" href="#date-2018-08-07-013150" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-by-lily_sun"&gt;@Last Modified by:   Lily_Sun&lt;a class="headerlink" href="#last-modified-by-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-time-2018-08-07-061713"&gt;@Last Modified time: 2018-08-07 06:17:13&lt;a class="headerlink" href="#last-modified-time-2018-08-07-061713" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;import json
+import requests
+import&amp;nbsp;re&lt;/p&gt;
+&lt;h1 id="_1"&gt;访问网页返回字典&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;def visit_api(url):
+    res = requests.get(url)
+    result_dict = json.loads(res.content.decode(&amp;#8216;utf-8&amp;#8217;))
+    return&amp;nbsp;result_dict&lt;/p&gt;
+&lt;h1 id="_2"&gt;返回公司编号&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;def get_company …&lt;/p&gt;</summary><content type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;` {.EnlighterJSRAW&amp;nbsp;enlighter-language=&amp;#8221;python&amp;#8221;}&lt;/p&gt;
+&lt;h1 id="-coding-utf-8-"&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;a class="headerlink" href="#-coding-utf-8-" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="author-lily_sun"&gt;@Author: Lily_Sun&lt;a class="headerlink" href="#author-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="date-2018-08-07-013150"&gt;@Date:   2018-08-07 01:31:50&lt;a class="headerlink" href="#date-2018-08-07-013150" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-by-lily_sun"&gt;@Last Modified by:   Lily_Sun&lt;a class="headerlink" href="#last-modified-by-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-time-2018-08-07-061713"&gt;@Last Modified time: 2018-08-07 06:17:13&lt;a class="headerlink" href="#last-modified-time-2018-08-07-061713" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;import json
+import requests
+import&amp;nbsp;re&lt;/p&gt;
+&lt;h1 id="_1"&gt;访问网页返回字典&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;def visit_api(url):
+    res = requests.get(url)
+    result_dict = json.loads(res.content.decode(&amp;#8216;utf-8&amp;#8217;))
+    return&amp;nbsp;result_dict&lt;/p&gt;
+&lt;h1 id="_2"&gt;返回公司编号&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;def get_company(epnum):
+    url = &amp;#8216;http://m.kuaidi100.com/autonumber/auto?num=&amp;#8217; + str(epnum)
+    company = visit_api(url)[0][&amp;#8216;comCode&amp;#8217;]
+    return&amp;nbsp;company&lt;/p&gt;
+&lt;h1 id="_3"&gt;查询&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;def get_express(epnum,company):
+    url = &amp;#8216;http://m.kuaidi100.com/query?type=&amp;#8217; + str(company) + &amp;#8216;&amp;amp;postid=&amp;#8217;+ str(epnum) + &amp;#8216;&amp;amp;id=1&amp;amp;valicode=&amp;#8217;
+    result_list = visit_api(url)[&amp;#8216;data&amp;#8217;]
+    #print(result_list)
+    for result in result_list:
+    print(result[&amp;#8216;context&amp;#8217;])
+    print(&amp;#8220;到达时间：&amp;nbsp;&amp;#8220;+result[&amp;#8216;time&amp;#8217;])&lt;/p&gt;
+&lt;p&gt;def main():
+    epnum = input(&amp;#8216;输入你的快递单号：\n&amp;#8217;)&amp;nbsp;get_express(epnum,get_company(epnum))&lt;/p&gt;
+&lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == &amp;#8216;&lt;strong&gt;main&lt;/strong&gt;&amp;#8216;:
+    main()&amp;nbsp;&amp;#8220;`&lt;/p&gt;</content><category term="python"></category></entry><entry><title>用python给你女朋友写封信</title><link href="https://weilet.me/%E7%94%A8python%E7%BB%99%E4%BD%A0%E5%A5%B3%E6%9C%8B%E5%8F%8B%E5%86%99%E5%B0%81%E4%BF%A1" rel="alternate"></link><published>2018-07-14T00:30:00+08:00</published><updated>2018-07-14T00:30:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-07-14:/用python给你女朋友写封信</id><summary type="html">&lt;p&gt;喜欢木心先生的《从前慢》，那种一辈子只够爱一个人的闲适，被今日快节奏的生活方式打破。&lt;/p&gt;
+&lt;p&gt;虽然今日邮件已然销声匿迹，但电子邮件的兴起给我们另一个选择。&lt;/p&gt;
+&lt;p&gt;若怀念木心，不妨静下心来，在键盘上诚诚恳恳敲击你想对她诉说的，不也浪漫？不也悠长？&lt;/p&gt;
+&lt;p&gt;那么，如何用python写电子邮件呢？&lt;/p&gt;
+&lt;p&gt;我们需要用到smtplib和email模块&lt;/p&gt;
+&lt;p&gt;我们从简单的开始，写一首情诗送给她&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Date:   2018-07-12 05:56:46&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified by:   Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified time: 2018-07-13 13:29:09&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;smtplib&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;email.mime.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MIMEText&lt;/span&gt; &lt;span class="c1"&gt;#多媒体网际网路邮件延伸文本，即纯文本&lt;/span&gt;
+&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;醉过才知酒浓，爱过才知情重。  &lt;/span&gt;
+\&lt;span class="n"&gt;n你定是我的诗 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;喜欢木心先生的《从前慢》，那种一辈子只够爱一个人的闲适，被今日快节奏的生活方式打破。&lt;/p&gt;
+&lt;p&gt;虽然今日邮件已然销声匿迹，但电子邮件的兴起给我们另一个选择。&lt;/p&gt;
+&lt;p&gt;若怀念木心，不妨静下心来，在键盘上诚诚恳恳敲击你想对她诉说的，不也浪漫？不也悠长？&lt;/p&gt;
+&lt;p&gt;那么，如何用python写电子邮件呢？&lt;/p&gt;
+&lt;p&gt;我们需要用到smtplib和email模块&lt;/p&gt;
+&lt;p&gt;我们从简单的开始，写一首情诗送给她&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Date:   2018-07-12 05:56:46&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified by:   Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified time: 2018-07-13 13:29:09&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;smtplib&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;email.mime.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MIMEText&lt;/span&gt; &lt;span class="c1"&gt;#多媒体网际网路邮件延伸文本，即纯文本&lt;/span&gt;
+&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;醉过才知酒浓，爱过才知情重。  &lt;/span&gt;
+\&lt;span class="n"&gt;n你定是我的诗&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="n"&gt;恰似我如你的梦&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;mail_host&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;smtp.163.com&amp;quot;&lt;/span&gt;   &lt;span class="c1"&gt;# 设置服务器&lt;/span&gt;
+&lt;span class="n"&gt;mail_user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;**********@163.com&amp;quot;&lt;/span&gt;    &lt;span class="c1"&gt;# 发送邮箱&lt;/span&gt;
+&lt;span class="n"&gt;mail_pass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;*******&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 邮箱校验码 非密码 &lt;/span&gt;
+&lt;span class="n"&gt;receiver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;*******@163.com&amp;quot;&lt;/span&gt;     &lt;span class="c1"&gt;# 接收邮箱 &lt;/span&gt;
+&lt;span class="n"&gt;message&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MIMEText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;plain&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#构造MIMEText对象&lt;/span&gt;
+&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;From&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;难忘你的&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;mail_user&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;To&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;我难忘的&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;receiver&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt; 
+&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Subject&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; 月色真美 &amp;#39;&lt;/span&gt; 
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="n"&gt;smtpObj&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;smtplib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SMTP_SSL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mail_host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;465&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#实例一个邮件传输对象&lt;/span&gt;
+      &lt;span class="n"&gt;smtpObj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ehlo&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;#初始化到服务器的连接，类似于敲门的感觉&lt;/span&gt;
+      &lt;span class="n"&gt;smtpObj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;login&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mail_user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;mail_pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;登录成功！&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;smtpObj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendmail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mail_user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;receiver&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_string&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="c1"&gt;# 发送邮件&lt;/span&gt;
+      &lt;span class="n"&gt;smtpObj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 邮件退出&lt;/span&gt;
+      &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;恭喜：邮件发送成功!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;smtplib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SMTPException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;错误：无法发送邮件&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;快用这个脚本给你女朋友发电子邮件，让她开心一下吧。如果你有的话(●&amp;#8217;◡&amp;#8217;●)&lt;/p&gt;
+&lt;p&gt;【未完待续】&lt;/p&gt;</content><category term="python"></category></entry><entry><title>我的第一只爬虫</title><link href="https://weilet.me/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%8F%AA%E7%88%AC%E8%99%AB" rel="alternate"></link><published>2018-07-12T05:28:00+08:00</published><updated>2018-07-12T05:28:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-07-12:/我的第一只爬虫</id><summary type="html">&lt;p&gt;寒假的时候学习了一下Python的爬虫，并将豆瓣电影排行榜爬取了下来&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;` {.EnlighterJSRAW&amp;nbsp;enlighter-language=&amp;#8221;python&amp;#8221;}&lt;/p&gt;
+&lt;h1 id="-coding-utf-8-"&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;a class="headerlink" href="#-coding-utf-8-" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="author-lily_sun"&gt;@Author: Lily_Sun&lt;a class="headerlink" href="#author-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="date-2018-01-12-051840"&gt;@Date:   2018-01-12 05:18:40&lt;a class="headerlink" href="#date-2018-01-12-051840" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-by-lily_sun"&gt;@Last Modified by:   Lily_Sun&lt;a class="headerlink" href="#last-modified-by-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-time-2018-01-12-051840"&gt;@Last Modified time: 2018-01-12 05:18:40&lt;a class="headerlink" href="#last-modified-time-2018-01-12-051840" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;import re
+from urllib import&amp;nbsp;request&lt;/p&gt;
+&lt;p&gt;cnt = 1
+url = &amp;#8220;https://movie.douban.com/chart&amp;#8221;
+req = request.Request(url)
+with request.urlopen(req) as f:
+data …&lt;/p&gt;</summary><content type="html">&lt;p&gt;寒假的时候学习了一下Python的爬虫，并将豆瓣电影排行榜爬取了下来&lt;/p&gt;
+&lt;p&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;` {.EnlighterJSRAW&amp;nbsp;enlighter-language=&amp;#8221;python&amp;#8221;}&lt;/p&gt;
+&lt;h1 id="-coding-utf-8-"&gt;-&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;a class="headerlink" href="#-coding-utf-8-" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="author-lily_sun"&gt;@Author: Lily_Sun&lt;a class="headerlink" href="#author-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="date-2018-01-12-051840"&gt;@Date:   2018-01-12 05:18:40&lt;a class="headerlink" href="#date-2018-01-12-051840" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-by-lily_sun"&gt;@Last Modified by:   Lily_Sun&lt;a class="headerlink" href="#last-modified-by-lily_sun" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id="last-modified-time-2018-01-12-051840"&gt;@Last Modified time: 2018-01-12 05:18:40&lt;a class="headerlink" href="#last-modified-time-2018-01-12-051840" title="Permanent link"&gt; &lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;import re
+from urllib import&amp;nbsp;request&lt;/p&gt;
+&lt;p&gt;cnt = 1
+url = &amp;#8220;https://movie.douban.com/chart&amp;#8221;
+req = request.Request(url)
+with request.urlopen(req) as f:
+data = f.read().decode(&amp;#8216;utf-8&amp;#8217;)
+reg_name = r&amp;#8217;&lt;div class="name"&gt;[]&lt;a .*?class=""&gt;[\n][&amp;#8221; &amp;#8220;]&lt;em&gt;.&lt;/em&gt;[\n][&amp;#8221; &amp;#8220;]&lt;em&gt;(.&lt;/em&gt;)&amp;#8217;
+list = (re.findall(reg_name,data))
+print(&amp;#8220;rank&amp;#8221;+&amp;#8221;\t\t&amp;#8221;+&amp;#8221;name&amp;#8221;)
+for x in list:
+print(cnt,end=&amp;#8221;\t\t\t&amp;#8221;)
+print(x)
+cnt = cnt + 1&amp;nbsp;&amp;#8220;`&lt;/p&gt;
+&lt;p&gt;整个过程其实就是折腾正则表达式，以至于我现在都不知道为什么要加个[]。（然而实践告诉我就是要这样的。）&lt;/p&gt;
+&lt;p&gt;主要用来urllib 和 re&amp;nbsp;模块。&lt;/p&gt;
+&lt;p&gt;先发送请求到网站，然后打开后以utf-8编码格式的提取内容，再用正则提取需要的信息，最后添加点样式，打表即可。&lt;/p&gt;</content><category term="python"></category></entry></feed>

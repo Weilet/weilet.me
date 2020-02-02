@@ -2,48 +2,50 @@
 <html>
 
 <head>
-Weilet's Workshop - Python参数传递的问题    <meta charset="utf-8">
+<title>Python参数传递的问题</title>
+    <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="https://weilet.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+    <link rel="icon" href="/theme/images/terminal.ico">
+
 </head>
 
 <body>
     <nav class="nav">
         <div class="nav-container">
             <div class="brand">
-                <a href="https://weilet.github.io">Weilet's Blog</a>
+                <a href="https://weilet.me">Weilet's Blog</a>
             </div>
             <div class="links">
                 <a class="main-nav-link" href="/archives/">归档</a>
                 <a class="main-nav-link" href="/categories/">分类</a>
                 <a class="main-nav-link" href="/tags/">标签</a>
-                <a class="main-nav-link" href="/index.xml">订阅</a>
+                <a class="main-nav-link" href="/index.xml"><img src="/theme/images/rss.ico" height="30%"></a>
             </div>
         </div>
     </nav>
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://weilet.github.io/python参数传递的问题" rel="bookmark"
-         title="Permalink to Python参数传递的问题">Python参数传递的问题</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2019-05-11T10:31:00+08:00">
-      May 11, 2019
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://weilet.github.io/author/pwnforwhat.html">PwnForWhat</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://weilet.github.io/category/python.html">python</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <blockquote>
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>Python参数传递的问题</h1>
+                <div class="post-meta">
+                    <time class="date">May 11, 2019</time>
+                    /
+                    <span>
+                        <a href="/category/python.html" class="comment-link">
+                            python
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <blockquote>
 <p>传参不规范，亲人两行泪</p>
 </blockquote>
 <p>Python中的参数传递并非传值也非传引用，传的是对象的引用。</p>
@@ -93,8 +95,9 @@ Weilet's Workshop - Python参数传递的问题    <meta charset="utf-8">
                 <span class="n">movement</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">new_arr</span><span class="p">[:</span><span class="n">pos</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">pos</span><span class="p">])])</span>
                 <span class="k">return</span> <span class="n">movement</span>
 </pre></div>
-  </div><!-- /.entry-content -->
-</section>
+        </div>
+    </article>
+</main>
     <footer class="footer container">
         <a class="main-nav-link" href="/blogroll/">友链</a>
         <a class="main-nav-link" href="/about/">关于</a>
