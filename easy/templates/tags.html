@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="main-content">
+    <div class="container">
+        <h1>Tags</h1>
+        <div class="tag-container">
+        	{% for tag, articles in tags|sort %}
+            {% set num = articles|count %}
+            <a href="/tag/{{ tag }}">
+            	<span>{{ tag }}<strong class="count">{{ num }}</strong></span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% for tag, articles in tags|sort %}
+<li>
+    {% set num = articles|count %}
+    <a href="#{{ tag.slug }}-ref">{{ tag }}<span>{{ num }}</span></a>
+</li>
+{% endfor %}
+{% endblock %}

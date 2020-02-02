@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="main-content">
+    <div class="container front-page">
+        {% for category, articles in categories %}
+        <section class="section">
+            <h2>Article on {{ category }}</h2>
+            {% for article in articles %}
+            {% if loop.index0 < 5 %} 
+            <section class="posts simple">
+                <a href="{{ SITEURL }}/{{ article.url }}">
+                    <div class="each">
+                        <div>
+                            <h2>{{ article.title }}</h2>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            {% endif %}
+            {% endfor %}
+        </section>
+        {% endfor %}
+    </div>
+</main>
+{%endblock %}
