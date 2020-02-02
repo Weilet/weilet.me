@@ -11,13 +11,13 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = "https://weilet.github.io"
+SITEURL = "https://weilet.me"
 FEED_DOMAIN = SITEURL
 
 RELATIVE_URLS = False
 
 # filetime_from_git is very slow. Use it in production only
 # to avoid slow build times during development
-PLUGINS.append("sitemap")
+
 
 DELETE_OUTPUT_DIRECTORY = True

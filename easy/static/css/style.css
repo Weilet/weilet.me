@@ -7,19 +7,6 @@ html {
 *::after {
     box-sizing: border-box
 }
-
-@media (min-width: 850px) {
-    .main-nav-link img {
-        height: 30%;
-        
-    }
-}
-
-@media (max-width: 850px) {
-    .main-nav-link>img {
-        height: 10%;
-    }
-}
 figure,
 body {
     margin: 0
