@@ -15,7 +15,7 @@ TAG_SAVE_AS = TAG_URL
 
 # Regional Settings
 TIMEZONE = "Asia/Shanghai"
-DATE_FORMATS = {"en": "%b %d, %Y"}
+DATE_FORMATS = {"en": "%Y-%m-%d"}
 
 # Plugins and extensions
 MARKDOWN = {
