@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog - others</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/others.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2019-09-25T19:33:00+08:00</updated><entry><title>学校教务系统爬取计划</title><link href="https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92" rel="alternate"></link><published>2019-09-25T19:33:00+08:00</published><updated>2019-09-25T19:33:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-09-25:/学校教务系统爬取计划</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog - Daily</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/daily.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2019-09-25T19:33:00+08:00</updated><entry><title>学校教务系统爬取计划</title><link href="https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92" rel="alternate"></link><published>2019-09-25T19:33:00+08:00</published><updated>2019-09-25T19:33:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-09-25:/学校教务系统爬取计划</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。&lt;/p&gt;
@@ -167,27 +167,74 @@
                                               &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kc_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
                                               &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;teachernames_1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
                                               &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;js_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="others"></category></entry><entry><title>图片隐写套路</title><link href="https://weilet.me/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%A5%97%E8%B7%AF" rel="alternate"></link><published>2018-07-09T23:35:00+08:00</published><updated>2018-07-09T23:35:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-07-09:/图片隐写套路</id><content type="html">&lt;h3 id="_1"&gt;总结一些图片隐写术的套路&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="0x000-exif"&gt;0x000 exif&lt;a class="headerlink" href="#0x000-exif" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Windows下直接右键属性查看就好，有些题目会用Base64等方式加密，不过也就一梭子代码的问题。&lt;/p&gt;
-&lt;p&gt;Linux下用&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;identify -verbose filename
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Daily"></category><category term="Python"></category></entry><entry><title>用Python，查快递</title><link href="https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92" rel="alternate"></link><published>2018-08-07T06:18:00+08:00</published><updated>2018-08-07T06:18:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-08-07:/用Python，查快递</id><summary type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Date:   2018-08-07 01:31:50&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified by:   Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified time: 2018-08-07 06:17:13&lt;/span&gt;
 
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
 
-&lt;h3 id="0x001"&gt;0x001 隐藏文件&lt;a class="headerlink" href="#0x001" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;文件的隐藏利用
- &lt;code&gt;shell
-copy /b 2.jpg+1.zip output.jpg&lt;/code&gt;
-对于这类题目，用binwalk分析后用dd命令分解出来就好：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;filename &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;filename &lt;span class="nv"&gt;skip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;start_point_of_hidden_file &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;                          
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="c1"&gt;#访问网页返回字典&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;visit_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;result_dict&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result_dict&lt;/span&gt;
 
+&lt;span class="c1"&gt;#返回公司编号&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_company&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Date:   2018-08-07 01:31:50&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified by:   Lily_Sun&lt;/span&gt;
+&lt;span class="c1"&gt;# @Last Modified time: 2018-08-07 06:17:13&lt;/span&gt;
 
-&lt;h3 id="0x010-lsb"&gt;0x010 &lt;span class="caps"&gt;LSB&lt;/span&gt; 修改&lt;a class="headerlink" href="#0x010-lsb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;直接用stegsolve看通道，一般会隐藏二维码在其中。&lt;/p&gt;
-&lt;h3 id="0x011"&gt;0x011 查看其他信息&lt;a class="headerlink" href="#0x011" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Windows下把图片拖进WinHex，缺少文件头的话补全。在文件结尾后有一段不明字符串，可以尝试解码。&lt;/p&gt;
-&lt;p&gt;拖进Stegsolve里查看附着的信息，有可能有ascii形式的Flag。&lt;/p&gt;
-&lt;h3 id="0x100"&gt;0x100 双图&lt;a class="headerlink" href="#0x100" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;目前做过的题目的解决方案是拖进stegsolve里边然后选择图片叠加。&lt;/p&gt;</content><category term="others"></category></entry></feed>
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+
+&lt;span class="c1"&gt;#访问网页返回字典&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;visit_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;result_dict&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result_dict&lt;/span&gt;
+
+&lt;span class="c1"&gt;#返回公司编号&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_company&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://m.kuaidi100.com/autonumber/auto?num=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;visit_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;comCode&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;company&lt;/span&gt;
+
+&lt;span class="c1"&gt;#查询&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_express&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;company&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://m.kuaidi100.com/query?type=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;company&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;postid=&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;id=1&amp;amp;valicode=&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;result_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;visit_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="c1"&gt;#print(result_list)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;result_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;context&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;到达时间： &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;epnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;输入你的快递单号：&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;get_express&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;get_company&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Daily"></category><category term="Python"></category></entry><entry><title>忘记root的密码如何解决</title><link href="https://weilet.me/%E5%BF%98%E8%AE%B0%E4%BA%86ubuntu%E7%9A%84root%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3" rel="alternate"></link><published>2018-08-05T22:47:00+08:00</published><updated>2018-08-05T22:47:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-08-05:/忘记了ubuntu的root用户的密码如何解决</id><content type="html">&lt;blockquote&gt;
+&lt;p&gt;昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;首先是在开机3秒内按下ESC键&lt;/p&gt;
+&lt;p&gt;然后就会出现一个菜单，选择进入恢复模式 （recovery&amp;nbsp;mode）&lt;/p&gt;
+&lt;p&gt;进入恢复模式以后，启用root&amp;nbsp;shell&lt;/p&gt;
+&lt;p&gt;将目录改为可写&lt;br /&gt;
+&lt;code&gt;mount -o rw,remount&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;查看home下的用户&lt;br /&gt;
+&lt;code&gt;ls /home&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;修改密码&lt;br /&gt;
+&lt;code&gt;passwd&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;输入两次密码（一次是确认）即修改完成&lt;/p&gt;
+&lt;p&gt;重启&lt;/p&gt;</content><category term="Daily"></category><category term="Linux"></category></entry></feed>

@@ -1,11 +1,12 @@
 Title: 忘记root的密码如何解决
 Date: 2018-08-05 22:47
 Author: PwnForWhat
-Category: linux
+Category: Daily
+Tags:Linux
 Slug: 忘记了ubuntu的root用户的密码如何解决
 Status: published
 
-#### 昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。
+> 昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。
 
 首先是在开机3秒内按下ESC键
 

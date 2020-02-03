@@ -1,9 +1,9 @@
-Title: 《sql必知必会》书摘
+Title: 《SQL必知必会》书摘
 Date: 2019-10-14 18:22
 Author: PwnForWhat
 Category: Code
-Tag
-Slug: 《sql必知必会》书摘
+Tags: DataBase
+Slug: 《SQL必知必会》书摘
 Status: published
 
 > 两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。

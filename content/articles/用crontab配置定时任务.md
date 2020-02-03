@@ -1,7 +1,8 @@
 Title: 用crontab配置定时任务
 Date: 2018-08-07 06:09
 Author: PwnForWhat
-Category: linux
+Category: Code
+Tags: Linux
 Slug: 用crontab配置定时任务
 Status: published
 

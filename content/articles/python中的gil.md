@@ -1,8 +1,9 @@
 Title: Python中的GIL
 Date: 2019-05-23 00:07
 Author: PwnForWhat
-Category: python
-Slug: python中的gil
+Category: Code
+Tags: Python
+Slug: Python中的GIL
 Status: published
 
 
@@ -225,5 +226,3 @@ if __name__ == '__main__':
 ```
 
 > 虽然GIL给Python的性能关上了一扇门，但是这并不意味着我们就要忽略标准库里为我们打开的每一扇窗。
-
-

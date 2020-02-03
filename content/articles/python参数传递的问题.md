@@ -1,8 +1,9 @@
 Title: Python参数传递的问题
 Date: 2019-05-11 10:31
 Author: PwnForWhat
-Category: python
-Slug: python参数传递的问题
+Category: Code
+Tags: Python
+Slug: Python参数传递的问题
 Status: published
 
 > 传参不规范，亲人两行泪

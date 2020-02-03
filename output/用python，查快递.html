@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>用python，查快递</title>
+<title>用Python，查快递</title>
     <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -32,13 +32,13 @@
     <article class="single container">
         <header class="single-header">
             <div class="flex">
-                <h1>用python，查快递</h1>
+                <h1>用Python，查快递</h1>
                 <div class="post-meta">
                     <time class="date">Aug 07, 2018</time>
                     /
                     <span>
-                        <a href="/category/python.html" class="comment-link">
-                            python
+                        <a href="/category/daily.html" class="comment-link">
+                            Daily
                         </a>
                     </span>
                 </div>
@@ -46,37 +46,44 @@
         </header>
         <div class="post">
             <p>在剁手的同时练手&nbsp;）</p>
-<p><span class="dquo">&#8220;</span>` {.EnlighterJSRAW&nbsp;enlighter-language=&#8221;python&#8221;}</p>
-<h1 id="-coding-utf-8-">-<em>- coding: utf-8 -</em>-<a class="headerlink" href="#-coding-utf-8-" title="Permanent link"> </a></h1>
-<h1 id="author-lily_sun">@Author: Lily_Sun<a class="headerlink" href="#author-lily_sun" title="Permanent link"> </a></h1>
-<h1 id="date-2018-08-07-013150">@Date:   2018-08-07 01:31:50<a class="headerlink" href="#date-2018-08-07-013150" title="Permanent link"> </a></h1>
-<h1 id="last-modified-by-lily_sun">@Last Modified by:   Lily_Sun<a class="headerlink" href="#last-modified-by-lily_sun" title="Permanent link"> </a></h1>
-<h1 id="last-modified-time-2018-08-07-061713">@Last Modified time: 2018-08-07 06:17:13<a class="headerlink" href="#last-modified-time-2018-08-07-061713" title="Permanent link"> </a></h1>
-<p>import json
-import requests
-import&nbsp;re</p>
-<h1 id="_1">访问网页返回字典<a class="headerlink" href="#_1" title="Permanent link"> </a></h1>
-<p>def visit_api(url):
-    res = requests.get(url)
-    result_dict = json.loads(res.content.decode(&#8216;utf-8&#8217;))
-    return&nbsp;result_dict</p>
-<h1 id="_2">返回公司编号<a class="headerlink" href="#_2" title="Permanent link"> </a></h1>
-<p>def get_company(epnum):
-    url = &#8216;http://m.kuaidi100.com/autonumber/auto?num=&#8217; + str(epnum)
-    company = visit_api(url)[0][&#8216;comCode&#8217;]
-    return&nbsp;company</p>
-<h1 id="_3">查询<a class="headerlink" href="#_3" title="Permanent link"> </a></h1>
-<p>def get_express(epnum,company):
-    url = &#8216;http://m.kuaidi100.com/query?type=&#8217; + str(company) + &#8216;&amp;postid=&#8217;+ str(epnum) + &#8216;&amp;id=1&amp;valicode=&#8217;
-    result_list = visit_api(url)[&#8216;data&#8217;]
-    #print(result_list)
-    for result in result_list:
-    print(result[&#8216;context&#8217;])
-    print(&#8220;到达时间：&nbsp;&#8220;+result[&#8216;time&#8217;])</p>
-<p>def main():
-    epnum = input(&#8216;输入你的快递单号：\n&#8217;)&nbsp;get_express(epnum,get_company(epnum))</p>
-<p>if <strong>name</strong> == &#8216;<strong>main</strong>&#8216;:
-    main()&nbsp;&#8220;`</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @Author: Lily_Sun</span>
+<span class="c1"># @Date:   2018-08-07 01:31:50</span>
+<span class="c1"># @Last Modified by:   Lily_Sun</span>
+<span class="c1"># @Last Modified time: 2018-08-07 06:17:13</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1">#访问网页返回字典</span>
+<span class="k">def</span> <span class="nf">visit_api</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result_dict</span>
+
+<span class="c1">#返回公司编号</span>
+<span class="k">def</span> <span class="nf">get_company</span><span class="p">(</span><span class="n">epnum</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://m.kuaidi100.com/autonumber/auto?num=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epnum</span><span class="p">)</span>
+    <span class="n">company</span> <span class="o">=</span> <span class="n">visit_api</span><span class="p">(</span><span class="n">url</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;comCode&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">company</span>
+
+<span class="c1">#查询</span>
+<span class="k">def</span> <span class="nf">get_express</span><span class="p">(</span><span class="n">epnum</span><span class="p">,</span><span class="n">company</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://m.kuaidi100.com/query?type=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">company</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;postid=&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epnum</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;id=1&amp;valicode=&#39;</span>
+    <span class="n">result_list</span> <span class="o">=</span> <span class="n">visit_api</span><span class="p">(</span><span class="n">url</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="c1">#print(result_list)</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">result_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;context&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;到达时间： &quot;</span><span class="o">+</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">epnum</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;输入你的快递单号：</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">get_express</span><span class="p">(</span><span class="n">epnum</span><span class="p">,</span><span class="n">get_company</span><span class="p">(</span><span class="n">epnum</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
         </div>
     </article>
 </main>

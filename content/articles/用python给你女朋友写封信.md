@@ -1,8 +1,9 @@
-Title: 用python给你女朋友写封信
+Title: 用Python给你女朋友写封信
 Date: 2018-07-14 00:30
 Author: PwnForWhat
-Category: python
-Slug: 用python给你女朋友写封信
+Category: Code
+Tags: Python
+Slug: 用Python给你女朋友写封信
 Status: published
 
 喜欢木心先生的《从前慢》，那种一辈子只够爱一个人的闲适，被今日快节奏的生活方式打破。
@@ -11,7 +12,7 @@ Status: published
 
 若怀念木心，不妨静下心来，在键盘上诚诚恳恳敲击你想对她诉说的，不也浪漫？不也悠长？
 
-那么，如何用python写电子邮件呢？
+那么，如何用Python写电子邮件呢？
 
 我们需要用到smtplib和email模块
 

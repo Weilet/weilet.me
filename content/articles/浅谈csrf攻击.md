@@ -1,8 +1,9 @@
 Title: 浅谈CSRF攻击
 Date: 2019-06-04 21:26
 Author: PwnForWhat
-Category: Web安全
-Slug: 浅谈csrf攻击
+Category: Code
+Tags: Web Security
+Slug: 浅谈CSRF攻击
 Status: published
 
 

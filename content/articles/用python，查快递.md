@@ -1,13 +1,14 @@
-Title: 用python，查快递
+Title: 用Python，查快递
 Date: 2018-08-07 06:18
 Author: PwnForWhat
-Category: python
-Slug: 用python，查快递
+Category: Daily
+Tags: Python
+Slug: 用Python，查快递
 Status: published
 
 在剁手的同时练手 ）
 
-``` {.EnlighterJSRAW enlighter-language="python"}
+```python
 # -*- coding: utf-8 -*-
 # @Author: Lily_Sun
 # @Date:   2018-08-07 01:31:50

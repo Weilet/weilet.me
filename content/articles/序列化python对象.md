@@ -1,8 +1,9 @@
 Title: 序列化Python对象
 Date: 2019-05-08 22:11
 Author: PwnForWhat
-Category: python
-Slug: 序列化python对象
+Category: Code
+Tags: Python
+Slug: 序列化Python对象
 Status: published
 
 ### 什么是序列化
