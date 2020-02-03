@@ -14,7 +14,40 @@
 &lt;p&gt;这会导致调用默认复制构造函数然后使得同一个地址被两个指针所指（复制和被复制对象的指针变量），导致同一位置的内存被释放两次。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;你以为大家看不出这是《effective&amp;nbsp;C++》的书摘吗?&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="C&amp;amp;CPP"></category></entry><entry><title>《sql必知必会》书摘</title><link href="https://weilet.me/%E3%80%8Asql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E4%B9%A6%E6%91%98" rel="alternate"></link><published>2019-10-14T18:22:00+08:00</published><updated>2019-10-14T18:22:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-10-14:/《sql必知必会》书摘</id><content type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</content><category term="C&amp;amp;CPP"></category></entry><entry><title>《sql必知必会》书摘</title><link href="https://weilet.me/sqlbi-zhi-bi-hui-shu-zhai" rel="alternate"></link><published>2019-10-14T18:22:00+08:00</published><updated>2019-10-14T18:22:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-10-14:/sqlbi-zhi-bi-hui-shu-zhai</id><summary type="html">&lt;p&gt;Tag
+Slug: 《sql必知必会》书摘
+Status:&amp;nbsp;published&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id="_1"&gt;主键相关&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;主键唯一非空且&lt;strong&gt;不可重用&lt;/strong&gt;，其实对&lt;strong&gt;不可重用&lt;/strong&gt;的理解不是很到位，日常开发中删除文章的id会重新赋给新建的文章。&lt;/p&gt;
+&lt;h4 id="_2"&gt;逻辑操作相关&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;AND计算次序比OR更高，这点和编程语言一样，所以就算是为了可读性，也要常加括号。&lt;/p&gt;
+&lt;p&gt;IN比OR的效率更高，且大多数情况下还比较简洁。&lt;/p&gt;
+&lt;p&gt;NOT在复杂子句中提高可读性&lt;/p&gt;
+&lt;h4 id="_3"&gt;通配符相关&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Access与其他数据库有很多不同，使用时记得查阅其文档&lt;/p&gt;
+&lt;p&gt;通配符虽然使查找变得简单，但也导致查询时间变长&lt;/p&gt;
+&lt;h4 id="_4"&gt;联结、子查询相关&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;为聚集函数的结果取个别名是个好习惯&lt;/p&gt;
+&lt;p&gt;自联结速度优于子查询&lt;/p&gt;
+&lt;p&gt;并非所有DBMS都支持全外联结&lt;/p&gt;
+&lt;h4 id="_5"&gt;增删查改相关&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;INTO不要省略，即便你的DBMS允许你省略&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;TRUNCATE&lt;/span&gt;&amp;nbsp;TABLE比DETELE速度快，因为它不会记录改变&lt;/p&gt;
+&lt;h4 id="_6"&gt;高级操作相关&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;每次使用视图都会执行一次查询，性能会降低&lt;/p&gt;
+&lt;p&gt;请在使用视图嵌套后测试其性能&lt;/p&gt;
+&lt;p&gt;事务管理时创建合适粒度的储存点会使你的ROLLBACK更灵活&lt;/p&gt;
+&lt;p&gt;约束比触发器速度更快&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Tag
+Slug: 《sql必知必会》书摘
+Status:&amp;nbsp;published&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id="_1"&gt;主键相关&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
@@ -43,7 +76,7 @@
 &lt;p&gt;别漏where&lt;/p&gt;
 &lt;p&gt;别漏where&lt;/p&gt;
 &lt;p&gt;重要的事情说三遍。&lt;/p&gt;
-&lt;/blockquote&gt;</content><category term="Database"></category></entry><entry><title>学校教务系统爬取计划</title><link href="https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92" rel="alternate"></link><published>2019-09-25T19:33:00+08:00</published><updated>2019-09-25T19:33:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-09-25:/学校教务系统爬取计划</id><summary type="html">&lt;blockquote&gt;
+&lt;/blockquote&gt;</content><category term="Code"></category></entry><entry><title>学校教务系统爬取计划</title><link href="https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92" rel="alternate"></link><published>2019-09-25T19:33:00+08:00</published><updated>2019-09-25T19:33:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-09-25:/学校教务系统爬取计划</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。&lt;/p&gt;

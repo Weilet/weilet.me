@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog - Code</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/code.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2019-10-14T18:22:00+08:00</updated><entry><title>《sql必知必会》书摘</title><link href="https://weilet.me/sqlbi-zhi-bi-hui-shu-zhai" rel="alternate"></link><published>2019-10-14T18:22:00+08:00</published><updated>2019-10-14T18:22:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-10-14:/sqlbi-zhi-bi-hui-shu-zhai</id><summary type="html">&lt;p&gt;Tag
+Slug: 《sql必知必会》书摘
+Status:&amp;nbsp;published&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id="_1"&gt;主键相关&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;主键唯一非空且&lt;strong&gt;不可重用&lt;/strong&gt;，其实对&lt;strong&gt;不可重用&lt;/strong&gt;的理解不是很到位，日常开发中删除文章的id会重新赋给新建的文章。&lt;/p&gt;
+&lt;h4 id="_2"&gt;逻辑操作相关&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;AND计算次序比OR更高，这点和编程语言一样，所以就算是为了可读性，也要常加括号。&lt;/p&gt;
+&lt;p&gt;IN比OR的效率更高，且大多数情况下还比较简洁。&lt;/p&gt;
+&lt;p&gt;NOT在复杂子句中提高可读性&lt;/p&gt;
+&lt;h4 id="_3"&gt;通配符相关&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Access与其他数据库有很多不同，使用时记得查阅其文档&lt;/p&gt;
+&lt;p&gt;通配符虽然使查找变得简单，但也导致查询时间变长&lt;/p&gt;
+&lt;h4 id="_4"&gt;联结、子查询相关&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;为聚集函数的结果取个别名是个好习惯&lt;/p&gt;
+&lt;p&gt;自联结速度优于子查询&lt;/p&gt;
+&lt;p&gt;并非所有DBMS都支持全外联结&lt;/p&gt;
+&lt;h4 id="_5"&gt;增删查改相关&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;INTO不要省略，即便你的DBMS允许你省略&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;TRUNCATE&lt;/span&gt;&amp;nbsp;TABLE比DETELE速度快，因为它不会记录改变&lt;/p&gt;
+&lt;h4 id="_6"&gt;高级操作相关&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;每次使用视图都会执行一次查询，性能会降低&lt;/p&gt;
+&lt;p&gt;请在使用视图嵌套后测试其性能&lt;/p&gt;
+&lt;p&gt;事务管理时创建合适粒度的储存点会使你的ROLLBACK更灵活&lt;/p&gt;
+&lt;p&gt;约束比触发器速度更快&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Tag
+Slug: 《sql必知必会》书摘
+Status:&amp;nbsp;published&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id="_1"&gt;主键相关&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;主键唯一非空且&lt;strong&gt;不可重用&lt;/strong&gt;，其实对&lt;strong&gt;不可重用&lt;/strong&gt;的理解不是很到位，日常开发中删除文章的id会重新赋给新建的文章。&lt;/p&gt;
+&lt;h4 id="_2"&gt;逻辑操作相关&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;AND计算次序比OR更高，这点和编程语言一样，所以就算是为了可读性，也要常加括号。&lt;/p&gt;
+&lt;p&gt;IN比OR的效率更高，且大多数情况下还比较简洁。&lt;/p&gt;
+&lt;p&gt;NOT在复杂子句中提高可读性&lt;/p&gt;
+&lt;h4 id="_3"&gt;通配符相关&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Access与其他数据库有很多不同，使用时记得查阅其文档&lt;/p&gt;
+&lt;p&gt;通配符虽然使查找变得简单，但也导致查询时间变长&lt;/p&gt;
+&lt;h4 id="_4"&gt;联结、子查询相关&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;为聚集函数的结果取个别名是个好习惯&lt;/p&gt;
+&lt;p&gt;自联结速度优于子查询&lt;/p&gt;
+&lt;p&gt;并非所有DBMS都支持全外联结&lt;/p&gt;
+&lt;h4 id="_5"&gt;增删查改相关&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;INTO不要省略，即便你的DBMS允许你省略&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;TRUNCATE&lt;/span&gt;&amp;nbsp;TABLE比DETELE速度快，因为它不会记录改变&lt;/p&gt;
+&lt;h4 id="_6"&gt;高级操作相关&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;每次使用视图都会执行一次查询，性能会降低&lt;/p&gt;
+&lt;p&gt;请在使用视图嵌套后测试其性能&lt;/p&gt;
+&lt;p&gt;事务管理时创建合适粒度的储存点会使你的ROLLBACK更灵活&lt;/p&gt;
+&lt;p&gt;约束比触发器速度更快&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;重要的事情说三遍。&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Code"></category></entry></feed>

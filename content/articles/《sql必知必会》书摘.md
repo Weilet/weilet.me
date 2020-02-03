@@ -1,7 +1,8 @@
 Title: 《sql必知必会》书摘
 Date: 2019-10-14 18:22
 Author: PwnForWhat
-Category: Database
+Category: Code
+Tag
 Slug: 《sql必知必会》书摘
 Status: published
 
