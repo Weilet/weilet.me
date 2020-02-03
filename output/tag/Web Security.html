@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>忘记root的密码如何解决</title>
+<title>Web Security</title>
     <meta charset="utf-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -28,38 +28,27 @@
     </div>
 </nav>    
 <main id="main-content">
-    <article class="single container">
-        <header class="single-header">
-            <div class="flex">
-                <h1>忘记root的密码如何解决</h1>
-                <div class="post-meta">
-                    <time class="date">2018-08-05</time>
-                    /
-                    <span>
-                        <a href="/category/Daily.html" class="comment-link">
-                            Daily
-                        </a>
-                    </span>
+    <div class="container">
+        <h1><u>Web Security</u></h1>
+        <section class="posts">
+            <a href="/浅谈CSRF攻击">
+                <div class="each">
+                    <div>
+                        <h2>浅谈CSRF攻击</h2>
+                        <div class="excerpt">2019-06-04</div>
+                    </div>
                 </div>
-            </div>
-        </header>
-        <div class="post">
-            <blockquote>
-<p>昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。</p>
-</blockquote>
-<p>首先是在开机3秒内按下ESC键</p>
-<p>然后就会出现一个菜单，选择进入恢复模式 （recovery&nbsp;mode）</p>
-<p>进入恢复模式以后，启用root&nbsp;shell</p>
-<p>将目录改为可写<br />
-<code>mount -o rw,remount</code></p>
-<p>查看home下的用户<br />
-<code>ls /home</code></p>
-<p>修改密码<br />
-<code>passwd</code></p>
-<p>输入两次密码（一次是确认）即修改完成</p>
-<p>重启</p>
-        </div>
-    </article>
+            </a>
+            <a href="/哈希洪水攻击">
+                <div class="each">
+                    <div>
+                        <h2>哈希洪水攻击</h2>
+                        <div class="excerpt">2019-05-29</div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </div>
 </main>
 <footer class="footer container">
 	<a class="main-nav-link" href="/blogroll">友链</a>

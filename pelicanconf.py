@@ -8,8 +8,8 @@ SITEURL = "https://weilet.me"
 
 # Saving Settings
 PATH = "content"
-CATEGORY_URL = "category/{slug}.html"
-TAG_URL = "tag/{slug}.html"
+CATEGORY_URL = "category/{name}.html"
+TAG_URL = "tag/{name}.html"
 CATEGORY_SAVE_AS = CATEGORY_URL
 TAG_SAVE_AS = TAG_URL
 
