@@ -11,27 +11,26 @@
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
     <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
     <link rel="icon" href="/theme/images/terminal.ico">
-
 </head>
 
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="brand">
-                <a href="https://weilet.me">Weilet's Blog</a>
-            </div>
-            <div class="links">
-                <a class="main-nav-link" href="/archives">归档</a>
-                <a class="main-nav-link" href="/categories">分类</a>
-                <a class="main-nav-link" href="/tags">标签</a>
-                <a class="main-nav-link" href="/index.xml">RSS</a>
-            </div>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
         </div>
-    </nav>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/index.xml">RSS</a>
+        </div>
+    </div>
+</nav>    
 <main id="main-content">
     <div class="container front-page">
         <section class="section">
-            <h2>Article on Code</h2>
+            <h2>Articles on Code</h2>
             <section class="posts simple">
  
                 <a href="/CPP内存泄漏">
@@ -76,7 +75,7 @@
             </section>
         </section>
         <section class="section">
-            <h2>Article on Daily</h2>
+            <h2>Articles on Daily</h2>
             <section class="posts simple">
  
                 <a href="/学校教务系统爬取计划">
@@ -106,10 +105,45 @@
         </section>
     </div>
 </main>
-    <footer class="footer container">
-        <a class="main-nav-link" href="/blogroll">友链</a>
-        <a class="main-nav-link" href="/about">关于</a>
-    </footer>
-</body>
+<footer class="footer container">
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer><style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    padding: 1em;
+    margin: 1.5em;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.back-to-top:hover {
+    cursor: pointer;
+}
+</style>
+
+<div class="back-to-top">Back to Top</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+var $backToTop = $(".back-to-top");
+$backToTop.hide();
+
+$(window).on('scroll', function() {
+    if ($(this).scrollTop() > 100) {
+        $backToTop.fadeIn();
+    } else {
+        $backToTop.fadeOut();
+    }
+});
+
+$backToTop.on('click', function(e) {
+    $("html, body").animate({ scrollTop: 0 }, 500);
+});
+</script></body>
 
 </html>
