@@ -763,7 +763,9 @@ tbody tr:nth-child(even) {
 .nav .links a img {
     width: 16px;
 }
-
+.dark .nav .links a img {
+    filter: invert(1);
+}
 .favicon {
     height: 23px;
     width: 23px;
