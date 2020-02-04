@@ -177,27 +177,22 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
 .back-to-top {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    padding: 1em;
+    margin: 1.5em;
+    margin-bottom: 3em;
+    background: #fff;
+    border: 2px solid #000;
 }
-@media (min-width: 850px) {
-    .back-to-top {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        display: inline-block;
-        padding: 1em;
-        margin: 1.5em;
-        margin-bottom: 3em;
-        background: #fff;
-        border: 2px solid #000;
-    }
-    .dark .back-to-top {
-        background: #000;
-        border: 2px solid #fff;
-    }
-    .back-to-top:hover {
-        cursor: pointer;
-    }
+.dark .back-to-top {
+    background: #000;
+    border: 2px solid #fff;
+}
+.back-to-top:hover {
+    cursor: pointer;
 }
 </style>
 
@@ -211,11 +206,21 @@ var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).scrollTop() > 100) {
-        $backToTop.fadeIn();
+    if ($(this).width() >= 850 ){
+        if ($(this).scrollTop() > 100) {
+            $backToTop.fadeIn();
+        } else {
+            $backToTop.fadeOut();
+        } 
     } else {
+        $backToTop.hide();
+    }  
+});
+
+$(window).on('resize', function() {
+    if ($(this).width() < 850 ) {
         $backToTop.fadeOut();
-    }
+    } 
 });
 
 $backToTop.on('click', function(e) {
