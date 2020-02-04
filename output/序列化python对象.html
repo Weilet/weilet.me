@@ -109,14 +109,14 @@
 </ul>
 <p>JSON的对照网上很多，这里就不献丑了。</p>
 <p>最后再附上一个精彩的 pickle 反序列化利用： <a href="https://zhuanlan.zhihu.com/p/25981037">地址</a></p>
-<p>以及一个反序列化对照表：</p>
-<div class="highlight"><pre><span></span><span class="err">c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。</span>
-<span class="err">(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。</span>
-<span class="err">t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。</span>
-<span class="err">S：读取引号中的字符串直到换行符处，然后将它压入堆栈。</span>
-<span class="err">R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。</span>
-<span class="err">.：结束pickle</span>
-</pre></div>
+<p>以及一个反序列化对照：</p>
+<blockquote>
+<p>c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。
+(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。
+t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。
+S：读取引号中的字符串直到换行符处，然后将它压入堆栈。
+R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。&nbsp;.：结束pickle</p>
+</blockquote>
         </div>
     </article>
 </main>
@@ -142,7 +142,6 @@
 
 <div class="back-to-top">Back to Top</div>
 
-
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
@@ -159,6 +158,7 @@ $(window).on('scroll', function() {
 $backToTop.on('click', function(e) {
     $("html, body").animate({ scrollTop: 0 }, 500);
 });
-</script></body>
+</script>
+</body>
 
 </html>

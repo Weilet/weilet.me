@@ -810,14 +810,14 @@
 &lt;/ul&gt;
 &lt;p&gt;JSON的对照网上很多，这里就不献丑了。&lt;/p&gt;
 &lt;p&gt;最后再附上一个精彩的 pickle 反序列化利用： &lt;a href="https://zhuanlan.zhihu.com/p/25981037"&gt;地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;以及一个反序列化对照表：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。&lt;/span&gt;
-&lt;span class="err"&gt;(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。&lt;/span&gt;
-&lt;span class="err"&gt;t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。&lt;/span&gt;
-&lt;span class="err"&gt;S：读取引号中的字符串直到换行符处，然后将它压入堆栈。&lt;/span&gt;
-&lt;span class="err"&gt;R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。&lt;/span&gt;
-&lt;span class="err"&gt;.：结束pickle&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Code"></category><category term="Python"></category></entry><entry><title>C 语言中的 extern 关键字</title><link href="https://weilet.me/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84extern%E5%85%B3%E9%94%AE%E5%AD%97" rel="alternate"></link><published>2019-05-06T15:48:00+08:00</published><updated>2019-05-06T15:48:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-05-06:/C语言中的extern关键字</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;以及一个反序列化对照：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。
+(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。
+t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。
+S：读取引号中的字符串直到换行符处，然后将它压入堆栈。
+R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。&amp;nbsp;.：结束pickle&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Code"></category><category term="Python"></category></entry><entry><title>C 语言中的 extern 关键字</title><link href="https://weilet.me/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84extern%E5%85%B3%E9%94%AE%E5%AD%97" rel="alternate"></link><published>2019-05-06T15:48:00+08:00</published><updated>2019-05-06T15:48:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2019-05-06:/C语言中的extern关键字</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;如果不是选择重新学习&amp;nbsp;C，我可能这辈子都不会碰到这个关键字&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;extern&amp;nbsp;用于声明一个外部变量，这个变量在项目的其他地方定义过。&lt;/p&gt;
