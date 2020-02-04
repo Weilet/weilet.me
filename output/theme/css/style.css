@@ -755,6 +755,14 @@ tbody tr:nth-child(even) {
 .nav .links a:active {
     color: #111
 }
+@media (min-width: 850px) {
+    .nav .links a img {
+        width: 32px
+    }    
+}
+.nav .links a img {
+    width: 16px;
+}
 
 .favicon {
     height: 23px;
@@ -1906,9 +1914,7 @@ pre code {
     border-radius: 4px;
     -webkit-font-smoothing: antialiased
 }
-pre {
-    padding: 1%;
-}
+
 pre code {
     display: block;
     padding: 1.5rem;

@@ -4,6 +4,8 @@
 pre {
     background-color: #fdf6e3;
     color: #586e75;
+    overflow: auto;
+    padding: 1%;
 }
 
 .highlight .c {

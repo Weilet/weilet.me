@@ -4,7 +4,6 @@
 <head>
 <title>用Python给你女朋友写封信</title>
     <meta charset="utf-8">
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="description" content="A blog of a programmer.">
     <meta name="keywords" content="code,game,digital products,daily life">
@@ -23,7 +22,9 @@
             <a class="main-nav-link" href="/archives">归档</a>
             <a class="main-nav-link" href="/categories">分类</a>
             <a class="main-nav-link" href="/tags">标签</a>
-            <a class="main-nav-link" href="/index.xml">RSS</a>
+            <a class="main-nav-link" href="/index.xml">
+                <img src="/theme/images/rss.ico">
+            </a>
         </div>
     </div>
 </nav>    
@@ -87,28 +88,42 @@
     </article>
 </main>
 <footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
-</footer><style type="text/css">
+</footer></body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
 .back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 1.5em;
-    background: #fff;
-    border: 2px solid #000;
+    display: none;
 }
-
-.back-to-top:hover {
-    cursor: pointer;
+@media (min-width: 850px) {
+    .back-to-top {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        display: inline-block;
+        padding: 1em;
+        margin: 1.5em;
+        margin-bottom: 3em;
+        background: #fff;
+        border: 2px solid #000;
+    }
+    .dark .back-to-top {
+        background: #000;
+        border: 2px solid #fff;
+    }
+    .back-to-top:hover {
+        cursor: pointer;
+    }
 }
 </style>
 
-<div class="back-to-top">Back to Top</div>
+<div class="back-to-top">
+    返回<br>
+    顶部
+</div>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
 $backToTop.hide();
@@ -125,6 +140,9 @@ $backToTop.on('click', function(e) {
     $("html, body").animate({ scrollTop: 0 }, 500);
 });
 </script>
-</body>
-
-</html>
+<script type="text/javascript">
+	var nowHour = (new Date()).getHours()
+	if (nowHour > 17 || nowHour < 4) {
+		$('body').addClass('dark')
+	}
+</script></html>
