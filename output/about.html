@@ -3,14 +3,23 @@
 
 <head>
   <title>关于</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <meta name="description" content="A blog of a programmer.">
-    <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
-    <link rel="icon" href="/theme/images/terminal.ico">
-</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="A blog of a programmer.">
+<meta name="keywords" content="code,game,digital products,daily life">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico"></head>
 
 <body>
 <nav class="nav">
@@ -22,8 +31,8 @@
             <a class="main-nav-link" href="/archives">归档</a>
             <a class="main-nav-link" href="/categories">分类</a>
             <a class="main-nav-link" href="/tags">标签</a>
-            <a class="main-nav-link" href="/index.xml">
-                <img src="/theme/images/rss.ico">
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
             </a>
         </div>
     </div>
@@ -41,7 +50,7 @@
 <p>以前使用过WordPress作为博客，算起来已经三年了。</p>
 <p>很喜欢龙女仆里面的小林，想成为她那样的人。</p>
 <h2 id="_2">俺的语言<a class="headerlink" href="#_2" title="Permanent link"> </a></h2>
-<p>俺能流利地说带口音的普通话、英语；</p>
+<p>俺能流利地说带口音的普通话和英语；</p>
 <p>俺也能说一点日语和法语。</p>
 <h2 id="_3">俺的语言<a class="headerlink" href="#_3" title="Permanent link"> </a></h2>
 <p>俺能使用Python和Golang做一些开发，习惯使用Flask和Gin这类框架；</p>
@@ -65,31 +74,34 @@
     right: 0;
     display: inline-block;
     padding: 1em;
-    margin: 1.5em;
-    margin-bottom: 3em;
+    margin: 0 4em 3em 0;
     background: #fff;
     border: 2px solid #000;
 }
+
 .dark .back-to-top {
     background: #202020;
     border: 2px solid #b3b9c5;
 }
+
 .back-to-top:hover {
     cursor: pointer;
+    background: #f2f2f2;
+}
+
+.dark .back-to-top:hover {
+    background: #303030;
 }
 </style>
 
-<div class="back-to-top">
-    返回<br>
-    顶部
-</div>
+<div class="back-to-top">Top</div>
 
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).width() >= 850 ){
+    if ($(this).width() >= 1024 ){
         if ($(this).scrollTop() > 100) {
             $backToTop.fadeIn();
         } else {
@@ -101,7 +113,7 @@ $(window).on('scroll', function() {
 });
 
 $(window).on('resize', function() {
-    if ($(this).width() < 850 ) {
+    if ($(this).width() < 1024 ) {
         $backToTop.fadeOut();
     } 
 });

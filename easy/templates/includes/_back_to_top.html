@@ -5,31 +5,34 @@
     right: 0;
     display: inline-block;
     padding: 1em;
-    margin: 1.5em;
-    margin-bottom: 3em;
+    margin: 0 4em 3em 0;
     background: #fff;
     border: 2px solid #000;
 }
+
 .dark .back-to-top {
     background: #202020;
     border: 2px solid #b3b9c5;
 }
+
 .back-to-top:hover {
     cursor: pointer;
+    background: #f2f2f2;
+}
+
+.dark .back-to-top:hover {
+    background: #303030;
 }
 </style>
 
-<div class="back-to-top">
-    返回<br>
-    顶部
-</div>
+<div class="back-to-top">Top</div>
 
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).width() >= 850 ){
+    if ($(this).width() >= 1024 ){
         if ($(this).scrollTop() > 100) {
             $backToTop.fadeIn();
         } else {
@@ -41,7 +44,7 @@ $(window).on('scroll', function() {
 });
 
 $(window).on('resize', function() {
-    if ($(this).width() < 850 ) {
+    if ($(this).width() < 1024 ) {
         $backToTop.fadeOut();
     } 
 });

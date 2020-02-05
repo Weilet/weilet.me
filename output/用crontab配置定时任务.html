@@ -3,14 +3,23 @@
 
 <head>
 <title>用crontab配置定时任务</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <meta name="description" content="A blog of a programmer.">
-    <meta name="keywords" content="code,game,digital products,daily life">
-    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
-    <link rel="icon" href="/theme/images/terminal.ico">
-</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="A blog of a programmer.">
+<meta name="keywords" content="code,game,digital products,daily life">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico"></head>
 
 <body>
 <nav class="nav">
@@ -22,8 +31,8 @@
             <a class="main-nav-link" href="/archives">归档</a>
             <a class="main-nav-link" href="/categories">分类</a>
             <a class="main-nav-link" href="/tags">标签</a>
-            <a class="main-nav-link" href="/index.xml">
-                <img src="/theme/images/rss.ico">
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
             </a>
         </div>
     </div>
@@ -91,7 +100,22 @@
 
 <p>以上就是玩了三天crontab的总结啦\~</p>
         </div>
-    </article>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+var gitalk = new Gitalk({
+	clientID: '156774f08ace665cde88',
+	clientSecret: 'c5493bd3bb6cccff1313f145801c180300471f72',
+	repo: 'https://weilet.me',
+	owner: 'Weilet',
+	admin: ['Weilet'],
+	id: location.pathname,
+	distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>    </article>
 </main>
 <footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
@@ -106,31 +130,34 @@
     right: 0;
     display: inline-block;
     padding: 1em;
-    margin: 1.5em;
-    margin-bottom: 3em;
+    margin: 0 4em 3em 0;
     background: #fff;
     border: 2px solid #000;
 }
+
 .dark .back-to-top {
     background: #202020;
     border: 2px solid #b3b9c5;
 }
+
 .back-to-top:hover {
     cursor: pointer;
+    background: #f2f2f2;
+}
+
+.dark .back-to-top:hover {
+    background: #303030;
 }
 </style>
 
-<div class="back-to-top">
-    返回<br>
-    顶部
-</div>
+<div class="back-to-top">Top</div>
 
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).width() >= 850 ){
+    if ($(this).width() >= 1024 ){
         if ($(this).scrollTop() > 100) {
             $backToTop.fadeIn();
         } else {
@@ -142,7 +169,7 @@ $(window).on('scroll', function() {
 });
 
 $(window).on('resize', function() {
-    if ($(this).width() < 850 ) {
+    if ($(this).width() < 1024 ) {
         $backToTop.fadeOut();
     } 
 });
