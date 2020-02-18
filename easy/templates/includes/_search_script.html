@@ -1,0 +1,3 @@
+<script type="text/javascript">
+function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
+</script>

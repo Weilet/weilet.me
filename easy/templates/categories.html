@@ -8,7 +8,11 @@
         <h1>Categories</h1>
         <div class="tag-container">
         	{% for category, articles in categories %}
-        	{% set num = articles|count %}
+        	{% set counter = [] %}
+                {% for aritcle in articles if aritcle.visible != 'False'%}
+                    {%if counter.append('1') %}{% endif %}
+                {% endfor %}
+                {% set num = counter | count %}
     	    	<a href="/category/{{ category }}">
     	    		<span>{{ category }}<strong class="count">{{ num }}</strong></span>
     	    	</a>    		

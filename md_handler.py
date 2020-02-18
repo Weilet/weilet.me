@@ -15,13 +15,16 @@ for i in flist:
     dirname = os.path.dirname(i)
     with open(i) as f:
         s = f.readlines()
+        filename = ""
         for l in s:
+            if l.startswith('Date'):
+                index = s.index(l)
+                p = l.strip().split()
+                filename += unquote(p[1])
             if l.startswith('Slug'):
                 index = s.index(l)
                 p = l.strip().split()
-                filename = unquote(p[-1])
-                p[-1] = filename + '\n'
-                s[index]=' '.join(p)
+                filename += unquote(p[-1])
                 with open('%s/%s.md'%(out, filename), 'w') as g:
                         g.write(''.join(s))
                 break

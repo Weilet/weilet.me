@@ -1,11 +1,18 @@
 /* Solarized Light Theme for code snippets */
-
 .highlight,
 pre {
     background-color: #fdf6e3;
     color: #586e75;
+}
+.dark .highlight,
+.dark pre {
+    background-color: #002733;
+    color: #586e75;
+}
+
+.highlight {
+    padding: 0 1%;
     overflow: auto;
-    padding: 1%;
 }
 
 .highlight .c {

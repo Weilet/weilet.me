@@ -6,22 +6,41 @@
 <main id="main-content">
     <div class="container">
         <h1>所有文章</h1>
-        <div class="search-container"><input class="search" id="searchTerm" type="text" name="searchTerm" placeholder="在此输入以过滤..." data-com.onepassword.iv="" oninput="search()"></div>
+        {% include "includes/_search_bar.html" %}
         {% for article in dates %}
+            {% if article.visible != 'False' %}
+                {% set year = article.date|strftime('%Y')%}
+                {% if loop.first %}
+                    <h2 id="{{ year }}">
+                        <a href="#{{ year }}">
+                            {{ year }}
+                        </a>
+                    </h2>
+                {% else %}
+                    {% set prevyear = loop.previtem.date.strftime('%Y') %}
+                    {% if prevyear != year %}
+                    <h2 id="{{ year }}">
+                        <a href="#{{ year }}">
+                            {{ year}}
+                        </a>
+                    </h2>
+                    {% endif %}
+                {% endif %}
             <section class="posts">
-            <a href="/{{ article.url }}">
-                <div class="each">
-                    <div>
-                        <h2>{{ article.title }}</h2>
-                        <div class="excerpt">{{ article.locale_date }}</div>
+                <a href="/{{ article.url }}">
+                    <div class="each">
+                        <div>
+                            <h2>{{ article.title }}</h2>
+                            <div class="excerpt">{{ article.locale_date }}</div>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </section>    
+                </a>
+            </section>    
+            {% endif %}
         {% endfor %}
     </div>
 </main>
-<script>
-function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
-</script>
+{% block script %}
+    {% include "includes/_search_script.html"%}
+{% endblock %}
 {% endblock %}

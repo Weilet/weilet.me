@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>A Pelican Blog - Weilet</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/weilet.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-02-14T22:25:00+08:00</updated><entry><title>Windows Terminal折腾指南</title><link href="https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97" rel="alternate"></link><published>2020-02-14T22:25:00+08:00</published><updated>2020-02-14T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
+&lt;p&gt;直到后来，俺碰见了&lt;a href="https://hyper.is/"&gt;Hyper&lt;/a&gt;，它的高颜值和高度定制使俺沉迷。然而渐渐地俺觉得它的速度比起原生的慢太多了。而且有些时候俺需要切换PowerShell和WSL，它并不支持。&lt;/p&gt;
+&lt;p&gt;能够打败原生的，只有原生。某天俺在Django交流群里了解到&lt;a href="https://github.com/microsoft/terminal"&gt;Windows Terminal&lt;/a&gt;（下称Terminal），一番折腾，流畅的同时还能够多个shell切换，值得安利！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;注意：Windows Terminal需要Windows 10 1903或更高版本&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="_1"&gt;预备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺假设你是使用WSL的：&lt;/p&gt;
+&lt;p&gt;首先，开启WSL功能（Cortana里搜索功能，一溜儿找下来）&lt;/p&gt;
+&lt;p&gt;然后，在Microsoft&amp;nbsp;Store找到你喜欢的发行版（比如俺就喜欢Ubuntu）安装&lt;/p&gt;
+&lt;h3 id="_2"&gt;安装&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="microsoft-store"&gt;Microsoft Store&lt;a class="headerlink" href="#microsoft-store" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;最简单的方法，目前使用下来没有任何问题。&lt;/p&gt;
+&lt;h4 id="_3"&gt;自行编译&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/microsoft/terminal#manually-installing-builds-from-this-repository"&gt;官方文档&lt;/a&gt;请。大哥都选择自行编译了，看看文档肯定会。&lt;/p&gt;
+&lt;h4 id="chocolatey"&gt;Chocolatey&lt;a class="headerlink" href="#chocolatey" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;choco install microsoft-windows-terminal …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
+&lt;p&gt;直到后来，俺碰见了&lt;a href="https://hyper.is/"&gt;Hyper&lt;/a&gt;，它的高颜值和高度定制使俺沉迷。然而渐渐地俺觉得它的速度比起原生的慢太多了。而且有些时候俺需要切换PowerShell和WSL，它并不支持。&lt;/p&gt;
+&lt;p&gt;能够打败原生的，只有原生。某天俺在Django交流群里了解到&lt;a href="https://github.com/microsoft/terminal"&gt;Windows Terminal&lt;/a&gt;（下称Terminal），一番折腾，流畅的同时还能够多个shell切换，值得安利！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;注意：Windows Terminal需要Windows 10 1903或更高版本&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="_1"&gt;预备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺假设你是使用WSL的：&lt;/p&gt;
+&lt;p&gt;首先，开启WSL功能（Cortana里搜索功能，一溜儿找下来）&lt;/p&gt;
+&lt;p&gt;然后，在Microsoft&amp;nbsp;Store找到你喜欢的发行版（比如俺就喜欢Ubuntu）安装&lt;/p&gt;
+&lt;h3 id="_2"&gt;安装&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="microsoft-store"&gt;Microsoft Store&lt;a class="headerlink" href="#microsoft-store" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;最简单的方法，目前使用下来没有任何问题。&lt;/p&gt;
+&lt;h4 id="_3"&gt;自行编译&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/microsoft/terminal#manually-installing-builds-from-this-repository"&gt;官方文档&lt;/a&gt;请。大哥都选择自行编译了，看看文档肯定会。&lt;/p&gt;
+&lt;h4 id="chocolatey"&gt;Chocolatey&lt;a class="headerlink" href="#chocolatey" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;choco install microsoft-windows-terminal&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(Chocolatey的下载速度超级慢的说)&lt;/p&gt;
+&lt;h3 id="_4"&gt;配置&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;打开Terminal，找到setting位置。&lt;/p&gt;
+&lt;p&gt;你可以在&lt;a href="https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md#globals"&gt;这里&lt;/a&gt;查看全局设置&lt;/p&gt;
+&lt;p&gt;你可以在&lt;a href="https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md#profiles"&gt;这里&lt;/a&gt;查看单独设置&lt;/p&gt;
+&lt;p&gt;你可以在&lt;a href="https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md#implemented-commands-and-actions"&gt;这里&lt;/a&gt;查看快捷键配置&lt;/p&gt;
+&lt;p&gt;一番配置后，你的Terminal的雏形就完成了。&lt;/p&gt;
+&lt;h3 id="wsl"&gt;WSL优化&lt;a class="headerlink" href="#wsl" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="zsh"&gt;安装zsh&lt;a class="headerlink" href="#zsh" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;sudo apt-get install zsh&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="zshbash"&gt;设置zsh为默认bash&lt;a class="headerlink" href="#zshbash" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;sed -i '1i bash -c zsh' ~/.bashrc&lt;/code&gt; &lt;/p&gt;
+&lt;h4 id="oh-my-zsh"&gt;安装oh-my-zsh&lt;a class="headerlink" href="#oh-my-zsh" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="_5"&gt;安装插件&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh"&gt;zsh语法高亮&lt;/a&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh"&gt;zsh历史记录&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在zshrc中配置：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意☠&lt;/strong&gt;：插件之间是以空格分隔的&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;plugins=(git sublime zsh-syntax-highlighting zsh-autosuggestions)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id="powershell"&gt;PowerShell优化&lt;a class="headerlink" href="#powershell" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;注意☠&lt;/strong&gt;：以管理员身份单独运行PowerShell&lt;/p&gt;
+&lt;h4 id="posh-git"&gt;安装posh-git&lt;a class="headerlink" href="#posh-git" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Install-Module posh-git -Scope CurrentUser&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="oh-my-posh"&gt;安装oh-my-posh&lt;a class="headerlink" href="#oh-my-posh" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Install-Module oh-my-posh -Scope CurrentUser&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="_6"&gt;选择主题&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;notepad $profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在弹出的文本编辑器中输入以下内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;Import-Module&lt;/span&gt; &lt;span class="n"&gt;oh-my-posh&lt;/span&gt;
+&lt;span class="nb"&gt;set-Theme&lt;/span&gt; &lt;span class="n"&gt;robbyrussell&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;随后你可以在posh中输入&lt;code&gt;set-Theme lily-is-cool&lt;/code&gt; 来获取所有主题的名字并以上述方法修改主题。&lt;/p&gt;
+&lt;h3 id="_7"&gt;字体优化&lt;a class="headerlink" href="#_7" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="powerline"&gt;安装powerline字体&lt;a class="headerlink" href="#powerline" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;git clone https://github.com/powerline/fonts.git&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在克隆的目录中找到&lt;code&gt;install.ps1&lt;/code&gt;，双击它即可自动安装字体。&lt;/p&gt;
+&lt;h4 id="terminal"&gt;配置到Terminal&lt;a class="headerlink" href="#terminal" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;找到这个字段：“fontFace”，把它们的值都改为：“Meslo &lt;span class="caps"&gt;LG&lt;/span&gt; M for&amp;nbsp;powerLine”&lt;/p&gt;
+&lt;h3 id="one-more-thing"&gt;One More Thing&lt;a class="headerlink" href="#one-more-thing" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;甚是怀念PowerShell的“从此打开PowerShell”的右键菜单，于是为Terminal配置之&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Windows Registry Editor Version 5.00
+
+&lt;span class="k"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;HKEY_CLASSES_ROOT&lt;/span&gt;&lt;span class="k"&gt;\Directory\Background\shell\wt]&lt;/span&gt;
+&lt;span class="na"&gt;@&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{右键菜单文字}&amp;quot;&lt;/span&gt;
+&lt;span class="na"&gt;&amp;quot;Icon&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{icon的绝对路径}&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="k"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;HKEY_CLASSES_ROOT&lt;/span&gt;&lt;span class="k"&gt;\Directory\Background\shell\wt\command]&lt;/span&gt;
+&lt;span class="na"&gt;@&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{Terminal的可执行文件的绝对路径，名称为wt.exe} -d .&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;将上面的文本另存为注册表项(后缀为.reg)，点击添加即可&lt;/p&gt;
+&lt;p&gt;另外，在配置文件中的“startingDirectory”决定了你&lt;strong&gt;新增&lt;/strong&gt;Tab的路径，你可以将它的值设置为“.”以保证新增的Tab的路径也是当前工作路径。&lt;/p&gt;</content><category term="Tech"></category><category term="Windows"></category><category term="Terminal"></category></entry><entry><title>新的钢笔</title><link href="https://weilet.me/%E6%96%B0%E7%9A%84%E9%92%A2%E7%AC%94" rel="alternate"></link><published>2020-02-07T19:42:00+08:00</published><updated>2020-02-07T19:42:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-07:/新的钢笔</id><content type="html">&lt;blockquote&gt;
+&lt;p&gt;年前朋友送了一支凌美演绎，用到现在也快两周了，说说体验。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;流畅性&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺之前买过一支百乐的78G，使用后惊叹于日式钢笔的顺滑。同时俺还试用过同学的狩猎者。一直觉得凌美的钢笔虽然容易出锋但是真的很涩。但实际上，演绎比狩猎者要顺滑很多，而且还是一样容易出锋。&lt;/p&gt;
+&lt;h3 id="_2"&gt;舒适性&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;金属笔杆很滑很舒服。如果把笔帽盖到后面会有点重，俺不喜欢。目前只它用来写小抄和做手帐，不知道大书写量下会不会累人。&lt;/p&gt;
+&lt;h3 id="_3"&gt;美观性&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺这支是纯黑的，俺觉得普通但有质感。网上看蓝色和白金色很好看，但是既然是送的也就不奢求这么多啦。&lt;/p&gt;
+&lt;h3 id="_4"&gt;便捷性&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;上墨只需三步：旋开笔，换墨囊，旋回笔。等送的墨囊用完了还是用墨水吧，虽然麻烦一点，但一罐百乐ink30可以用三四个月，比墨囊划算。&lt;/p&gt;</content><category term="Unboxing"></category><category term="Pen"></category></entry><entry><title>Python3.8新特性</title><link href="https://weilet.me/Python3.8%E6%96%B0%E7%89%B9%E6%80%A7" rel="alternate"></link><published>2020-02-06T21:46:00+08:00</published><updated>2020-02-06T21:46:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-06:/Python3.8新特性</id><summary type="html">&lt;h3 id="_1"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions"&gt;海象运算符&lt;/a&gt;&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺期待很久的特性，可以在表达式内赋值&lt;/p&gt;
+&lt;p&gt;先前的写法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{len(a)}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在的写法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{n}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;明显减少了一次len()函数的调用，当然可读性会稍有下降。&lt;/p&gt;
+&lt;h3 id="_2"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#positional-only-parameters"&gt;仅限位置形参&lt;/a&gt;&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
+&lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目前来看 …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions"&gt;海象运算符&lt;/a&gt;&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺期待很久的特性，可以在表达式内赋值&lt;/p&gt;
+&lt;p&gt;先前的写法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{len(a)}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在的写法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;{n}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;明显减少了一次len()函数的调用，当然可读性会稍有下降。&lt;/p&gt;
+&lt;h3 id="_2"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#positional-only-parameters"&gt;仅限位置形参&lt;/a&gt;&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
+&lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目前来看，比较有用的地方是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;让函数的调用不那么呆萌（？）&lt;/li&gt;
+&lt;li&gt;在使用kwargs时可以保证kwargs中key的任意性（即便key与仅限位置形参重名也能被处理）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="_3"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#parallel-filesystem-cache-for-compiled-bytecode-files"&gt;指定字节码缓存的位置&lt;/a&gt;&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;简单地说就是以前生成在__pycache__文件夹的缓存文件可以换地方放了，详细地自己戳小标题的链接看吧。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pycache_prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;path_you_want_to_add&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="abi"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#debug-build-uses-the-same-abi-as-release-build"&gt;统一调试构建和发布构建的ABI&lt;/a&gt;&lt;a class="headerlink" href="#abi" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;是的，俺看不懂&lt;/p&gt;
+&lt;h3 id="f-string"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#f-strings-support-for-self-documenting-expressions-and-debugging"&gt;f-string增强&lt;/a&gt;&lt;a class="headerlink" href="#f-string" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;形式为 &lt;code&gt;f'{expr=}'&lt;/code&gt; 的&amp;nbsp;f-字符串将扩展表示为表达式文本&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;slogan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;俺很酷&amp;#39;&lt;/span&gt;
+&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{slogan=}&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# output: &amp;quot;slogan=&amp;#39;俺很酷&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;=&lt;/code&gt; 说明符将输出整个表达式，以便详细演示计算过程&lt;/p&gt;
+&lt;h3 id="pickle"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#pickle-protocol-5-with-out-of-band-data-buffers"&gt;pickle变快了&lt;/a&gt;&lt;a class="headerlink" href="#pickle" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;当使用 &lt;a href="https://docs.python.org/zh-cn/3.8/library/pickle.html#module-pickle"&gt;&lt;code&gt;pickle&lt;/code&gt;&lt;/a&gt; 在 Python&amp;nbsp;进程间传输大量数据以充分发挥多核或多机处理的优势时，非常重要一点是通过减少内存拷贝来优化传输效率，并可能应用一些定制技巧例如针对特定数据的压缩。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有一个特性将在3.9完全公开，略过；&lt;/p&gt;
+&lt;p&gt;所有的提案都略过；&lt;/p&gt;
+&lt;p&gt;其他语言特性修改略过。&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Tech"></category><category term="Python"></category></entry></feed>

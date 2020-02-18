@@ -32,8 +32,22 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = [
+	'sitemap',	
 ]
 
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'daily',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
 # Appearance
 THEME = "easy"
 TYPOGRIFY = True

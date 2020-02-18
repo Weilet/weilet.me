@@ -19,7 +19,9 @@
 <meta name="keywords" content="code,game,digital products,daily life">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
-<link rel="icon" href="/theme/images/terminal.ico"></head>
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="stylesheet" type="text/css" href="theme/css/toc.css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
 <nav class="nav">
@@ -41,6 +43,14 @@
     <div class="container">
         <h1><u>Python</u></h1>
         <section class="posts">
+<div class="search-container"><input class="search" id="searchTerm" type="text" name="searchTerm" placeholder="在此输入以过滤..." data-com.onepassword.iv="" oninput="search()"></div>            <a href="/Python3.8新特性">
+                <div class="each">
+                    <div>
+                        <h2>Python3.8新特性</h2>
+                        <div class="excerpt">2020-02-06</div>
+                    </div>
+                </div>
+            </a>
             <a href="/学校教务系统爬取计划">
                 <div class="each">
                     <div>
@@ -121,22 +131,6 @@
                     </div>
                 </div>
             </a>
-            <a href="/用Python，查快递">
-                <div class="each">
-                    <div>
-                        <h2>用Python，查快递</h2>
-                        <div class="excerpt">2018-08-07</div>
-                    </div>
-                </div>
-            </a>
-            <a href="/用Python给你女朋友写封信">
-                <div class="each">
-                    <div>
-                        <h2>用Python给你女朋友写封信</h2>
-                        <div class="excerpt">2018-07-14</div>
-                    </div>
-                </div>
-            </a>
             <a href="/我的第一只爬虫">
                 <div class="each">
                     <div>
@@ -148,12 +142,13 @@
         </section>
     </div>
 </main>
-<footer class="footer container">
+<script type="text/javascript">
+function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
+</script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
 .back-to-top {
     position: fixed;

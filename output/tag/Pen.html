@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Pen</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="A blog of a programmer.">
+<meta name="keywords" content="code,game,digital products,daily life">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="stylesheet" type="text/css" href="theme/css/toc.css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <div class="container">
+        <h1><u>Pen</u></h1>
+        <section class="posts">
+            <a href="/新的钢笔">
+                <div class="each">
+                    <div>
+                        <h2>新的钢笔</h2>
+                        <div class="excerpt">2020-02-07</div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </div>
+</main>
+<script type="text/javascript">
+function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
+</script><footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    padding: 1em;
+    margin: 0 4em 3em 0;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.dark .back-to-top {
+    background: #202020;
+    border: 2px solid #b3b9c5;
+}
+
+.back-to-top:hover {
+    cursor: pointer;
+    background: #f2f2f2;
+}
+
+.dark .back-to-top:hover {
+    background: #303030;
+}
+</style>
+
+<div class="back-to-top">Top</div>
+
+<script type="text/javascript">
+var $backToTop = $(".back-to-top");
+$backToTop.hide();
+
+$(window).on('scroll', function() {
+    if ($(this).width() >= 1024 ){
+        if ($(this).scrollTop() > 100) {
+            $backToTop.fadeIn();
+        } else {
+            $backToTop.fadeOut();
+        } 
+    } else {
+        $backToTop.hide();
+    }  
+});
+
+$(window).on('resize', function() {
+    if ($(this).width() < 1024 ) {
+        $backToTop.fadeOut();
+    } 
+});
+
+$backToTop.on('click', function(e) {
+    $("html, body").animate({ scrollTop: 0 }, 500);
+});
+</script>
+<script type="text/javascript">
+	var nowHour = (new Date()).getHours()
+	if (nowHour > 17 || nowHour < 4) {
+		$('body').addClass('dark')
+	}
+</script></html>

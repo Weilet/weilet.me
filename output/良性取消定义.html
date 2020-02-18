@@ -19,7 +19,9 @@
 <meta name="keywords" content="code,game,digital products,daily life">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
-<link rel="icon" href="/theme/images/terminal.ico"></head>
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="stylesheet" type="text/css" href="theme/css/toc.css">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
 <nav class="nav">
@@ -46,9 +48,17 @@
                     <time class="date">2019-04-27</time>
                     /
                     <span>
-                        <a href="/category/Code.html" class="comment-link">
-                            Code
+                        <a href="/category/Tech.html" class="comment-link">
+                            Tech
                         </a>
+                            ·
+                                <a href="/tag/C.html" class="comment-link">
+                                C
+                                </a>
+·                                <a href="/tag/CPP.html" class="comment-link">
+                                CPP
+                                </a>
+                        
                     </span>
                 </div>
             </div>
@@ -66,29 +76,113 @@
 
 <p>这里面第一行就是 <strong>良性取消定义</strong>，它是用来保证先前已经 define 的 assert 不会影响接下来的 assert。如果先前没有 define assert，那么这个语句也不会产生任何副作用。当使用一些可变的定义时，<strong>良性取消定义</strong>是必要的。</p>
         </div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 
 <div id="gitalk-container"></div>
 <script type="text/javascript">
 var gitalk = new Gitalk({
 	clientID: '156774f08ace665cde88',
 	clientSecret: 'c5493bd3bb6cccff1313f145801c180300471f72',
-	repo: 'https://weilet.me',
+	repo: 'weilet.github.io',
 	owner: 'Weilet',
 	admin: ['Weilet'],
-	id: location.pathname,
+	id: md5(location.pathname),
 	distractionFreeMode: false
 })
 gitalk.render('gitalk-container')
 </script>    </article>
-</main>
-<footer class="footer container">
+<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
+<style type="text/css">
+  .toc {
+    font-weight: normal;
+    font-size: 1rem;
+    top: 20%;
+  }
+  .is-position-fixed {
+    position:fixed !important;
+    top:20%;
+  }
+  @media (max-width: 1217px) {
+    .toc {
+      display: none;
+    }
+  }
+</style>
+<div class="toc is-position-fixed"></div>
+<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
+<script type="text/javascript">
+var headers = 'h3, h4',
+  content = '.single',//文章容器
+  idArr = {}; //标题数组以确定是否增加索引id
+  tocbot.init({
+    tocSelector: '.toc',
+    contentSelector: content,
+    headingSelector: headers,
+    positionFixedSelector: '.toc',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    scrollSmooth: true,
+    scrollSmoothOffset: -100,
+    headingsOffset: 100
+  });
+  $(document).on('pjax:send',function(){
+  if ($('.toc').length) tocbot.destroy();
+})
+
+  $(document).on('pjax:complete',function(){
+  toc.init(tocOptions);
+})
+</script></main>
+<style type="text/css">
+.highlight .btn-copy {
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding: 6px 12px;
+    margin-top: 1%;
+    background: #fefbd8;
+    border: 1px solid #fefbd8;
+}
+
+.dark .highlight .btn-copy {
+    background: #001f29 !important;
+    border: 1px solid #002733;
+}
+
+.highlight img {
+    width: 13px;
+}
+
+.dark .highlight img {
+    filter: invert(1);
+}
+</style>
+
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script type="text/javascript">
+!function (e, t, a) { 
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '</button>';
+    $(".highlight pre").before(copyHtml);
+    new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+            return trigger.nextElementSibling;
+        }
+    });
+  }
+  initCopyCode();
+}(window, document);
+</script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
 .back-to-top {
     position: fixed;

@@ -17,6 +17,15 @@
                             {{ article.category }}
                         </a>
                         {% endif %}
+                        {% if article.tags %}
+                            ·
+                            {% for tag in article.tags %}
+                                <a href="/{{ tag.url }}" class="comment-link">
+                                {{ tag }}
+                                </a>
+                                {% if not loop.last %}·{% endif %}
+                            {% endfor %}                        
+                        {% endif %}
                     </span>
                 </div>
                 {% if article.tag %}
@@ -33,5 +42,7 @@
         </div>
         {% include "includes/_gitalk.html"%}
     </article>
+    {% include "includes/_toc.html" %}
 </main>
+{% include "includes/_clipboard.html" %}
 {% endblock %}

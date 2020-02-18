@@ -1,0 +1,43 @@
+<style type="text/css">
+.highlight .btn-copy {
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding: 6px 12px;
+    margin-top: 1%;
+    background: #fefbd8;
+    border: 1px solid #fefbd8;
+}
+
+.dark .highlight .btn-copy {
+    background: #001f29 !important;
+    border: 1px solid #002733;
+}
+
+.highlight img {
+    width: 13px;
+}
+
+.dark .highlight img {
+    filter: invert(1);
+}
+</style>
+
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script type="text/javascript">
+!function (e, t, a) { 
+  var initCopyCode = function(){
+    var copyHtml = '';
+    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '</button>';
+    $(".highlight pre").before(copyHtml);
+    new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+            return trigger.nextElementSibling;
+        }
+    });
+  }
+  initCopyCode();
+}(window, document);
+</script>

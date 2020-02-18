@@ -1466,12 +1466,6 @@ h2.publication-company img {
     color: rgba(0, 0, 0, .6)
 }
 
-.post-meta a.comment-link,
-.post-meta a.twitter-link,
-.post-meta a.github-link {
-    margin: 0 .5rem
-}
-
 .post-meta a:hover {
     color: #5183f5
 }

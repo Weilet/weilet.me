@@ -8,7 +8,11 @@
         <h1>Tags</h1>
         <div class="tag-container">
         	{% for tag, articles in tags|sort %}
-            {% set num = articles|count %}
+            {% set counter = [] %}
+            {% for article in articles if article.visible != 'False' %}
+                {% if counter.append('1') %}{% endif %}
+            {% endfor %}
+            {% set num = counter | count %}
             <a href="/tag/{{ tag }}">
             	<span>{{ tag }}<strong class="count">{{ num }}</strong></span>
             </a>
