@@ -15,11 +15,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="有以下一段宏： #define _STR(x) _VAL(x) #define _VAL(x) #x 原以为只是 define _VAL(x) #x 起效果，并不清楚 define _STR(x) _VAL(x) 的作用。 因为使用 int x = 5 去测试，发现无论是 _STR() 还是 _VAL() 都是输出 x 后来发现，如果改为在顶部添加 #define x 100 _STR() 的值为 “100” 而 _VAL()的值为 “x” 由此可以得知，所谓的 define _STR …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="C&nbsp;语言下多重嵌套的define" />
+<meta property="og:url" content="https://weilet.me/C语言下多重嵌套的define" />
+<meta property="og:description" content="有以下一段宏： #define _STR(x) _VAL(x) #define _VAL(x) #x 原以为只是 define _VAL(x) #x 起效果，并不清楚 define _STR(x) _VAL(x) 的作用。 因为使用 int x = 5 去测试，发现无论是 _STR() 还是 _VAL() 都是输出 x 后来发现，如果改为在顶部添加 #define x 100 _STR() 的值为 “100” 而 _VAL()的值为 “x” 由此可以得知，所谓的 define _STR …" />
+<meta property="article:published_time" content="2019-04-28 13:47:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+
+<meta name="twitter:card" content="有以下一段宏： #define _STR(x) _VAL(x) #define _VAL(x) #x 原以为只是 define _VAL(x) #x 起效果，并不清楚 define _STR(x) _VAL(x) 的作用。 因为使用 int x = 5 去测试，发现无论是 _STR() 还是 _VAL() 都是输出 x 后来发现，如果改为在顶部添加 #define x 100 _STR() 的值为 “100” 而 _VAL()的值为 “x” 由此可以得知，所谓的 define _STR …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/C语言下多重嵌套的define"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>

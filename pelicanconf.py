@@ -5,7 +5,8 @@ import os
 
 AUTHOR = "Weilet"
 SITEURL = "https://weilet.me"
-
+SITENAME = "Weilet's alchemy room"
+SITE_SUMMARY = "A Pelican blog I use to write down something about coding, product unboxing and gaming"
 # Saving Settings
 PATH = "content"
 CATEGORY_URL = "category/{name}.html"

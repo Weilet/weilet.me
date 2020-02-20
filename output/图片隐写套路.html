@@ -15,11 +15,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="总结一些图片隐写术的套路 0x000 exif Windows下直接右键属性查看就好，有些题目会用Base64等方式加密，不过也就一梭子代码的问题。 Linux下用 identify -verbose filename 0x001 隐藏文件 文件的隐藏利用 shell copy /b 2.jpg+1.zip output.jpg 对于这类题目，用binwalk分析后用dd命令分解出来就好： dd if=filename of=filename skip=start_point_of_hidden_file bs=1 0x010 LSB 修改 直接用stegsolve看通道，一般会隐藏二维码在其中。 0x011 查看其他信息 Windows下把图片拖进WinHex，缺少文件头的话补全。在文件结尾后有一段不明字符串，可以尝试解码。 拖进Stegsolve里查看附着的信息，有可能有ascii形式的Flag。 0x100 双图 目前做过的题目的解决方案是拖进stegsolve里边然后选择图片叠加。"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="图片隐写套路" />
+<meta property="og:url" content="https://weilet.me/图片隐写套路" />
+<meta property="og:description" content="总结一些图片隐写术的套路 0x000 exif Windows下直接右键属性查看就好，有些题目会用Base64等方式加密，不过也就一梭子代码的问题。 Linux下用 identify -verbose filename 0x001 隐藏文件 文件的隐藏利用 shell copy /b 2.jpg+1.zip output.jpg 对于这类题目，用binwalk分析后用dd命令分解出来就好： dd if=filename of=filename skip=start_point_of_hidden_file bs=1 0x010 LSB 修改 直接用stegsolve看通道，一般会隐藏二维码在其中。 0x011 查看其他信息 Windows下把图片拖进WinHex，缺少文件头的话补全。在文件结尾后有一段不明字符串，可以尝试解码。 拖进Stegsolve里查看附着的信息，有可能有ascii形式的Flag。 0x100 双图 目前做过的题目的解决方案是拖进stegsolve里边然后选择图片叠加。" />
+<meta property="article:published_time" content="2018-07-09 23:35:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+
+<meta name="twitter:card" content="总结一些图片隐写术的套路 0x000 exif Windows下直接右键属性查看就好，有些题目会用Base64等方式加密，不过也就一梭子代码的问题。 Linux下用 identify -verbose filename 0x001 隐藏文件 文件的隐藏利用 shell copy /b 2.jpg+1.zip output.jpg 对于这类题目，用binwalk分析后用dd命令分解出来就好： dd if=filename of=filename skip=start_point_of_hidden_file bs=1 0x010 LSB 修改 直接用stegsolve看通道，一般会隐藏二维码在其中。 0x011 查看其他信息 Windows下把图片拖进WinHex，缺少文件头的话补全。在文件结尾后有一段不明字符串，可以尝试解码。 拖进Stegsolve里查看附着的信息，有可能有ascii形式的Flag。 0x100 双图 目前做过的题目的解决方案是拖进stegsolve里边然后选择图片叠加。" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/图片隐写套路"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
