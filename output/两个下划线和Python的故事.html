@@ -20,7 +20,6 @@
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<link rel="stylesheet" type="text/css" href="theme/css/toc.css">
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
@@ -117,13 +116,16 @@ gitalk.render('gitalk-container')
 <link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
 <style type="text/css">
   .toc {
-    font-weight: normal;
-    font-size: 1rem;
-    top: 20%;
-  }
-  .is-position-fixed {
     position:fixed !important;
+    font-weight: normal;
+    font-size: 1.2rem;
     top:20%;
+    right:0;
+    width: 15%;	    
+    margin: 0 2em 1em 1em;	    
+  }
+  .is-active-link::before {
+    background-color: #5183f5;
   }
   @media (max-width: 1217px) {
     .toc {
@@ -131,19 +133,16 @@ gitalk.render('gitalk-container')
     }
   }
 </style>
-<div class="toc is-position-fixed"></div>
+<div class="toc"></div>
 <script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
 <script type="text/javascript">
 var headers = 'h3, h4',
-  content = '.single',//文章容器
-  idArr = {}; //标题数组以确定是否增加索引id
+  content = '.single',
+  idArr = {}; 
   tocbot.init({
     tocSelector: '.toc',
     contentSelector: content,
     headingSelector: headers,
-    positionFixedSelector: '.toc',
-    positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto',
     scrollSmooth: true,
     scrollSmoothOffset: -100,
     headingsOffset: 100
@@ -210,7 +209,7 @@ var headers = 'h3, h4',
     right: 0;
     display: inline-block;
     padding: 1em;
-    margin: 0 4em 3em 0;
+    margin: 0 2em 2.5em 1em;
     background: #fff;
     border: 2px solid #000;
 }
@@ -237,7 +236,7 @@ var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).width() >= 1024 ){
+    if ($(this).width() >= 1218 ){
         if ($(this).scrollTop() > 100) {
             $backToTop.fadeIn();
         } else {
@@ -249,7 +248,7 @@ $(window).on('scroll', function() {
 });
 
 $(window).on('resize', function() {
-    if ($(this).width() < 1024 ) {
+    if ($(this).width() < 1218 ) {
         $backToTop.fadeOut();
     } 
 });

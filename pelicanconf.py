@@ -27,8 +27,11 @@ MARKDOWN = {
         "markdown.extensions.toc": {"permalink": " "},
     }
 }
-STATIC_PATHS = ['images', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+STATIC_PATHS = ['images', 'extra']
+EXTRA_PATH_METADATA = {
+	'extra/CNAME': {'path': 'CNAME'},
+	'extra/robots.txt': {'path': 'robots.txt'}
+}
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = [

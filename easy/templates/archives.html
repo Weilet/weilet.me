@@ -1,31 +1,24 @@
 {% extends "base.html" %}
 {% block title %}
-	<title>归档</title>
+<title>归档</title>
 {% endblock %}
 {% block content %}
 <main id="main-content">
     <div class="container">
         <h1>所有文章</h1>
         {% include "includes/_search_bar.html" %}
-        {% for article in dates %}
+        <div class="time-line">
+            {% for article in dates %}
             {% if article.visible != 'False' %}
-                {% set year = article.date|strftime('%Y')%}
-                {% if loop.first %}
-                    <h2 id="{{ year }}">
-                        <a href="#{{ year }}">
-                            {{ year }}
-                        </a>
-                    </h2>
-                {% else %}
-                    {% set prevyear = loop.previtem.date.strftime('%Y') %}
-                    {% if prevyear != year %}
-                    <h2 id="{{ year }}">
-                        <a href="#{{ year }}">
-                            {{ year}}
-                        </a>
-                    </h2>
-                    {% endif %}
-                {% endif %}
+            {% set year = article.date|strftime('%Y')%}
+            {% if loop.first %}
+            <h1 id="{{ year }}">{{ year }}</h1>
+            {% else %}
+            {% set prevyear = loop.previtem.date.strftime('%Y') %}
+            {% if prevyear != year %}
+            <h1 id="{{ year }}">{{ year}}</h1>
+            {% endif %}
+            {% endif %}
             <section class="posts">
                 <a href="/{{ article.url }}">
                     <div class="each">
@@ -35,12 +28,14 @@
                         </div>
                     </div>
                 </a>
-            </section>    
+            </section>
             {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+    {% include "includes/_time_line.html" %}
 </main>
 {% block script %}
-    {% include "includes/_search_script.html"%}
+{% include "includes/_search_script.html"%}
 {% endblock %}
 {% endblock %}
