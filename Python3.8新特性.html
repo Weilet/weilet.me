@@ -15,11 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="Python3.8新特性" />
+<meta property="og:url" content="https://weilet.me/Python3.8新特性" />
+<meta property="og:description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+<meta property="article:published_time" content="2020-02-06 21:46:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/Python3.8新特性"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>

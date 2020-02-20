@@ -15,11 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="哈希洪水攻击的原理 在各种常用的数据结构里，有些数据结构的“平均运行时间”和“最差运行时间”会差很远，比如哈希表（Hash Table）。 如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需O(n)的时间。 如果这些键频繁出现相同的哈希值（频繁发生碰撞），这项任务就需要O(n*n)的时间。 哈希洪水攻击就是利用哈希函数的特点，构造一些数据，使他们经过哈希函数处理后的值与原来的值产生冲突（相同），增加整个系统的时间开销。 如何攻击 这里是一例实验 没有实践过，个人理解的一种利用方法是，构建符合接口的、能够产生冲突的json串，经过jsondecode以后，json内部的数据会产生冲突，带来额外的开销。 （如果理解错误，欢迎更正） 如何防御 不能通过设置哈希函数的方式进行防御。如果知道哈希函数的实现时，只需要一点功夫就能够构造出一组频繁碰撞的键。 但是，你可以： 所以，我们应当 限制参数个数 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="哈希洪水攻击" />
+<meta property="og:url" content="https://weilet.me/哈希洪水攻击" />
+<meta property="og:description" content="哈希洪水攻击的原理 在各种常用的数据结构里，有些数据结构的“平均运行时间”和“最差运行时间”会差很远，比如哈希表（Hash Table）。 如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需O(n)的时间。 如果这些键频繁出现相同的哈希值（频繁发生碰撞），这项任务就需要O(n*n)的时间。 哈希洪水攻击就是利用哈希函数的特点，构造一些数据，使他们经过哈希函数处理后的值与原来的值产生冲突（相同），增加整个系统的时间开销。 如何攻击 这里是一例实验 没有实践过，个人理解的一种利用方法是，构建符合接口的、能够产生冲突的json串，经过jsondecode以后，json内部的数据会产生冲突，带来额外的开销。 （如果理解错误，欢迎更正） 如何防御 不能通过设置哈希函数的方式进行防御。如果知道哈希函数的实现时，只需要一点功夫就能够构造出一组频繁碰撞的键。 但是，你可以： 所以，我们应当 限制参数个数 …" />
+<meta property="article:published_time" content="2019-05-29 00:55:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="哈希洪水攻击的原理 在各种常用的数据结构里，有些数据结构的“平均运行时间”和“最差运行时间”会差很远，比如哈希表（Hash Table）。 如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需O(n)的时间。 如果这些键频繁出现相同的哈希值（频繁发生碰撞），这项任务就需要O(n*n)的时间。 哈希洪水攻击就是利用哈希函数的特点，构造一些数据，使他们经过哈希函数处理后的值与原来的值产生冲突（相同），增加整个系统的时间开销。 如何攻击 这里是一例实验 没有实践过，个人理解的一种利用方法是，构建符合接口的、能够产生冲突的json串，经过jsondecode以后，json内部的数据会产生冲突，带来额外的开销。 （如果理解错误，欢迎更正） 如何防御 不能通过设置哈希函数的方式进行防御。如果知道哈希函数的实现时，只需要一点功夫就能够构造出一组频繁碰撞的键。 但是，你可以： 所以，我们应当 限制参数个数 …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/哈希洪水攻击"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>

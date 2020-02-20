@@ -15,11 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="序列化Python对象" />
+<meta property="og:url" content="https://weilet.me/序列化Python对象" />
+<meta property="og:description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
+<meta property="article:published_time" content="2019-05-08 22:11:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/序列化Python对象"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>

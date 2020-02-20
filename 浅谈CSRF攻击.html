@@ -15,11 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="浅谈CSRF攻击" />
+<meta property="og:url" content="https://weilet.me/浅谈CSRF攻击" />
+<meta property="og:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+<meta property="article:published_time" content="2019-06-04 21:26:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/浅谈CSRF攻击"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>

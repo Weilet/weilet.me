@@ -15,11 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="A blog of a programmer.">
-<meta name="keywords" content="code,game,digital products,daily life">
+<meta name="description" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="Python参数传递的问题" />
+<meta property="og:url" content="https://weilet.me/Python参数传递的问题" />
+<meta property="og:description" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …" />
+<meta property="article:published_time" content="2019-05-11 10:31:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …" />
+<meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/Python参数传递的问题"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
