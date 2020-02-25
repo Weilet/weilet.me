@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's alchemy room</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-02-14T22:25:00+08:00</updated><entry><title>Windows Terminal折腾指南</title><link href="https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97" rel="alternate"></link><published>2020-02-14T22:25:00+08:00</published><updated>2020-02-14T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-02-25T22:25:00+08:00</updated><entry><title>Python可迭代对象</title><link href="https://weilet.me/Python%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1" rel="alternate"></link><published>2020-02-25T22:25:00+08:00</published><updated>2020-02-25T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-25:/Python可迭代对象</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;基础知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
+&lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
+&lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
+&lt;h4 id="stopiteration"&gt;StopIteration异常&lt;a class="headerlink" href="#stopiteration" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出StopIteration异常&lt;/p&gt;
+&lt;h4 id="_4"&gt;魔法方法&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
+&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
+&lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# part A&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;基础知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
+&lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
+&lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
+&lt;h4 id="stopiteration"&gt;StopIteration异常&lt;a class="headerlink" href="#stopiteration" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出StopIteration异常&lt;/p&gt;
+&lt;h4 id="_4"&gt;魔法方法&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
+&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
+&lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# part A&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;StopIteration&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="c1"&gt;# part B&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你应该不难看出，part A 与 part B&amp;nbsp;的代码是等价的。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>Windows Terminal折腾指南</title><link href="https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97" rel="alternate"></link><published>2020-02-14T22:25:00+08:00</published><updated>2020-02-14T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
