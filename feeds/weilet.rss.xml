@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 25 Feb 2020 22:25:00 +0800</lastBuildDate><item><title>Python可迭代对象</title><link>https://weilet.me/Python%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1</link><description>&lt;blockquote&gt;
+<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 25 Feb 2020 22:25:00 +0800</lastBuildDate><item><title>谈谈Python中的for循环（1）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89</link><description>&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="_1"&gt;基础知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
 &lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
@@ -14,14 +14,37 @@
 &lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
 &lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
 &lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在上述前置知识和一定的python基础下，我们来看这段代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="c1"&gt;# part A&lt;/span&gt;
+&lt;span class="c1"&gt;# A&lt;/span&gt;
 &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="nb"&gt;print …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/Python可迭代对象</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal折腾指南</title><link>https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</guid><category>Tech</category><category>Python</category></item><item><title>谈谈Python中的for循环（2）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89</link><description>&lt;blockquote&gt;
+&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;作用域&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。&lt;/p&gt;
+&lt;h4 id="legb"&gt;LEGB法则&lt;a class="headerlink" href="#legb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;python中变量的搜索按照以下路径进行：&lt;/p&gt;
+&lt;p&gt;本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing&amp;nbsp;locals）→全局/模块作用域（Global）→内置作用域（Built-in）&lt;/p&gt;
+&lt;h4 id="_3"&gt;引用计数机制&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0&lt;/p&gt;
+&lt;h3 id="_4"&gt;&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="for"&gt;for循环变量在外部的状态&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
+&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
+&lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
+&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（2）</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal折腾指南</title><link>https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
 &lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
