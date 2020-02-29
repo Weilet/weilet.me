@@ -19,7 +19,7 @@
   
 
 <!-- Start of OpenGraph protocol tags -->
-<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
 <meta property="og:title" content="宏定义的常见的三种意外" />
@@ -27,7 +27,6 @@
 <meta property="og:description" content="宏拓展后的大小可能超乎你的想象 这一点没想到例子，以后碰到再补充 对参数的捆绑不如函数严实，会导致意料之外的结果 很常见的一个例子： #include <stdio.h> #define square(x) x*x int main(void) { int x = 4; int res = square(x+1); printf("%d\n", res); } 编写一个宏，计算 x 的平方。 看上去这段代码没有错，我们得到的答案将会是 25。 实际上呢，我们得到的答案是 11。 为什么呢？我们将square(x+1)展开 int res = x+1*x+1 …" />
 <meta property="article:published_time" content="2019-04-30 16:20:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-
 <meta name="twitter:card" content="宏拓展后的大小可能超乎你的想象 这一点没想到例子，以后碰到再补充 对参数的捆绑不如函数严实，会导致意料之外的结果 很常见的一个例子： #include <stdio.h> #define square(x) x*x int main(void) { int x = 4; int res = square(x+1); printf("%d\n", res); } 编写一个宏，计算 x 的平方。 看上去这段代码没有错，我们得到的答案将会是 25。 实际上呢，我们得到的答案是 11。 为什么呢？我们将square(x+1)展开 int res = x+1*x+1 …" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -218,16 +217,28 @@ var headers = 'h3, h4',
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

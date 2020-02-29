@@ -19,7 +19,7 @@
   
 
 <!-- Start of OpenGraph protocol tags -->
-<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
 <meta property="og:title" content="CPP内存泄漏" />
@@ -27,7 +27,6 @@
 <meta property="og:description" content="C++的内存管理太难了 ——鲁迅 基类析构函数为非virtual 基类的析构函数如果是非virtual的，那么上转型时，基类的析构函数不会被覆盖。这样子，属于子类的部分在析构时就不会会删除，导致内存泄漏。 依赖用户释放对象 依赖用户使用delete来释放内存，如果在释放过程前抛出异常，那么这部分的内存就不会被释放，导致内存泄漏。 一个足够鲁棒的做法是，返回一个shared_ptr来管理原生对象。shared_ptr是个神奇的玩意，但你记得要为对象创建合适的shared_ptr。 New 和 Delete 不对称 New 一组对象，却只delete一个对象，这样不内存泄漏真的没天理 未定义复制构造函数而成员中有指针变量 这会导致调用默认复制构造函数然后使得同一个地址被两个指针所指（复制和被复制对象的指针变量），导致同一位置的内存被释放两次。 你以为大家看不出这是《effective C++》的书摘吗?" />
 <meta property="article:published_time" content="2019-10-25 18:17:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-
 <meta name="twitter:card" content="C++的内存管理太难了 ——鲁迅 基类析构函数为非virtual 基类的析构函数如果是非virtual的，那么上转型时，基类的析构函数不会被覆盖。这样子，属于子类的部分在析构时就不会会删除，导致内存泄漏。 依赖用户释放对象 依赖用户使用delete来释放内存，如果在释放过程前抛出异常，那么这部分的内存就不会被释放，导致内存泄漏。 一个足够鲁棒的做法是，返回一个shared_ptr来管理原生对象。shared_ptr是个神奇的玩意，但你记得要为对象创建合适的shared_ptr。 New 和 Delete 不对称 New 一组对象，却只delete一个对象，这样不内存泄漏真的没天理 未定义复制构造函数而成员中有指针变量 这会导致调用默认复制构造函数然后使得同一个地址被两个指针所指（复制和被复制对象的指针变量），导致同一位置的内存被释放两次。 你以为大家看不出这是《effective C++》的书摘吗?" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -185,16 +184,28 @@ var headers = 'h3, h4',
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

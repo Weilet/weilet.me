@@ -19,7 +19,7 @@
   
 
 <!-- Start of OpenGraph protocol tags -->
-<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
 <meta property="og:title" content="用crontab配置定时任务" />
@@ -27,7 +27,6 @@
 <meta property="og:description" content="前段时间需要定期把一个服务器上的日志以邮件的形式发送到我的邮箱，于是了解了一下linux下定时任务的实现。 （本文假定阅读者有基本的linux操作能力） linux下一般用crontab配置定时任务，本人用的是centos。 安装命令如下： yum install vixie-cron #cron主程序 yum install crontab #crontab主体 chkconfig -level 345 crond on #设置开机自启动 安装成功后打开crontab 配置 vi /etc/crontab 然后 该文件布局如下（ 注意，以编辑crontab的方式运行定时任务不能省略用户名）： m h d m weekday user command 对应的分别是： 分钟 小时 日期 月份 星期 用户 命令 每个值的范围（不过不限制则为*） 0-59 0-23 1-31 1-12 …" />
 <meta property="article:published_time" content="2018-08-07 06:09:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-
 <meta name="twitter:card" content="前段时间需要定期把一个服务器上的日志以邮件的形式发送到我的邮箱，于是了解了一下linux下定时任务的实现。 （本文假定阅读者有基本的linux操作能力） linux下一般用crontab配置定时任务，本人用的是centos。 安装命令如下： yum install vixie-cron #cron主程序 yum install crontab #crontab主体 chkconfig -level 345 crond on #设置开机自启动 安装成功后打开crontab 配置 vi /etc/crontab 然后 该文件布局如下（ 注意，以编辑crontab的方式运行定时任务不能省略用户名）： m h d m weekday user command 对应的分别是： 分钟 小时 日期 月份 星期 用户 命令 每个值的范围（不过不限制则为*） 0-59 0-23 1-31 1-12 …" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -211,16 +210,28 @@ var headers = 'h3, h4',
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

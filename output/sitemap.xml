@@ -5,28 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-02-20T15:10:58-00:00</lastmod>
+<lastmod>2020-02-28T13:35:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-02-20T15:10:58-00:00</lastmod>
+<lastmod>2020-02-28T13:35:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-02-20T15:10:58-00:00</lastmod>
+<lastmod>2020-02-28T13:35:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-02-20T15:10:58-00:00</lastmod>
+<lastmod>2020-02-28T13:35:37-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/谈谈Python中的for循环（1）</loc>
+<lastmod>2020-02-25T22:25:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/谈谈Python中的for循环（2）</loc>
+<lastmod>2020-02-25T22:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -229,7 +243,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/category/Tech.html</loc>
-<lastmod>2020-02-14T22:25:00+08:06</lastmod>
+<lastmod>2020-02-25T22:25:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -237,6 +251,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://weilet.me/category/Unboxing.html</loc>
 <lastmod>2020-02-07T19:42:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Python.html</loc>
+<lastmod>2020-02-25T22:25:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -258,13 +279,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://weilet.me/tag/Pen.html</loc>
 <lastmod>2020-02-07T19:42:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://weilet.me/tag/Python.html</loc>
-<lastmod>2020-02-06T21:46:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -348,7 +362,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/author/weilet.html</loc>
-<lastmod>2020-02-14T22:25:00+08:06</lastmod>
+<lastmod>2020-02-25T22:25:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

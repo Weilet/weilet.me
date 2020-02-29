@@ -29,15 +29,27 @@
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script>

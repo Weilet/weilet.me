@@ -19,7 +19,7 @@
   
 
 <!-- Start of OpenGraph protocol tags -->
-<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
 <meta property="og:title" content="C&nbsp;语言下多重嵌套的define" />
@@ -27,7 +27,6 @@
 <meta property="og:description" content="有以下一段宏： #define _STR(x) _VAL(x) #define _VAL(x) #x 原以为只是 define _VAL(x) #x 起效果，并不清楚 define _STR(x) _VAL(x) 的作用。 因为使用 int x = 5 去测试，发现无论是 _STR() 还是 _VAL() 都是输出 x 后来发现，如果改为在顶部添加 #define x 100 _STR() 的值为 “100” 而 _VAL()的值为 “x” 由此可以得知，所谓的 define _STR …" />
 <meta property="article:published_time" content="2019-04-28 13:47:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-
 <meta name="twitter:card" content="有以下一段宏： #define _STR(x) _VAL(x) #define _VAL(x) #x 原以为只是 define _VAL(x) #x 起效果，并不清楚 define _STR(x) _VAL(x) 的作用。 因为使用 int x = 5 去测试，发现无论是 _STR() 还是 _VAL() 都是输出 x 后来发现，如果改为在顶部添加 #define x 100 _STR() 的值为 “100” 而 _VAL()的值为 “x” 由此可以得知，所谓的 define _STR …" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -197,16 +196,28 @@ var headers = 'h3, h4',
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

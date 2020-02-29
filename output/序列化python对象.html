@@ -19,7 +19,7 @@
   
 
 <!-- Start of OpenGraph protocol tags -->
-<meta property="og:site_name" content="Weilet's alchemy room" />
+<meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
 <meta property="og:title" content="序列化Python对象" />
@@ -27,7 +27,6 @@
 <meta property="og:description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
 <meta property="article:published_time" content="2019-05-08 22:11:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-
 <meta name="twitter:card" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -239,16 +238,28 @@ var headers = 'h3, h4',
   var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '  <img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
     copyHtml += '</button>';
     $(".highlight pre").before(copyHtml);
-    new ClipboardJS('.btn-copy', {
+    clipboard = new ClipboardJS('.btn-copy', {
         target: function(trigger) {
             return trigger.nextElementSibling;
         }
     });
   }
   initCopyCode();
+  clipboard.on("success",function(e){
+    e.clearSelection();
+  });
+  $btn = $('.btn-copy');
+  $btn.on('click', function(e) {
+    $img = $(this).children('img')
+    $img.attr('src', 'theme/images/tick.svg'); 
+    setTimeout(function (){
+        console.log("复制成功");
+        $img.attr('src', 'theme/images/clippy.svg');
+    }, 300);       
+  });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
