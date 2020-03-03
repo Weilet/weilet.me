@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>谈谈Python中的for循环（2）</title>
+<title>安装spf13-vim</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
 <script>
@@ -15,24 +15,24 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="总忘记for语句的原理，属文记之 前置知识 作用域 Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。 LEGB法则 python中变量的搜索按照以下路径进行： 本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing locals）→全局/模块作用域（Global）→内置作用域（Built-in） 引用计数机制 Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0 for循环变量在外部的状态 for x in range(10): print(x) print(x) 看上去会抛出异常，然而事实上它运作正常。 我们用前置知识去解释它： 首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。 因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。"/>
+<meta name="description" content="spf13-vim之于vim，恰如oh-my-zsh之于zsh 背景 由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了spf13-vim这个好东西，当然是赶紧装上体验一番啦！ 准备 spf13-vim需要vim with lua，因为它有些插件是用lua编写的。 查看是否支持lua vim --version | if grep "+lua" &;then {echo "Vim with lua"};else {echo "Vim witho ut lua"} 如果不支持需要安装vim-nox（安装什么取决于你的图形环境：详情） apt-get install vim-nox 安装 根据官方文档直接安装 curl https …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
 <meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
-<meta property="og:title" content="谈谈Python中的for循环（2）" />
-<meta property="og:url" content="https://weilet.me/谈谈Python中的for循环（2）" />
-<meta property="og:description" content="总忘记for语句的原理，属文记之 前置知识 作用域 Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。 LEGB法则 python中变量的搜索按照以下路径进行： 本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing locals）→全局/模块作用域（Global）→内置作用域（Built-in） 引用计数机制 Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0 for循环变量在外部的状态 for x in range(10): print(x) print(x) 看上去会抛出异常，然而事实上它运作正常。 我们用前置知识去解释它： 首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。 因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。" />
-<meta property="article:published_time" content="2020-02-26 22:25:00+08:00" />
+<meta property="og:title" content="安装spf13-vim" />
+<meta property="og:url" content="https://weilet.me/安装spf13-vim" />
+<meta property="og:description" content="spf13-vim之于vim，恰如oh-my-zsh之于zsh 背景 由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了spf13-vim这个好东西，当然是赶紧装上体验一番啦！ 准备 spf13-vim需要vim with lua，因为它有些插件是用lua编写的。 查看是否支持lua vim --version | if grep "+lua" &;then {echo "Vim with lua"};else {echo "Vim witho ut lua"} 如果不支持需要安装vim-nox（安装什么取决于你的图形环境：详情） apt-get install vim-nox 安装 根据官方文档直接安装 curl https …" />
+<meta property="article:published_time" content="2020-03-03 23:25:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="总忘记for语句的原理，属文记之 前置知识 作用域 Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。 LEGB法则 python中变量的搜索按照以下路径进行： 本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing locals）→全局/模块作用域（Global）→内置作用域（Built-in） 引用计数机制 Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0 for循环变量在外部的状态 for x in range(10): print(x) print(x) 看上去会抛出异常，然而事实上它运作正常。 我们用前置知识去解释它： 首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。 因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。" />
+<meta name="twitter:card" content="spf13-vim之于vim，恰如oh-my-zsh之于zsh 背景 由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了spf13-vim这个好东西，当然是赶紧装上体验一番啦！ 准备 spf13-vim需要vim with lua，因为它有些插件是用lua编写的。 查看是否支持lua vim --version | if grep "+lua" &;then {echo "Vim with lua"};else {echo "Vim witho ut lua"} 如果不支持需要安装vim-nox（安装什么取决于你的图形环境：详情） apt-get install vim-nox 安装 根据官方文档直接安装 curl https …" />
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<link rel="canonical" href="https://weilet.me/谈谈Python中的for循环（2）"/>
+<link rel="canonical" href="https://weilet.me/安装spf13-vim"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
 
 <body>
@@ -55,17 +55,17 @@
     <article class="single container">
         <header class="single-header">
             <div class="flex">
-                <h1>谈谈Python中的for循环（2）</h1>
+                <h1>安装spf13-vim</h1>
                 <div class="post-meta">
-                    <time class="date">2020-02-26</time>
+                    <time class="date">2020-03-03</time>
                     /
                     <span>
                         <a href="/category/Tech.html" class="comment-link">
                             Tech
                         </a>
                             ·
-                                <a href="/tag/Python.html" class="comment-link">
-                                Python
+                                <a href="/tag/Linux.html" class="comment-link">
+                                Linux
                                 </a>
                         
                     </span>
@@ -74,29 +74,31 @@
         </header>
         <div class="post">
             <blockquote>
-<p>总忘记for语句的原理，属文记之</p>
+<p>spf13-vim之于vim，恰如oh-my-zsh之于zsh</p>
 </blockquote>
-<h3 id="_1">前置知识<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
-<h4 id="_2">作用域<a class="headerlink" href="#_2" title="Permanent link"> </a></h4>
-<p>Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。</p>
-<h4 id="legb">LEGB法则<a class="headerlink" href="#legb" title="Permanent link"> </a></h4>
-<p>python中变量的搜索按照以下路径进行：</p>
-<p>本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing&nbsp;locals）→全局/模块作用域（Global）→内置作用域（Built-in）</p>
-<h4 id="_3">引用计数机制<a class="headerlink" href="#_3" title="Permanent link"> </a></h4>
-<p>Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0</p>
-<h3 id="_4"><a class="headerlink" href="#_4" title="Permanent link"> </a></h3>
-<h3 id="for">for循环变量在外部的状态<a class="headerlink" href="#for" title="Permanent link"> </a></h3>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<h3 id="_1">背景<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<p>由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了<a href="https://github.com/spf13/spf13-vim">spf13-vim</a>这个好东西，当然是赶紧装上体验一番啦！</p>
+<h3 id="_2">准备<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<p>spf13-vim需要vim with&nbsp;lua，因为它有些插件是用lua编写的。</p>
+<p>查看是否支持lua</p>
+<div class="highlight"><pre><span></span>vim --version <span class="p">|</span> <span class="k">if</span> grep <span class="s2">&quot;+lua&quot;</span> <span class="p">&amp;;</span><span class="k">then</span> <span class="o">{</span><span class="nb">echo</span> <span class="s2">&quot;Vim with lua&quot;</span><span class="o">}</span><span class="p">;</span><span class="k">else</span> <span class="o">{</span><span class="nb">echo</span> <span class="s2">&quot;Vim witho</span>
+<span class="s2">ut lua&quot;</span><span class="o">}</span>
 </pre></div>
 
 
-<p>看上去会抛出异常，然而事实上它运作正常。</p>
-<p>我们用前置知识去解释它：</p>
-<p>首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。</p>
-<p>因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。</p>
+<p>如果不支持需要安装<code>vim-nox</code>（安装什么取决于你的图形环境：<a href="https://github.com/Shougo/neocomplete.vim#debian-or-ubuntu">详情</a>）</p>
+<div class="highlight"><pre><span></span>apt-get install vim-nox
+</pre></div>
+
+
+<h3 id="_3">安装<a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
+<p>根据官方文档直接安装</p>
+<div class="highlight"><pre><span></span>curl https://j.mp/spf13-vim3 -L &gt; spf13-vim.sh <span class="o">&amp;&amp;</span> sh spf13-vim.sh
+</pre></div>
+
+
+<p>历时比较久，需要耐心等待，中间有几个插件会安装失败，属于正常行为。</p>
+<p>安装失败的插件可以在Vundle中继续安装。在Vim的底命令模式下输入<code>PluginInstall</code>随后会逐个更新（或安装）预设的插件。</p>
         </div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">

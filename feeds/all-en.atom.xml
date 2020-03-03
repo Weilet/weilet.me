@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-02-25T22:25:00+08:00</updated><entry><title>谈谈Python中的for循环（1）</title><link href="https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89" rel="alternate"></link><published>2020-02-25T22:25:00+08:00</published><updated>2020-02-25T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-03T23:25:00+08:00</updated><entry><title>安装spf13-vim</title><link href="https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim" rel="alternate"></link><published>2020-03-03T23:25:00+08:00</published><updated>2020-03-03T23:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-03:/安装spf13-vim</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了&lt;a href="https://github.com/spf13/spf13-vim"&gt;spf13-vim&lt;/a&gt;这个好东西，当然是赶紧装上体验一番啦！&lt;/p&gt;
+&lt;h3 id="_2"&gt;准备&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;spf13-vim需要vim with&amp;nbsp;lua，因为它有些插件是用lua编写的。&lt;/p&gt;
+&lt;p&gt;查看是否支持lua&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim --version &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;+lua&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim with lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim witho&lt;/span&gt;
+&lt;span class="s2"&gt;ut lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果不支持需要安装&lt;code&gt;vim-nox&lt;/code&gt;（安装什么取决于你的图形环境：&lt;a href="https://github.com/Shougo/neocomplete.vim#debian-or-ubuntu"&gt;详情&lt;/a&gt;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install vim-nox
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_3"&gt;安装&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据官方文档直接安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl https …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了&lt;a href="https://github.com/spf13/spf13-vim"&gt;spf13-vim&lt;/a&gt;这个好东西，当然是赶紧装上体验一番啦！&lt;/p&gt;
+&lt;h3 id="_2"&gt;准备&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;spf13-vim需要vim with&amp;nbsp;lua，因为它有些插件是用lua编写的。&lt;/p&gt;
+&lt;p&gt;查看是否支持lua&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim --version &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;+lua&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim with lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim witho&lt;/span&gt;
+&lt;span class="s2"&gt;ut lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果不支持需要安装&lt;code&gt;vim-nox&lt;/code&gt;（安装什么取决于你的图形环境：&lt;a href="https://github.com/Shougo/neocomplete.vim#debian-or-ubuntu"&gt;详情&lt;/a&gt;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install vim-nox
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_3"&gt;安装&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据官方文档直接安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl https://j.mp/spf13-vim3 -L &amp;gt; spf13-vim.sh &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh spf13-vim.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;历时比较久，需要耐心等待，中间有几个插件会安装失败，属于正常行为。&lt;/p&gt;
+&lt;p&gt;安装失败的插件可以在Vundle中继续安装。在Vim的底命令模式下输入&lt;code&gt;PluginInstall&lt;/code&gt;随后会逐个更新（或安装）预设的插件。&lt;/p&gt;</content><category term="Tech"></category><category term="Linux"></category></entry><entry><title>谈谈Python中的for循环（2）</title><link href="https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89" rel="alternate"></link><published>2020-02-26T22:25:00+08:00</published><updated>2020-02-26T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-26:/谈谈Python中的for循环（2）</id><content type="html">&lt;blockquote&gt;
+&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;作用域&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。&lt;/p&gt;
+&lt;h4 id="legb"&gt;LEGB法则&lt;a class="headerlink" href="#legb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;python中变量的搜索按照以下路径进行：&lt;/p&gt;
+&lt;p&gt;本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing&amp;nbsp;locals）→全局/模块作用域（Global）→内置作用域（Built-in）&lt;/p&gt;
+&lt;h4 id="_3"&gt;引用计数机制&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0&lt;/p&gt;
+&lt;h3 id="_4"&gt;&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="for"&gt;for循环变量在外部的状态&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
+&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
+&lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
+&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>谈谈Python中的for循环（1）</title><link href="https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89" rel="alternate"></link><published>2020-02-25T22:25:00+08:00</published><updated>2020-02-25T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -55,30 +123,7 @@
 
 
 &lt;p&gt;代码段A即为代码段B（也就是一段for循环语句）的实现：&lt;/p&gt;
-&lt;p&gt;首先获取可迭代对象的迭代器对象，然后对迭代器对象不断地调用next()方法直到抛出StopIteration异常。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>谈谈Python中的for循环（2）</title><link href="https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89" rel="alternate"></link><published>2020-02-25T22:25:00+08:00</published><updated>2020-02-25T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-25:/谈谈Python中的for循环（2）</id><content type="html">&lt;blockquote&gt;
-&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;h4 id="_2"&gt;作用域&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。&lt;/p&gt;
-&lt;h4 id="legb"&gt;LEGB法则&lt;a class="headerlink" href="#legb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;python中变量的搜索按照以下路径进行：&lt;/p&gt;
-&lt;p&gt;本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing&amp;nbsp;locals）→全局/模块作用域（Global）→内置作用域（Built-in）&lt;/p&gt;
-&lt;h4 id="_3"&gt;引用计数机制&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0&lt;/p&gt;
-&lt;h3 id="_4"&gt;&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="for"&gt;for循环变量在外部的状态&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
-&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
-&lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
-&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>Windows Terminal折腾指南</title><link href="https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97" rel="alternate"></link><published>2020-02-14T22:25:00+08:00</published><updated>2020-02-14T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;首先获取可迭代对象的迭代器对象，然后对迭代器对象不断地调用next()方法直到抛出StopIteration异常。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>Windows Terminal折腾指南</title><link href="https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97" rel="alternate"></link><published>2020-02-14T22:25:00+08:00</published><updated>2020-02-14T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
@@ -1527,7 +1572,7 @@ R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作�
 
 
 &lt;hr /&gt;
-&lt;p&gt;目前用到的就这么多，日后用到更多的功能会更新此文。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category><category term="jinja2"></category></entry><entry><title>用Python，查快递</title><link href="https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92" rel="alternate"></link><published>2018-08-07T06:18:00+08:00</published><updated>2018-08-07T06:18:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-08-07:/用Python，查快递</id><summary type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;p&gt;目前用到的就这么多，日后用到更多的功能会更新此文。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category><category term="jinja2"></category></entry><entry><title>更换Centos安装源ate: 2018-09-17 06:09</title><link href="https://weilet.me/%E6%9B%B4%E6%8D%A2Centos%E5%AE%89%E8%A3%85%E6%BA%90" rel="alternate"></link><published>2018-09-17T00:00:00+08:00</published><updated>2018-09-17T00:00:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2018-09-17:/更换Centos安装源</id><content type="html"></content><category term="Tech"></category><category term="Linux"></category></entry><entry><title>用Python，查快递</title><link href="https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92" rel="alternate"></link><published>2018-08-07T06:18:00+08:00</published><updated>2018-08-07T06:18:00+08:00</updated><author><name>PwnForWhat</name></author><id>tag:weilet.me,2018-08-07:/用Python，查快递</id><summary type="html">&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
 &lt;span class="c1"&gt;# @Date:   2018-08-07 01:31:50&lt;/span&gt;
