@@ -5,28 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-03-04T00:27:52-00:00</lastmod>
+<lastmod>2020-03-10T23:07:20-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-03-04T00:27:52-00:00</lastmod>
+<lastmod>2020-03-10T23:07:20-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-03-04T00:27:52-00:00</lastmod>
+<lastmod>2020-03-10T23:07:20-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-03-04T00:27:52-00:00</lastmod>
+<lastmod>2020-03-10T23:07:20-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/Rust with WebAssembly</loc>
+<lastmod>2020-03-10T05:09:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -257,7 +264,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/category/Tech.html</loc>
-<lastmod>2020-03-03T23:25:00+08:06</lastmod>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -265,6 +272,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://weilet.me/category/Unboxing.html</loc>
 <lastmod>2020-02-07T19:42:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Rust.html</loc>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/wasm.html</loc>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -376,7 +397,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/author/weilet.html</loc>
-<lastmod>2020-03-03T23:25:00+08:06</lastmod>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

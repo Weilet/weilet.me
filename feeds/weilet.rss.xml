@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 03 Mar 2020 23:25:00 +0800</lastBuildDate><item><title>安装spf13-vim</title><link>https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim</link><description>&lt;blockquote&gt;
+<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 10 Mar 2020 05:09:00 +0800</lastBuildDate><item><title>Rust with WebAssembly</title><link>https://weilet.me/Rust%20with%20WebAssembly</link><description>&lt;blockquote&gt;
+&lt;p&gt;大人，时代变了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
+&lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="wasm-pack"&gt;安装wasm-pack&lt;a class="headerlink" href="#wasm-pack" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://rustwasm.github.io/wasm-pack/installer/"&gt;Rustwasm官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;流程&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;新建项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cargo new wasm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目录结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── Cargo.toml&lt;/span&gt;
+&lt;span class="err"&gt;└── src&lt;/span&gt;
+&lt;span class="err"&gt;    └── lib.rs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加依赖&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[dependencies]&lt;/span&gt;
+&lt;span class="n"&gt;wasm-bindgen …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 10 Mar 2020 05:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-10:/Rust with WebAssembly</guid><category>Tech</category><category>Rust</category><category>wasm</category></item><item><title>安装spf13-vim</title><link>https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim</link><description>&lt;blockquote&gt;
 &lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;

@@ -1,5 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-03T23:25:00+08:00</updated><entry><title>安装spf13-vim</title><link href="https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim" rel="alternate"></link><published>2020-03-03T23:25:00+08:00</published><updated>2020-03-03T23:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-03:/安装spf13-vim</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-10T05:09:00+08:00</updated><entry><title>Rust with WebAssembly</title><link href="https://weilet.me/Rust%20with%20WebAssembly" rel="alternate"></link><published>2020-03-10T05:09:00+08:00</published><updated>2020-03-10T05:09:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-10:/Rust with WebAssembly</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;大人，时代变了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
+&lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="wasm-pack"&gt;安装wasm-pack&lt;a class="headerlink" href="#wasm-pack" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://rustwasm.github.io/wasm-pack/installer/"&gt;Rustwasm官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;流程&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;新建项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cargo new wasm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目录结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── Cargo.toml&lt;/span&gt;
+&lt;span class="err"&gt;└── src&lt;/span&gt;
+&lt;span class="err"&gt;    └── lib.rs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加依赖&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[dependencies]&lt;/span&gt;
+&lt;span class="n"&gt;wasm-bindgen …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;大人，时代变了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
+&lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="wasm-pack"&gt;安装wasm-pack&lt;a class="headerlink" href="#wasm-pack" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://rustwasm.github.io/wasm-pack/installer/"&gt;Rustwasm官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;流程&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;新建项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cargo new wasm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目录结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── Cargo.toml&lt;/span&gt;
+&lt;span class="err"&gt;└── src&lt;/span&gt;
+&lt;span class="err"&gt;    └── lib.rs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加依赖&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[dependencies]&lt;/span&gt;
+&lt;span class="n"&gt;wasm-bindgen&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0.2.48&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;update一下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cargo update&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;编写Rust代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// lib.rs&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;wasm_bindgen&lt;/span&gt;::&lt;span class="n"&gt;prelude&lt;/span&gt;::&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;#[wasm_bindgen]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;pub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;fn&lt;/span&gt; &lt;span class="nf"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;: &lt;span class="kt"&gt;u32&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-&amp;gt; &lt;span class="kt"&gt;u32&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;match&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;编译Rust代码为WebAssembly&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;wasm-pack build --no-typescript --target web --mode normal   &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;生成在pkg目录&lt;/p&gt;
+&lt;p&gt;目录结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── wasm.js&lt;/span&gt;
+&lt;span class="err"&gt;└── wasm_bg.wasm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;编写html文件调用wasm&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;module&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+  &lt;span class="nx"&gt;async&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;wasm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="kr"&gt;import&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/pkg/wasm.js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;wasm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/pkg/wasm_bg.wasm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wasm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果成功，你将在Chrome的console中看到答案。&lt;/p&gt;
+&lt;h3 id="why-wasm-faster"&gt;Why wasm faster?&lt;a class="headerlink" href="#why-wasm-faster" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;可参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://developer.mozilla.org/zh-CN/docs/WebAssembly/Concepts#WebAssembly%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"&gt;mozilla官网介绍&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="[https://hasaki.xyz/blog/2019-07-20-%E4%BD%BF%E7%94%A8-rust-%E7%BC%96%E5%86%99-webassembly-/](https://hasaki.xyz/blog/2019-07-20-使用-rust-编写-webassembly-/)"&gt;Tom’s&amp;nbsp;zone博客&lt;/a&gt;&lt;/p&gt;</content><category term="Tech"></category><category term="Rust"></category><category term="wasm"></category></entry><entry><title>安装spf13-vim</title><link href="https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim" rel="alternate"></link><published>2020-03-03T23:25:00+08:00</published><updated>2020-03-03T23:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-03:/安装spf13-vim</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -220,7 +332,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;将上面的文本另存为注册表项(后缀为.reg)，点击添加即可&lt;/p&gt;
+&lt;p&gt;将上面的文本另存为注册表项(后缀为.reg)，点击添加即可（现在你可以在这里下载&lt;a href="https://github.com/python-zen-place/open-terminal-here"&gt;脚本&lt;/a&gt;来配置）&lt;/p&gt;
 &lt;p&gt;另外，在配置文件中的“startingDirectory”决定了你&lt;strong&gt;新增&lt;/strong&gt;Tab的路径，你可以将它的值设置为“.”以保证新增的Tab的路径也是当前工作路径。&lt;/p&gt;</content><category term="Tech"></category><category term="Windows"></category><category term="Terminal"></category></entry><entry><title>新的钢笔</title><link href="https://weilet.me/%E6%96%B0%E7%9A%84%E9%92%A2%E7%AC%94" rel="alternate"></link><published>2020-02-07T19:42:00+08:00</published><updated>2020-02-07T19:42:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-07:/新的钢笔</id><content type="html">&lt;blockquote&gt;
 &lt;p&gt;年前朋友送了一支凌美演绎，用到现在也快两周了，说说体验。&lt;/p&gt;
 &lt;/blockquote&gt;
