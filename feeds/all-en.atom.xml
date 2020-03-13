@@ -1,11 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-10T05:09:00+08:00</updated><entry><title>Rust with WebAssembly</title><link href="https://weilet.me/Rust%20with%20WebAssembly" rel="alternate"></link><published>2020-03-10T05:09:00+08:00</published><updated>2020-03-10T05:09:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-10:/Rust with WebAssembly</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-13T22:20:00+08:00</updated><entry><title>网站适配暗色模式</title><link href="https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F" rel="alternate"></link><published>2020-03-13T22:20:00+08:00</published><updated>2020-03-13T22:20:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-13:/网站适配暗色模式</id><summary type="html">&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
+&lt;h3 id="-javascript"&gt;方案一 - JavaScript实现&lt;a class="headerlink" href="#-javascript" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这是俺最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;border-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;border-bottom-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#303030&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="nt"&gt;h2&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#ccc&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这些样式都是 .dark&amp;nbsp;元素的子元素。&lt;/p&gt;
+&lt;p&gt;随后利用JavaScript判断时间，在&lt;strong&gt;俺认为&lt;/strong&gt;需要暗色模式的时间为 body 添加 .dark 的&amp;nbsp;class …&lt;/p&gt;</summary><content type="html">&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
+&lt;h3 id="-javascript"&gt;方案一 - JavaScript实现&lt;a class="headerlink" href="#-javascript" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这是俺最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;border-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;border-bottom-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#303030&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="nt"&gt;h2&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#ccc&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这些样式都是 .dark&amp;nbsp;元素的子元素。&lt;/p&gt;
+&lt;p&gt;随后利用JavaScript判断时间，在&lt;strong&gt;俺认为&lt;/strong&gt;需要暗色模式的时间为 body 添加 .dark 的&amp;nbsp;class&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt; &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;nowHour&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;()).&lt;/span&gt;&lt;span class="nx"&gt;getHours&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;nowHour&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;17&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nx"&gt;nowHour&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;addClass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dark&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;实施上，你可以写得更好（如使用日落日出时间来更改暗色模式）。&lt;/p&gt;
+&lt;p&gt;这样实现起来还算方便，但缺点也不少。首先，暗色模式的启用的判断是以加载页面时的时间判断的。也就是说，如果你在晚上打开俺的博客并放到翌日早上，它的样式仍旧是暗色的；其次，因为是在加载的时候判断，所以在网络速度慢的情况下，会完整地看到从浅色样式&lt;strong&gt;变&lt;/strong&gt;为暗色样式的过程，俗称“闪瞎眼”。&lt;/p&gt;
+&lt;h3 id="-"&gt;方案二 - 媒体查询&lt;a class="headerlink" href="#-" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这个也是俺现在用的方案。通过 &lt;a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme"&gt;prefers-color-scheme&lt;/a&gt;&amp;nbsp;来切换样式。&lt;/p&gt;
+&lt;p&gt;prefers-color-scheme&amp;nbsp;媒体查询有三种结果：未指定、浅色、和暗色。&lt;/p&gt;
+&lt;p&gt;在实现的过程中，可以未指定和浅色合并，作为默认样式，然后为暗色模式编写另一套样式。&lt;/p&gt;
+&lt;p&gt;这个方案编写的样式文件大概长这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/* 浅色样式 */&lt;/span&gt;
+
+&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;media&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;prefers-color-scheme&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;dark&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c"&gt;/* 暗色样式 */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方案二完美解决了方案一的痛点，唯一的不足就是由于 prefers-color-scheme 是个比较新的属性（chrome&amp;nbsp;76才开始支持），所以老旧的浏览器可能不支持（谁要支持IE这个老古董呢？）&lt;/p&gt;</content><category term="Tech"></category><category term="Interaction"></category><category term="Front end"></category></entry><entry><title>Rust with WebAssembly</title><link href="https://weilet.me/Rust%20with%20WebAssembly" rel="alternate"></link><published>2020-03-10T05:09:00+08:00</published><updated>2020-03-10T05:09:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-10:/Rust with WebAssembly</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;大人，时代变了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
 &lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;p&gt;俺在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
 &lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
@@ -33,7 +100,7 @@
 &lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
 &lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;p&gt;俺在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
 &lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
