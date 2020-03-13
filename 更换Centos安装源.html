@@ -83,10 +83,10 @@
 <div id="gitalk-container"></div>
 <script type="text/javascript">
 var gitalk = new Gitalk({
-	clientID: '156774f08ace665cde88',
-	clientSecret: 'c5493bd3bb6cccff1313f145801c180300471f72',
-	repo: 'weilet.github.io',
-	owner: 'Weilet',
+	clientID: "156774f08ace665cde88",
+	clientSecret: "c5493bd3bb6cccff1313f145801c180300471f72",
+	repo: "weilet.github.io",
+	owner: "Weilet",
 	admin: ['Weilet'],
 	id: md5(location.pathname),
 	distractionFreeMode: false
@@ -146,48 +146,49 @@ var headers = 'h3, h4',
     border: 1px solid #fefbd8;
 }
 
-.dark .highlight .btn-copy {
-    background: #001f29 !important;
-    border: 1px solid #002733;
-}
 
 .highlight img {
     width: 13px;
 }
 
-.dark .highlight img {
-    filter: invert(1);
+@media (prefers-color-scheme: dark) {
+    .highlight img {
+        filter: invert(1);
+    }
+    .highlight .btn-copy {
+        background: #001f29 !important;
+        border: 1px solid #002733;
+    }
 }
 </style>
-
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
 <script type="text/javascript">
-!function (e, t, a) { 
-  var initCopyCode = function(){
-    var copyHtml = '';
-    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
-    copyHtml += '</button>';
-    $(".highlight pre").before(copyHtml);
-    clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-            return trigger.nextElementSibling;
-        }
+! function(e, t, a) {
+    var initCopyCode = function() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
+        copyHtml += '</button>';
+        $(".highlight pre").before(copyHtml);
+        clipboard = new ClipboardJS('.btn-copy', {
+            target: function(trigger) {
+                return trigger.nextElementSibling;
+            }
+        });
+    }
+    initCopyCode();
+    clipboard.on("success", function(e) {
+        e.clearSelection();
     });
-  }
-  initCopyCode();
-  clipboard.on("success",function(e){
-    e.clearSelection();
-  });
-  $btn = $('.btn-copy');
-  $btn.on('click', function(e) {
-    $img = $(this).children('img')
-    $img.attr('src', 'theme/images/tick.svg'); 
-    setTimeout(function (){
-        console.log("复制成功");
-        $img.attr('src', 'theme/images/clippy.svg');
-    }, 300);       
-  });
+    $btn = $('.btn-copy');
+    $btn.on('click', function(e) {
+        $img = $(this).children('img')
+        $img.attr('src', 'theme/images/tick.svg');
+        setTimeout(function() {
+            console.log("复制成功");
+            $img.attr('src', 'theme/images/clippy.svg');
+        }, 300);
+    });
 }(window, document);
 </script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
@@ -206,52 +207,47 @@ var headers = 'h3, h4',
     border: 2px solid #000;
 }
 
-.dark .back-to-top {
-    background: #202020;
-    border: 2px solid #b3b9c5;
-}
-
 .back-to-top:hover {
     cursor: pointer;
     background: #f2f2f2;
 }
 
-.dark .back-to-top:hover {
-    background: #303030;
+@media (prefers-color-scheme: dark) {
+    .back-to-top {
+        background: #202020;
+        border: 2px solid #b3b9c5;
+    }
+
+    .back-to-top:hover {
+        cursor: pointer;
+        background: #303030;
+    }
 }
 </style>
-
 <div class="back-to-top">Top</div>
-
 <script type="text/javascript">
 var $backToTop = $(".back-to-top");
 $backToTop.hide();
 
 $(window).on('scroll', function() {
-    if ($(this).width() >= 1218 ){
+    if ($(this).width() >= 1218) {
         if ($(this).scrollTop() > 100) {
             $backToTop.fadeIn();
         } else {
             $backToTop.fadeOut();
-        } 
+        }
     } else {
         $backToTop.hide();
-    }  
+    }
 });
 
 $(window).on('resize', function() {
-    if ($(this).width() < 1218 ) {
+    if ($(this).width() < 1218) {
         $backToTop.fadeOut();
-    } 
+    }
 });
 
 $backToTop.on('click', function(e) {
     $("html, body").animate({ scrollTop: 0 }, 500);
 });
-</script>
-<script type="text/javascript">
-	var nowHour = (new Date()).getHours()
-	if (nowHour > 17 || nowHour < 4) {
-		$('body').addClass('dark')
-	}
 </script></html>
