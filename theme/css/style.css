@@ -1,4 +1,4 @@
-;html {
+html {
     box-sizing: border-box
 }
 
@@ -163,6 +163,10 @@ h5 {
     h5 {
         font-size: 1.3rem
     }
+}
+
+*:focus {
+    outline: none;
 }
 
 ul {
