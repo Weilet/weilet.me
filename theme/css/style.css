@@ -2125,17 +2125,22 @@ pre code {
 
     body{
         background: #202020;
-        color: #b3b9c5
+        color: #b3b9c5;
     }
 
     .lead h1 {
-        color: #b3b9c5
+        color: #b3b9c5;
     }
 
     a {
-        color: #81a5f8
+        color: #81a5f8;
     }
-
+    .comment-link {
+        color: #81a5f8 !important;
+    }
+    .comment-link:hover {
+        color: #477cf4 !important;
+    }
     a:hover,
     a:active,
     a:focus {
@@ -2176,7 +2181,7 @@ pre code {
     .page a:not(.button):not(.anchor):not(.gatsby-resp-image-link):active,
     .page a:not(.button):not(.anchor):not(.gatsby-resp-image-link):focus {
         background: 0 0;
-        border-bottom: 2px dashed #81a5f8
+        border-bottom: 2px dashed #81a5f8;
     }
 
     .post img,
@@ -2192,38 +2197,38 @@ pre code {
 
     .nav {
         background: #202020;
-        border-color: #202020
+        border-color: #202020;
     }
 
     .nav.scroll {
         background: #131313;
-        border-color: #131313
+        border-color: #131313;
     }
 
     .nav .brand a {
-        color: #c1c6d0
+        color: #c1c6d0;
     }
 
     .nav .brand a:hover {
-        color: #eee
+        color: #eee;
     }
 
     .nav .links a {
-        color: #798499
+        color: #798499;
     }
 
     .nav .links a:hover,
     .nav .links a.active {
-        color: #b3b9c5
+        color: #b3b9c5;
     }
 
     .note {
         background: 0 0;
-        border-color: transparent
+        border-color: transparent;
     }
 
     .note .note-container {
-        background: #131313
+        background: #131313;
     }
 
     p,
