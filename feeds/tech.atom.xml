@@ -1,5 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Tech</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/tech.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-03-13T22:20:00+08:00</updated><entry><title>网站适配暗色模式</title><link href="https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F" rel="alternate"></link><published>2020-03-13T22:20:00+08:00</published><updated>2020-03-13T22:20:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-13:/网站适配暗色模式</id><summary type="html">&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Tech</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/tech.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-04-08T01:27:00+08:00</updated><entry><title>学会阅读源码</title><link href="https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81" rel="alternate"></link><published>2020-04-08T01:27:00+08:00</published><updated>2020-04-08T01:27:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-04-08:/学会阅读源码</id><summary type="html">&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
+&lt;p&gt;是在聊天群组里提问，然后被插科打诨，忘记自己的目标？&lt;/p&gt;
+&lt;p&gt;还是自食其力，选择面向搜索引擎，费九牛二虎之力解决？&lt;/p&gt;
+&lt;p&gt;自食其力是好事，然而面对开源项目时，直奔它的文档或者源代码是个缩小范围的好主意。&lt;/p&gt;
+&lt;h3 id="_1"&gt;例子一&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Linux 课上老师提到了 umask ，它是创建文件和文件夹时需要额外减去的权限值，在 Unix&amp;nbsp;下为022（WSL为000）课后有同学提出，按照老师的方法并不能得出答案。&lt;/p&gt;
+&lt;p&gt;那么正确的计算是什么呢？答案在 linux&amp;nbsp;源码中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from dir.c &lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;fc&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dont_mask&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;=&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from fs_struct.c&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;umask&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从代码可以看出，mode 是 &lt;code&gt;&amp;amp;&lt;/code&gt; 上 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
+&lt;p&gt;是在聊天群组里提问，然后被插科打诨，忘记自己的目标？&lt;/p&gt;
+&lt;p&gt;还是自食其力，选择面向搜索引擎，费九牛二虎之力解决？&lt;/p&gt;
+&lt;p&gt;自食其力是好事，然而面对开源项目时，直奔它的文档或者源代码是个缩小范围的好主意。&lt;/p&gt;
+&lt;h3 id="_1"&gt;例子一&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Linux 课上老师提到了 umask ，它是创建文件和文件夹时需要额外减去的权限值，在 Unix&amp;nbsp;下为022（WSL为000）课后有同学提出，按照老师的方法并不能得出答案。&lt;/p&gt;
+&lt;p&gt;那么正确的计算是什么呢？答案在 linux&amp;nbsp;源码中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from dir.c &lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;fc&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dont_mask&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;=&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from fs_struct.c&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;umask&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从代码可以看出，mode 是 &lt;code&gt;&amp;amp;&lt;/code&gt; 上 &lt;code&gt;~umask&lt;/code&gt; 得到的。&lt;/p&gt;
+&lt;h3 id="2"&gt;例子2&lt;a class="headerlink" href="#2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Wox 是一个 Windows 下的启动器，用户可以使用 Python&amp;nbsp;来为其编写插件。&lt;/p&gt;
+&lt;p&gt;由于 Wox 属于相对小众的应用，所以网上编写插件的例子不多。Python 开发的插件其实需要利用到 Wox&amp;nbsp;提供的几个接口，并且它们没有写在文档里面。&lt;/p&gt;
+&lt;p&gt;这时需要通过阅读 Wox.py&amp;nbsp;来了解实现：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# snippet from Wox.py&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Wox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Wox python plugin base&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;rpc_request&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loads&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="c1"&gt;# proxy is not working now&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;proxy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rpc_request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;proxy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,{})&lt;/span&gt;
+        &lt;span class="n"&gt;request_method_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rpc_request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;method&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;request_parameters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rpc_request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;parameters&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;methods&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inspect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getmembers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;predicate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;inspect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ismethod&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;request_method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="n"&gt;request_method_name&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request_method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;request_parameters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request_method_name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;query&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;request_method_name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;context_menu&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="p"&gt;}))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从 Wox.py 的 Wox 类可以了解到是 rpc 请求，进一步查看 C#&amp;nbsp;代码检查提供的接口：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nn"&gt;Wox.Plugin&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+    &lt;span class="c1"&gt;/// Public APIs that plugin can use&lt;/span&gt;
+    &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;interface&lt;/span&gt; &lt;span class="n"&gt;IPublicAPI&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Push result to query box&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;query&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;plugin&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;results&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete(&amp;quot;This method will be removed in Wox 1.3&amp;quot;)]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;PushResults&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Query&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PluginMetadata&lt;/span&gt; &lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Result&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Change Wox query&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;query&amp;quot;&amp;gt;query text&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;requery&amp;quot;&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// force requery By default, Wox will not fire query if your query is same with existing one. &lt;/span&gt;
+        &lt;span class="c1"&gt;/// Set this to true to force Wox requerying&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;ChangeQuery&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;requery&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Just change the query text, this won&amp;#39;t raise search&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;query&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;ChangeQueryText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="n"&gt;selectAll&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="k"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Close Wox&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;CloseApp&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Restart Wox&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;RestarApp&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Hide Wox&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;HideApp&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Show Wox&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;ShowApp&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Show message box&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;title&amp;quot;&amp;gt;Message title&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;subTitle&amp;quot;&amp;gt;Message subtitle&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;iconPath&amp;quot;&amp;gt;Message icon path (relative path to your plugin folder)&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;ShowMsg&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;subTitle&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;iconPath&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Open setting dialog&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;OpenSettingDialog&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Show loading animation&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete(&amp;quot;automatically start&amp;quot;)]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;StartLoadingBar&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Stop loading animation&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;        [Obsolete(&amp;quot;automatically stop&amp;quot;)]&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;StopLoadingBar&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Install Wox plugin&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;path&amp;quot;&amp;gt;Plugin path (ends with .wox)&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;InstallPlugin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Get translation of current language&lt;/span&gt;
+        &lt;span class="c1"&gt;/// You need to implement IPluginI18n if you want to support multiple languages for your plugin&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;param name=&amp;quot;key&amp;quot;&amp;gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+        &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="nf"&gt;GetTranslation&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Get all loaded plugins &lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;returns&amp;gt;&amp;lt;/returns&amp;gt;&lt;/span&gt;
+        &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;PluginPair&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;GetAllPlugins&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="c1"&gt;/// &amp;lt;summary&amp;gt;&lt;/span&gt;
+        &lt;span class="c1"&gt;/// Fired after global keyboard events&lt;/span&gt;
+        &lt;span class="c1"&gt;/// if you want to hook something like Ctrl+R, you should use this event&lt;/span&gt;
+        &lt;span class="c1"&gt;/// &amp;lt;/summary&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;event&lt;/span&gt; &lt;span class="n"&gt;WoxGlobalKeyboardEventHandler&lt;/span&gt; &lt;span class="n"&gt;GlobalKeyboardEvent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因此，除了使用好搜索引擎，学会阅读源码也是一个开发人员必备的本领。&lt;/p&gt;</content><category term="Tech"></category></entry><entry><title>网站适配暗色模式</title><link href="https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F" rel="alternate"></link><published>2020-03-13T22:20:00+08:00</published><updated>2020-03-13T22:20:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-03-13:/网站适配暗色模式</id><summary type="html">&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
 &lt;h3 id="-javascript"&gt;方案一 - JavaScript实现&lt;a class="headerlink" href="#-javascript" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;这是俺最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
