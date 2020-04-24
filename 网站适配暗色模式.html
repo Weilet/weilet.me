@@ -28,12 +28,14 @@
 <meta property="article:published_time" content="2020-03-13 22:20:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
 <meta name="twitter:card" content="起因 鉴于目前无论是 iOS 还是 Android 都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。 方案一 - JavaScript实现 这是俺最先想到的方案，首先为暗色模式编写一段样式，如： .dark .posts.simple a .each { border-color: transparent } .dark .posts a .each { border: 2px solid transparent; border-bottom-color: #303030 } .dark .posts a .each h2 { color: #ccc } 这些样式都是 .dark 元素的子元素。 随后利用JavaScript判断时间，在俺认为需要暗色模式的时间为 body 添加 .dark 的 class …" />
+
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
 <link rel="canonical" href="https://weilet.me/网站适配暗色模式"/>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 <body>
 <nav class="nav">
@@ -58,20 +60,14 @@
                 <h1>网站适配暗色模式</h1>
                 <div class="post-meta">
                     <time class="date">2020-03-13</time>
-                    /
-                    <span>
-                        <a href="/category/Tech.html" class="comment-link">
-                            Tech
-                        </a>
-                            ·
-                                <a href="/tag/Interaction.html" class="comment-link">
-                                Interaction
-                                </a>
-·                                <a href="/tag/Front end.html" class="comment-link">
-                                Front end
-                                </a>
-                        
-                    </span>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Interaction.html">
+                        <span>Interaction</span>
+                    </a>
+                    <a style="text-decoration:none" href="tag/Front end.html">
+                        <span>Front end</span>
+                    </a>
                 </div>
             </div>
         </header>
@@ -124,179 +120,11 @@
 
 <p>方案二完美解决了方案一的痛点，唯一的不足就是由于 prefers-color-scheme 是个比较新的属性（chrome&nbsp;76才开始支持），所以老旧的浏览器可能不支持（谁要支持IE这个老古董呢？）</p>
         </div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-var gitalk = new Gitalk({
-	clientID: "156774f08ace665cde88",
-	clientSecret: "c5493bd3bb6cccff1313f145801c180300471f72",
-	repo: "weilet.github.io",
-	owner: "Weilet",
-	admin: ['Weilet'],
-	id: md5(location.pathname),
-	distractionFreeMode: false
-})
-gitalk.render('gitalk-container')
-</script>    </article>
-<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
-<style type="text/css">
-  .toc {
-    position:fixed !important;
-    font-weight: normal;
-    font-size: 1.2rem;
-    top:20%;
-    right:0;
-    width: 15%;	    
-    margin: 0 2em 1em 1em;	    
-  }
-  .is-active-link::before {
-    background-color: #5183f5;
-  }
-  @media (max-width: 1217px) {
-    .toc {
-      display: none;
-    }
-  }
-</style>
-<div class="toc"></div>
-<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
-<script type="text/javascript">
-var headers = 'h3, h4',
-  content = '.single',
-  idArr = {}; 
-  tocbot.init({
-    tocSelector: '.toc',
-    contentSelector: content,
-    headingSelector: headers,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    headingsOffset: 100
-  });
-  $(document).on('pjax:send',function(){
-  if ($('.toc').length) tocbot.destroy();
-})
-
-  $(document).on('pjax:complete',function(){
-  toc.init(tocOptions);
-})
-</script></main>
-<style type="text/css">
-.highlight .btn-copy {
-    position: relative;
-    display: inline-block;
-    float: right;
-    padding: 6px 12px;
-    margin-top: 1%;
-    background: #fefbd8;
-    border: 1px solid #fefbd8;
-}
-
-
-.highlight img {
-    width: 13px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .highlight img {
-        filter: invert(1);
-    }
-    .highlight .btn-copy {
-        background: #001f29 !important;
-        border: 1px solid #002733;
-    }
-}
-</style>
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-<script type="text/javascript">
-! function(e, t, a) {
-    var initCopyCode = function() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
-        copyHtml += '</button>';
-        $(".highlight pre").before(copyHtml);
-        clipboard = new ClipboardJS('.btn-copy', {
-            target: function(trigger) {
-                return trigger.nextElementSibling;
-            }
-        });
-    }
-    initCopyCode();
-    clipboard.on("success", function(e) {
-        e.clearSelection();
-    });
-    $btn = $('.btn-copy');
-    $btn.on('click', function(e) {
-        $img = $(this).children('img')
-        $img.attr('src', 'theme/images/tick.svg');
-        setTimeout(function() {
-            console.log("复制成功");
-            $img.attr('src', 'theme/images/clippy.svg');
-        }, 300);
-    });
-}(window, document);
-</script><footer class="footer container">
+    </article>
+</main>
+<footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-<style type="text/css">
-.back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 0 2em 2.5em 1em;
-    background: #fff;
-    border: 2px solid #000;
-}
-
-.back-to-top:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-}
-
-@media (prefers-color-scheme: dark) {
-    .back-to-top {
-        background: #202020;
-        border: 2px solid #b3b9c5;
-    }
-
-    .back-to-top:hover {
-        cursor: pointer;
-        background: #303030;
-    }
-}
-</style>
-<div class="back-to-top">Top</div>
-<script type="text/javascript">
-var $backToTop = $(".back-to-top");
-$backToTop.hide();
-
-$(window).on('scroll', function() {
-    if ($(this).width() >= 1218) {
-        if ($(this).scrollTop() > 100) {
-            $backToTop.fadeIn();
-        } else {
-            $backToTop.fadeOut();
-        }
-    } else {
-        $backToTop.hide();
-    }
-});
-
-$(window).on('resize', function() {
-    if ($(this).width() < 1218) {
-        $backToTop.fadeOut();
-    }
-});
-
-$backToTop.on('click', function(e) {
-    $("html, body").animate({ scrollTop: 0 }, 500);
-});
-</script></html>
+</html>

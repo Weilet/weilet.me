@@ -28,12 +28,14 @@
 <meta property="article:published_time" content="2019-10-25 18:17:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
 <meta name="twitter:card" content="C++的内存管理太难了 ——鲁迅 基类析构函数为非virtual 基类的析构函数如果是非virtual的，那么上转型时，基类的析构函数不会被覆盖。这样子，属于子类的部分在析构时就不会会删除，导致内存泄漏。 依赖用户释放对象 依赖用户使用delete来释放内存，如果在释放过程前抛出异常，那么这部分的内存就不会被释放，导致内存泄漏。 一个足够鲁棒的做法是，返回一个shared_ptr来管理原生对象。shared_ptr是个神奇的玩意，但你记得要为对象创建合适的shared_ptr。 New 和 Delete 不对称 New 一组对象，却只delete一个对象，这样不内存泄漏真的没天理 未定义复制构造函数而成员中有指针变量 这会导致调用默认复制构造函数然后使得同一个地址被两个指针所指（复制和被复制对象的指针变量），导致同一位置的内存被释放两次。 你以为大家看不出这是《effective C++》的书摘吗?" />
+
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
 <link rel="canonical" href="https://weilet.me/CPP内存泄漏"/>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 <body>
 <nav class="nav">
@@ -58,20 +60,14 @@
                 <h1>CPP内存泄漏</h1>
                 <div class="post-meta">
                     <time class="date">2019-10-25</time>
-                    /
-                    <span>
-                        <a href="/category/Tech.html" class="comment-link">
-                            Tech
-                        </a>
-                            ·
-                                <a href="/tag/C.html" class="comment-link">
-                                C
-                                </a>
-·                                <a href="/tag/CPP.html" class="comment-link">
-                                CPP
-                                </a>
-                        
-                    </span>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/C.html">
+                        <span>C</span>
+                    </a>
+                    <a style="text-decoration:none" href="tag/CPP.html">
+                        <span>CPP</span>
+                    </a>
                 </div>
             </div>
         </header>
@@ -93,179 +89,11 @@
 <p>你以为大家看不出这是《effective&nbsp;C++》的书摘吗?</p>
 </blockquote>
         </div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-var gitalk = new Gitalk({
-	clientID: "156774f08ace665cde88",
-	clientSecret: "c5493bd3bb6cccff1313f145801c180300471f72",
-	repo: "weilet.github.io",
-	owner: "Weilet",
-	admin: ['Weilet'],
-	id: md5(location.pathname),
-	distractionFreeMode: false
-})
-gitalk.render('gitalk-container')
-</script>    </article>
-<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
-<style type="text/css">
-  .toc {
-    position:fixed !important;
-    font-weight: normal;
-    font-size: 1.2rem;
-    top:20%;
-    right:0;
-    width: 15%;	    
-    margin: 0 2em 1em 1em;	    
-  }
-  .is-active-link::before {
-    background-color: #5183f5;
-  }
-  @media (max-width: 1217px) {
-    .toc {
-      display: none;
-    }
-  }
-</style>
-<div class="toc"></div>
-<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
-<script type="text/javascript">
-var headers = 'h3, h4',
-  content = '.single',
-  idArr = {}; 
-  tocbot.init({
-    tocSelector: '.toc',
-    contentSelector: content,
-    headingSelector: headers,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    headingsOffset: 100
-  });
-  $(document).on('pjax:send',function(){
-  if ($('.toc').length) tocbot.destroy();
-})
-
-  $(document).on('pjax:complete',function(){
-  toc.init(tocOptions);
-})
-</script></main>
-<style type="text/css">
-.highlight .btn-copy {
-    position: relative;
-    display: inline-block;
-    float: right;
-    padding: 6px 12px;
-    margin-top: 1%;
-    background: #fefbd8;
-    border: 1px solid #fefbd8;
-}
-
-
-.highlight img {
-    width: 13px;
-}
-
-@media (prefers-color-scheme: dark) {
-    .highlight img {
-        filter: invert(1);
-    }
-    .highlight .btn-copy {
-        background: #001f29 !important;
-        border: 1px solid #002733;
-    }
-}
-</style>
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-<script type="text/javascript">
-! function(e, t, a) {
-    var initCopyCode = function() {
-        var copyHtml = '';
-        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-        copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
-        copyHtml += '</button>';
-        $(".highlight pre").before(copyHtml);
-        clipboard = new ClipboardJS('.btn-copy', {
-            target: function(trigger) {
-                return trigger.nextElementSibling;
-            }
-        });
-    }
-    initCopyCode();
-    clipboard.on("success", function(e) {
-        e.clearSelection();
-    });
-    $btn = $('.btn-copy');
-    $btn.on('click', function(e) {
-        $img = $(this).children('img')
-        $img.attr('src', 'theme/images/tick.svg');
-        setTimeout(function() {
-            console.log("复制成功");
-            $img.attr('src', 'theme/images/clippy.svg');
-        }, 300);
-    });
-}(window, document);
-</script><footer class="footer container">
+    </article>
+</main>
+<footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-<style type="text/css">
-.back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 0 2em 2.5em 1em;
-    background: #fff;
-    border: 2px solid #000;
-}
-
-.back-to-top:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-}
-
-@media (prefers-color-scheme: dark) {
-    .back-to-top {
-        background: #202020;
-        border: 2px solid #b3b9c5;
-    }
-
-    .back-to-top:hover {
-        cursor: pointer;
-        background: #303030;
-    }
-}
-</style>
-<div class="back-to-top">Top</div>
-<script type="text/javascript">
-var $backToTop = $(".back-to-top");
-$backToTop.hide();
-
-$(window).on('scroll', function() {
-    if ($(this).width() >= 1218) {
-        if ($(this).scrollTop() > 100) {
-            $backToTop.fadeIn();
-        } else {
-            $backToTop.fadeOut();
-        }
-    } else {
-        $backToTop.hide();
-    }
-});
-
-$(window).on('resize', function() {
-    if ($(this).width() < 1218) {
-        $backToTop.fadeOut();
-    }
-});
-
-$backToTop.on('click', function(e) {
-    $("html, body").animate({ scrollTop: 0 }, 500);
-});
-</script></html>
+</html>

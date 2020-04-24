@@ -1,13 +1,33 @@
 /* Solarized Light Theme for code snippets */
-.highlight,
 pre {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    line-height: 1.7em;
+    font-size: 14px;
+    padding: 1.6em;
+    margin: 2em 0px 3.2em;
     background-color: #fdf6e3;
     color: #586e75;
 }
 
-.highlight {
-    padding: 0 1%;
-    overflow: auto;
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+    pre {
+        word-break: break-all;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        overflow-x: auto;
+        font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+        line-height: 1.7em;
+        font-size: 14px;
+        padding: 1.6em;
+        margin: 2em 0px 3.2em;
+        background-color: #002733;
+        color: #586e75;
+    }
 }
 
 .highlight .c {
@@ -353,11 +373,3 @@ pre {
 
 /* Literal.Number.Integer.Long */
 
-/* dark mode */
-@media (prefers-color-scheme: dark) {
-    .highlight,
-    pre {
-        background-color: #002733;
-        color: #586e75;
-    }
-}

@@ -24,11 +24,13 @@
 <meta name="og:description" content="A Pelican blog I use to write down something about coding, product unboxing and gaming"/>
 <!-- End of OpenGraph protocol tags -->
 <meta name="twitter:card" content="A Pelican blog I use to write down something about coding, product unboxing and gaming"/>
+
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 <body>
 <nav class="nav">
@@ -49,9 +51,7 @@
 <main id="main-content">
     <div class="container">
         <h1>所有文章</h1>
-<div class="search-container"><input class="search" id="searchTerm" type="text" name="searchTerm" placeholder="在此输入以过滤..." data-com.onepassword.iv="" oninput="search()"></div>        <div class="time-line">
-            <h1 id="2020">2020</h1>
-            <section class="posts">
+<div class="search-container"><input class="search" id="searchTerm" type="text" name="searchTerm" placeholder="在此输入以过滤..." data-com.onepassword.iv="" oninput="search()"></div>            <section class="posts">
                 <a href="/学会阅读源码">
                     <div class="each">
                         <div>
@@ -141,7 +141,6 @@
                     </div>
                 </a>
             </section>
-            <h1 id="2019">2019</h1>
             <section class="posts">
                 <a href="/CPP内存泄漏">
                     <div class="each">
@@ -312,7 +311,6 @@
                     </div>
                 </a>
             </section>
-            <h1 id="2018">2018</h1>
             <section class="posts">
                 <a href="/jinja2模板引擎学习总结">
                     <div class="each">
@@ -334,6 +332,16 @@
                 </a>
             </section>
             <section class="posts">
+                <a href="/用Python，查快递">
+                    <div class="each">
+                        <div>
+                            <h2>用Python，查快递</h2>
+                            <div class="excerpt">2018-08-07</div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="posts">
                 <a href="/用crontab配置定时任务">
                     <div class="each">
                         <div>
@@ -349,6 +357,16 @@
                         <div>
                             <h2>忘记root的密码如何解决</h2>
                             <div class="excerpt">2018-08-05</div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+            <section class="posts">
+                <a href="/用Python给你女朋友写封信">
+                    <div class="each">
+                        <div>
+                            <h2>用Python给你女朋友写封信</h2>
+                            <div class="excerpt">2018-07-14</div>
                         </div>
                     </div>
                 </a>
@@ -383,50 +401,8 @@
                     </div>
                 </a>
             </section>
-        </div>
     </div>
-<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
-<style type="text/css">
-  .toc {
-    position:fixed !important;
-    font-weight: normal;
-    font-size: 1.2rem;
-    top: 20%;
-    right: 0;
-    padding: 0;
-    margin: 0 2em 1em 1em;
-  }
-  .is-active-link::before {
-    background-color: #5183f5;
-  }
-  @media (max-width: 1217px) {
-    .toc {
-      display: none;
-    }
-  }
-</style>
-<div class="toc"></div>
-<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
-<script type="text/javascript">
-var headers = 'h1',
-    content = '.time-line',
-    idArr = {};
-tocbot.init({
-    tocSelector: '.toc',
-    contentSelector: content,
-    headingSelector: headers,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    headingsOffset: 100
-});
-$(document).on('pjax:send', function() {
-    if ($('.toc').length) tocbot.destroy();
-})
-
-$(document).on('pjax:complete', function() {
-    toc.init(tocOptions);
-})
-</script></main>
+</main>
 <script type="text/javascript">
 function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
 </script><footer class="footer container">
@@ -434,59 +410,4 @@ function search() { let input = document.getElementById("searchTerm"); let filte
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-<style type="text/css">
-.back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 0 2em 2.5em 1em;
-    background: #fff;
-    border: 2px solid #000;
-}
-
-.back-to-top:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-}
-
-@media (prefers-color-scheme: dark) {
-    .back-to-top {
-        background: #202020;
-        border: 2px solid #b3b9c5;
-    }
-
-    .back-to-top:hover {
-        cursor: pointer;
-        background: #303030;
-    }
-}
-</style>
-<div class="back-to-top">Top</div>
-<script type="text/javascript">
-var $backToTop = $(".back-to-top");
-$backToTop.hide();
-
-$(window).on('scroll', function() {
-    if ($(this).width() >= 1218) {
-        if ($(this).scrollTop() > 100) {
-            $backToTop.fadeIn();
-        } else {
-            $backToTop.fadeOut();
-        }
-    } else {
-        $backToTop.hide();
-    }
-});
-
-$(window).on('resize', function() {
-    if ($(this).width() < 1218) {
-        $backToTop.fadeOut();
-    }
-});
-
-$backToTop.on('click', function(e) {
-    $("html, body").animate({ scrollTop: 0 }, 500);
-});
-</script></html>
+</html>
