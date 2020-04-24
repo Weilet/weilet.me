@@ -506,7 +506,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;需要注意内置的loop&amp;nbsp;方法，非常好用。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;后台爬取到广州各区的天气存储在 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Oct 2018 21:56:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-10-28:/jinja2模板引擎学习总结</guid><category>Tech</category><category>Python</category><category>jinja2</category></item><item><title>更换Centos安装源ate: 2018-09-17 06:09</title><link>https://weilet.me/%E6%9B%B4%E6%8D%A2Centos%E5%AE%89%E8%A3%85%E6%BA%90</link><description></description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Mon, 17 Sep 2018 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-09-17:/更换Centos安装源</guid><category>Tech</category><category>Linux</category></item><item><title>用Python，查快递</title><link>https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92</link><description>&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;p&gt;后台爬取到广州各区的天气存储在 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Oct 2018 21:56:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-10-28:/jinja2模板引擎学习总结</guid><category>Tech</category><category>Python</category><category>jinja2</category></item><item><title>用Python，查快递</title><link>https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92</link><description>&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
 &lt;span class="c1"&gt;# @Date:   2018-08-07 01:31:50&lt;/span&gt;
