@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …"/>
+<meta name="description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,10 +24,10 @@
     
 <meta property="og:title" content="Python中的GIL" />
 <meta property="og:url" content="https://weilet.me/Python中的GIL" />
-<meta property="og:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
+<meta property="og:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
 <meta property="article:published_time" content="2019-05-23 00:07:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
+<meta name="twitter:card" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -77,10 +77,10 @@
 <p><strong><span class="caps">GIL</span></strong>即<strong>全局解释器锁</strong>（英语：Global Interpreter Lock，缩写<strong><span class="caps">GIL</span></strong>），是<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80">计算机程序设计语言</a><a href="https://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8">解释器</a>用于<a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5">同步</a><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B">线程</a>的一种机制，它使得任何时刻仅有一个线程在执行。即便在<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8">多核心处理器</a>上，使用 <span class="caps">GIL</span>&nbsp;的解释器也只允许同一时间执行一个线程。</p>
 <p>From <a href="https://zh.wikipedia.org/zh-hans/%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81">wikipedia</a></p>
 </blockquote>
-<p>为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：</p>
+<p>为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：</p>
 <p>进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。</p>
 <p>因此，GIL的重要性不言而喻。但也是因为它，使得Python的多线程活生生地由并行变成了并发。</p>
-<p>为了减少GIL所带来的性能损耗，我们能做什么呢？</p>
+<p>为了减少GIL所带来的性能损耗，俺们能做什么呢？</p>
 <div class="highlight"><pre><span></span><span class="err">关于Python内存管理机制，你可以查看这篇文章： https://www.cnblogs.com/geaozhang/p/7111961.html#yinyongjishu </span>
 </pre></div>
 
@@ -275,7 +275,7 @@
 
 
 <blockquote>
-<p>虽然GIL给Python的性能关上了一扇门，但是这并不意味着我们就要忽略标准库里为我们打开的每一扇窗。</p>
+<p>虽然GIL给Python的性能关上了一扇门，但是这并不意味着俺们就要忽略标准库里为俺们打开的每一扇窗。</p>
 </blockquote>
         </div>
     </article>

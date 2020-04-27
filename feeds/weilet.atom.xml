@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Weilet</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/weilet.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-04-08T01:27:00+08:00</updated><entry><title>学会阅读源码</title><link href="https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81" rel="alternate"></link><published>2020-04-08T01:27:00+08:00</published><updated>2020-04-08T01:27:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-04-08:/学会阅读源码</id><summary type="html">&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Weilet</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/weilet.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-04-26T23:17:00+08:00</updated><entry><title>《李银河说爱情》读后感</title><link href="https://weilet.me/%E3%80%8A%E6%9D%8E%E9%93%B6%E6%B2%B3%E8%AF%B4%E7%88%B1%E6%83%85%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F" rel="alternate"></link><published>2020-04-26T23:17:00+08:00</published><updated>2020-04-26T23:17:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-04-26:/《李银河说爱情》读后感</id><content type="html">&lt;p&gt;大多数人都是从王小波的书里知道李银河的，俺也不例外。她作为一位社会学学者，《李银河说爱情》可以视作她多年研究的成果，十分适合作为爱情观婚姻观的启蒙读物。&lt;/p&gt;
+&lt;p&gt;本书分为六大章。前四章，从婚姻制度的演化讲到爱情观的地域差别，再到与性相关的LGBT、性癖好等的讲解，行文都十分通俗易懂，挺开阔眼界的。后两章讲的就比较大，像男女平等，女性独立之类的话题。&lt;/p&gt;
+&lt;p&gt;如果你持一个开放的态度去看本书，那你能了解到，这个世界的性爱观爱情观婚姻观远比你想象的丰富。然而如果你是个狭隘的人，估计看书的时候会被气得上蹿下跳。&lt;/p&gt;</content><category term="Book Review"></category></entry><entry><title>学会阅读源码</title><link href="https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81" rel="alternate"></link><published>2020-04-08T01:27:00+08:00</published><updated>2020-04-08T01:27:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-04-08:/学会阅读源码</id><summary type="html">&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
 &lt;p&gt;是在聊天群组里提问，然后被插科打诨，忘记自己的目标？&lt;/p&gt;
 &lt;p&gt;还是自食其力，选择面向搜索引擎，费九牛二虎之力解决？&lt;/p&gt;
 &lt;p&gt;自食其力是好事，然而面对开源项目时，直奔它的文档或者源代码是个缩小范围的好主意。&lt;/p&gt;
@@ -425,14 +427,14 @@
 
 
 &lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
-&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
+&lt;p&gt;俺们用前置知识去解释它：&lt;/p&gt;
 &lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
 &lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</content><category term="Tech"></category><category term="Python"></category></entry><entry><title>谈谈Python中的for循环（1）</title><link href="https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89" rel="alternate"></link><published>2020-02-25T22:25:00+08:00</published><updated>2020-02-25T22:25:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，俺们称之为可迭代对象&lt;/p&gt;
 &lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
 &lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
@@ -442,7 +444,7 @@
 &lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
 &lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
 &lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在上述前置知识和一定的python基础下，我们来看这段代码：&lt;/p&gt;
+&lt;p&gt;在上述前置知识和一定的python基础下，俺们来看这段代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# A&lt;/span&gt;
@@ -454,7 +456,7 @@
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，俺们称之为可迭代对象&lt;/p&gt;
 &lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
 &lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
@@ -464,7 +466,7 @@
 &lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
 &lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
 &lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在上述前置知识和一定的python基础下，我们来看这段代码：&lt;/p&gt;
+&lt;p&gt;在上述前置知识和一定的python基础下，俺们来看这段代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# A&lt;/span&gt;
@@ -614,7 +616,7 @@
 
 &lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
 &lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -642,7 +644,7 @@
 
 &lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
 &lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

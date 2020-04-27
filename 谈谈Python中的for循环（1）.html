@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，我们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，我们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …"/>
+<meta name="description" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，俺们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，俺们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,10 +24,10 @@
     
 <meta property="og:title" content="谈谈Python中的for循环（1）" />
 <meta property="og:url" content="https://weilet.me/谈谈Python中的for循环（1）" />
-<meta property="og:description" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，我们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，我们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …" />
+<meta property="og:description" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，俺们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，俺们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …" />
 <meta property="article:published_time" content="2020-02-25 22:25:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，我们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，我们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …" />
+<meta name="twitter:card" content="总忘记for语句的原理，属文记之 前置知识 可迭代对象 对于任何一个实现了 __iter__ 方法的对象，俺们称之为可迭代对象 迭代器对象 当调用可迭代对象的 __iter__方法，它会返回一个迭代器对象； 迭代器对象是已经实现了 __next__ 方法的对象 StopIteration异常 当调用迭代器对象的 __next__ 方法而无下一个元素时，它会抛出StopIteration异常 魔法方法 以双下划线开头和结尾的方法； 一般而言，对于对象 object_xyz 魔法方法 __abc__ ，其调用方式为abc(object_xyz) 整体流程 在上述前置知识和一定的python基础下，俺们来看这段代码： test_case = [1, 2, 3, 4] # A try: iterator = iter(test_case) while True: x = next(iterator …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -74,7 +74,7 @@
 </blockquote>
 <h3 id="_1">前置知识<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <h4 id="_2">可迭代对象<a class="headerlink" href="#_2" title="Permanent link"> </a></h4>
-<p>对于任何一个实现了 <code>__iter__</code> 方法的对象，我们称之为可迭代对象</p>
+<p>对于任何一个实现了 <code>__iter__</code> 方法的对象，俺们称之为可迭代对象</p>
 <h4 id="_3">迭代器对象<a class="headerlink" href="#_3" title="Permanent link"> </a></h4>
 <p>当调用可迭代对象的 <code>__iter__</code>方法，它会返回一个迭代器对象；</p>
 <p>迭代器对象是<strong>已经</strong>实现了 <code>__next__</code> 方法的对象</p>
@@ -84,7 +84,7 @@
 <p>以双下划线开头和结尾的方法；</p>
 <p>一般而言，对于对象 <code>object_xyz</code> 魔法方法 <code>__abc__</code> ，其调用方式为abc(object_xyz)</p>
 <h3 id="_5">整体流程<a class="headerlink" href="#_5" title="Permanent link"> </a></h3>
-<p>在上述前置知识和一定的python基础下，我们来看这段代码：</p>
+<p>在上述前置知识和一定的python基础下，俺们来看这段代码：</p>
 <div class="highlight"><pre><span></span><span class="n">test_case</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
 <span class="c1"># A</span>
