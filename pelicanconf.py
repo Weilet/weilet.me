@@ -7,6 +7,7 @@ AUTHOR = "Weilet"
 SITEURL = "https://weilet.me"
 SITENAME = "Weilet's blog"
 SITE_SUMMARY = "A Pelican blog I use to write down something about coding, product unboxing and gaming"
+
 # Saving Settings
 PATH = "content"
 CATEGORY_URL = "category/{name}.html"
@@ -52,6 +53,7 @@ SITEMAP = {
         'pages': 'monthly'
     }
 }
+
 # Appearance
 THEME = "easy"
 TYPOGRIFY = True
@@ -74,3 +76,7 @@ FEED_RSS = "rss.xml"
 
 DISQUS_FILTER = True
 UTTERANCES_FILTER = True
+
+
+# Google Analytics
+ANALYSTIC_ID = "UA-157817775-1"

@@ -138,6 +138,6 @@ Windows Registry Editor Version 5.00
 @="{Terminal的可执行文件的绝对路径，名称为wt.exe} -d ."
 ```
 
-将上面的文本另存为注册表项(后缀为.reg)，点击添加即可
+将上面的文本另存为注册表项(后缀为.reg)，点击添加即可（现在你可以在这里下载[脚本](https://github.com/python-zen-place/open-terminal-here)来配置）
 
 另外，在配置文件中的“startingDirectory”决定了你**新增**Tab的路径，你可以将它的值设置为“.”以保证新增的Tab的路径也是当前工作路径。

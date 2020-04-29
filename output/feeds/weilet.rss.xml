@@ -1,27 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 25 Feb 2020 22:25:00 +0800</lastBuildDate><item><title>谈谈Python中的for循环（1）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89</link><description>&lt;blockquote&gt;
-&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
-&lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
-&lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
-&lt;h4 id="stopiteration"&gt;StopIteration异常&lt;a class="headerlink" href="#stopiteration" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出StopIteration异常&lt;/p&gt;
-&lt;h4 id="_4"&gt;魔法方法&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
-&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
-&lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在上述前置知识和一定的python基础下，我们来看这段代码：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Sun, 26 Apr 2020 23:17:00 +0800</lastBuildDate><item><title>《李银河说爱情》读后感</title><link>https://weilet.me/%E3%80%8A%E6%9D%8E%E9%93%B6%E6%B2%B3%E8%AF%B4%E7%88%B1%E6%83%85%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F</link><description>&lt;p&gt;大多数人都是从王小波的书里知道李银河的，俺也不例外。她作为一位社会学学者，《李银河说爱情》可以视作她多年研究的成果，十分适合作为爱情观婚姻观的启蒙读物。&lt;/p&gt;
+&lt;p&gt;本书分为六大章。前四章，从婚姻制度的演化讲到爱情观的地域差别，再到与性相关的LGBT、性癖好等的讲解，行文都十分通俗易懂，挺开阔眼界的。后两章讲的就比较大，像男女平等，女性独立之类的话题。&lt;/p&gt;
+&lt;p&gt;如果你持一个开放的态度去看本书，那你能了解到，这个世界的性爱观爱情观婚姻观远比你想象的丰富。然而如果你是个狭隘的人，估计看书的时候会被气得上蹿下跳。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sun, 26 Apr 2020 23:17:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-26:/《李银河说爱情》读后感</guid><category>Book Review</category></item><item><title>学会阅读源码</title><link>https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81</link><description>&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
+&lt;p&gt;是在聊天群组里提问，然后被插科打诨，忘记自己的目标？&lt;/p&gt;
+&lt;p&gt;还是自食其力，选择面向搜索引擎，费九牛二虎之力解决？&lt;/p&gt;
+&lt;p&gt;自食其力是好事，然而面对开源项目时，直奔它的文档或者源代码是个缩小范围的好主意。&lt;/p&gt;
+&lt;h3 id="_1"&gt;例子一&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Linux 课上老师提到了 umask ，它是创建文件和文件夹时需要额外减去的权限值，在 Unix&amp;nbsp;下为022（WSL为000）课后有同学提出，按照老师的方法并不能得出答案。&lt;/p&gt;
+&lt;p&gt;那么正确的计算是什么呢？答案在 linux&amp;nbsp;源码中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from dir.c &lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;fc&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dont_mask&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;=&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="c1"&gt;# A&lt;/span&gt;
-&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</guid><category>Tech</category><category>Python</category></item><item><title>谈谈Python中的for循环（2）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89</link><description>&lt;blockquote&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from fs_struct.c&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;current_umask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;umask&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从代码可以看出，mode 是 &lt;code&gt;&amp;amp;&lt;/code&gt; 上 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 08 Apr 2020 01:27:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-08:/学会阅读源码</guid><category>Tech</category></item><item><title>网站适配暗色模式</title><link>https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F</link><description>&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
+&lt;h3 id="-javascript"&gt;方案一 - JavaScript实现&lt;a class="headerlink" href="#-javascript" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这是俺最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;border-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;border-bottom-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#303030&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="nt"&gt;h2&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#ccc&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这些样式都是 .dark&amp;nbsp;元素的子元素。&lt;/p&gt;
+&lt;p&gt;随后利用JavaScript判断时间，在&lt;strong&gt;俺认为&lt;/strong&gt;需要暗色模式的时间为 body 添加 .dark 的&amp;nbsp;class …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 13 Mar 2020 22:20:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-13:/网站适配暗色模式</guid><category>Tech</category><category>Interaction</category><category>Front end</category></item><item><title>Rust with WebAssembly</title><link>https://weilet.me/Rust%20with%20WebAssembly</link><description>&lt;blockquote&gt;
+&lt;p&gt;大人，时代变了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
+&lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="wasm-pack"&gt;安装wasm-pack&lt;a class="headerlink" href="#wasm-pack" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://rustwasm.github.io/wasm-pack/installer/"&gt;Rustwasm官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;流程&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;新建项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;cargo new wasm&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目录结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── Cargo.toml&lt;/span&gt;
+&lt;span class="err"&gt;└── src&lt;/span&gt;
+&lt;span class="err"&gt;    └── lib.rs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加依赖&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[dependencies]&lt;/span&gt;
+&lt;span class="n"&gt;wasm-bindgen …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 10 Mar 2020 05:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-10:/Rust with WebAssembly</guid><category>Tech</category><category>Rust</category><category>wasm</category></item><item><title>安装spf13-vim</title><link>https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim</link><description>&lt;blockquote&gt;
+&lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了&lt;a href="https://github.com/spf13/spf13-vim"&gt;spf13-vim&lt;/a&gt;这个好东西，当然是赶紧装上体验一番啦！&lt;/p&gt;
+&lt;h3 id="_2"&gt;准备&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;spf13-vim需要vim with&amp;nbsp;lua，因为它有些插件是用lua编写的。&lt;/p&gt;
+&lt;p&gt;查看是否支持lua&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim --version &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;+lua&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim with lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim witho&lt;/span&gt;
+&lt;span class="s2"&gt;ut lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果不支持需要安装&lt;code&gt;vim-nox&lt;/code&gt;（安装什么取决于你的图形环境：&lt;a href="https://github.com/Shougo/neocomplete.vim#debian-or-ubuntu"&gt;详情&lt;/a&gt;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install vim-nox
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_3"&gt;安装&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据官方文档直接安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl https …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 03 Mar 2020 23:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-03:/安装spf13-vim</guid><category>Tech</category><category>Linux</category></item><item><title>谈谈Python中的for循环（2）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89</link><description>&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -42,9 +112,31 @@
 
 
 &lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
-&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
+&lt;p&gt;俺们用前置知识去解释它：&lt;/p&gt;
 &lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
-&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（2）</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal折腾指南</title><link>https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
+&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 26 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-26:/谈谈Python中的for循环（2）</guid><category>Tech</category><category>Python</category></item><item><title>谈谈Python中的for循环（1）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89</link><description>&lt;blockquote&gt;
+&lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，俺们称之为可迭代对象&lt;/p&gt;
+&lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
+&lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
+&lt;h4 id="stopiteration"&gt;StopIteration异常&lt;a class="headerlink" href="#stopiteration" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出StopIteration异常&lt;/p&gt;
+&lt;h4 id="_4"&gt;魔法方法&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
+&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
+&lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;在上述前置知识和一定的python基础下，俺们来看这段代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# A&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal折腾指南</title><link>https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
 &lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
@@ -94,7 +186,7 @@
 
 &lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
 &lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

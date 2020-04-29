@@ -10,29 +10,14 @@
                 <h1>{{ article.title }}</h1>
                 <div class="post-meta">
                     <time class="date">{{ article.locale_date }}</time>
-                    /
-                    <span>
-                        {% if article.category %}
-                        <a href="/{{ article.category.url }}" class="comment-link">
-                            {{ article.category }}
-                        </a>
-                        {% endif %}
-                        {% if article.tags %}
-                            ·
-                            {% for tag in article.tags %}
-                                <a href="/{{ tag.url }}" class="comment-link">
-                                {{ tag }}
-                                </a>
-                                {% if not loop.last %}·{% endif %}
-                            {% endfor %}                        
-                        {% endif %}
-                    </span>
                 </div>
-                {% if article.tag %}
+                {% if article.tags %}
                 <div class="tag-container">
-                    <a href="/tag/{{ tag }}">
+                    {% for tag in article.tags %}
+                    <a style="text-decoration:none" href="{{tag.url}}">
                         <span>{{ tag }}</span>
                     </a>
+                    {% endfor %}
                 </div>
                 {% endif %}
             </div>
@@ -40,9 +25,6 @@
         <div class="post">
             {{ article.content }}
         </div>
-        {% include "includes/_gitalk.html"%}
     </article>
-    {% include "includes/_toc.html" %}
 </main>
-{% include "includes/_clipboard.html" %}
 {% endblock %}

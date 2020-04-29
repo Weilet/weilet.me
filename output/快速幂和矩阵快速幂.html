@@ -28,12 +28,14 @@
 <meta property="article:published_time" content="2018-07-12 03:08:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
 <meta name="twitter:card" content="快速幂，顾名思义就是快速求幂的算法。原理如下： 假设求a的n次方，当n为偶数时，a的n次方可以由两个a的n/2次方相乘求得；当n为奇数时，a的n次方可以由两个a的n/2次方相乘的积再乘以a得到。 在实现中，运用位运算判断奇偶和乘除2（第一个想到的简直就是天才） #include <iostream> using namespace std; double quick_pow(double base,int degree) { double ans = 1.0; while (degree) { if (degree&1) ans *= base; base *= base; degree >>= 1; } return ans; } int main() { double a; int b; cin>>a>>b …" />
+
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
 <link rel="canonical" href="https://weilet.me/快速幂和矩阵快速幂"/>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 <body>
 <nav class="nav">
@@ -58,17 +60,11 @@
                 <h1>快速幂和矩阵快速幂</h1>
                 <div class="post-meta">
                     <time class="date">2018-07-12</time>
-                    /
-                    <span>
-                        <a href="/category/Tech.html" class="comment-link">
-                            Tech
-                        </a>
-                            ·
-                                <a href="/tag/Algorithm.html" class="comment-link">
-                                Algorithm
-                                </a>
-                        
-                    </span>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Algorithm.html">
+                        <span>Algorithm</span>
+                    </a>
                 </div>
             </div>
         </header>
@@ -127,183 +123,11 @@
 
 <p>这个&nbsp;的应用就很考数学功底，知道原理就好。</p>
         </div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-var gitalk = new Gitalk({
-	clientID: '156774f08ace665cde88',
-	clientSecret: 'c5493bd3bb6cccff1313f145801c180300471f72',
-	repo: 'weilet.github.io',
-	owner: 'Weilet',
-	admin: ['Weilet'],
-	id: md5(location.pathname),
-	distractionFreeMode: false
-})
-gitalk.render('gitalk-container')
-</script>    </article>
-<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
-<style type="text/css">
-  .toc {
-    position:fixed !important;
-    font-weight: normal;
-    font-size: 1.2rem;
-    top:20%;
-    right:0;
-    width: 15%;	    
-    margin: 0 2em 1em 1em;	    
-  }
-  .is-active-link::before {
-    background-color: #5183f5;
-  }
-  @media (max-width: 1217px) {
-    .toc {
-      display: none;
-    }
-  }
-</style>
-<div class="toc"></div>
-<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
-<script type="text/javascript">
-var headers = 'h3, h4',
-  content = '.single',
-  idArr = {}; 
-  tocbot.init({
-    tocSelector: '.toc',
-    contentSelector: content,
-    headingSelector: headers,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    headingsOffset: 100
-  });
-  $(document).on('pjax:send',function(){
-  if ($('.toc').length) tocbot.destroy();
-})
-
-  $(document).on('pjax:complete',function(){
-  toc.init(tocOptions);
-})
-</script></main>
-<style type="text/css">
-.highlight .btn-copy {
-    position: relative;
-    display: inline-block;
-    float: right;
-    padding: 6px 12px;
-    margin-top: 1%;
-    background: #fefbd8;
-    border: 1px solid #fefbd8;
-}
-
-.dark .highlight .btn-copy {
-    background: #001f29 !important;
-    border: 1px solid #002733;
-}
-
-.highlight img {
-    width: 13px;
-}
-
-.dark .highlight img {
-    filter: invert(1);
-}
-</style>
-
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-<script type="text/javascript">
-!function (e, t, a) { 
-  var initCopyCode = function(){
-    var copyHtml = '';
-    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
-    copyHtml += '</button>';
-    $(".highlight pre").before(copyHtml);
-    clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-            return trigger.nextElementSibling;
-        }
-    });
-  }
-  initCopyCode();
-  clipboard.on("success",function(e){
-    e.clearSelection();
-  });
-  $btn = $('.btn-copy');
-  $btn.on('click', function(e) {
-    $img = $(this).children('img')
-    $img.attr('src', 'theme/images/tick.svg'); 
-    setTimeout(function (){
-        console.log("复制成功");
-        $img.attr('src', 'theme/images/clippy.svg');
-    }, 300);       
-  });
-}(window, document);
-</script><footer class="footer container">
-	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-<style type="text/css">
-.back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 0 2em 2.5em 1em;
-    background: #fff;
-    border: 2px solid #000;
-}
-
-.dark .back-to-top {
-    background: #202020;
-    border: 2px solid #b3b9c5;
-}
-
-.back-to-top:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-}
-
-.dark .back-to-top:hover {
-    background: #303030;
-}
-</style>
-
-<div class="back-to-top">Top</div>
-
-<script type="text/javascript">
-var $backToTop = $(".back-to-top");
-$backToTop.hide();
-
-$(window).on('scroll', function() {
-    if ($(this).width() >= 1218 ){
-        if ($(this).scrollTop() > 100) {
-            $backToTop.fadeIn();
-        } else {
-            $backToTop.fadeOut();
-        } 
-    } else {
-        $backToTop.hide();
-    }  
-});
-
-$(window).on('resize', function() {
-    if ($(this).width() < 1218 ) {
-        $backToTop.fadeOut();
-    } 
-});
-
-$backToTop.on('click', function(e) {
-    $("html, body").animate({ scrollTop: 0 }, 500);
-});
-</script>
-<script type="text/javascript">
-	var nowHour = (new Date()).getHours()
-	if (nowHour > 17 || nowHour < 4) {
-		$('body').addClass('dark')
-	}
-</script></html>
+</html>

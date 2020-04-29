@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …"/>
+<meta name="description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？俺们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,16 +24,18 @@
     
 <meta property="og:title" content="浅谈CSRF攻击" />
 <meta property="og:url" content="https://weilet.me/浅谈CSRF攻击" />
-<meta property="og:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+<meta property="og:description" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？俺们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
 <meta property="article:published_time" content="2019-06-04 21:26:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？我们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+<meta name="twitter:card" content="跨过山和大海，伪装成熟悉的陌生人 什么是CSRF CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。 有何危害 故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。 这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。 为什么会发生这样的情况呢？俺们来看看后台发生了什么： 首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。 from flask import …" />
+
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
 <link rel="canonical" href="https://weilet.me/浅谈CSRF攻击"/>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script></head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
 <body>
 <nav class="nav">
@@ -58,17 +60,11 @@
                 <h1>浅谈CSRF攻击</h1>
                 <div class="post-meta">
                     <time class="date">2019-06-04</time>
-                    /
-                    <span>
-                        <a href="/category/Tech.html" class="comment-link">
-                            Tech
-                        </a>
-                            ·
-                                <a href="/tag/Web Security.html" class="comment-link">
-                                Web Security
-                                </a>
-                        
-                    </span>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Web Security.html">
+                        <span>Web Security</span>
+                    </a>
                 </div>
             </div>
         </header>
@@ -81,7 +77,7 @@
 <h3 id="_1">有何危害<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <p>故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。</p>
 <p>这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
-<p>为什么会发生这样的情况呢？我们来看看后台发生了什么：</p>
+<p>为什么会发生这样的情况呢？俺们来看看后台发生了什么：</p>
 <p>首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">url_for</span>
@@ -127,9 +123,9 @@
 
 
 <p>可是你仔细一想，这个敏感数据的修改，不应该用GET啊，这有问题。</p>
-<p>那么，让我们把时间再次回到三天前，这次的转账页面用的是表单，POST的那种。&nbsp;与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。还没来得及点击，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
+<p>那么，让俺们把时间再次回到三天前，这次的转账页面用的是表单，POST的那种。&nbsp;与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。还没来得及点击，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。</p>
 <p>明明使用的就是POST表单啊，为什么还是会出现问题&nbsp;?</p>
-<p>我们不妨假设现在的转账函数变为这样：</p>
+<p>俺们不妨假设现在的转账函数变为这样：</p>
 <div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/transfer&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">withdraw</span><span class="p">():</span>
       <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;logged_in&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
@@ -141,7 +137,7 @@
 </pre></div>
 
 
-<p>显而易见，我可以针对你的转账表单构造一个页面，使其在加载过程中提交一个POST请求，由于你的登录信息仍存储在cookie里面， 服务器以为这个请求是你发出的&nbsp;，最终达到邪恶的目的。</p>
+<p>显而易见，俺可以针对你的转账表单构造一个页面，使其在加载过程中提交一个POST请求，由于你的登录信息仍存储在cookie里面， 服务器以为这个请求是你发出的&nbsp;，最终达到邪恶的目的。</p>
 <p>构建的页面：</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
@@ -195,183 +191,11 @@
 <p>预防手段摘抄自 <a href="https://www.cnblogs.com/hyddd/">hyddd</a>&nbsp;的博客园</p>
 </blockquote>
         </div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
-
-<div id="gitalk-container"></div>
-<script type="text/javascript">
-var gitalk = new Gitalk({
-	clientID: '156774f08ace665cde88',
-	clientSecret: 'c5493bd3bb6cccff1313f145801c180300471f72',
-	repo: 'weilet.github.io',
-	owner: 'Weilet',
-	admin: ['Weilet'],
-	id: md5(location.pathname),
-	distractionFreeMode: false
-})
-gitalk.render('gitalk-container')
-</script>    </article>
-<link href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css" rel="stylesheet">
-<style type="text/css">
-  .toc {
-    position:fixed !important;
-    font-weight: normal;
-    font-size: 1.2rem;
-    top:20%;
-    right:0;
-    width: 15%;	    
-    margin: 0 2em 1em 1em;	    
-  }
-  .is-active-link::before {
-    background-color: #5183f5;
-  }
-  @media (max-width: 1217px) {
-    .toc {
-      display: none;
-    }
-  }
-</style>
-<div class="toc"></div>
-<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
-<script type="text/javascript">
-var headers = 'h3, h4',
-  content = '.single',
-  idArr = {}; 
-  tocbot.init({
-    tocSelector: '.toc',
-    contentSelector: content,
-    headingSelector: headers,
-    scrollSmooth: true,
-    scrollSmoothOffset: -100,
-    headingsOffset: 100
-  });
-  $(document).on('pjax:send',function(){
-  if ($('.toc').length) tocbot.destroy();
-})
-
-  $(document).on('pjax:complete',function(){
-  toc.init(tocOptions);
-})
-</script></main>
-<style type="text/css">
-.highlight .btn-copy {
-    position: relative;
-    display: inline-block;
-    float: right;
-    padding: 6px 12px;
-    margin-top: 1%;
-    background: #fefbd8;
-    border: 1px solid #fefbd8;
-}
-
-.dark .highlight .btn-copy {
-    background: #001f29 !important;
-    border: 1px solid #002733;
-}
-
-.highlight img {
-    width: 13px;
-}
-
-.dark .highlight img {
-    filter: invert(1);
-}
-</style>
-
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-<script type="text/javascript">
-!function (e, t, a) { 
-  var initCopyCode = function(){
-    var copyHtml = '';
-    copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-    copyHtml += '<img src="theme/images/clippy.svg" alt="Copy to clipboard">';
-    copyHtml += '</button>';
-    $(".highlight pre").before(copyHtml);
-    clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-            return trigger.nextElementSibling;
-        }
-    });
-  }
-  initCopyCode();
-  clipboard.on("success",function(e){
-    e.clearSelection();
-  });
-  $btn = $('.btn-copy');
-  $btn.on('click', function(e) {
-    $img = $(this).children('img')
-    $img.attr('src', 'theme/images/tick.svg'); 
-    setTimeout(function (){
-        console.log("复制成功");
-        $img.attr('src', 'theme/images/clippy.svg');
-    }, 300);       
-  });
-}(window, document);
-</script><footer class="footer container">
-	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
 </footer></body>
-<style type="text/css">
-.back-to-top {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    padding: 1em;
-    margin: 0 2em 2.5em 1em;
-    background: #fff;
-    border: 2px solid #000;
-}
-
-.dark .back-to-top {
-    background: #202020;
-    border: 2px solid #b3b9c5;
-}
-
-.back-to-top:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-}
-
-.dark .back-to-top:hover {
-    background: #303030;
-}
-</style>
-
-<div class="back-to-top">Top</div>
-
-<script type="text/javascript">
-var $backToTop = $(".back-to-top");
-$backToTop.hide();
-
-$(window).on('scroll', function() {
-    if ($(this).width() >= 1218 ){
-        if ($(this).scrollTop() > 100) {
-            $backToTop.fadeIn();
-        } else {
-            $backToTop.fadeOut();
-        } 
-    } else {
-        $backToTop.hide();
-    }  
-});
-
-$(window).on('resize', function() {
-    if ($(this).width() < 1218 ) {
-        $backToTop.fadeOut();
-    } 
-});
-
-$backToTop.on('click', function(e) {
-    $("html, body").animate({ scrollTop: 0 }, 500);
-});
-</script>
-<script type="text/javascript">
-	var nowHour = (new Date()).getHours()
-	if (nowHour > 17 || nowHour < 4) {
-		$('body').addClass('dark')
-	}
-</script></html>
+</html>

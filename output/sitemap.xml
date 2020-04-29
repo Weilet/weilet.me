@@ -5,41 +5,76 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-02-28T13:35:37-00:00</lastmod>
+<lastmod>2020-04-29T23:35:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-02-28T13:35:37-00:00</lastmod>
+<lastmod>2020-04-29T23:35:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-02-28T13:35:37-00:00</lastmod>
+<lastmod>2020-04-29T23:35:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-02-28T13:35:37-00:00</lastmod>
+<lastmod>2020-04-29T23:35:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/谈谈Python中的for循环（1）</loc>
-<lastmod>2020-02-25T22:25:00+08:00</lastmod>
+<loc>https://weilet.me/《李银河说爱情》读后感</loc>
+<lastmod>2020-04-26T23:17:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/学会阅读源码</loc>
+<lastmod>2020-04-08T01:27:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/网站适配暗色模式</loc>
+<lastmod>2020-03-13T22:20:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/Rust with WebAssembly</loc>
+<lastmod>2020-03-10T05:09:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/安装spf13-vim</loc>
+<lastmod>2020-03-03T23:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/谈谈Python中的for循环（2）</loc>
+<lastmod>2020-02-26T22:25:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/谈谈Python中的for循环（1）</loc>
 <lastmod>2020-02-25T22:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -221,7 +256,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/我的第一只爬虫</loc>
+<loc>https://weilet.me/俺的第一只爬虫</loc>
 <lastmod>2018-07-12T05:28:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -242,8 +277,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://weilet.me/category/Book Review.html</loc>
+<lastmod>2020-04-26T23:17:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://weilet.me/category/Tech.html</loc>
-<lastmod>2020-02-25T22:25:00+08:06</lastmod>
+<lastmod>2020-04-08T01:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -256,8 +298,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://weilet.me/tag/Interaction.html</loc>
+<lastmod>2020-03-13T22:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Front end.html</loc>
+<lastmod>2020-03-13T22:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Rust.html</loc>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/wasm.html</loc>
+<lastmod>2020-03-10T05:09:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Linux.html</loc>
+<lastmod>2020-03-03T23:25:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://weilet.me/tag/Python.html</loc>
-<lastmod>2020-02-25T22:25:00+08:06</lastmod>
+<lastmod>2020-02-26T22:25:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -326,13 +403,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/tag/Linux.html</loc>
-<lastmod>2018-08-07T06:09:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://weilet.me/tag/Algorithm.html</loc>
 <lastmod>2018-07-12T03:08:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -362,7 +432,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/author/weilet.html</loc>
-<lastmod>2020-02-25T22:25:00+08:06</lastmod>
+<lastmod>2020-04-26T23:17:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
