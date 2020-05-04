@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …"/>
+<meta name="description" content="海象运算符 我期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,10 +24,10 @@
     
 <meta property="og:title" content="Python3.8新特性" />
 <meta property="og:url" content="https://weilet.me/Python3.8新特性" />
-<meta property="og:description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+<meta property="og:description" content="海象运算符 我期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
 <meta property="article:published_time" content="2020-02-06 21:46:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+<meta name="twitter:card" content="海象运算符 我期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -70,7 +70,7 @@
         </header>
         <div class="post">
             <h3 id="_1"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions">海象运算符</a><a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
-<p>俺期待很久的特性，可以在表达式内赋值</p>
+<p>我期待很久的特性，可以在表达式内赋值</p>
 <p>先前的写法：</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;{len(a)}&#39;</span><span class="p">)</span>
@@ -92,7 +92,7 @@
 
 <p>形参位置的“/”前为仅限位置形参，后为关键字形参。</p>
 <p>所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。</p>
-<p><strong>假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的</strong>：</p>
+<p><strong>假设我们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的</strong>：</p>
 <div class="highlight"><pre><span></span><span class="n">sort</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># THIS IS WRONG</span>
 </pre></div>
 
@@ -110,13 +110,13 @@
 
 
 <h3 id="abi"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#debug-build-uses-the-same-abi-as-release-build">统一调试构建和发布构建的ABI</a><a class="headerlink" href="#abi" title="Permanent link"> </a></h3>
-<p>是的，俺看不懂</p>
+<p>是的，我看不懂</p>
 <h3 id="f-string"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#f-strings-support-for-self-documenting-expressions-and-debugging">f-string增强</a><a class="headerlink" href="#f-string" title="Permanent link"> </a></h3>
 <p>形式为 <code>f'{expr=}'</code> 的&nbsp;f-字符串将扩展表示为表达式文本</p>
-<div class="highlight"><pre><span></span><span class="n">slogan</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;俺很酷&#39;</span>
+<div class="highlight"><pre><span></span><span class="n">slogan</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;我很酷&#39;</span>
 <span class="sa">f</span><span class="s1">&#39;{slogan=}&#39;</span>
 
-<span class="c1"># output: &quot;slogan=&#39;俺很酷&#39;&quot;</span>
+<span class="c1"># output: &quot;slogan=&#39;我很酷&#39;&quot;</span>
 </pre></div>
 
 

@@ -105,7 +105,7 @@
 
 <p>会得到一个这样二进制数据：</p>
 <p>\x80\x03c__main__\nStudent\nq\x00)\x81q\x01.</p>
-<p>反过来，俺们便可以把一段二进制数据串变为一个Python对象</p>
+<p>反过来，我们便可以把一段二进制数据串变为一个Python对象</p>
 <p>比方说：</p>
 <div class="highlight"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;cos</span><span class="se">\n</span><span class="s2">system</span><span class="se">\n</span><span class="s2">(S&#39;rm * -rf&#39;</span><span class="se">\n</span><span class="s2">rT.&quot;</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span> 
@@ -137,7 +137,7 @@
 <p>以及一个反序列化对照：</p>
 <blockquote>
 <p>c：读取新的一行作为模块名module，读取下一行作为对象名object，然后将module.object压入到堆栈中。
-(：将一个标记对象插入到堆栈中。为了实现俺们的目的，该指令会与t搭配使用，以产生一个元组。
+(：将一个标记对象插入到堆栈中。为了实现我们的目的，该指令会与t搭配使用，以产生一个元组。
 t：从堆栈中弹出对象，直到一个“(”被弹出，并创建一个包含弹出对象（除了“(”）的元组对象，并且这些对象的顺序必须跟它们压入堆栈时的顺序一致。然后，该元组被压入到堆栈中。
 S：读取引号中的字符串直到换行符处，然后将它压入堆栈。
 R：将一个元组和一个可调用对象弹出堆栈，然后以该元组作为参数调用该可调用的对象，最后将结果压入到堆栈中。&nbsp;.：结束pickle</p>
