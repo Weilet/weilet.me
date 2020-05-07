@@ -1931,7 +1931,7 @@ pre code {
 :not(pre)>code {
     padding: 3px 5px;
     border: none;
-    font-family: Menlo, roboto mono, monospace;
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
     font-weight: 400;
     color: #111;
     border-radius: 4px;
