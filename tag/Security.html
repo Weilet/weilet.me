@@ -2,7 +2,8 @@
 <html>
 
 <head>
-Weilet's blog - Authors<!-- Global site tag (gtag.js) - Google Analytics -->
+<title>Security</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -47,12 +48,24 @@ Weilet's blog - Authors<!-- Global site tag (gtag.js) - Google Analytics -->
         </div>
     </div>
 </nav>    
-    <h1>Authors on Weilet's blog</h1>
-    <ul>
-        <li><a href="https://weilet.me/author/pwnforwhat.html">PwnForWhat</a> (25)</li>
-        <li><a href="https://weilet.me/author/weilet.html">Weilet</a> (12)</li>
-    </ul>
-<footer class="footer container">
+<main id="main-content">
+    <div class="container">
+        <h1><u>Security</u></h1>
+        <section class="posts">
+            <a href="/文件哈希">
+                <div class="each">
+                    <div>
+                        <h2>文件哈希</h2>
+                        <div class="excerpt">2020-05-09</div>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </div>
+</main>
+<script type="text/javascript">
+function search() { let input = document.getElementById("searchTerm"); let filter = input.value.toUpperCase(); let posts = document.getElementsByClassName("each"); for (let v of posts) { let title = v.innerHTML; if (title.toUpperCase().indexOf(filter) > -1) { v.style.display = "" } else { v.style.display = "none" } } }
+</script><footer class="footer container">
 	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
 	<a class="main-nav-link" href="/blogroll">友链</a>
 	<a class="main-nav-link" href="/about">关于</a>
