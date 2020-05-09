@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-05-09T23:57:07-00:00</lastmod>
+<lastmod>2020-05-10T00:01:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-05-09T23:57:07-00:00</lastmod>
+<lastmod>2020-05-10T00:01:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-05-09T23:57:07-00:00</lastmod>
+<lastmod>2020-05-10T00:01:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-05-09T23:57:07-00:00</lastmod>
+<lastmod>2020-05-10T00:01:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,15 +39,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/《李银河说爱情》读后感</loc>
-<lastmod>2020-04-26T23:17:00+08:00</lastmod>
+<loc>https://weilet.me/劳动节随想</loc>
+<lastmod>2020-05-04T22:16:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/劳动节随想</loc>
-<lastmod>2020-04-26T22:16:00+08:00</lastmod>
+<loc>https://weilet.me/《李银河说爱情》读后感</loc>
+<lastmod>2020-04-26T23:17:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -306,7 +306,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/category/Thought.html</loc>
-<lastmod>2020-04-26T22:16:00+08:06</lastmod>
+<lastmod>2020-05-04T22:16:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
