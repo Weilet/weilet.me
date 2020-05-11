@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-05-10T00:19:01-00:00</lastmod>
+<lastmod>2020-05-11T23:51:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-05-10T00:19:01-00:00</lastmod>
+<lastmod>2020-05-11T23:51:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-05-10T00:19:01-00:00</lastmod>
+<lastmod>2020-05-11T23:51:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-05-10T00:19:01-00:00</lastmod>
+<lastmod>2020-05-11T23:51:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -291,8 +291,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/category/Book.html</loc>
-<lastmod>2020-04-26T23:17:00+08:06</lastmod>
+<loc>https://weilet.me/category/Daily.html</loc>
+<lastmod>2020-05-04T22:16:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -305,20 +305,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/category/Thought.html</loc>
-<lastmod>2020-05-04T22:16:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://weilet.me/category/Unboxing.html</loc>
-<lastmod>2020-02-07T19:42:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://weilet.me/tag/Security.html</loc>
 <lastmod>2020-05-09T18:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -326,8 +312,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/tag/Windows.html</loc>
-<lastmod>2020-05-09T18:30:00+08:06</lastmod>
+<loc>https://weilet.me/tag/Thought.html</loc>
+<lastmod>2020-05-04T22:16:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Book.html</loc>
+<lastmod>2020-04-26T23:17:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -370,6 +363,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://weilet.me/tag/Python.html</loc>
 <lastmod>2020-02-26T22:25:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/Windows.html</loc>
+<lastmod>2020-02-14T22:25:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
