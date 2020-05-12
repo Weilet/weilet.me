@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-05-09T18:30:00+08:00</updated><entry><title>文件哈希</title><link href="https://weilet.me/%E6%96%87%E4%BB%B6%E5%93%88%E5%B8%8C" rel="alternate"></link><published>2020-05-09T18:30:00+08:00</published><updated>2020-05-09T18:30:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-05-09:/文件哈希</id><content type="html">&lt;p&gt;你是否遇到过这样的情况：看到一张有趣的图片，想要发送给微信好友，却发现对方无法查看；又或者想上传文件到QQ群，却总是失败？这类行为，都与文件的哈希值有关。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/all-en.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-05-11T18:30:00+08:00</updated><entry><title>正则正则</title><link href="https://weilet.me/%E6%AD%A3%E5%88%99%E6%AD%A3%E5%88%99" rel="alternate"></link><published>2020-05-11T18:30:00+08:00</published><updated>2020-05-11T18:30:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-05-11:/正则正则</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这个学期写shell比较多，不小心发现了正则表达式的秘密………&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;通配符？&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;那么聊正则表达式之前呢，我们先聊一下新手容易和正则表达式弄混的概念：通配符&lt;/p&gt;
+&lt;p&gt;在正则表达式出现之前，人们就有用来表示模式的符号，通配符比正则表达式的符号少，却也足够日常的使用。&lt;/p&gt;
+&lt;p&gt;关于通配符，可以参考&lt;a href="http://www.ruanyifeng.com/blog/2018/09/bash-wildcards.html"&gt;阮一峰老师的博客&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;正则表达式&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;通过几个月的学习，我发现正则表达式是个大家庭。很多以前在 Java 和 Python 的写法，在 Linux 的命令中并不适用。为什么呢？因为 Linux 中很多命令默认支持的是&lt;strong&gt;基础正则表达式&lt;/strong&gt;，而我们在编程语言里面使用的表达式都是经过一定扩展的。其实 Linux 也支持扩展正则表达式（注意，这和编程语言里使用的还是有一定的不同）以及 Perl 正则表达式（经过 Perl 改良的正则表达式）。以我们最常用的  &lt;code&gt;grep&lt;/code&gt; 为例，可以通过 &lt;code&gt;-E&lt;/code&gt; 来支持扩展正则表达式以及通过 &lt;code&gt;-P&lt;/code&gt; 来支持 Perl …&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;这个学期写shell比较多，不小心发现了正则表达式的秘密………&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="_1"&gt;通配符？&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;那么聊正则表达式之前呢，我们先聊一下新手容易和正则表达式弄混的概念：通配符&lt;/p&gt;
+&lt;p&gt;在正则表达式出现之前，人们就有用来表示模式的符号，通配符比正则表达式的符号少，却也足够日常的使用。&lt;/p&gt;
+&lt;p&gt;关于通配符，可以参考&lt;a href="http://www.ruanyifeng.com/blog/2018/09/bash-wildcards.html"&gt;阮一峰老师的博客&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;正则表达式&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;通过几个月的学习，我发现正则表达式是个大家庭。很多以前在 Java 和 Python 的写法，在 Linux 的命令中并不适用。为什么呢？因为 Linux 中很多命令默认支持的是&lt;strong&gt;基础正则表达式&lt;/strong&gt;，而我们在编程语言里面使用的表达式都是经过一定扩展的。其实 Linux 也支持扩展正则表达式（注意，这和编程语言里使用的还是有一定的不同）以及 Perl 正则表达式（经过 Perl 改良的正则表达式）。以我们最常用的  &lt;code&gt;grep&lt;/code&gt; 为例，可以通过 &lt;code&gt;-E&lt;/code&gt; 来支持扩展正则表达式以及通过 &lt;code&gt;-P&lt;/code&gt; 来支持 Perl&amp;nbsp;正则表达式&lt;/p&gt;
+&lt;p&gt;你可以在这个&lt;a href="https://man.linuxde.net/docs/shell_regex.html"&gt;网站&lt;/a&gt;查看正则表达式家族更成员的异同&lt;/p&gt;</content><category term="Tech"></category><category term="Linux"></category></entry><entry><title>文件哈希</title><link href="https://weilet.me/%E6%96%87%E4%BB%B6%E5%93%88%E5%B8%8C" rel="alternate"></link><published>2020-05-09T18:30:00+08:00</published><updated>2020-05-09T18:30:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-05-09:/文件哈希</id><content type="html">&lt;p&gt;你是否遇到过这样的情况：看到一张有趣的图片，想要发送给微信好友，却发现对方无法查看；又或者想上传文件到QQ群，却总是失败？这类行为，都与文件的哈希值有关。&lt;/p&gt;
 &lt;h3 id="_1"&gt;什么是文件哈希&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;文件根据指定的散列算法（如md5、&lt;span class="caps"&gt;SHA1&lt;/span&gt;、&lt;span class="caps"&gt;SHA256&lt;/span&gt;）计算出文件哈希，它相当于文件的“身份证”，具有唯一性。文件哈希与文件内容有关，与文件名、修改时间无关。&lt;/p&gt;
 &lt;h3 id="_2"&gt;文件拦截&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
