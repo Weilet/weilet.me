@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过STMP或者wxpy进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫config字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用Python写爬虫，我第一时间想到了requests。requests凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一POST。然而现实是，当我POST过去的时候，返回了405错误。明明直接用浏览器POST请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。 在接近两个小时的尝试，我放弃了这个方法。 selenium大法好 此计不成，我只好祭出selenium。利用selenium，我轻易地登陆了教务系统，但时间已经很晚，我打算把爬取信息的工作留到明天。 第二天，你猜怎么着，由于selenium的特征被识别，我无法进入课表界面 …"/>
+<meta name="description" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过 STMP 或者 wxpy 进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫 config 字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用 Python 写爬虫，我第一时间想到了 requests。requests 凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一 POST。然而现实是，当我 POST 过去的时候，返回了 405 错误。明明直接用浏览器 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,10 +24,10 @@
     
 <meta property="og:title" content="学校教务系统爬取计划" />
 <meta property="og:url" content="https://weilet.me/学校教务系统爬取计划" />
-<meta property="og:description" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过STMP或者wxpy进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫config字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用Python写爬虫，我第一时间想到了requests。requests凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一POST。然而现实是，当我POST过去的时候，返回了405错误。明明直接用浏览器POST请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。 在接近两个小时的尝试，我放弃了这个方法。 selenium大法好 此计不成，我只好祭出selenium。利用selenium，我轻易地登陆了教务系统，但时间已经很晚，我打算把爬取信息的工作留到明天。 第二天，你猜怎么着，由于selenium的特征被识别，我无法进入课表界面 …" />
+<meta property="og:description" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过 STMP 或者 wxpy 进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫 config 字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用 Python 写爬虫，我第一时间想到了 requests。requests 凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一 POST。然而现实是，当我 POST 过去的时候，返回了 405 错误。明明直接用浏览器 …" />
 <meta property="article:published_time" content="2019-09-25 19:33:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过STMP或者wxpy进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫config字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用Python写爬虫，我第一时间想到了requests。requests凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一POST。然而现实是，当我POST过去的时候，返回了405错误。明明直接用浏览器POST请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。 在接近两个小时的尝试，我放弃了这个方法。 selenium大法好 此计不成，我只好祭出selenium。利用selenium，我轻易地登陆了教务系统，但时间已经很晚，我打算把爬取信息的工作留到明天。 第二天，你猜怎么着，由于selenium的特征被识别，我无法进入课表界面 …" />
+<meta name="twitter:card" content="本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。 自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。 需求分析 因为是自己用的，所以只需要简单爬取后再通过 STMP 或者 wxpy 进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫 config 字典里，这样使用敏感信息的时候就不会被看到了。 requests试水 说到用 Python 写爬虫，我第一时间想到了 requests。requests 凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一 POST。然而现实是，当我 POST 过去的时候，返回了 405 错误。明明直接用浏览器 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -74,20 +74,20 @@
 </blockquote>
 <p>自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。</p>
 <h4 id="_1">需求分析<a class="headerlink" href="#_1" title="Permanent link"> </a></h4>
-<p>因为是自己用的，所以只需要简单爬取后再通过STMP或者wxpy进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。&nbsp;鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫config字典里，这样使用敏感信息的时候就不会被看到了。</p>
+<p>因为是自己用的，所以只需要简单爬取后再通过 <span class="caps">STMP</span> 或者 wxpy 进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫 config&nbsp;字典里，这样使用敏感信息的时候就不会被看到了。</p>
 <h4 id="requests">requests试水<a class="headerlink" href="#requests" title="Permanent link"> </a></h4>
-<p>说到用Python写爬虫，我第一时间想到了requests。requests凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一POST。然而现实是，当我POST过去的时候，返回了405错误。明明直接用浏览器POST请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。</p>
+<p>说到用 Python 写爬虫，我第一时间想到了 requests。requests 凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一 <span class="caps">POST</span>。然而现实是，当我 <span class="caps">POST</span> 过去的时候，返回了 405 错误。明明直接用浏览器 <span class="caps">POST</span>&nbsp;请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。</p>
 <p>在接近两个小时的尝试，我放弃了这个方法。</p>
 <h4 id="selenium">selenium大法好<a class="headerlink" href="#selenium" title="Permanent link"> </a></h4>
-<p>此计不成，我只好祭出selenium。利用selenium，我轻易地登陆了教务系统，但时间已经很晚，我打算把爬取信息的工作留到明天。</p>
-<p>第二天，你猜怎么着，由于selenium的特征被识别，我无法进入课表界面。</p>
-<p>我尝试在控制台将selenium的特征改掉：</p>
+<p>此计不成，我只好祭出 selenium。利用&nbsp;selenium，我轻易地登陆了教务系统，但时间已经很晚，我打算把爬取信息的工作留到明天。</p>
+<p>第二天，你猜怎么着，由于 selenium&nbsp;的特征被识别，我无法进入课表界面。</p>
+<p>我尝试在控制台将 selenium&nbsp;的特征改掉：</p>
 <ul>
 <li>window.navigator.webdriver =&nbsp;false</li>
 <li>window.navigator.language = &#8216;en-<span class="caps">US</span>&#8217;</li>
 <li>…………</li>
 </ul>
-<p>尝试后无果，最终发现可以通过修改chrome设置解决。然而教务系统的加载速度实在令人头疼，各种等待才把命中率控制在80%</p>
+<p>尝试后无果，最终发现可以通过修改 chrome 设置解决。然而教务系统的加载速度实在令人头疼，各种等待才把命中率控制在&nbsp;80%</p>
 <p>最后上代码：</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -167,8 +167,8 @@
 
 <p>测试模块和邮件模块就不放出来了，部署到服务器后，就可以每天等待明天的上课通知了，想想都开心</p>
 <h4 id="_2">续：大乌龙<a class="headerlink" href="#_2" title="Permanent link"> </a></h4>
-<p>作文后的那天晚上和朋友聊起教务系统，得知他居然也在写该系统的爬虫。他没有用selenium实现。反复交谈后，发现原来是分析请求的时候复制错了登陆链接。</p>
-<p>Postman一顿乱撸以后，用requests实现了一个版本（吐槽一下fstring，在某些场景下真的不如C风格的格式化来得痛快）</p>
+<p>作文后的那天晚上和朋友聊起教务系统，得知他居然也在写该系统的爬虫。他没有用 selenium&nbsp;实现。反复交谈后，发现原来是分析请求的时候复制错了登陆链接。</p>
+<p>Postman 一顿乱撸以后，用 requests 实现了一个版本（吐槽一下 fstring，在某些场景下真的不如 C&nbsp;风格的格式化来得痛快）</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Crawler</span><span class="p">:</span>
     <span class="n">session_</span> <span class="o">=</span> <span class="kc">None</span>
 

@@ -5,28 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/</loc>
-<lastmod>2020-05-14T23:50:37-00:00</lastmod>
+<lastmod>2020-05-17T18:42:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/archives.html</loc>
-<lastmod>2020-05-14T23:50:37-00:00</lastmod>
+<lastmod>2020-05-17T18:42:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/tags.html</loc>
-<lastmod>2020-05-14T23:50:37-00:00</lastmod>
+<lastmod>2020-05-17T18:42:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://weilet.me/categories.html</loc>
-<lastmod>2020-05-14T23:50:37-00:00</lastmod>
+<lastmod>2020-05-17T18:42:29-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/轻松自建 RSS 服务</loc>
+<lastmod>2020-05-16T23:14:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -81,28 +88,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/安装spf13-vim</loc>
+<loc>https://weilet.me/安装 spf13-vim</loc>
 <lastmod>2020-03-03T23:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/谈谈Python中的for循环（2）</loc>
+<loc>https://weilet.me/谈谈 Python 中的 for 循环（2）</loc>
 <lastmod>2020-02-26T22:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/谈谈Python中的for循环（1）</loc>
+<loc>https://weilet.me/谈谈 Python 中的 for 循环（1）</loc>
 <lastmod>2020-02-25T22:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/Windows Terminal折腾指南</loc>
+<loc>https://weilet.me/Windows Terminal 折腾指南</loc>
 <lastmod>2020-02-14T22:25:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -116,21 +123,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/Python3.8新特性</loc>
+<loc>https://weilet.me/Python3.8 新特性</loc>
 <lastmod>2020-02-06T21:46:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/CPP内存泄漏</loc>
+<loc>https://weilet.me/CPP 内存泄漏</loc>
 <lastmod>2019-10-25T18:17:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/《SQL必知必会》书摘</loc>
+<loc>https://weilet.me/《SQL 必知必会》书摘</loc>
 <lastmod>2019-10-14T18:22:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -151,7 +158,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/浅谈CSRF攻击</loc>
+<loc>https://weilet.me/浅谈 CSRF 攻击</loc>
 <lastmod>2019-06-04T21:26:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -165,28 +172,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/Python中的GIL</loc>
+<loc>https://weilet.me/Python 中的 GIL</loc>
 <lastmod>2019-05-23T00:07:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/Python参数传递的问题</loc>
+<loc>https://weilet.me/Python 参数传递的问题</loc>
 <lastmod>2019-05-11T10:31:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/序列化Python对象</loc>
+<loc>https://weilet.me/序列化 Python 对象</loc>
 <lastmod>2019-05-08T22:11:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/C语言中的extern关键字</loc>
+<loc>https://weilet.me/C 语言中的 extern 关键字</loc>
 <lastmod>2019-05-06T15:48:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -200,7 +207,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/C语言下多重嵌套的define</loc>
+<loc>https://weilet.me/C 语言下多重嵌套的 define</loc>
 <lastmod>2019-04-28T13:47:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -214,63 +221,63 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://weilet.me/Python中多继承的顺序问题</loc>
+<loc>https://weilet.me/Python 中多继承的顺序问题</loc>
 <lastmod>2019-04-23T22:47:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/Python中的Mixin模式</loc>
+<loc>https://weilet.me/Python 中的 Mixin 模式</loc>
 <lastmod>2019-04-22T10:12:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/两个下划线和Python的故事</loc>
+<loc>https://weilet.me/两个下划线和 Python 的故事</loc>
 <lastmod>2019-04-16T12:38:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/Python函数注释</loc>
+<loc>https://weilet.me/Python 函数注释</loc>
 <lastmod>2019-03-03T22:18:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/jinja2模板引擎学习总结</loc>
+<loc>https://weilet.me/jinja2 模板引擎学习总结</loc>
 <lastmod>2018-10-28T21:56:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/用Python，查快递</loc>
+<loc>https://weilet.me/用 Python，查快递</loc>
 <lastmod>2018-08-07T06:18:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/用crontab配置定时任务</loc>
+<loc>https://weilet.me/用 crontab 配置定时任务</loc>
 <lastmod>2018-08-07T06:09:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/忘记ubuntu的root密码如何解决</loc>
+<loc>https://weilet.me/忘记 ubuntu 的 root 密码如何解决</loc>
 <lastmod>2018-08-05T22:47:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://weilet.me/用Python给你女朋友写封信</loc>
+<loc>https://weilet.me/用 Python 给你女朋友写封信</loc>
 <lastmod>2018-07-14T00:30:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -306,7 +313,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/category/Tech.html</loc>
-<lastmod>2020-05-11T18:30:00+08:06</lastmod>
+<lastmod>2020-05-16T23:14:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/RSS.html</loc>
+<lastmod>2020-05-16T23:14:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://weilet.me/tag/docker.html</loc>
+<lastmod>2020-05-16T23:14:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -467,7 +488,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://weilet.me/author/weilet.html</loc>
-<lastmod>2020-05-11T18:30:00+08:06</lastmod>
+<lastmod>2020-05-16T23:14:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

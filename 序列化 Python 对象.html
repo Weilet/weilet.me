@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>序列化Python对象</title>
+<title>序列化 Python 对象</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
 <script>
@@ -15,25 +15,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …"/>
+<meta name="description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle 是 Python 中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
 <meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
-<meta property="og:title" content="序列化Python对象" />
-<meta property="og:url" content="https://weilet.me/序列化Python对象" />
-<meta property="og:description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
+<meta property="og:title" content="序列化 Python&nbsp;对象" />
+<meta property="og:url" content="https://weilet.me/序列化 Python 对象" />
+<meta property="og:description" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle 是 Python 中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p …" />
 <meta property="article:published_time" content="2019-05-08 22:11:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle是Python中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p = pickle.dumps(stu …" />
+<meta name="twitter:card" content="什么是序列化 序列化(Serialization)是将对象的状态信息转换为可以存储或传输的形式的过程。 在序列化期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。 来自百度百科 为什么需要序列化 便于传输 Python 中使用序列化 Pickle 模块 Pickle 是 Python 中一个常用的序列化模块，它有以下优点： 易用 支持多种数据类型 维护引用关系 但是，它也有以下缺点： 非原子性 不兼容别的语言 说到底常用的就四个函数：dump，load，dumps，loads。 还是直接看表演吧。 import pickle import os class Student(object): pass stu = Student() p …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<link rel="canonical" href="https://weilet.me/序列化Python对象"/>
+<link rel="canonical" href="https://weilet.me/序列化 Python 对象"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -57,7 +57,7 @@
     <article class="single container">
         <header class="single-header">
             <div class="flex">
-                <h1>序列化Python对象</h1>
+                <h1>序列化 Python&nbsp;对象</h1>
                 <div class="post-meta">
                     <time class="date">2019-05-08</time>
                 </div>
@@ -78,7 +78,7 @@
 <p>便于传输</p>
 <h3 id="python">Python 中使用序列化<a class="headerlink" href="#python" title="Permanent link"> </a></h3>
 <h4 id="pickle">Pickle 模块<a class="headerlink" href="#pickle" title="Permanent link"> </a></h4>
-<p>Pickle是Python中一个常用的序列化模块，它有以下优点：</p>
+<p>Pickle 是 Python&nbsp;中一个常用的序列化模块，它有以下优点：</p>
 <ul>
 <li>易用</li>
 <li>支持多种数据类型</li>
@@ -105,7 +105,7 @@
 
 <p>会得到一个这样二进制数据：</p>
 <p>\x80\x03c__main__\nStudent\nq\x00)\x81q\x01.</p>
-<p>反过来，我们便可以把一段二进制数据串变为一个Python对象</p>
+<p>反过来，我们便可以把一段二进制数据串变为一个 Python&nbsp;对象</p>
 <p>比方说：</p>
 <div class="highlight"><pre><span></span><span class="n">bits</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;cos</span><span class="se">\n</span><span class="s2">system</span><span class="se">\n</span><span class="s2">(S&#39;rm * -rf&#39;</span><span class="se">\n</span><span class="s2">rT.&quot;</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span> 
@@ -122,17 +122,17 @@
 <p>来自 <a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#id28">Python魔法方法指南</a><a href="https://pyzh.readthedocs.io/en/latest/python-magic-methods-guide.html#python">¶</a> </p>
 </blockquote>
 <h4 id="json">JSON模块<a class="headerlink" href="#json" title="Permanent link"> </a></h4>
-<p>JSON相信大家都熟悉，它的优点主要有两点：</p>
+<p><span class="caps">JSON</span>&nbsp;相信大家都熟悉，它的优点主要有两点：</p>
 <ul>
 <li>可读性高</li>
 <li>适用性广</li>
 </ul>
-<p>怎么说，没操作过JSON都不好意思告诉别人自己是写代码的。</p>
+<p>怎么说，没操作过 <span class="caps">JSON</span>&nbsp;都不好意思告诉别人自己是写代码的。</p>
 <p>缺点：</p>
 <ul>
-<li>相较于pickle，性能较弱（cjson模块会改善这个问题，但对速度要求较高的项目还是不适合使用之）</li>
+<li>相较于 pickle，性能较弱（cjson&nbsp;模块会改善这个问题，但对速度要求较高的项目还是不适合使用之）</li>
 </ul>
-<p>JSON的对照网上很多，这里就不献丑了。</p>
+<p><span class="caps">JSON</span>&nbsp;的对照网上很多，这里就不献丑了。</p>
 <p>最后再附上一个精彩的 pickle 反序列化利用： <a href="https://zhuanlan.zhihu.com/p/25981037">地址</a></p>
 <p>以及一个反序列化对照：</p>
 <blockquote>

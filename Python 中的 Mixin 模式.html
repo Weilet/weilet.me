@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Python中的Mixin模式</title>
+<title>Python 中的 Mixin 模式</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
 <script>
@@ -15,25 +15,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="什么是Mixin Mixin是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能，而不是某个物品 …"/>
+<meta name="description" content="什么是Mixin Mixin 是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
 <meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
-<meta property="og:title" content="Python中的Mixin模式" />
-<meta property="og:url" content="https://weilet.me/Python中的Mixin模式" />
-<meta property="og:description" content="什么是Mixin Mixin是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能，而不是某个物品 …" />
+<meta property="og:title" content="Python 中的 Mixin&nbsp;模式" />
+<meta property="og:url" content="https://weilet.me/Python 中的 Mixin 模式" />
+<meta property="og:description" content="什么是Mixin Mixin 是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能 …" />
 <meta property="article:published_time" content="2019-04-22 10:12:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="什么是Mixin Mixin是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能，而不是某个物品 …" />
+<meta name="twitter:card" content="什么是Mixin Mixin 是面向对象程序设计语言中的类，提供了方法的实现。 为什么需要 Mixin [首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的 NameMixin，而且它应该具备以下特点： 首先它必须表示某一种功能 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<link rel="canonical" href="https://weilet.me/Python中的Mixin模式"/>
+<link rel="canonical" href="https://weilet.me/Python 中的 Mixin 模式"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -57,7 +57,7 @@
     <article class="single container">
         <header class="single-header">
             <div class="flex">
-                <h1>Python中的Mixin模式</h1>
+                <h1>Python 中的 Mixin&nbsp;模式</h1>
                 <div class="post-meta">
                     <time class="date">2019-04-22</time>
                 </div>
@@ -73,14 +73,14 @@
         </header>
         <div class="post">
             <h3 id="mixin">什么是Mixin<a class="headerlink" href="#mixin" title="Permanent link"> </a></h3>
-<p>Mixin是面向对象程序设计语言中的类，提供了方法的实现。</p>
+<p>Mixin&nbsp;是面向对象程序设计语言中的类，提供了方法的实现。</p>
 <h3 id="mixin_1">为什么需要 Mixin<a class="headerlink" href="#mixin_1" title="Permanent link"> </a></h3>
 <p>[首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&nbsp;NameMixin，而且它应该具备以下特点：</p>
 <ul>
-<li>首先它必须表示某一种功能，而不是某个物品，如同Java中的Runnable，Callable等</li>
-<li>其次它必须责任单一，如果有多个功能，那就写多个Mixin类</li>
+<li>首先它必须表示某一种功能，而不是某个物品，如同 Java 中的 Runnable，Callable&nbsp;等</li>
+<li>其次它必须责任单一，如果有多个功能，那就写多个 Mixin&nbsp;类</li>
 <li>然后，它不依赖于子类的实现</li>
-<li>最后，子类即便没有继承这个Mixin类，也照样可以工作，就是缺少了某个功能。&nbsp;（参考思诚之道）</li>
+<li>最后，子类即便没有继承这个 Mixin 类，也照样可以工作，就是缺少了某个功能。&nbsp;（参考思诚之道）</li>
 </ul>
 <h3 id="_1">具体例子<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FlyMixin</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>

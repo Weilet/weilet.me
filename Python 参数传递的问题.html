@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Python参数传递的问题</title>
+<title>Python 参数传递的问题</title>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
 <script>
@@ -15,25 +15,25 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …"/>
+<meta name="description" content="传参不规范，亲人两行泪 Python 中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第 31 条建议。 在 Python 里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当 a 传递给 x 时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a 与 x 就没有关联了，自然对 x 的更改就不会反馈到 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
 <meta property="og:site_name" content="Weilet's blog" />
 <meta property="og:type" content="article" />
     
-<meta property="og:title" content="Python参数传递的问题" />
-<meta property="og:url" content="https://weilet.me/Python参数传递的问题" />
-<meta property="og:description" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …" />
+<meta property="og:title" content="Python&nbsp;参数传递的问题" />
+<meta property="og:url" content="https://weilet.me/Python 参数传递的问题" />
+<meta property="og:description" content="传参不规范，亲人两行泪 Python 中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第 31 条建议。 在 Python 里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当 a 传递给 x 时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a 与 x 就没有关联了，自然对 x 的更改就不会反馈到 …" />
 <meta property="article:published_time" content="2019-05-11 10:31:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="传参不规范，亲人两行泪 Python中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第31条建议。 在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当a传递给x时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a与x就没有关联了，自然对x的更改就不会反馈到a了 那么，什么样的改变会反馈到实参呢？ 在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会 可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西 …" />
+<meta name="twitter:card" content="传参不规范，亲人两行泪 Python 中的参数传递并非传值也非传引用，传的是对象的引用。 这是一个结论，如果想要知道更多的细节，请阅读《编写高质量代码：改善Python程序的91个建议》的第 31 条建议。 在 Python 里面，我们接触到的所有数据类型都是对象，包括常数和字符串。 假设有下面代码： a = 'ichxx' def foo(x): x = x[::-1] print(x) foo(a) print(a) 当 a 传递给 x 时，它对应的内存模型是这样的 当切片时，产生了新的字符串，此时内存模型变为： 现在，a 与 x 就没有关联了，自然对 x 的更改就不会反馈到 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
 <link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
 <link rel="icon" href="/theme/images/terminal.ico">
-<link rel="canonical" href="https://weilet.me/Python参数传递的问题"/>
+<link rel="canonical" href="https://weilet.me/Python 参数传递的问题"/>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -57,7 +57,7 @@
     <article class="single container">
         <header class="single-header">
             <div class="flex">
-                <h1>Python参数传递的问题</h1>
+                <h1>Python&nbsp;参数传递的问题</h1>
                 <div class="post-meta">
                     <time class="date">2019-05-11</time>
                 </div>
@@ -72,9 +72,9 @@
             <blockquote>
 <p>传参不规范，亲人两行泪</p>
 </blockquote>
-<p>Python中的参数传递并非传值也非传引用，传的是对象的引用。</p>
-<p>这是一个结论，如果想要知道更多的细节，请阅读<a href="https://book.douban.com/subject/25910544/">《编写高质量代码：改善Python程序的91个建议》</a>的第31条建议。</p>
-<p>在Python里面，我们接触到的所有数据类型都是对象，包括常数和字符串。</p>
+<p>Python&nbsp;中的参数传递并非传值也非传引用，传的是对象的引用。</p>
+<p>这是一个结论，如果想要知道更多的细节，请阅读<a href="https://book.douban.com/subject/25910544/">《编写高质量代码：改善Python程序的91个建议》</a>的第 31&nbsp;条建议。</p>
+<p>在 Python&nbsp;里面，我们接触到的所有数据类型都是对象，包括常数和字符串。</p>
 <p>假设有下面代码：</p>
 <div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;ichxx&#39;</span>
 <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -86,11 +86,11 @@
 </pre></div>
 
 
-<p>当a传递给x时，它对应的内存模型是这样的</p>
+<p>当 a 传递给 x&nbsp;时，它对应的内存模型是这样的</p>
 <p><img alt="示意图1" class="wp-image-435" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png" /></p>
 <p>当切片时，产生了新的字符串，此时内存模型变为：</p>
 <p><img alt="示意图2" class="wp-image-436" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png" /></p>
-<p>现在，a与x就没有关联了，自然对x的更改就不会反馈到a了</p>
+<p>现在，a 与 x 就没有关联了，自然对 x 的更改就不会反馈到 a&nbsp;了</p>
 <p>那么，什么样的改变会反馈到实参呢？</p>
 <p><strong>在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会</strong></p>
 <p>可以把变量名理解成标签，对象理解成商品，我们通过标签去寻找商品。当可变对象修改时，我们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以我们只能把标签撕下来贴到别的商品上面，这样我们也能实现“改变寻找到的东西”的目的，但原来的商品有没有变呢？没有。</p>
