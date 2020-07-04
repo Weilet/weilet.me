@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Weilet</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/weilet.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-05-25T23:52:00+08:00</updated><entry><title>程序员需要知道的字体知识</title><link href="https://weilet.me/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%AD%97%E4%BD%93%E7%9F%A5%E8%AF%86" rel="alternate"></link><published>2020-05-25T23:52:00+08:00</published><updated>2020-05-25T23:52:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-05-25:/程序员需要知道的字体知识</id><summary type="html">&lt;p&gt;程序员一天要面对屏幕很长时间，其中大部分时间是在使用终端、使用 &lt;span class="caps"&gt;IDE&lt;/span&gt;。因此，为了保证我们的身心健康，选择一款良好的字体至关重要。本文将带你了解一些&lt;em&gt;连我都知道的&lt;/em&gt;文字小知识，让你为自己更好地选择字体。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Weilet's blog - Weilet</title><link href="https://weilet.me/" rel="alternate"></link><link href="https://weilet.me/feeds/weilet.atom.xml" rel="self"></link><id>https://weilet.me/</id><updated>2020-07-04T01:05:00+08:00</updated><entry><title>好友推荐算法</title><link href="https://weilet.me/%E5%A5%BD%E5%8F%8B%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95" rel="alternate"></link><published>2020-07-04T01:05:00+08:00</published><updated>2020-07-04T01:05:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-07-04:/好友推荐算法</id><content type="html">&lt;p&gt;某天与国外友人 X&amp;nbsp;聊起了好友推荐算法，那么好友推荐是如何完成的呢？&lt;/p&gt;
+&lt;h3 id="_1"&gt;三元闭包&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;事实上解决这类问题有个专门的理论：&lt;strong&gt;三元闭包&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。&lt;/p&gt;
+&lt;p&gt;我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。&lt;/p&gt;
+&lt;h3 id="_2"&gt;邻里重叠度&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 /&amp;nbsp;A与B的好友总数&lt;/p&gt;
+&lt;p&gt;我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。&lt;/p&gt;
+&lt;h3 id="_3"&gt;脸书是如何做的&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;脸书结合经验：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。&lt;/li&gt;
+&lt;li&gt;通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Tech"></category><category term="None"></category></entry><entry><title>程序员需要知道的字体知识</title><link href="https://weilet.me/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%AD%97%E4%BD%93%E7%9F%A5%E8%AF%86" rel="alternate"></link><published>2020-05-25T23:52:00+08:00</published><updated>2020-05-25T23:52:00+08:00</updated><author><name>Weilet</name></author><id>tag:weilet.me,2020-05-25:/程序员需要知道的字体知识</id><summary type="html">&lt;p&gt;程序员一天要面对屏幕很长时间，其中大部分时间是在使用终端、使用 &lt;span class="caps"&gt;IDE&lt;/span&gt;。因此，为了保证我们的身心健康，选择一款良好的字体至关重要。本文将带你了解一些&lt;em&gt;连我都知道的&lt;/em&gt;文字小知识，让你为自己更好地选择字体。&lt;/p&gt;
 &lt;h3 id="vs"&gt;衬体 &lt;span class="caps"&gt;VS&lt;/span&gt; 无衬线体&lt;a class="headerlink" href="#vs" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;衬体（Serif）是有衬线的字体，而无衬线体（sans-serif）则是没有衬线的字体。所谓衬线，即是 Windows 下 Word&amp;nbsp;文档中宋体的装饰线，它们是在笔画的起始和末端用于装饰的。无衬线体比衬体干扰成分少，简洁明了，适合用于编程。顺带一提，无衬线体在旧时代也被称作“grotesque”，因此也被称为哥特体（Gothic）。&lt;/p&gt;
 &lt;h3 id="vs_1"&gt;等宽字体 &lt;span class="caps"&gt;VS&lt;/span&gt; 比例字体&lt;a class="headerlink" href="#vs_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;

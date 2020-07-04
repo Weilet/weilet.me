@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>好友推荐算法</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="某天与国外友人 X 聊起了好友推荐算法，那么好友推荐是如何完成的呢？ 三元闭包 事实上解决这类问题有个专门的理论：三元闭包。 所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。 我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。 邻里重叠度 我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 / A与B的好友总数 我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。 脸书是如何做的 脸书结合经验： 通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。 通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="好友推荐算法" />
+<meta property="og:url" content="https://weilet.me/好友推荐算法" />
+<meta property="og:description" content="某天与国外友人 X 聊起了好友推荐算法，那么好友推荐是如何完成的呢？ 三元闭包 事实上解决这类问题有个专门的理论：三元闭包。 所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。 我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。 邻里重叠度 我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 / A与B的好友总数 我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。 脸书是如何做的 脸书结合经验： 通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。 通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。" />
+<meta property="article:published_time" content="2020-07-04 01:05:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="某天与国外友人 X 聊起了好友推荐算法，那么好友推荐是如何完成的呢？ 三元闭包 事实上解决这类问题有个专门的理论：三元闭包。 所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。 我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。 邻里重叠度 我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 / A与B的好友总数 我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。 脸书是如何做的 脸书结合经验： 通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。 通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/好友推荐算法"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>好友推荐算法</h1>
+                <div class="post-meta">
+                    <time class="date">2020-07-04</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/None.html">
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <p>某天与国外友人 X&nbsp;聊起了好友推荐算法，那么好友推荐是如何完成的呢？</p>
+<h3 id="_1">三元闭包<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<p>事实上解决这类问题有个专门的理论：<strong>三元闭包</strong>。</p>
+<p>所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。</p>
+<p>我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。</p>
+<h3 id="_2">邻里重叠度<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<p>我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 /&nbsp;A与B的好友总数</p>
+<p>我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。</p>
+<h3 id="_3">脸书是如何做的<a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
+<p>脸书结合经验：</p>
+<ol>
+<li>通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。</li>
+<li>通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。</li>
+</ol>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>
