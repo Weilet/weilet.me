@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>KNN 算法</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="KNN 算法 一个分类算法，主要用于各种各样的分类。比如给你一大堆的狗，让你给他们一个个分类，这时候就可以用到 KNN 算法了。 算法简述 计算测试对象到训练集中每个对象的距离 按照距离的远近排序 选取与当前测试对象最近的 K 训练对象，作为该测试对象的邻居 统计这 K 个邻居的类别频率 K 个邻居里频率最高的类别，即为测试对象的类别 影响因素 KNN 算法表达的其实就是“近朱者赤近墨者黑”的思想，因此影响它的分类结果的主要有三个因素： K 值的选取，即选择比较的范围。离你最近的两个人是河南人，离你最近的五个人中有三个四川人，你是河南人还是四川人？ 距离的计算，即距离的衡量方式。看你的脸蛋像河南人，但听你的口音却像四川人，你是河南人还是四川人？ 分类规则，即按何标准来分类，主流有多数表决法和加权多数表决法。虽然你平常朋友最多的是河南人，但最好的几个朋友却为四川人，普通朋友和最好的朋友权重不同，你是河南人还是四川人？ 代码实现 KNN 分类"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="<span class="caps">KNN</span>&nbsp;算法" />
+<meta property="og:url" content="https://weilet.me/KNN 算法" />
+<meta property="og:description" content="KNN 算法 一个分类算法，主要用于各种各样的分类。比如给你一大堆的狗，让你给他们一个个分类，这时候就可以用到 KNN 算法了。 算法简述 计算测试对象到训练集中每个对象的距离 按照距离的远近排序 选取与当前测试对象最近的 K 训练对象，作为该测试对象的邻居 统计这 K 个邻居的类别频率 K 个邻居里频率最高的类别，即为测试对象的类别 影响因素 KNN 算法表达的其实就是“近朱者赤近墨者黑”的思想，因此影响它的分类结果的主要有三个因素： K 值的选取，即选择比较的范围。离你最近的两个人是河南人，离你最近的五个人中有三个四川人，你是河南人还是四川人？ 距离的计算，即距离的衡量方式。看你的脸蛋像河南人，但听你的口音却像四川人，你是河南人还是四川人？ 分类规则，即按何标准来分类，主流有多数表决法和加权多数表决法。虽然你平常朋友最多的是河南人，但最好的几个朋友却为四川人，普通朋友和最好的朋友权重不同，你是河南人还是四川人？ 代码实现 KNN 分类" />
+<meta property="article:published_time" content="2020-07-21 23:08:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="KNN 算法 一个分类算法，主要用于各种各样的分类。比如给你一大堆的狗，让你给他们一个个分类，这时候就可以用到 KNN 算法了。 算法简述 计算测试对象到训练集中每个对象的距离 按照距离的远近排序 选取与当前测试对象最近的 K 训练对象，作为该测试对象的邻居 统计这 K 个邻居的类别频率 K 个邻居里频率最高的类别，即为测试对象的类别 影响因素 KNN 算法表达的其实就是“近朱者赤近墨者黑”的思想，因此影响它的分类结果的主要有三个因素： K 值的选取，即选择比较的范围。离你最近的两个人是河南人，离你最近的五个人中有三个四川人，你是河南人还是四川人？ 距离的计算，即距离的衡量方式。看你的脸蛋像河南人，但听你的口音却像四川人，你是河南人还是四川人？ 分类规则，即按何标准来分类，主流有多数表决法和加权多数表决法。虽然你平常朋友最多的是河南人，但最好的几个朋友却为四川人，普通朋友和最好的朋友权重不同，你是河南人还是四川人？ 代码实现 KNN 分类" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/KNN 算法"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1><span class="caps">KNN</span>&nbsp;算法</h1>
+                <div class="post-meta">
+                    <time class="date">2020-07-21</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/None.html">
+                        <span>None</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <h3 id="knn"><span class="caps">KNN</span> 算法<a class="headerlink" href="#knn" title="Permanent link"> </a></h3>
+<p>一个分类算法，主要用于各种各样的分类。比如给你一大堆的狗，让你给他们一个个分类，这时候就可以用到 <span class="caps">KNN</span>&nbsp;算法了。</p>
+<h3 id="_1">算法简述<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<ol>
+<li>
+<p>计算测试对象到训练集中每个对象的距离</p>
+</li>
+<li>
+<p>按照距离的远近排序</p>
+</li>
+<li>
+<p>选取与当前测试对象最近的 K&nbsp;训练对象，作为该测试对象的邻居</p>
+</li>
+<li>
+<p>统计这 K&nbsp;个邻居的类别频率</p>
+</li>
+<li>
+<p>K&nbsp;个邻居里频率最高的类别，即为测试对象的类别</p>
+</li>
+</ol>
+<h3 id="_2">影响因素<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<p><span class="caps">KNN</span>&nbsp;算法表达的其实就是“近朱者赤近墨者黑”的思想，因此影响它的分类结果的主要有三个因素：</p>
+<ol>
+<li>K&nbsp;值的选取，即选择比较的范围。离你最近的两个人是河南人，离你最近的五个人中有三个四川人，你是河南人还是四川人？</li>
+<li>距离的计算，即距离的衡量方式。看你的脸蛋像河南人，但听你的口音却像四川人，你是河南人还是四川人？</li>
+<li>分类规则，即按何标准来分类，主流有多数表决法和加权多数表决法。虽然你平常朋友最多的是河南人，但最好的几个朋友却为四川人，普通朋友和最好的朋友权重不同，你是河南人还是四川人？</li>
+</ol>
+<h3 id="_3">代码实现<a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
+<p><a href="https://github.com/Daycym/Machine_Learning/blob/master/03_KNN/01_k近邻算法.py"><span class="caps">KNN</span>&nbsp;分类</a></p>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>
