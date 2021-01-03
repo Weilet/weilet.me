@@ -1,2 +1,2 @@
-# weilet.github.io
+# weilet.me
 Statical blog powered by pelican
