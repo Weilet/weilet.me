@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Python3.8新特性</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="Python3.8新特性" />
+<meta property="og:url" content="https://weilet.me/Python3.8新特性" />
+<meta property="og:description" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+<meta property="article:published_time" content="2020-02-06 21:46:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="海象运算符 俺期待很久的特性，可以在表达式内赋值 先前的写法： if len(a) > 10: print(f'{len(a)}') 现在的写法: if （n := len(a)） > 10: print(f'{n}') 明显减少了一次len()函数的调用，当然可读性会稍有下降。 仅限位置形参 def foo(a, b, /, c): # do something 形参位置的“/”前为仅限位置形参，后为关键字形参。 所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。 假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的： sort([1,2,3], reverse=True) # THIS IS WRONG 目前来看 …" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/Python3.8新特性"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>Python3.8新特性</h1>
+                <div class="post-meta">
+                    <time class="date">2020-02-06</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Python.html">
+                        <span>Python</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <h3 id="_1"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions">海象运算符</a><a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<p>俺期待很久的特性，可以在表达式内赋值</p>
+<p>先前的写法：</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;{len(a)}&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>现在的写法:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="err">（</span><span class="n">n</span> <span class="p">:</span><span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="err">）</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{n}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>明显减少了一次len()函数的调用，当然可读性会稍有下降。</p>
+<h3 id="_2"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#positional-only-parameters">仅限位置形参</a><a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="c1"># do something</span>
+</pre></div>
+
+
+<p>形参位置的“/”前为仅限位置形参，后为关键字形参。</p>
+<p>所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。</p>
+<p><strong>假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的</strong>：</p>
+<div class="highlight"><pre><span></span><span class="n">sort</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># THIS IS WRONG</span>
+</pre></div>
+
+
+<p>目前来看，比较有用的地方是:</p>
+<ul>
+<li>让函数的调用不那么呆萌（？）</li>
+<li>在使用kwargs时可以保证kwargs中key的任意性（即便key与仅限位置形参重名也能被处理）</li>
+</ul>
+<h3 id="_3"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#parallel-filesystem-cache-for-compiled-bytecode-files">指定字节码缓存的位置</a><a class="headerlink" href="#_3" title="Permanent link"> </a></h3>
+<p>简单地说就是以前生成在__pycache__文件夹的缓存文件可以换地方放了，详细地自己戳小标题的链接看吧。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">pycache_prefix</span> <span class="o">=</span> <span class="s1">&#39;path_you_want_to_add&#39;</span>
+</pre></div>
+
+
+<h3 id="abi"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#debug-build-uses-the-same-abi-as-release-build">统一调试构建和发布构建的ABI</a><a class="headerlink" href="#abi" title="Permanent link"> </a></h3>
+<p>是的，俺看不懂</p>
+<h3 id="f-string"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#f-strings-support-for-self-documenting-expressions-and-debugging">f-string增强</a><a class="headerlink" href="#f-string" title="Permanent link"> </a></h3>
+<p>形式为 <code>f'{expr=}'</code> 的&nbsp;f-字符串将扩展表示为表达式文本</p>
+<div class="highlight"><pre><span></span><span class="n">slogan</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;俺很酷&#39;</span>
+<span class="sa">f</span><span class="s1">&#39;{slogan=}&#39;</span>
+
+<span class="c1"># output: &quot;slogan=&#39;俺很酷&#39;&quot;</span>
+</pre></div>
+
+
+<p><code>=</code> 说明符将输出整个表达式，以便详细演示计算过程</p>
+<h3 id="pickle"><a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#pickle-protocol-5-with-out-of-band-data-buffers">pickle变快了</a><a class="headerlink" href="#pickle" title="Permanent link"> </a></h3>
+<p>当使用 <a href="https://docs.python.org/zh-cn/3.8/library/pickle.html#module-pickle"><code>pickle</code></a> 在 Python&nbsp;进程间传输大量数据以充分发挥多核或多机处理的优势时，非常重要一点是通过减少内存拷贝来优化传输效率，并可能应用一些定制技巧例如针对特定数据的压缩。</p>
+<blockquote>
+<p>有一个特性将在3.9完全公开，略过；</p>
+<p>所有的提案都略过；</p>
+<p>其他语言特性修改略过。</p>
+</blockquote>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>用crontab配置定时任务</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="前段时间需要定期把一个服务器上的日志以邮件的形式发送到俺的邮箱，于是了解了一下linux下定时任务的实现。 （本文假定阅读者有基本的linux操作能力） linux下一般用crontab配置定时任务，本人用的是centos。 安装命令如下： yum install vixie-cron #cron主程序 yum install crontab #crontab主体 chkconfig -level 345 crond on #设置开机自启动 安装成功后打开crontab 配置 vi /etc/crontab 然后 该文件布局如下（ 注意，以编辑crontab的方式运行定时任务不能省略用户名）： m h d m weekday user command 对应的分别是： 分钟 小时 日期 月份 星期 用户 命令 每个值的范围（不过不限制则为*） 0-59 0-23 1-31 1-12 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="用crontab配置定时任务" />
+<meta property="og:url" content="https://weilet.me/用crontab配置定时任务" />
+<meta property="og:description" content="前段时间需要定期把一个服务器上的日志以邮件的形式发送到俺的邮箱，于是了解了一下linux下定时任务的实现。 （本文假定阅读者有基本的linux操作能力） linux下一般用crontab配置定时任务，本人用的是centos。 安装命令如下： yum install vixie-cron #cron主程序 yum install crontab #crontab主体 chkconfig -level 345 crond on #设置开机自启动 安装成功后打开crontab 配置 vi /etc/crontab 然后 该文件布局如下（ 注意，以编辑crontab的方式运行定时任务不能省略用户名）： m h d m weekday user command 对应的分别是： 分钟 小时 日期 月份 星期 用户 命令 每个值的范围（不过不限制则为*） 0-59 0-23 1-31 1-12 …" />
+<meta property="article:published_time" content="2018-08-07 06:09:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="前段时间需要定期把一个服务器上的日志以邮件的形式发送到俺的邮箱，于是了解了一下linux下定时任务的实现。 （本文假定阅读者有基本的linux操作能力） linux下一般用crontab配置定时任务，本人用的是centos。 安装命令如下： yum install vixie-cron #cron主程序 yum install crontab #crontab主体 chkconfig -level 345 crond on #设置开机自启动 安装成功后打开crontab 配置 vi /etc/crontab 然后 该文件布局如下（ 注意，以编辑crontab的方式运行定时任务不能省略用户名）： m h d m weekday user command 对应的分别是： 分钟 小时 日期 月份 星期 用户 命令 每个值的范围（不过不限制则为*） 0-59 0-23 1-31 1-12 …" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/用crontab配置定时任务"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>用crontab配置定时任务</h1>
+                <div class="post-meta">
+                    <time class="date">2018-08-07</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Linux.html">
+                        <span>Linux</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <p>前段时间需要定期把一个服务器上的日志以邮件的形式发送到俺的邮箱，于是了解了一下linux下定时任务的实现。</p>
+<p>（本文假定阅读者有基本的linux操作能力）</p>
+<p>linux下一般用crontab配置定时任务，本人用的是centos。</p>
+<p>安装命令如下：</p>
+<div class="highlight"><pre><span></span><span class="err">yum install vixie-cron #cron主程序</span>
+<span class="err">yum install crontab #crontab主体</span>
+<span class="err">chkconfig -level 345 crond on #设置开机自启动</span>
+</pre></div>
+
+
+<p>安装成功后打开crontab&nbsp;配置</p>
+<div class="highlight"><pre><span></span><span class="err">vi /etc/crontab</span>
+</pre></div>
+
+
+<p>然后 该文件布局如下（ <strong>注意，以编辑crontab的方式运行定时任务不能省略用户名</strong>）：</p>
+<div class="highlight"><pre><span></span><span class="err">m h d m weekday user  command</span>
+</pre></div>
+
+
+<p>对应的分别是：</p>
+<p>分钟 小时 日期 月份 星期 用户&nbsp;命令</p>
+<p>每个值的范围（不过不限制则为*）</p>
+<div class="highlight"><pre><span></span><span class="err">0-59 0-23 1-31 1-12 0-6(0 = sunday) username command</span>
+</pre></div>
+
+
+<p>下面举例：</p>
+<p>比如俺想要在每天0：00以root用户执行一个名为test.sh的脚本：</p>
+<div class="highlight"><pre><span></span><span class="err">0 0 * * * root ./root/test.sh #假设先前已经给了执行权限</span>
+</pre></div>
+
+
+<p>再比如每周六和周日以root用户执行一个名为img_crawl.py的爬虫：</p>
+<div class="highlight"><pre><span></span><span class="err">* * * * 0,6 root python /root/img_crawl.py</span>
+</pre></div>
+
+
+<p>或者你想要每天10：50开始&nbsp;每十分钟以root用户执行clear_ram.sh脚本：</p>
+<div class="highlight"><pre><span></span><span class="err">50,0 10 * * * root ./root/clear_ram.sh</span>
+<span class="err">0-59/10 * * * * root  ./root/clear_ram.sh</span>
+</pre></div>
+
+
+<p>以上就是玩了三天crontab的总结啦\~</p>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>

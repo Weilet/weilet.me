@@ -1,74 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Weilet's blog - PwnForWhat</title><link>https://weilet.me/</link><description></description><lastBuildDate>Fri, 25 Oct 2019 18:17:00 +0800</lastBuildDate><item><title>CPP 内存泄漏</title><link>https://weilet.me/CPP%20%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F</link><description>&lt;blockquote&gt;
+<rss version="2.0"><channel><title>Weilet's blog - PwnForWhat</title><link>https://weilet.me/</link><description></description><lastBuildDate>Fri, 25 Oct 2019 18:17:00 +0800</lastBuildDate><item><title>CPP内存泄漏</title><link>https://weilet.me/CPP%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F</link><description>&lt;blockquote&gt;
 &lt;p&gt;C++的内存管理太难了&lt;/p&gt;
 &lt;p&gt;——鲁迅&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="virtual"&gt;基类析构函数为非virtual&lt;a class="headerlink" href="#virtual" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;基类的析构函数如果是非 virtual&amp;nbsp;的，那么上转型时，基类的析构函数不会被覆盖。这样子，属于子类的部分在析构时就不会会删除，导致内存泄漏。&lt;/p&gt;
+&lt;p&gt;基类的析构函数如果是非virtual的，那么上转型时，基类的析构函数不会被覆盖。这样子，属于子类的部分在析构时就不会会删除，导致内存泄漏。&lt;/p&gt;
 &lt;h3 id="_1"&gt;依赖用户释放对象&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;依赖用户使用 delete&amp;nbsp;来释放内存，如果在释放过程前抛出异常，那么这部分的内存就不会被释放，导致内存泄漏。&lt;/p&gt;
-&lt;p&gt;一个足够鲁棒的做法是，返回一个 shared_ptr 来管理原生对象。shared_ptr 是个神奇的玩意，但你记得要为对象创建合适的&amp;nbsp;shared_ptr。&lt;/p&gt;
+&lt;p&gt;依赖用户使用delete来释放内存，如果在释放过程前抛出异常，那么这部分的内存就不会被释放，导致内存泄漏。&lt;/p&gt;
+&lt;p&gt;一个足够鲁棒的做法是，返回一个shared_ptr来管理原生对象。shared_ptr是个神奇的玩意，但你记得要为对象创建合适的shared_ptr。&lt;/p&gt;
 &lt;h3 id="new-delete"&gt;New 和 Delete 不对称&lt;a class="headerlink" href="#new-delete" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;New 一组对象，却只 delete&amp;nbsp;一个对象，这样不内存泄漏真的没天理&lt;/p&gt;
+&lt;p&gt;New&amp;nbsp;一组对象，却只delete一个对象，这样不内存泄漏真的没天理&lt;/p&gt;
 &lt;h3 id="_2"&gt;未定义复制构造函数而成员中有指针变量&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;这会导致调用默认复制构造函数然后使得同一个地址被两个指针所指（复制和被复制对象的指针变量），导致同一位置的内存被释放两次。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;你以为大家看不出这是《effective&amp;nbsp;C++》的书摘吗?&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Fri, 25 Oct 2019 18:17:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-10-25:/CPP 内存泄漏</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>《SQL 必知必会》书摘</title><link>https://weilet.me/%E3%80%8ASQL%20%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E4%B9%A6%E6%91%98</link><description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Fri, 25 Oct 2019 18:17:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-10-25:/CPP内存泄漏</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>《SQL必知必会》书摘</title><link>https://weilet.me/%E3%80%8ASQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E4%B9%A6%E6%91%98</link><description>&lt;blockquote&gt;
 &lt;p&gt;两天读完一本书，成就感满满，下面直接开始书摘，可能含有本人的一些理解。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id="_1"&gt;主键相关&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;主键唯一非空且&lt;strong&gt;不可重用&lt;/strong&gt;，其实对&lt;strong&gt;不可重用&lt;/strong&gt;的理解不是很到位，日常开发中删除文章的 id&amp;nbsp;会重新赋给新建的文章。&lt;/p&gt;
+&lt;p&gt;主键唯一非空且&lt;strong&gt;不可重用&lt;/strong&gt;，其实对&lt;strong&gt;不可重用&lt;/strong&gt;的理解不是很到位，日常开发中删除文章的id会重新赋给新建的文章。&lt;/p&gt;
 &lt;h4 id="_2"&gt;逻辑操作相关&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span class="caps"&gt;AND&lt;/span&gt; 计算次序比 &lt;span class="caps"&gt;OR&lt;/span&gt;&amp;nbsp;更高，这点和编程语言一样，所以就算是为了可读性，也要常加括号。&lt;/p&gt;
-&lt;p&gt;&lt;span class="caps"&gt;IN&lt;/span&gt; 比 &lt;span class="caps"&gt;OR&lt;/span&gt;&amp;nbsp;的效率更高，且大多数情况下还比较简洁。&lt;/p&gt;
-&lt;p&gt;&lt;span class="caps"&gt;NOT&lt;/span&gt;&amp;nbsp;在复杂子句中提高可读性&lt;/p&gt;
+&lt;p&gt;AND计算次序比OR更高，这点和编程语言一样，所以就算是为了可读性，也要常加括号。&lt;/p&gt;
+&lt;p&gt;IN比OR的效率更高，且大多数情况下还比较简洁。&lt;/p&gt;
+&lt;p&gt;NOT在复杂子句中提高可读性&lt;/p&gt;
 &lt;h4 id="_3"&gt;通配符相关&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Access&amp;nbsp;与其他数据库有很多不同，使用时记得查阅其文档&lt;/p&gt;
+&lt;p&gt;Access与其他数据库有很多不同，使用时记得查阅其文档&lt;/p&gt;
 &lt;p&gt;通配符虽然使查找变得简单，但也导致查询时间变长&lt;/p&gt;
 &lt;h4 id="_4"&gt;联结、子查询相关&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;为聚集函数的结果取个别名是个好习惯&lt;/p&gt;
 &lt;p&gt;自联结速度优于子查询&lt;/p&gt;
-&lt;p&gt;并非所有 &lt;span class="caps"&gt;DBMS&lt;/span&gt;&amp;nbsp;都支持全外联结&lt;/p&gt;
+&lt;p&gt;并非所有DBMS都支持全外联结&lt;/p&gt;
 &lt;h4 id="_5"&gt;增删查改相关&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;&lt;span class="caps"&gt;INTO&lt;/span&gt; 不要省略，即便你的 &lt;span class="caps"&gt;DBMS&lt;/span&gt;&amp;nbsp;允许你省略&lt;/p&gt;
-&lt;p&gt;&lt;span class="caps"&gt;TRUNCATE&lt;/span&gt; &lt;span class="caps"&gt;TABLE&lt;/span&gt; 比 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 14 Oct 2019 18:22:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-10-14:/《SQL 必知必会》书摘</guid><category>Tech</category><category>DataBase</category></item><item><title>学校教务系统爬取计划</title><link>https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92</link><description>&lt;blockquote&gt;
+&lt;p&gt;INTO不要省略，即便你的DBMS允许你省略&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;TRUNCATE&lt;/span&gt;&amp;nbsp;TABLE比DETELE速度快，因为它不会记录改变&lt;/p&gt;
+&lt;h4 id="_6"&gt;高级操作相关&lt;a class="headerlink" href="#_6" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;每次使用视图都会执行一次查询，性能会降低&lt;/p&gt;
+&lt;p&gt;请在使用视图嵌套后测试其性能&lt;/p&gt;
+&lt;p&gt;事务管理时创建合适粒度的储存点会使你的ROLLBACK更灵活&lt;/p&gt;
+&lt;p&gt;约束比触发器速度更快&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;别漏where&lt;/p&gt;
+&lt;p&gt;重要的事情说三遍。&lt;/p&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 14 Oct 2019 18:22:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-10-14:/《SQL必知必会》书摘</guid><category>Tech</category><category>DataBase</category></item><item><title>学校教务系统爬取计划</title><link>https://weilet.me/%E5%AD%A6%E6%A0%A1%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%88%AC%E5%8F%96%E8%AE%A1%E5%88%92</link><description>&lt;blockquote&gt;
 &lt;p&gt;本文以一名高校学子的身份，向你展示爬取一个垃圾教务系统是何种体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;自从学校换了教务系统以后，旧的教务系统不再维护，不得以只能自己做一个推送系统。题外话，这新教务系统是真的烂啊。&lt;/p&gt;
 &lt;h4 id="_1"&gt;需求分析&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;因为是自己用的，所以只需要简单爬取后再通过 &lt;span class="caps"&gt;STMP&lt;/span&gt; 或者 wxpy 进行推送，一个简单的课程推送系统就完成了。 当然，后来我发现“简单爬取”可一点都不简单。 鉴于在图书馆进行开发，我提前将敏感信息存进了一个叫 config&amp;nbsp;字典里，这样使用敏感信息的时候就不会被看到了。&lt;/p&gt;
+&lt;p&gt;因为是自己用的，所以只需要简单爬取后再通过STMP或者wxpy进行推送，一个简单的课程推送系统就完成了。 当然，后来俺发现“简单爬取”可一点都不简单。&amp;nbsp;鉴于在图书馆进行开发，俺提前将敏感信息存进了一个叫config字典里，这样使用敏感信息的时候就不会被看到了。&lt;/p&gt;
 &lt;h4 id="requests"&gt;requests试水&lt;a class="headerlink" href="#requests" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;说到用 Python 写爬虫，我第一时间想到了 requests。requests 凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一 &lt;span class="caps"&gt;POST&lt;/span&gt;。然而现实是，当我 &lt;span class="caps"&gt;POST&lt;/span&gt; 过去的时候，返回了 405 错误。明明直接用浏览器 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 25 Sep 2019 19:33:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-09-25:/学校教务系统爬取计划</guid><category>Tech</category><category>Python</category></item><item><title>如何安全地使用字典</title><link>https://weilet.me/%E5%A6%82%E4%BD%95%E5%AE%89%E5%85%A8%E5%9C%B0%E4%BD%BF%E7%94%A8%E5%AD%97%E5%85%B8</link><description>&lt;blockquote&gt;
+&lt;p&gt;说到用Python写爬虫，俺第一时间想到了requests。requests凭借它的易用性，虏获了万千“脚本男孩”的心。通过开发者工具简单分析了请求，得到了请求地址、请求信息格式、请求头。万事俱备，只差一POST。然而现实是，当俺POST过去的时候，返回了405错误。明明直接用浏览器POST请求没有问题，但用脚本却不行，也许是请求头出现了什么差错。&lt;/p&gt;
+&lt;p&gt;在接近两个小时的尝试，俺放弃了这个方法。&lt;/p&gt;
+&lt;h4 id="selenium"&gt;selenium大法好&lt;a class="headerlink" href="#selenium" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;此计不成，俺只好祭出selenium。利用selenium，俺轻易地登陆了教务系统，但时间已经很晚，俺打算把爬取信息的工作留到明天。&lt;/p&gt;
+&lt;p&gt;第二天，你猜怎么着，由于selenium的特征被识别，俺无法进入课表界面 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 25 Sep 2019 19:33:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-09-25:/学校教务系统爬取计划</guid><category>Tech</category><category>Python</category></item><item><title>如何安全地使用字典</title><link>https://weilet.me/%E5%A6%82%E4%BD%95%E5%AE%89%E5%85%A8%E5%9C%B0%E4%BD%BF%E7%94%A8%E5%AD%97%E5%85%B8</link><description>&lt;blockquote&gt;
 &lt;p&gt;安全地使用字典，和安全地使用套套一样重要&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Python 中的字典数据类型经常被用到，但当我们期待一个不存在的 key 的 value&amp;nbsp;时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？&lt;/p&gt;
+&lt;p&gt;Python中的字典数据类型经常被用到，但当俺们期待一个不存在的key的value时，它往往会带来一个异常，将俺们的程序活生生终结，如何解决？&lt;/p&gt;
 &lt;h4 id="_1"&gt;最开始的时候&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;当我们最初接触 Python 的时候，教学网站上面会跟你提到字典的 get()方法。利用这个方法，可以安全地返回字典的值，如果对应的 key 不存在，那么它会返回一个默认值，这个&lt;strong&gt;默认值默认是 None&lt;/strong&gt;，你也可以通过设置 default&amp;nbsp;的值改变这个默认值。&lt;/p&gt;
-&lt;p&gt;需要注意的是，除了 get()方法，setdefault()方法同样可以返回默认值，但 setdefault()会将不存在的 key 的项追加到字典中，而&amp;nbsp;get()不会。&lt;/p&gt;
+&lt;p&gt;当俺们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个&lt;strong&gt;默认值默认是None&lt;/strong&gt;，你也可以通过设置default的值改变这个默认值。&lt;/p&gt;
+&lt;p&gt;需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。&lt;/p&gt;
 &lt;h4 id="_2"&gt;笨拙且安全的&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 21 Sep 2019 23:19:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-09-21:/如何安全地使用字典</guid><category>Tech</category><category>Python</category></item><item><title>浅谈 CSRF 攻击</title><link>https://weilet.me/%E6%B5%85%E8%B0%88%20CSRF%20%E6%94%BB%E5%87%BB</link><description>&lt;blockquote&gt;
+&lt;p&gt;后来，俺们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？）&lt;/p&gt;
+&lt;p&gt;可是，当你多年回来review你的代码，你也许会感叹它的笨拙。&lt;/p&gt;
+&lt;h4 id="_3"&gt;是时候使用魔法的力量了&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。&lt;/p&gt;
+&lt;h4 id="_4"&gt;用些现成的&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;鉴于collections中defaultdict的易用性，俺向你强烈推荐 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 21 Sep 2019 23:19:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-09-21:/如何安全地使用字典</guid><category>Tech</category><category>Python</category></item><item><title>浅谈CSRF攻击</title><link>https://weilet.me/%E6%B5%85%E8%B0%88CSRF%E6%94%BB%E5%87%BB</link><description>&lt;blockquote&gt;
 &lt;p&gt;跨过山和大海，伪装成熟悉的陌生人&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="csrf"&gt;什么是CSRF&lt;a class="headerlink" href="#csrf" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;span class="caps"&gt;CSRF&lt;/span&gt;（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：&lt;span class="caps"&gt;CSRF&lt;/span&gt;/&lt;span class="caps"&gt;XSRF&lt;/span&gt;。&lt;/p&gt;
 &lt;h3 id="_1"&gt;有何危害&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;故事要从三天前说起，你是一个月薪 3000 的程序员，好不容易存够了 20000&amp;nbsp;打算更新自己的主机。&lt;/p&gt;
-&lt;p&gt;这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取 100&amp;nbsp;大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。&lt;/p&gt;
-&lt;p&gt;为什么会发生这样的情况呢？我们来看看后台发生了什么：&lt;/p&gt;
-&lt;p&gt;首先，你登陆进去以后 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 04 Jun 2019 21:26:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-06-04:/浅谈 CSRF 攻击</guid><category>Tech</category><category>Web Security</category></item><item><title>哈希洪水攻击</title><link>https://weilet.me/%E5%93%88%E5%B8%8C%E6%B4%AA%E6%B0%B4%E6%94%BB%E5%87%BB</link><description>&lt;h3 id="_1"&gt;哈希洪水攻击的原理&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;故事要从三天前说起，你是一个月薪3000的程序员，好不容易存够了20000打算更新自己的主机。&lt;/p&gt;
+&lt;p&gt;这天你在网吧上网，想抽烟（抽烟有害健康）。于是你登陆账户，打算从里面取100大洋。与此同时，一个网页吸引你的注意，硕大的“屠龙宝刀，点击就送”使你情不自禁地点击。点进去以后，你发现跳出的居然是转账页面。定睛一看，转入的居然还不是你的账号，金额是一万。你两眼发昏，陷入沉思。&lt;/p&gt;
+&lt;p&gt;为什么会发生这样的情况呢？俺们来看看后台发生了什么：&lt;/p&gt;
+&lt;p&gt;首先，你登陆进去以后，cookie里会储存一个你的登陆信息，告诉服务器，你登陆了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 04 Jun 2019 21:26:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-06-04:/浅谈CSRF攻击</guid><category>Tech</category><category>Web Security</category></item><item><title>哈希洪水攻击</title><link>https://weilet.me/%E5%93%88%E5%B8%8C%E6%B4%AA%E6%B0%B4%E6%94%BB%E5%87%BB</link><description>&lt;h3 id="_1"&gt;哈希洪水攻击的原理&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;在各种常用的数据结构里，有些数据结构的“平均运行时间”和“最差运行时间”会差很远，比如&lt;strong&gt;哈希表（Hash Table）&lt;/strong&gt;。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需&amp;nbsp;O(n)的时间。&lt;/li&gt;
-&lt;li&gt;如果这些键频繁出现相同的哈希值（频繁发生&lt;strong&gt;碰撞&lt;/strong&gt;），这项任务就需要&amp;nbsp;O(n*n)的时间。&lt;/li&gt;
+&lt;li&gt;如果这些元素的键（Key）极少出现相同哈希值，这项任务就只需O(n)的时间。&lt;/li&gt;
+&lt;li&gt;如果这些键频繁出现相同的哈希值（频繁发生&lt;strong&gt;碰撞&lt;/strong&gt;），这项任务就需要O(n*n)的时间。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;哈希洪水攻击就是利用哈希函数的特点，构造一些数据，使他们经过哈希函数处理后的值与原来的值产生冲突（相同），增加整个系统的时间开销。&lt;/p&gt;
 &lt;h3 id="_2"&gt;如何攻击&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;这里是一例&lt;a href="https://yq.aliyun.com/articles/92194#3"&gt;实验&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;没有实践过，个人理解的一种利用方法是，构建符合接口的、能够产生冲突的 json 串，经过 jsondecode 以后，json&amp;nbsp;内部的数据会产生冲突，带来额外的开销。&lt;/p&gt;
+&lt;p&gt;没有实践过，个人理解的一种利用方法是，构建符合接口的、能够产生冲突的json串，经过jsondecode以后，json内部的数据会产生冲突，带来额外的开销。&lt;/p&gt;
 &lt;p&gt;（如果理解错误，欢迎更正）&lt;/p&gt;
 &lt;h3 id="_3"&gt;如何防御&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;不能通过设置哈希函数的方式进行防御 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 29 May 2019 00:55:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-29:/哈希洪水攻击</guid><category>Tech</category><category>Web Security</category></item><item><title>Python 中的 GIL</title><link>https://weilet.me/Python%20%E4%B8%AD%E7%9A%84%20GIL</link><description>&lt;blockquote&gt;
+&lt;p&gt;不能通过设置哈希函数的方式进行防御。如果知道哈希函数的实现时，只需要一点功夫就能够构造出一组频繁碰撞的键。&lt;/p&gt;
+&lt;p&gt;但是，你可以：&lt;/p&gt;
+&lt;p&gt;所以，俺们应当&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;限制参数个数 …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 29 May 2019 00:55:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-29:/哈希洪水攻击</guid><category>Tech</category><category>Web Security</category></item><item><title>Python中的GIL</title><link>https://weilet.me/Python%E4%B8%AD%E7%9A%84GIL</link><description>&lt;blockquote&gt;
 &lt;p&gt;人们只瞧见了上帝关了门，却没瞅到上帝也开了窗&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="gil"&gt;什么是GIL？&lt;a class="headerlink" href="#gil" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -76,13 +101,14 @@
 &lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;即&lt;strong&gt;全局解释器锁&lt;/strong&gt;（英语：Global Interpreter Lock，缩写&lt;strong&gt;&lt;span class="caps"&gt;GIL&lt;/span&gt;&lt;/strong&gt;），是&lt;a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80"&gt;计算机程序设计语言&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8"&gt;解释器&lt;/a&gt;用于&lt;a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5"&gt;同步&lt;/a&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B"&gt;线程&lt;/a&gt;的一种机制，它使得任何时刻仅有一个线程在执行。即便在&lt;a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8"&gt;多核心处理器&lt;/a&gt;上，使用 &lt;span class="caps"&gt;GIL&lt;/span&gt;&amp;nbsp;的解释器也只允许同一时间执行一个线程。&lt;/p&gt;
 &lt;p&gt;From &lt;a href="https://zh.wikipedia.org/zh-hans/%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81"&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;为什么需要 &lt;span class="caps"&gt;GIL&lt;/span&gt; 呢？网上很多博客都说是历史遗留问题。但实际上，我认为这和 Python 的内存管理机制有关。在 Python 中，每个对象都维护着一个引用计数，而当这个计数变为 0 时，这个对象将会被回收。如果没有 &lt;span class="caps"&gt;GIL&lt;/span&gt;，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：&lt;/p&gt;
-&lt;p&gt;进程 X …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 23 May 2019 00:07:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-23:/Python 中的 GIL</guid><category>Tech</category><category>Python</category></item><item><title>Python 参数传递的问题</title><link>https://weilet.me/Python%20%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%9A%84%E9%97%AE%E9%A2%98</link><description>&lt;blockquote&gt;
+&lt;p&gt;为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：&lt;/p&gt;
+&lt;p&gt;进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。&lt;/p&gt;
+&lt;p&gt;因此，GIL的重要性不言而喻。但也是因为它 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 23 May 2019 00:07:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-23:/Python中的GIL</guid><category>Tech</category><category>Python</category></item><item><title>Python参数传递的问题</title><link>https://weilet.me/Python%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%9A%84%E9%97%AE%E9%A2%98</link><description>&lt;blockquote&gt;
 &lt;p&gt;传参不规范，亲人两行泪&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Python&amp;nbsp;中的参数传递并非传值也非传引用，传的是对象的引用。&lt;/p&gt;
-&lt;p&gt;这是一个结论，如果想要知道更多的细节，请阅读&lt;a href="https://book.douban.com/subject/25910544/"&gt;《编写高质量代码：改善Python程序的91个建议》&lt;/a&gt;的第 31&amp;nbsp;条建议。&lt;/p&gt;
-&lt;p&gt;在 Python&amp;nbsp;里面，我们接触到的所有数据类型都是对象，包括常数和字符串。&lt;/p&gt;
+&lt;p&gt;Python中的参数传递并非传值也非传引用，传的是对象的引用。&lt;/p&gt;
+&lt;p&gt;这是一个结论，如果想要知道更多的细节，请阅读&lt;a href="https://book.douban.com/subject/25910544/"&gt;《编写高质量代码：改善Python程序的91个建议》&lt;/a&gt;的第31条建议。&lt;/p&gt;
+&lt;p&gt;在Python里面，俺们接触到的所有数据类型都是对象，包括常数和字符串。&lt;/p&gt;
 &lt;p&gt;假设有下面代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ichxx&amp;#39;&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -94,11 +120,14 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;当 a 传递给 x&amp;nbsp;时，它对应的内存模型是这样的&lt;/p&gt;
+&lt;p&gt;当a传递给x时，它对应的内存模型是这样的&lt;/p&gt;
 &lt;p&gt;&lt;img alt="示意图1" class="wp-image-435" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;当切片时，产生了新的字符串，此时内存模型变为：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="示意图2" class="wp-image-436" src="https://l3away.cn/wp-content/uploads/2019/05/未命名文件-2.png" /&gt;&lt;/p&gt;
-&lt;p&gt;现在，a 与 x 就没有关联了，自然对 x 的更改就不会反馈到 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 11 May 2019 10:31:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-11:/Python 参数传递的问题</guid><category>Tech</category><category>Python</category></item><item><title>序列化 Python 对象</title><link>https://weilet.me/%E5%BA%8F%E5%88%97%E5%8C%96%20Python%20%E5%AF%B9%E8%B1%A1</link><description>&lt;h3 id="_1"&gt;什么是序列化&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;现在，a与x就没有关联了，自然对x的更改就不会反馈到a了&lt;/p&gt;
+&lt;p&gt;那么，什么样的改变会反馈到实参呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在函数中，对可变对象的修改会反馈到对象本身，而对不可变对象的修改则不会&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以把变量名理解成标签，对象理解成商品，俺们通过标签去寻找商品。当可变对象修改时，俺们通过标签寻找的东西也就相应改变。而不可变对象不可变，所以俺们只能把标签撕下来贴到别的商品上面，这样俺们也能实现“改变寻找到的东西 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 11 May 2019 10:31:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-11:/Python参数传递的问题</guid><category>Tech</category><category>Python</category></item><item><title>序列化Python对象</title><link>https://weilet.me/%E5%BA%8F%E5%88%97%E5%8C%96Python%E5%AF%B9%E8%B1%A1</link><description>&lt;h3 id="_1"&gt;什么是序列化&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;序列化&lt;/strong&gt;(Serialization)&lt;strong&gt;是&lt;/strong&gt;将对象的状态信息转换为可以存储或传输的形式的过程。 在&lt;strong&gt;序列化&lt;/strong&gt;期间，对象将其当前状态写入到临时或持久性存储区。 以后，可以通过从存储区中读取或反&lt;strong&gt;序列化&lt;/strong&gt;对象的状态，重新创建该对象。&lt;/p&gt;
 &lt;p&gt;来自百度百科&lt;/p&gt;
@@ -107,7 +136,7 @@
 &lt;p&gt;便于传输&lt;/p&gt;
 &lt;h3 id="python"&gt;Python 中使用序列化&lt;a class="headerlink" href="#python" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="pickle"&gt;Pickle 模块&lt;a class="headerlink" href="#pickle" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Pickle 是 Python&amp;nbsp;中一个常用的序列化模块，它有以下优点：&lt;/p&gt;
+&lt;p&gt;Pickle是Python中一个常用的序列化模块，它有以下优点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;易用&lt;/li&gt;
 &lt;li&gt;支持多种数据类型&lt;/li&gt;
@@ -127,8 +156,8 @@
     &lt;span class="k"&gt;pass&lt;/span&gt;
 
 &lt;span class="n"&gt;stu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Student&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;p …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 08 May 2019 22:11:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-08:/序列化 Python 对象</guid><category>Tech</category><category>Python</category></item><item><title>C 语言中的 extern 关键字</title><link>https://weilet.me/C%20%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%20extern%20%E5%85%B3%E9%94%AE%E5%AD%97</link><description>&lt;blockquote&gt;
-&lt;p&gt;如果不是选择重新学习&amp;nbsp;C，我可能这辈子都不会碰到这个关键字&lt;/p&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stu …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Wed, 08 May 2019 22:11:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-08:/序列化Python对象</guid><category>Tech</category><category>Python</category></item><item><title>C 语言中的 extern 关键字</title><link>https://weilet.me/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84extern%E5%85%B3%E9%94%AE%E5%AD%97</link><description>&lt;blockquote&gt;
+&lt;p&gt;如果不是选择重新学习&amp;nbsp;C，俺可能这辈子都不会碰到这个关键字&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;extern&amp;nbsp;用于声明一个外部变量，这个变量在项目的其他地方定义过。&lt;/p&gt;
 &lt;p&gt;假设有头文件&amp;nbsp;errno.h&lt;/p&gt;
@@ -153,7 +182,7 @@
 
 &lt;p&gt;需要注意的点是，如果你使用不止一个外部变量，你应当保证它们的名字都不一样。（不要试图仅凭类型区分两个外部变量！！！）&lt;/p&gt;
 &lt;p&gt;在声明外部变量时，一般避免直接定义，即不要写成 &lt;strong&gt;extern int a = 0;&lt;/strong&gt;&amp;nbsp;的形式。&lt;/p&gt;
-&lt;p&gt;这样的变量不能进一步修改，不能循环利用，出于环保的缘故我们应当趋避之 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 06 May 2019 15:48:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-06:/C 语言中的 extern 关键字</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>宏定义的常见的三种意外</title><link>https://weilet.me/%E5%AE%8F%E5%AE%9A%E4%B9%89%E7%9A%84%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E6%84%8F%E5%A4%96</link><description>&lt;h4 id="_1"&gt;宏拓展后的大小可能超乎你的想象&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;这样的变量不能进一步修改，不能循环利用，出于环保的缘故俺们应当趋避之 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 06 May 2019 15:48:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-05-06:/C语言中的extern关键字</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>宏定义的常见的三种意外</title><link>https://weilet.me/%E5%AE%8F%E5%AE%9A%E4%B9%89%E7%9A%84%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E6%84%8F%E5%A4%96</link><description>&lt;h4 id="_1"&gt;宏拓展后的大小可能超乎你的想象&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;这一点没想到例子，以后碰到再补充&lt;/p&gt;
 &lt;h4 id="_2"&gt;对参数的捆绑不如函数严实，会导致意料之外的结果&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;很常见的一个例子：&lt;/p&gt;
@@ -169,10 +198,10 @@
 
 
 &lt;p&gt;编写一个宏，计算 x&amp;nbsp;的平方。&lt;/p&gt;
-&lt;p&gt;看上去这段代码没有错，我们得到的答案将会是&amp;nbsp;25。&lt;/p&gt;
-&lt;p&gt;实际上呢，我们得到的答案是&amp;nbsp;11。&lt;/p&gt;
-&lt;p&gt;为什么呢？我们将&amp;nbsp;square(x+1)展开&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 30 Apr 2019 16:20:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-30:/宏定义的常见的三种意外</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>C 语言下多重嵌套的 define</title><link>https://weilet.me/C%20%E8%AF%AD%E8%A8%80%E4%B8%8B%E5%A4%9A%E9%87%8D%E5%B5%8C%E5%A5%97%E7%9A%84%20define</link><description>&lt;p&gt;有以下一段宏：&lt;/p&gt;
+&lt;p&gt;看上去这段代码没有错，俺们得到的答案将会是&amp;nbsp;25。&lt;/p&gt;
+&lt;p&gt;实际上呢，俺们得到的答案是&amp;nbsp;11。&lt;/p&gt;
+&lt;p&gt;为什么呢？俺们将square(x+1)展开&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 30 Apr 2019 16:20:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-30:/宏定义的常见的三种意外</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>C 语言下多重嵌套的define</title><link>https://weilet.me/C%E8%AF%AD%E8%A8%80%E4%B8%8B%E5%A4%9A%E9%87%8D%E5%B5%8C%E5%A5%97%E7%9A%84define</link><description>&lt;p&gt;有以下一段宏：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#define _STR(x) _VAL(x)&lt;/span&gt;
 &lt;span class="cp"&gt;#define _VAL(x) #x&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -186,7 +215,7 @@
 
 
 &lt;p&gt;_STR() 的值为 &amp;#8220;100&amp;#8221; 而 _VAL()的值为&amp;nbsp;&amp;#8220;x&amp;#8221;&lt;/p&gt;
-&lt;p&gt;由此可以得知，所谓的 define _STR …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Apr 2019 13:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-28:/C 语言下多重嵌套的 define</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>良性取消定义</title><link>https://weilet.me/%E8%89%AF%E6%80%A7%E5%8F%96%E6%B6%88%E5%AE%9A%E4%B9%89</link><description>&lt;p&gt;在 C 标准库里面，\&amp;lt;assert.h&gt; 中有一段这样的代码：&lt;/p&gt;
+&lt;p&gt;由此可以得知，所谓的 define _STR …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Apr 2019 13:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-28:/C语言下多重嵌套的define</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>良性取消定义</title><link>https://weilet.me/%E8%89%AF%E6%80%A7%E5%8F%96%E6%B6%88%E5%AE%9A%E4%B9%89</link><description>&lt;p&gt;在 C 标准库里面，\&amp;lt;assert.h&gt; 中有一段这样的代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#undef assert&lt;/span&gt;
 &lt;span class="cp"&gt;#ifdef NDEBUG&lt;/span&gt;
 &lt;span class="cp"&gt;#define assert (test) ((void)0)&lt;/span&gt;
@@ -196,7 +225,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;这里面第一行就是 &lt;strong&gt;良性取消定义&lt;/strong&gt;，它是用来保证先前已经 define 的 assert 不会影响接下来的 assert。如果先前没有 define assert，那么这个语句也不会产生任何副作用。当使用一些可变的定义时，&lt;strong&gt;良性取消定义&lt;/strong&gt;是必要的。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 27 Apr 2019 22:45:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-27:/良性取消定义</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>Python 中多继承的顺序问题</title><link>https://weilet.me/Python%20%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98</link><description>&lt;h3 id="_1"&gt;从左到右&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;这里面第一行就是 &lt;strong&gt;良性取消定义&lt;/strong&gt;，它是用来保证先前已经 define 的 assert 不会影响接下来的 assert。如果先前没有 define assert，那么这个语句也不会产生任何副作用。当使用一些可变的定义时，&lt;strong&gt;良性取消定义&lt;/strong&gt;是必要的。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 27 Apr 2019 22:45:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-27:/良性取消定义</guid><category>Tech</category><category>C</category><category>CPP</category></item><item><title>Python中多继承的顺序问题</title><link>https://weilet.me/Python%E4%B8%AD%E5%A4%9A%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98</link><description>&lt;h3 id="_1"&gt;从左到右&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;A&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
@@ -216,12 +245,12 @@
 &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
 &lt;span class="c1"&gt;# I am a A&lt;/span&gt;
-&lt;span class="c1"&gt;# 搜索过程如下，先搜索A，A中有say …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 23 Apr 2019 22:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-23:/Python 中多继承的顺序问题</guid><category>Tech</category><category>Python</category><category>OOP</category></item><item><title>Python 中的 Mixin 模式</title><link>https://weilet.me/Python%20%E4%B8%AD%E7%9A%84%20Mixin%20%E6%A8%A1%E5%BC%8F</link><description>&lt;h3 id="mixin"&gt;什么是Mixin&lt;a class="headerlink" href="#mixin" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Mixin&amp;nbsp;是面向对象程序设计语言中的类，提供了方法的实现。&lt;/p&gt;
+&lt;span class="c1"&gt;# 搜索过程如下，先搜索A，A中有say …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 23 Apr 2019 22:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-23:/Python中多继承的顺序问题</guid><category>Tech</category><category>Python</category><category>OOP</category></item><item><title>Python中的Mixin模式</title><link>https://weilet.me/Python%E4%B8%AD%E7%9A%84Mixin%E6%A8%A1%E5%BC%8F</link><description>&lt;h3 id="mixin"&gt;什么是Mixin&lt;a class="headerlink" href="#mixin" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Mixin是面向对象程序设计语言中的类，提供了方法的实现。&lt;/p&gt;
 &lt;h3 id="mixin_1"&gt;为什么需要 Mixin&lt;a class="headerlink" href="#mixin_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;[首先我们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&amp;nbsp;NameMixin，而且它应该具备以下特点：&lt;/p&gt;
+&lt;p&gt;[首先俺们需要明白，Python 中是支持多继承的。那么，你可能会问，既然 Python 支持多继承，那多继承和 使用 Mixin 有什么不同呢？]{.md-plain} [从逻辑角度上看，多继承混淆了子类的属性，继承关系应当是 is-a 的关系的，至于其他多余的、不能从父类获取，应当利用其他方法去添加。]{.md-plain} [在 Java 中，interface 解决了这个问题。一个类继承了父类后，如果需要其他属性，可以通过实现接口来解决。这使得代码的可读性变强。]{.md-plain} [同样，在 Python 中，只有一个父类，至于继承的 Mixin，只是提供了方法的实现。它的名字应当是这样的&amp;nbsp;NameMixin，而且它应该具备以下特点：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;首先它必须表示某一种功能 …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 22 Apr 2019 10:12:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-22:/Python 中的 Mixin 模式</guid><category>Tech</category><category>Python</category><category>OOP</category></item><item><title>两个下划线和 Python 的故事</title><link>https://weilet.me/%E4%B8%A4%E4%B8%AA%E4%B8%8B%E5%88%92%E7%BA%BF%E5%92%8C%20Python%20%E7%9A%84%E6%95%85%E4%BA%8B</link><description>&lt;blockquote&gt;
+&lt;li&gt;首先它必须表示某一种功能，而不是某个物品 …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 22 Apr 2019 10:12:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-22:/Python中的Mixin模式</guid><category>Tech</category><category>Python</category><category>OOP</category></item><item><title>两个下划线和Python的故事</title><link>https://weilet.me/%E4%B8%A4%E4%B8%AA%E4%B8%8B%E5%88%92%E7%BA%BF%E5%92%8CPython%E7%9A%84%E6%95%85%E4%BA%8B</link><description>&lt;blockquote&gt;
 &lt;p&gt;从前，有两个孤独的下划线，走进了 Python&amp;nbsp;的世界&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;魔法方法&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
@@ -230,11 +259,12 @@
 &lt;p&gt;1. __init__&amp;nbsp;初始化对象时会被调用&lt;/p&gt;
 &lt;p&gt;2. __del__&amp;nbsp;对象释放时会被调用&lt;/p&gt;
 &lt;p&gt;3. __new__&amp;nbsp;对象被创建时会被调用；注意，创建的时机早于初始化&lt;/p&gt;
-&lt;p&gt;4. __str__ 使用&amp;nbsp;print()时会被调用&lt;/p&gt;
-&lt;p&gt;5. __len__ 使用&amp;nbsp;len()时会被调用&lt;/p&gt;
+&lt;p&gt;4. __str__&amp;nbsp;使用print()时会被调用&lt;/p&gt;
+&lt;p&gt;5. __len__&amp;nbsp;使用len()时会被调用&lt;/p&gt;
 &lt;p&gt;6. __call__&amp;nbsp;将对象当作函数使用时会被调用&lt;/p&gt;
 &lt;p&gt;7. __add__, __sub__, __mul__, __div__&amp;nbsp;加、减、乘、除时会被调用&lt;/p&gt;
-&lt;p&gt;8. __mod__, __pow__&amp;nbsp;取模 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 16 Apr 2019 12:38:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-16:/两个下划线和 Python 的故事</guid><category>Tech</category><category>Python</category></item><item><title>Python 函数注释</title><link>https://weilet.me/Python%20%E5%87%BD%E6%95%B0%E6%B3%A8%E9%87%8A</link><description>&lt;p&gt;相较于以往采用文档字符串去注释函数，现在 Python&amp;nbsp;提供了更为轻便的，为小型功能函数准备的函数注释功能。&lt;/p&gt;
+&lt;p&gt;8. __mod__, __pow__&amp;nbsp;取模、求幂时会被调用&lt;/p&gt;
+&lt;p&gt;9 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 16 Apr 2019 12:38:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-04-16:/两个下划线和Python的故事</guid><category>Tech</category><category>Python</category></item><item><title>Python函数注释</title><link>https://weilet.me/Python%E5%87%BD%E6%95%B0%E6%B3%A8%E9%87%8A</link><description>&lt;p&gt;相较于以往采用文档字符串去注释函数，现在 Python&amp;nbsp;提供了更为轻便的，为小型功能函数准备的函数注释功能。&lt;/p&gt;
 &lt;h3 id="_1"&gt;如何添加函数注释&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;在参数后添加英文半角冒号，注释类型&lt;br /&gt;
 在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型&lt;br /&gt;&amp;nbsp;下面是例子：&lt;/p&gt;
@@ -253,7 +283,7 @@
 
 &lt;p&gt;当然，你仍然可以给参数添加默认值：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;typing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 03 Mar 2019 22:18:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-03-03:/Python 函数注释</guid><category>Tech</category><category>Python</category></item><item><title>Jinja2 模板引擎学习总结</title><link>https://weilet.me/jinja2%20%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93</link><description>&lt;h2 id="jinja2"&gt;Jinja2 模板引擎 学习&lt;a class="headerlink" href="#jinja2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 03 Mar 2019 22:18:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2019-03-03:/Python函数注释</guid><category>Tech</category><category>Python</category></item><item><title>Jinja2模板引擎学习总结</title><link>https://weilet.me/jinja2%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93</link><description>&lt;h2 id="jinja2"&gt;Jinja2 模板引擎 学习&lt;a class="headerlink" href="#jinja2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="_1"&gt;变量绑定&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;输出变量为 &lt;code&gt;name&lt;/code&gt; 的变量  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
@@ -286,7 +316,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;需要注意内置的loop&amp;nbsp;方法，非常好用。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;后台爬取到广州各区的天气存储在 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Oct 2018 21:56:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-10-28:/jinja2 模板引擎学习总结</guid><category>Tech</category><category>Python</category><category>jinja2</category></item><item><title>用 Python，查快递</title><link>https://weilet.me/%E7%94%A8%20Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92</link><description>&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
+&lt;p&gt;后台爬取到广州各区的天气存储在 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 28 Oct 2018 21:56:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-10-28:/jinja2模板引擎学习总结</guid><category>Tech</category><category>Python</category><category>jinja2</category></item><item><title>用Python，查快递</title><link>https://weilet.me/%E7%94%A8Python%EF%BC%8C%E6%9F%A5%E5%BF%AB%E9%80%92</link><description>&lt;p&gt;在剁手的同时练手&amp;nbsp;）&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
 &lt;span class="c1"&gt;# @Date:   2018-08-07 01:31:50&lt;/span&gt;
@@ -305,9 +335,9 @@
 
 &lt;span class="c1"&gt;#返回公司编号&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_company&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epnum&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 07 Aug 2018 06:18:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-07:/用 Python，查快递</guid><category>Tech</category><category>Python</category></item><item><title>用 crontab 配置定时任务</title><link>https://weilet.me/%E7%94%A8%20crontab%20%E9%85%8D%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1</link><description>&lt;p&gt;前段时间需要定期把一个服务器上的日志以邮件的形式发送到我的邮箱，于是了解了一下 linux&amp;nbsp;下定时任务的实现。&lt;/p&gt;
-&lt;p&gt;（本文假定阅读者有基本的 linux&amp;nbsp;操作能力）&lt;/p&gt;
-&lt;p&gt;linux 下一般用 crontab 配置定时任务，本人用的是&amp;nbsp;centos。&lt;/p&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 07 Aug 2018 06:18:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-07:/用Python，查快递</guid><category>Tech</category><category>Python</category></item><item><title>用crontab配置定时任务</title><link>https://weilet.me/%E7%94%A8crontab%E9%85%8D%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1</link><description>&lt;p&gt;前段时间需要定期把一个服务器上的日志以邮件的形式发送到俺的邮箱，于是了解了一下linux下定时任务的实现。&lt;/p&gt;
+&lt;p&gt;（本文假定阅读者有基本的linux操作能力）&lt;/p&gt;
+&lt;p&gt;linux下一般用crontab配置定时任务，本人用的是centos。&lt;/p&gt;
 &lt;p&gt;安装命令如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;yum install vixie-cron #cron主程序&lt;/span&gt;
 &lt;span class="err"&gt;yum install crontab #crontab主体&lt;/span&gt;
@@ -315,36 +345,38 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;安装成功后打开 crontab&amp;nbsp;配置&lt;/p&gt;
+&lt;p&gt;安装成功后打开crontab&amp;nbsp;配置&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;vi /etc/crontab&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;然后 该文件布局如下（ &lt;strong&gt;注意，以编辑 crontab 的方式运行定时任务不能省略用户名&lt;/strong&gt;）：&lt;/p&gt;
+&lt;p&gt;然后 该文件布局如下（ &lt;strong&gt;注意，以编辑crontab的方式运行定时任务不能省略用户名&lt;/strong&gt;）：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;m h d m weekday user  command&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;对应的分别是：&lt;/p&gt;
-&lt;p&gt;分钟 小时 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 07 Aug 2018 06:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-07:/用 crontab 配置定时任务</guid><category>Tech</category><category>Linux</category></item><item><title>忘记 root 的密码如何解决</title><link>https://weilet.me/%E5%BF%98%E8%AE%B0%20ubuntu%20%E7%9A%84%20root%20%E5%AF%86%E7%A0%81%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3</link><description>&lt;blockquote&gt;
+&lt;p&gt;分钟 小时 日期 月份 星期 用户&amp;nbsp;命令&lt;/p&gt;
+&lt;p&gt;每个值的范围（不过不限制则为*）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;0-59 0-23 1-31 1-12 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Tue, 07 Aug 2018 06:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-07:/用crontab配置定时任务</guid><category>Tech</category><category>Linux</category></item><item><title>忘记root的密码如何解决</title><link>https://weilet.me/%E5%BF%98%E8%AE%B0ubuntu%E7%9A%84root%E5%AF%86%E7%A0%81%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3</link><description>&lt;blockquote&gt;
 &lt;p&gt;昨天教同学使用Ubuntu，他居然把密码给忘记了。于是便顺便了解了一下这方面的知识。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;首先是在开机 3 秒内按下 &lt;span class="caps"&gt;ESC&lt;/span&gt;&amp;nbsp;键&lt;/p&gt;
+&lt;p&gt;首先是在开机3秒内按下ESC键&lt;/p&gt;
 &lt;p&gt;然后就会出现一个菜单，选择进入恢复模式 （recovery&amp;nbsp;mode）&lt;/p&gt;
-&lt;p&gt;进入恢复模式以后，启用 root&amp;nbsp;shell&lt;/p&gt;
+&lt;p&gt;进入恢复模式以后，启用root&amp;nbsp;shell&lt;/p&gt;
 &lt;p&gt;将目录改为可写&lt;br /&gt;
 &lt;code&gt;mount -o rw,remount&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;查看 home 下的用户&lt;br /&gt;
+&lt;p&gt;查看home下的用户&lt;br /&gt;
 &lt;code&gt;ls /home&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;修改密码&lt;br /&gt;
 &lt;code&gt;passwd&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;输入两次密码（一次是确认）即修改完成&lt;/p&gt;
-&lt;p&gt;重启&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 05 Aug 2018 22:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-05:/忘记 ubuntu 的 root 密码如何解决</guid><category>Tech</category><category>Linux</category></item><item><title>用 Python 给你女朋友写封信</title><link>https://weilet.me/%E7%94%A8%20Python%20%E7%BB%99%E4%BD%A0%E5%A5%B3%E6%9C%8B%E5%8F%8B%E5%86%99%E5%B0%81%E4%BF%A1</link><description>&lt;p&gt;喜欢木心先生的《从前慢》，那种一辈子只够爱一个人的闲适，被今日快节奏的生活方式打破。&lt;/p&gt;
-&lt;p&gt;虽然今日邮件已然销声匿迹，但电子邮件的兴起给我们另一个选择。&lt;/p&gt;
+&lt;p&gt;重启&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sun, 05 Aug 2018 22:47:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-08-05:/忘记ubuntu的root密码如何解决</guid><category>Tech</category><category>Linux</category></item><item><title>用Python给你女朋友写封信</title><link>https://weilet.me/%E7%94%A8Python%E7%BB%99%E4%BD%A0%E5%A5%B3%E6%9C%8B%E5%8F%8B%E5%86%99%E5%B0%81%E4%BF%A1</link><description>&lt;p&gt;喜欢木心先生的《从前慢》，那种一辈子只够爱一个人的闲适，被今日快节奏的生活方式打破。&lt;/p&gt;
+&lt;p&gt;虽然今日邮件已然销声匿迹，但电子邮件的兴起给俺们另一个选择。&lt;/p&gt;
 &lt;p&gt;若怀念木心，不妨静下心来，在键盘上诚诚恳恳敲击你想对她诉说的，不也浪漫？不也悠长？&lt;/p&gt;
-&lt;p&gt;那么，如何用 Python&amp;nbsp;写电子邮件呢？&lt;/p&gt;
-&lt;p&gt;我们需要用到 smtplib 和 email&amp;nbsp;模块&lt;/p&gt;
-&lt;p&gt;我们从简单的开始，写一首情诗送给她&lt;/p&gt;
+&lt;p&gt;那么，如何用Python写电子邮件呢？&lt;/p&gt;
+&lt;p&gt;俺们需要用到smtplib和email模块&lt;/p&gt;
+&lt;p&gt;俺们从简单的开始，写一首情诗送给她&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
 &lt;span class="c1"&gt;# @Date:   2018-07-12 05:56:46&lt;/span&gt;
@@ -352,7 +384,9 @@
 &lt;span class="c1"&gt;# @Last Modified time: 2018-07-13 13:29:09&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;smtplib&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;email.mime.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MIMEText …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 14 Jul 2018 00:30:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-14:/用 Python 给你女朋友写封信</guid><category>Tech</category><category>Python</category></item><item><title>我的第一只爬虫</title><link>https://weilet.me/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%8F%AA%E7%88%AC%E8%99%AB</link><description>&lt;p&gt;寒假的时候学习了一下 Python&amp;nbsp;的爬虫，并将豆瓣电影排行榜爬取了下来&lt;/p&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;email.mime.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MIMEText&lt;/span&gt; &lt;span class="c1"&gt;#多媒体网际网路邮件延伸文本，即纯文本&lt;/span&gt;
+&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;醉过才知酒浓，爱过才知情重。  &lt;/span&gt;
+\&lt;span class="n"&gt;n你定是俺的诗 …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Sat, 14 Jul 2018 00:30:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-14:/用Python给你女朋友写封信</guid><category>Tech</category><category>Python</category></item><item><title>俺的第一只爬虫</title><link>https://weilet.me/%E4%BF%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E5%8F%AA%E7%88%AC%E8%99%AB</link><description>&lt;p&gt;寒假的时候学习了一下Python的爬虫，并将豆瓣电影排行榜爬取了下来&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="c1"&gt;# @Author: Lily_Sun&lt;/span&gt;
 &lt;span class="c1"&gt;# @Date:   2018-01-12 05:18:40&lt;/span&gt;
@@ -366,16 +400,28 @@
 &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://movie.douban.com/chart&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;req&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;req&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 12 Jul 2018 05:28:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-12:/我的第一只爬虫</guid><category>Tech</category><category>Python</category></item><item><title>快速幂和矩阵快速幂</title><link>https://weilet.me/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%92%8C%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82</link><description>&lt;p&gt;快速幂，顾名思义就是快速求幂的算法。原理如下：&lt;/p&gt;
-&lt;p&gt;假设求 a 的 n 次方，当 n 为偶数时，a 的 n 次方可以由两个 a 的 n/2 次方相乘求得；当 n 为奇数时，a 的 n 次方可以由两个 a 的 n/2 次方相乘的积再乘以 a&amp;nbsp;得到。&lt;/p&gt;
-&lt;p&gt;在实现中，运用位运算判断奇偶和乘除&amp;nbsp;2（第一个想到的简直就是天才）&lt;/p&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 12 Jul 2018 05:28:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-12:/俺的第一只爬虫</guid><category>Tech</category><category>Python</category></item><item><title>快速幂和矩阵快速幂</title><link>https://weilet.me/%E5%BF%AB%E9%80%9F%E5%B9%82%E5%92%8C%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82</link><description>&lt;p&gt;快速幂，顾名思义就是快速求幂的算法。原理如下：&lt;/p&gt;
+&lt;p&gt;假设求a的n次方，当n为偶数时，a的n次方可以由两个a的n/2次方相乘求得；当n为奇数时，a的n次方可以由两个a的n/2次方相乘的积再乘以a得到。&lt;/p&gt;
+&lt;p&gt;在实现中，运用位运算判断奇偶和乘除2（第一个想到的简直就是天才）&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
 &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="nf"&gt;quick_pow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;degree&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="kt"&gt;double …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 12 Jul 2018 03:08:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-12:/快速幂和矩阵快速幂</guid><category>Tech</category><category>Algorithm</category></item><item><title>图片隐写套路</title><link>https://weilet.me/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%A5%97%E8%B7%AF</link><description>&lt;h3 id="_1"&gt;总结一些图片隐写术的套路&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+    &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;ans&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;degree&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;degree&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;ans&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="o"&gt;*=&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;degree&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ans&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;cin&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;b …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Thu, 12 Jul 2018 03:08:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-12:/快速幂和矩阵快速幂</guid><category>Tech</category><category>Algorithm</category></item><item><title>图片隐写套路</title><link>https://weilet.me/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%A5%97%E8%B7%AF</link><description>&lt;h3 id="_1"&gt;总结一些图片隐写术的套路&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id="0x000-exif"&gt;0x000 exif&lt;a class="headerlink" href="#0x000-exif" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Windows 下直接右键属性查看就好，有些题目会用 Base64&amp;nbsp;等方式加密，不过也就一梭子代码的问题。&lt;/p&gt;
-&lt;p&gt;Linux&amp;nbsp;下用&lt;/p&gt;
+&lt;p&gt;Windows下直接右键属性查看就好，有些题目会用Base64等方式加密，不过也就一梭子代码的问题。&lt;/p&gt;
+&lt;p&gt;Linux下用&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;identify -verbose filename
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -384,11 +430,15 @@
 &lt;p&gt;文件的隐藏利用
  &lt;code&gt;shell
 copy /b 2.jpg+1.zip output.jpg&lt;/code&gt;
-对于这类题目，用 binwalk 分析后用 dd&amp;nbsp;命令分解出来就好：&lt;/p&gt;
+对于这类题目，用binwalk分析后用dd命令分解出来就好：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;filename &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;filename &lt;span class="nv"&gt;skip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;start_point_of_hidden_file &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;                          
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="0x010-lsb"&gt;0x010 &lt;span class="caps"&gt;LSB&lt;/span&gt; 修改&lt;a class="headerlink" href="#0x010-lsb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;直接用 stegsolve&amp;nbsp;看通道，一般会隐藏二维码在其中。&lt;/p&gt;
-&lt;h3 id="0x011"&gt;0x011 查看其他信息 …&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 09 Jul 2018 23:35:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-09:/图片隐写套路</guid><category>Tech</category><category>CTF</category><category>MISC</category></item></channel></rss>
+&lt;p&gt;直接用stegsolve看通道，一般会隐藏二维码在其中。&lt;/p&gt;
+&lt;h3 id="0x011"&gt;0x011 查看其他信息&lt;a class="headerlink" href="#0x011" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Windows下把图片拖进WinHex，缺少文件头的话补全。在文件结尾后有一段不明字符串，可以尝试解码。&lt;/p&gt;
+&lt;p&gt;拖进Stegsolve里查看附着的信息，有可能有ascii形式的Flag。&lt;/p&gt;
+&lt;h3 id="0x100"&gt;0x100 双图&lt;a class="headerlink" href="#0x100" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目前做过的题目的解决方案是拖进stegsolve里边然后选择图片叠加。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">PwnForWhat</dc:creator><pubDate>Mon, 09 Jul 2018 23:35:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2018-07-09:/图片隐写套路</guid><category>Tech</category><category>CTF</category><category>MISC</category></item></channel></rss>

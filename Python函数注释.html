@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Python函数注释</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="相较于以往采用文档字符串去注释函数，现在 Python 提供了更为轻便的，为小型功能函数准备的函数注释功能。 如何添加函数注释 在参数后添加英文半角冒号，注释类型 在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型 下面是例子： def foo(name: str, age: int) -> int: pass 注意 显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing 中相应的模块，如： from typing import List def foo(A: List[int]) -> int: pass 当然，你仍然可以给参数添加默认值： from typing import List def foo(A: List[int] = [1 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="Python函数注释" />
+<meta property="og:url" content="https://weilet.me/Python函数注释" />
+<meta property="og:description" content="相较于以往采用文档字符串去注释函数，现在 Python 提供了更为轻便的，为小型功能函数准备的函数注释功能。 如何添加函数注释 在参数后添加英文半角冒号，注释类型 在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型 下面是例子： def foo(name: str, age: int) -> int: pass 注意 显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing 中相应的模块，如： from typing import List def foo(A: List[int]) -> int: pass 当然，你仍然可以给参数添加默认值： from typing import List def foo(A: List[int] = [1 …" />
+<meta property="article:published_time" content="2019-03-03 22:18:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="相较于以往采用文档字符串去注释函数，现在 Python 提供了更为轻便的，为小型功能函数准备的函数注释功能。 如何添加函数注释 在参数后添加英文半角冒号，注释类型 在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型 下面是例子： def foo(name: str, age: int) -> int: pass 注意 显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing 中相应的模块，如： from typing import List def foo(A: List[int]) -> int: pass 当然，你仍然可以给参数添加默认值： from typing import List def foo(A: List[int] = [1 …" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/Python函数注释"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>Python函数注释</h1>
+                <div class="post-meta">
+                    <time class="date">2019-03-03</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Python.html">
+                        <span>Python</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <p>相较于以往采用文档字符串去注释函数，现在 Python&nbsp;提供了更为轻便的，为小型功能函数准备的函数注释功能。</p>
+<h3 id="_1">如何添加函数注释<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<p>在参数后添加英文半角冒号，注释类型<br />
+在函数定义括号后使用一个连字符和右尖括号，注释返回参数类型<br />&nbsp;下面是例子：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<h3 id="_2">注意<a class="headerlink" href="#_2" title="Permanent link"> </a></h3>
+<p>显然，这个类型可以是你瞎编的。但引入某些类型的注释时，需要引入 typing&nbsp;中相应的模块，如：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<p>当然，你仍然可以给参数添加默认值：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>

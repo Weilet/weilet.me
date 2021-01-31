@@ -15,7 +15,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="description" content="安全地使用字典，和安全地使用套套一样重要 Python 中的字典数据类型经常被用到，但当我们期待一个不存在的 key 的 value 时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？ 最开始的时候 当我们最初接触 Python 的时候，教学网站上面会跟你提到字典的 get()方法。利用这个方法，可以安全地返回字典的值，如果对应的 key 不存在，那么它会返回一个默认值，这个默认值默认是 None，你也可以通过设置 default 的值改变这个默认值。 需要注意的是，除了 get()方法，setdefault()方法同样可以返回默认值，但 setdefault()会将不存在的 key 的项追加到字典中，而 get()不会。 笨拙且安全的 后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务 …"/>
+<meta name="description" content="安全地使用字典，和安全地使用套套一样重要 Python中的字典数据类型经常被用到，但当俺们期待一个不存在的key的value时，它往往会带来一个异常，将俺们的程序活生生终结，如何解决？ 最开始的时候 当俺们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个默认值默认是None，你也可以通过设置default的值改变这个默认值。 需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。 笨拙且安全的 后来，俺们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？） 可是，当你多年回来review你的代码，你也许会感叹它的笨拙。 是时候使用魔法的力量了 利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。 用些现成的 鉴于collections中defaultdict的易用性，俺向你强烈推荐 …"/>
   
 
 <!-- Start of OpenGraph protocol tags -->
@@ -24,10 +24,10 @@
     
 <meta property="og:title" content="如何安全地使用字典" />
 <meta property="og:url" content="https://weilet.me/如何安全地使用字典" />
-<meta property="og:description" content="安全地使用字典，和安全地使用套套一样重要 Python 中的字典数据类型经常被用到，但当我们期待一个不存在的 key 的 value 时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？ 最开始的时候 当我们最初接触 Python 的时候，教学网站上面会跟你提到字典的 get()方法。利用这个方法，可以安全地返回字典的值，如果对应的 key 不存在，那么它会返回一个默认值，这个默认值默认是 None，你也可以通过设置 default 的值改变这个默认值。 需要注意的是，除了 get()方法，setdefault()方法同样可以返回默认值，但 setdefault()会将不存在的 key 的项追加到字典中，而 get()不会。 笨拙且安全的 后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务 …" />
+<meta property="og:description" content="安全地使用字典，和安全地使用套套一样重要 Python中的字典数据类型经常被用到，但当俺们期待一个不存在的key的value时，它往往会带来一个异常，将俺们的程序活生生终结，如何解决？ 最开始的时候 当俺们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个默认值默认是None，你也可以通过设置default的值改变这个默认值。 需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。 笨拙且安全的 后来，俺们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？） 可是，当你多年回来review你的代码，你也许会感叹它的笨拙。 是时候使用魔法的力量了 利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。 用些现成的 鉴于collections中defaultdict的易用性，俺向你强烈推荐 …" />
 <meta property="article:published_time" content="2019-09-21 23:19:00+08:00" />
 <!-- End of OpenGraph protocol tags -->
-<meta name="twitter:card" content="安全地使用字典，和安全地使用套套一样重要 Python 中的字典数据类型经常被用到，但当我们期待一个不存在的 key 的 value 时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？ 最开始的时候 当我们最初接触 Python 的时候，教学网站上面会跟你提到字典的 get()方法。利用这个方法，可以安全地返回字典的值，如果对应的 key 不存在，那么它会返回一个默认值，这个默认值默认是 None，你也可以通过设置 default 的值改变这个默认值。 需要注意的是，除了 get()方法，setdefault()方法同样可以返回默认值，但 setdefault()会将不存在的 key 的项追加到字典中，而 get()不会。 笨拙且安全的 后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务 …" />
+<meta name="twitter:card" content="安全地使用字典，和安全地使用套套一样重要 Python中的字典数据类型经常被用到，但当俺们期待一个不存在的key的value时，它往往会带来一个异常，将俺们的程序活生生终结，如何解决？ 最开始的时候 当俺们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个默认值默认是None，你也可以通过设置default的值改变这个默认值。 需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。 笨拙且安全的 后来，俺们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？） 可是，当你多年回来review你的代码，你也许会感叹它的笨拙。 是时候使用魔法的力量了 利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。 用些现成的 鉴于collections中defaultdict的易用性，俺向你强烈推荐 …" />
 
 <meta name="keywords" content="Python, Rust, C++">
 <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
@@ -72,17 +72,17 @@
             <blockquote>
 <p>安全地使用字典，和安全地使用套套一样重要</p>
 </blockquote>
-<p>Python 中的字典数据类型经常被用到，但当我们期待一个不存在的 key 的 value&nbsp;时，它往往会带来一个异常，将我们的程序活生生终结，如何解决？</p>
+<p>Python中的字典数据类型经常被用到，但当俺们期待一个不存在的key的value时，它往往会带来一个异常，将俺们的程序活生生终结，如何解决？</p>
 <h4 id="_1">最开始的时候<a class="headerlink" href="#_1" title="Permanent link"> </a></h4>
-<p>当我们最初接触 Python 的时候，教学网站上面会跟你提到字典的 get()方法。利用这个方法，可以安全地返回字典的值，如果对应的 key 不存在，那么它会返回一个默认值，这个<strong>默认值默认是 None</strong>，你也可以通过设置 default&nbsp;的值改变这个默认值。</p>
-<p>需要注意的是，除了 get()方法，setdefault()方法同样可以返回默认值，但 setdefault()会将不存在的 key 的项追加到字典中，而&nbsp;get()不会。</p>
+<p>当俺们最初接触Python的时候，教学网站上面会跟你提到字典的get()方法。利用这个方法，可以安全地返回字典的值，如果对应的key不存在，那么它会返回一个默认值，这个<strong>默认值默认是None</strong>，你也可以通过设置default的值改变这个默认值。</p>
+<p>需要注意的是，除了get()方法，setdefault()方法同样可以返回默认值，但setdefault()会将不存在的key的项追加到字典中，而get()不会。</p>
 <h4 id="_2">笨拙且安全的<a class="headerlink" href="#_2" title="Permanent link"> </a></h4>
-<p>后来，我们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现 KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的 if-else&nbsp;呢？）</p>
-<p>可是，当你多年回来 review&nbsp;你的代码，你也许会感叹它的笨拙。</p>
+<p>后来，俺们学会了异常处理，于是或多或少出于炫技的目的，使用异常处理来完成这个任务。这个方法适合当出现KeyError，你不仅需要返回默认值，而且还需要做一些处理（不然为什么不使用简单的if-else呢？）</p>
+<p>可是，当你多年回来review你的代码，你也许会感叹它的笨拙。</p>
 <h4 id="_3">是时候使用魔法的力量了<a class="headerlink" href="#_3" title="Permanent link"> </a></h4>
-<p>利用魔法方法（特殊方法）__missing__()，当 key 不存在时，字典会调用这个方法，而非抛出&nbsp;KeyError，很酷炫。</p>
+<p>利用魔法方法（特殊方法）__missing__()，当key不存在时，字典会调用这个方法，而非抛出KeyError，很酷炫。</p>
 <h4 id="_4">用些现成的<a class="headerlink" href="#_4" title="Permanent link"> </a></h4>
-<p>鉴于 collections 中 defaultdict&nbsp;的易用性，我向你强烈推荐。</p>
+<p>鉴于collections中defaultdict的易用性，俺向你强烈推荐。</p>
 <p>简单地说，它的构造函数接受两个参数，一个是默认值的生成函数（即官方文档中的工厂函数），另一个则是一个字典。通过包装，它成为一个会返回默认值的字典。</p>
 <p>这个工厂函数可以是</p>
 <ul>

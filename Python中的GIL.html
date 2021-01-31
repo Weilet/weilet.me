@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Python中的GIL</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157817775-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157817775-1');
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …"/>
+  
+
+<!-- Start of OpenGraph protocol tags -->
+<meta property="og:site_name" content="Weilet's blog" />
+<meta property="og:type" content="article" />
+    
+<meta property="og:title" content="Python中的GIL" />
+<meta property="og:url" content="https://weilet.me/Python中的GIL" />
+<meta property="og:description" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
+<meta property="article:published_time" content="2019-05-23 00:07:00+08:00" />
+<!-- End of OpenGraph protocol tags -->
+<meta name="twitter:card" content="人们只瞧见了上帝关了门，却没瞅到上帝也开了窗 什么是GIL？ GIL即全局解释器锁（英语：Global Interpreter Lock，缩写GIL），是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核心处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程。 From wikipedia 为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子： 进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。 因此，GIL的重要性不言而喻。但也是因为它 …" />
+
+<meta name="keywords" content="Python, Rust, C++">
+<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+<link rel="stylesheet" type="text/css" href="/theme/css/highlight.css">
+<link rel="icon" href="/theme/images/terminal.ico">
+<link rel="canonical" href="https://weilet.me/Python中的GIL"/>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="nav">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="https://weilet.me">Weilet's Blog</a>
+        </div>
+        <div class="links">
+            <a class="main-nav-link" href="/archives">归档</a>
+            <a class="main-nav-link" href="/categories">分类</a>
+            <a class="main-nav-link" href="/tags">标签</a>
+            <a class="main-nav-link" href="/rss.xml">
+                <img src="/theme/images/rss.svg">
+            </a>
+        </div>
+    </div>
+</nav>    
+<main id="main-content">
+    <article class="single container">
+        <header class="single-header">
+            <div class="flex">
+                <h1>Python中的GIL</h1>
+                <div class="post-meta">
+                    <time class="date">2019-05-23</time>
+                </div>
+                <div class="tag-container">
+                    <a style="text-decoration:none" href="tag/Python.html">
+                        <span>Python</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="post">
+            <blockquote>
+<p>人们只瞧见了上帝关了门，却没瞅到上帝也开了窗</p>
+</blockquote>
+<h3 id="gil">什么是GIL？<a class="headerlink" href="#gil" title="Permanent link"> </a></h3>
+<blockquote>
+<p><strong><span class="caps">GIL</span></strong>即<strong>全局解释器锁</strong>（英语：Global Interpreter Lock，缩写<strong><span class="caps">GIL</span></strong>），是<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80">计算机程序设计语言</a><a href="https://zh.wikipedia.org/wiki/%E8%A7%A3%E9%87%8A%E5%99%A8">解释器</a>用于<a href="https://zh.wikipedia.org/wiki/%E5%90%8C%E6%AD%A5">同步</a><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B">线程</a>的一种机制，它使得任何时刻仅有一个线程在执行。即便在<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%A0%B8%E5%BF%83%E8%99%95%E7%90%86%E5%99%A8">多核心处理器</a>上，使用 <span class="caps">GIL</span>&nbsp;的解释器也只允许同一时间执行一个线程。</p>
+<p>From <a href="https://zh.wikipedia.org/zh-hans/%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81">wikipedia</a></p>
+</blockquote>
+<p>为什么需要GIL呢？网上很多博客都说是历史遗留问题。但实际上，俺认为这和Python的内存管理机制有关。在Python中，每个对象都维护着一个引用计数，而当这个计数变为0时，这个对象将会被回收。如果没有GIL，两个进程对同一个对象的引用计数的更改就会导致错误，这里举个例子：</p>
+<p>进程X删除对象A使得其引用计数减1变为0，对象A被回收。进程Y删除对象A，这本报错的。但由于没有GIL，这两个进程同时进行，所以没有报错。这是错误的。</p>
+<p>因此，GIL的重要性不言而喻。但也是因为它，使得Python的多线程活生生地由并行变成了并发。</p>
+<p>为了减少GIL所带来的性能损耗，俺们能做什么呢？</p>
+<div class="highlight"><pre><span></span><span class="err">关于Python内存管理机制，你可以查看这篇文章： https://www.cnblogs.com/geaozhang/p/7111961.html#yinyongjishu </span>
+</pre></div>
+
+
+<h4 id="gil_1">被GIL削弱的多线程<a class="headerlink" href="#gil_1" title="Permanent link"> </a></h4>
+<blockquote>
+<p>由于全局解释锁（<span class="caps">GIL</span>）的原因，Python 的线程被限制到同一时刻只允许一个线程执行这样一个执行模型。所以，Python&nbsp;的线程更适用于处理I/O和其他需要并发执行的阻塞操作（比如等待I/O、等待从数据库获取数据等等），而不是需要多处理器并行的计算密集型任务。</p>
+<p>From <a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c12/p01_start_stop_thread.html">Python&nbsp;cookbook</a></p>
+</blockquote>
+<p>下面是一例实验：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">queue</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">init_queue</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;队列初始化完成&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">job</span><span class="p">():</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;任务完成&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">init_queue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====单线程十次作业开始=====&#39;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">job</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;作业时间：{time.time() - start_time}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====单线程十次作业完成=====&#39;</span><span class="p">)</span>
+
+    <span class="n">init_queue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====多线程十次作业开始=====&#39;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">thread_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">job</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thread_list</span><span class="p">:</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thread_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;作业时间：{time.time() - start_time}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====多线程十次作业完成=====&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">队列初始化完成</span>
+<span class="err">=====单线程十次作业开始=====</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">作业时间：10.010543823242188</span>
+<span class="err">=====单线程十次作业完成=====</span>
+<span class="err">队列初始化完成</span>
+<span class="err">=====多线程十次作业开始=====</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">任务完成</span>
+<span class="err">作业时间：1.0054144859313965</span>
+<span class="err">=====多线程十次作业完成=====</span>
+</pre></div>
+
+
+<p>值得注意的是，如果将job函数中后面一个sleep函数去掉，会导致多线程测试不能完成。具体原因还未弄清。</p>
+<h3 id="_1">那么，计算密集型任务呢？<a class="headerlink" href="#_1" title="Permanent link"> </a></h3>
+<p>对于IO密集型任务，Python的伪多线程可以解决，但是对于计算密集型任务，它仍旧无法真正在同一时间调用多个函数。这个时候，多线程的作用就出来了。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">import</span> <span class="nn">queue</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">init_queue</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;队列初始化完成&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">job</span><span class="p">():</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">*=</span> <span class="n">i</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;任务完成&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">init_queue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====单线程十次作业开始=====&#39;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">job</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;作业时间：{time.time() - start_time}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====单线程十次作业完成=====&#39;</span><span class="p">)</span>
+
+    <span class="n">init_queue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====多进程十次作业开始=====&#39;</span><span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">process_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">job</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">process_list</span><span class="p">:</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">process_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;作业时间：{time.time() - start_time}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=====多进程十次作业完成=====&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><span class="err">队列初始化完成</span>
+
+<span class="o">=====</span><span class="err">单线程十次作业开始</span><span class="o">=====</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">作业时间：</span><span class="mi">10</span><span class="p">.</span><span class="mi">008376598358154</span>
+
+<span class="o">=====</span><span class="err">单线程十次作业完成</span><span class="o">=====</span>
+
+<span class="err">队列初始化完成</span>
+
+<span class="o">=====</span><span class="err">多进程十次作业开始</span><span class="o">=====</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">任务完成</span>
+
+<span class="err">作业时间：</span><span class="mi">1</span><span class="p">.</span><span class="mi">4181747436523438</span>
+
+<span class="o">=====</span><span class="err">多进程十次作业完成</span><span class="o">=====</span>
+</pre></div>
+
+
+<blockquote>
+<p>虽然GIL给Python的性能关上了一扇门，但是这并不意味着俺们就要忽略标准库里为俺们打开的每一扇窗。</p>
+</blockquote>
+        </div>
+    </article>
+</main>
+<footer class="footer container">
+	<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/theme/images/CC-4.0-lg.png" /></a>
+	<a class="main-nav-link" href="/blogroll">友链</a>
+	<a class="main-nav-link" href="/about">关于</a>
+</footer></body>
+</html>

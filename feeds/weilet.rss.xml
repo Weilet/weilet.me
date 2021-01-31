@@ -1,85 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Tue, 21 Jul 2020 23:08:00 +0800</lastBuildDate><item><title>KNN 算法</title><link>https://weilet.me/KNN%20%E7%AE%97%E6%B3%95</link><description>&lt;h3 id="knn"&gt;&lt;span class="caps"&gt;KNN&lt;/span&gt; 算法&lt;a class="headerlink" href="#knn" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;一个分类算法，主要用于各种各样的分类。比如给你一大堆的狗，让你给他们一个个分类，这时候就可以用到 &lt;span class="caps"&gt;KNN&lt;/span&gt;&amp;nbsp;算法了。&lt;/p&gt;
-&lt;h3 id="_1"&gt;算法简述&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;计算测试对象到训练集中每个对象的距离&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;按照距离的远近排序&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;选取与当前测试对象最近的 K&amp;nbsp;训练对象，作为该测试对象的邻居&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;统计这 K&amp;nbsp;个邻居的类别频率&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;K&amp;nbsp;个邻居里频率最高的类别，即为测试对象的类别&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="_2"&gt;影响因素&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;span class="caps"&gt;KNN&lt;/span&gt;&amp;nbsp;算法表达的其实就是“近朱者赤近墨者黑”的思想，因此影响它的分类结果的主要有三个因素：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;K&amp;nbsp;值的选取，即选择比较的范围。离你最近的两个人是河南人，离你最近的五个人中有三个四川人，你是河南人还是四川人？&lt;/li&gt;
-&lt;li&gt;距离的计算，即距离的衡量方式。看你的脸蛋像河南人，但听你的口音却像四川人，你是河南人还是四川人？&lt;/li&gt;
-&lt;li&gt;分类规则，即按何标准来分类，主流有多数表决法和加权多数表决法。虽然你平常朋友最多的是河南人，但最好的几个朋友却为四川人，普通朋友和最好的朋友权重不同，你是河南人还是四川人？&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="_3"&gt;代码实现&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://github.com/Daycym/Machine_Learning/blob/master/03_KNN/01_k近邻算法.py"&gt;&lt;span class="caps"&gt;KNN&lt;/span&gt;&amp;nbsp;分类&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 21 Jul 2020 23:08:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-07-21:/KNN 算法</guid><category>Tech</category><category>None</category></item><item><title>好友推荐算法</title><link>https://weilet.me/%E5%A5%BD%E5%8F%8B%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95</link><description>&lt;p&gt;某天与国外友人 X&amp;nbsp;聊起了好友推荐算法，那么好友推荐是如何完成的呢？&lt;/p&gt;
-&lt;h3 id="_1"&gt;三元闭包&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;事实上解决这类问题有个专门的理论：&lt;strong&gt;三元闭包&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;所谓三元闭包，即在一个社交圈内，若两个人有一个共同好友，则这两个人在未来成为好友的可能性就会提高。&lt;/p&gt;
-&lt;p&gt;我们可以用无向图来表示这个社交圈，图上的点即为每个人。如果对于A、B两点，它们之间存在一个连线，那么A与B则为好友。&lt;/p&gt;
-&lt;h3 id="_2"&gt;邻里重叠度&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我们可以用邻里重叠度来定量表示 A、B 之间联系的强弱，它在数值上等于：A与B的共同好友数 /&amp;nbsp;A与B的好友总数&lt;/p&gt;
-&lt;p&gt;我们可以通过对邻里重叠度的排序，找出最高邻里重叠度且非好友的两人，并向他们推荐对方。&lt;/p&gt;
-&lt;h3 id="_3"&gt;脸书是如何做的&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;脸书结合经验：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;通过时间对这个重叠度进行加权。认识更晚的好友的权重更高，因为他代表了目前的兴趣取向或亲密关系。&lt;/li&gt;
-&lt;li&gt;通过共同好友的好友数对这个重叠度进行加权。共同好友中，好友数少的权重更高，因为这样更有可能联通两个不同的连通分量（也就是两个本不连通的社交圈）。&lt;/li&gt;
-&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sat, 04 Jul 2020 01:05:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-07-04:/好友推荐算法</guid><category>Tech</category><category>None</category></item><item><title>程序员需要知道的字体知识</title><link>https://weilet.me/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%AD%97%E4%BD%93%E7%9F%A5%E8%AF%86</link><description>&lt;p&gt;程序员一天要面对屏幕很长时间，其中大部分时间是在使用终端、使用 &lt;span class="caps"&gt;IDE&lt;/span&gt;。因此，为了保证我们的身心健康，选择一款良好的字体至关重要。本文将带你了解一些&lt;em&gt;连我都知道的&lt;/em&gt;文字小知识，让你为自己更好地选择字体。&lt;/p&gt;
-&lt;h3 id="vs"&gt;衬体 &lt;span class="caps"&gt;VS&lt;/span&gt; 无衬线体&lt;a class="headerlink" href="#vs" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;衬体（Serif）是有衬线的字体，而无衬线体（sans-serif）则是没有衬线的字体。所谓衬线，即是 Windows 下 Word&amp;nbsp;文档中宋体的装饰线，它们是在笔画的起始和末端用于装饰的。无衬线体比衬体干扰成分少，简洁明了，适合用于编程。顺带一提，无衬线体在旧时代也被称作“grotesque”，因此也被称为哥特体（Gothic）。&lt;/p&gt;
-&lt;h3 id="vs_1"&gt;等宽字体 &lt;span class="caps"&gt;VS&lt;/span&gt; 比例字体&lt;a class="headerlink" href="#vs_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;等宽字体（Monospaced Font）是指字体宽度相同的电脑字体，而比例字体（Proportional Font）是指字体宽度不尽相同的字体。为了更好地对齐，使代码美观，你应该使用等宽字体（一般等宽字体名字都带有 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Mon, 25 May 2020 23:52:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-05-25:/程序员需要知道的字体知识</guid><category>Tech</category><category>Font</category><category>Terminal</category></item><item><title>轻松自建 RSS 服务</title><link>https://weilet.me/%E8%BD%BB%E6%9D%BE%E8%87%AA%E5%BB%BA%20RSS%20%E6%9C%8D%E5%8A%A1</link><description>&lt;p&gt;这个月初发现日常使用的 &lt;span class="caps"&gt;RSS&lt;/span&gt; 服务商 inoreader 被墙了，虽然它有补救方案，却不被我的手机客户端支持。命运的大手最终还是把我推向了自建 &lt;span class="caps"&gt;RSS&lt;/span&gt;&amp;nbsp;的道路上&lt;/p&gt;
-&lt;h3 id="rss"&gt;什么是 &lt;span class="caps"&gt;RSS&lt;/span&gt;&lt;a class="headerlink" href="#rss" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果你了解 &lt;span class="caps"&gt;RSS&lt;/span&gt;，可以跳过本节&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;span class="caps"&gt;RSS&lt;/span&gt; 为 Really Simple Syndication 的缩写，网站提供 &lt;span class="caps"&gt;RSS&lt;/span&gt; 订阅源，用户订阅。订阅的方式分为两种：直接订阅和通过 &lt;span class="caps"&gt;RSS&lt;/span&gt; 服务订阅。直接订阅源是将地址输入阅读器订阅，信息的流向是从订阅源到阅读器。优点是操作简单，缺点是同步不便以及无法订阅国外的一些源；而通过 &lt;span class="caps"&gt;RSS&lt;/span&gt; 服务订阅，信息的流向则是从订阅源到 &lt;span class="caps"&gt;RSS&lt;/span&gt; 服务，再到阅读器。&lt;span class="caps"&gt;RSS&lt;/span&gt; 服务相当于给我们提供了中转的作用。优点是便于管理且支持的源较丰富，缺点是一旦 &lt;span class="caps"&gt;RSS&lt;/span&gt;&amp;nbsp;服务停止就无法使用。&lt;/p&gt;
-&lt;h3 id="rss_1"&gt;自建 &lt;span class="caps"&gt;RSS&lt;/span&gt; 服务选择&lt;a class="headerlink" href="#rss_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;这里的 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sat, 16 May 2020 23:14:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-05-16:/轻松自建 RSS 服务</guid><category>Tech</category><category>RSS</category><category>docker</category></item><item><title>正则正则</title><link>https://weilet.me/%E6%AD%A3%E5%88%99%E6%AD%A3%E5%88%99</link><description>&lt;blockquote&gt;
-&lt;p&gt;这个学期写shell比较多，不小心发现了正则表达式的秘密………&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="_1"&gt;通配符？&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;那么聊正则表达式之前呢，我们先聊一下新手容易和正则表达式弄混的概念：通配符&lt;/p&gt;
-&lt;p&gt;在正则表达式出现之前，人们就有用来表示模式的符号，通配符比正则表达式的符号少，却也足够日常的使用。&lt;/p&gt;
-&lt;p&gt;关于通配符，可以参考&lt;a href="http://www.ruanyifeng.com/blog/2018/09/bash-wildcards.html"&gt;阮一峰老师的博客&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="_2"&gt;正则表达式&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;通过几个月的学习，我发现正则表达式是个大家庭。很多以前在 Java 和 Python 的写法，在 Linux 的命令中并不适用。为什么呢？因为 Linux 中很多命令默认支持的是&lt;strong&gt;基础正则表达式&lt;/strong&gt;，而我们在编程语言里面使用的表达式都是经过一定扩展的。其实 Linux 也支持扩展正则表达式（注意，这和编程语言里使用的还是有一定的不同）以及 Perl 正则表达式（经过 Perl 改良的正则表达式）。以我们最常用的  &lt;code&gt;grep&lt;/code&gt; 为例，可以通过 &lt;code&gt;-E&lt;/code&gt; 来支持扩展正则表达式以及通过 &lt;code&gt;-P&lt;/code&gt; 来支持 Perl …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Mon, 11 May 2020 18:30:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-05-11:/正则正则</guid><category>Tech</category><category>Linux</category></item><item><title>文件哈希</title><link>https://weilet.me/%E6%96%87%E4%BB%B6%E5%93%88%E5%B8%8C</link><description>&lt;p&gt;你是否遇到过这样的情况：看到一张有趣的图片，想要发送给微信好友，却发现对方无法查看；又或者想上传文件到 &lt;span class="caps"&gt;QQ&lt;/span&gt;&amp;nbsp;群，却总是失败？这类行为，都与文件的哈希值有关。&lt;/p&gt;
-&lt;h3 id="_1"&gt;什么是文件哈希&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;文件根据指定的散列算法（如 md5、&lt;span class="caps"&gt;SHA1&lt;/span&gt;、&lt;span class="caps"&gt;SHA256&lt;/span&gt;）计算出文件哈希，它相当于文件的“身份证”，具有唯一性。文件哈希与文件内容有关，与文件名、修改时间无关。&lt;/p&gt;
-&lt;h3 id="_2"&gt;文件拦截&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;既然文件的哈希值具有&lt;strong&gt;唯一性&lt;/strong&gt;，那么我们可以以它作为依据，将一些我们不想传播的文件的哈希值记录到黑名单（通常这些文件传播有一定规模），一旦核对上传的文件的文件哈希在黑名单里，就不予上传。&lt;/p&gt;
-&lt;h3 id="_3"&gt;应对文件拦截&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;如果我非要上传呢？最简单的办法就是对文件进行不影响&lt;strong&gt;主要信息&lt;/strong&gt;的编辑。比如对于图像，我们可以修改一个像素，对于文本，我们可以在末行添加空行。推而广之，我们可以使用十六进制编辑器在文件尾部添加若干&amp;nbsp;20（空格），进而改变文件哈希。&lt;/p&gt;
-&lt;p&gt;事实上，有一个专门的工具可以专门用于修改文件哈希&amp;#8212;&lt;a href="http://imristo.com/hash-manager-change-the-hash-of-any-file/"&gt;Hash&amp;nbsp;Manager&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;高科技一旦作起恶来 …&lt;/p&gt;&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sat, 09 May 2020 18:30:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-05-09:/文件哈希</guid><category>Tech</category><category>Security</category></item><item><title>劳动节随想</title><link>https://weilet.me/%E5%8A%B3%E5%8A%A8%E8%8A%82%E9%9A%8F%E6%83%B3</link><description>&lt;p&gt;​       五月一日，是国际劳动节，是为纪念 1886 年美国芝加哥劳工争取&lt;a href="https://zh.wikipedia.org/wiki/八小时工作制"&gt;八小时工作制&lt;/a&gt;而被警察武装镇压的&lt;a href="https://zh.wikipedia.org/wiki/干草市场事件"&gt;干草市场事件&lt;/a&gt;而设立的。&lt;/p&gt;
-&lt;p&gt;​&amp;nbsp;戏谑的是，在今年的国际劳动节之日，国家地理杂志的微博居然发布了一套包含黑人采摘棉花在内的“致敬劳动者”组图。黑人摘棉花是剥削的象征，与反对剥削的国际劳动节本意实在不符。同样戏谑的是，由于疫情影响，在艰难的就业环境下，有许多互联网公司的员工不得不在劳动节假日“自愿加班”。不知道他们收到别人发送的“劳动节快乐”时，心里是何种感受呢？&lt;/p&gt;
-&lt;p&gt;​&amp;nbsp;劳动最光荣，这句话有错吗？显然没有。但当他成为资本家压迫劳动者的口号时，它就成了凶器。是一把使人放弃学习时间的堕落之刃，是一个使人甘于平庸的麻木之镰，它使得每个劳动者从一个活生生的人类转变为为资本工作的机器，谋害着劳动者的生命。&lt;/p&gt;
-&lt;p&gt;​&amp;nbsp;但现实是有许多的人无法摆脱超负荷工作的现状。因为他们的生存就依赖着这份工作，不能离开，也不敢离开。我大体同意“先有生存再有生活”这样的说法。所以如果你在当下不太乐观的就业环境下遭受到不公平的待遇，且你的资产累计不足以让你待业一到两年，那就先忍忍吧。否则，大胆地离开它，你的人生值得更好的工作。&lt;/p&gt;
-&lt;p&gt;​&amp;nbsp;愿天下劳动者，在劳动节之日，都无需劳动 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Mon, 04 May 2020 22:16:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-05-04:/劳动节随想</guid><category>Daily</category><category>Thought</category></item><item><title>《李银河说爱情》读后感</title><link>https://weilet.me/%E3%80%8A%E6%9D%8E%E9%93%B6%E6%B2%B3%E8%AF%B4%E7%88%B1%E6%83%85%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F</link><description>&lt;p&gt;大多数人都是从王小波的书里知道李银河的，我也不例外。她作为一位社会学学者，《李银河说爱情》可以视作她多年研究的成果，十分适合作为爱情观婚姻观的启蒙读物。&lt;/p&gt;
-&lt;p&gt;本书分为六大章。前四章，从婚姻制度的演化讲到爱情观的地域差别，再到与性相关的 &lt;span class="caps"&gt;LGBT&lt;/span&gt;、性癖好等的讲解，行文都十分通俗易懂，挺开阔眼界的。后两章讲的就比较大，像男女平等，女性独立之类的话题。&lt;/p&gt;
-&lt;p&gt;如果你持一个开放的态度去看本书，那你能了解到，这个世界的性爱观爱情观婚姻观远比你想象的丰富。然而如果你是个狭隘的人，估计看书的时候会被气得上蹿下跳。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sun, 26 Apr 2020 23:17:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-26:/《李银河说爱情》读后感</guid><category>Daily</category><category>Book</category></item><item><title>学会阅读源码</title><link>https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81</link><description>&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
+<rss version="2.0"><channel><title>Weilet's blog - Weilet</title><link>https://weilet.me/</link><description></description><lastBuildDate>Sun, 26 Apr 2020 23:17:00 +0800</lastBuildDate><item><title>《李银河说爱情》读后感</title><link>https://weilet.me/%E3%80%8A%E6%9D%8E%E9%93%B6%E6%B2%B3%E8%AF%B4%E7%88%B1%E6%83%85%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F</link><description>&lt;p&gt;大多数人都是从王小波的书里知道李银河的，俺也不例外。她作为一位社会学学者，《李银河说爱情》可以视作她多年研究的成果，十分适合作为爱情观婚姻观的启蒙读物。&lt;/p&gt;
+&lt;p&gt;本书分为六大章。前四章，从婚姻制度的演化讲到爱情观的地域差别，再到与性相关的LGBT、性癖好等的讲解，行文都十分通俗易懂，挺开阔眼界的。后两章讲的就比较大，像男女平等，女性独立之类的话题。&lt;/p&gt;
+&lt;p&gt;如果你持一个开放的态度去看本书，那你能了解到，这个世界的性爱观爱情观婚姻观远比你想象的丰富。然而如果你是个狭隘的人，估计看书的时候会被气得上蹿下跳。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Sun, 26 Apr 2020 23:17:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-26:/《李银河说爱情》读后感</guid><category>Book Review</category></item><item><title>学会阅读源码</title><link>https://weilet.me/%E5%AD%A6%E4%BC%9A%E9%98%85%E8%AF%BB%E6%BA%90%E7%A0%81</link><description>&lt;p&gt;当你遇到一个问题，你会如何解决？&lt;/p&gt;
 &lt;p&gt;是在聊天群组里提问，然后被插科打诨，忘记自己的目标？&lt;/p&gt;
 &lt;p&gt;还是自食其力，选择面向搜索引擎，费九牛二虎之力解决？&lt;/p&gt;
 &lt;p&gt;自食其力是好事，然而面对开源项目时，直奔它的文档或者源代码是个缩小范围的好主意。&lt;/p&gt;
 &lt;h3 id="_1"&gt;例子一&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Linux 课上老师提到了 umask ，它是创建文件和文件夹时需要额外减去的权限值，在 Unix 下为 022（&lt;span class="caps"&gt;WSL&lt;/span&gt; 为&amp;nbsp;000）课后有同学提出，按照老师的方法并不能得出答案。&lt;/p&gt;
+&lt;p&gt;Linux 课上老师提到了 umask ，它是创建文件和文件夹时需要额外减去的权限值，在 Unix&amp;nbsp;下为022（WSL为000）课后有同学提出，按照老师的方法并不能得出答案。&lt;/p&gt;
 &lt;p&gt;那么正确的计算是什么呢？答案在 linux&amp;nbsp;源码中：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// snippet from dir.c &lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;fc&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dont_mask&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -95,10 +22,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;从代码可以看出 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 08 Apr 2020 01:27:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-08:/学会阅读源码</guid><category>Tech</category><category>Thought</category></item><item><title>网站适配暗色模式</title><link>https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F</link><description>&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此我也一直在想办法将我的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
+&lt;p&gt;从代码可以看出，mode 是 &lt;code&gt;&amp;amp;&lt;/code&gt; 上 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 08 Apr 2020 01:27:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-04-08:/学会阅读源码</guid><category>Tech</category></item><item><title>网站适配暗色模式</title><link>https://weilet.me/%E7%BD%91%E7%AB%99%E9%80%82%E9%85%8D%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F</link><description>&lt;h3 id="_1"&gt;起因&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;鉴于目前无论是 iOS 还是 Android&amp;nbsp;都在推行暗色模式，因此俺也一直在想办法将俺的网站适配暗色模式，好让各位看官的眼睛不被亮瞎。&lt;/p&gt;
 &lt;h3 id="-javascript"&gt;方案一 - JavaScript实现&lt;a class="headerlink" href="#-javascript" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;这是我最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
+&lt;p&gt;这是俺最先想到的方案，首先为暗色模式编写一段样式，如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;dark&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;posts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;simple&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;each&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;border-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;transparent&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -116,13 +43,13 @@
 
 
 &lt;p&gt;这些样式都是 .dark&amp;nbsp;元素的子元素。&lt;/p&gt;
-&lt;p&gt;随后利用 JavaScript 判断时间，在&lt;strong&gt;我认为&lt;/strong&gt;需要暗色模式的时间为 body 添加 .dark …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 13 Mar 2020 22:20:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-13:/网站适配暗色模式</guid><category>Tech</category><category>Interaction</category><category>Front end</category></item><item><title>Rust with WebAssembly</title><link>https://weilet.me/Rust%20with%20WebAssembly</link><description>&lt;blockquote&gt;
+&lt;p&gt;随后利用JavaScript判断时间，在&lt;strong&gt;俺认为&lt;/strong&gt;需要暗色模式的时间为 body 添加 .dark 的&amp;nbsp;class …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 13 Mar 2020 22:20:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-13:/网站适配暗色模式</guid><category>Tech</category><category>Interaction</category><category>Front end</category></item><item><title>Rust with WebAssembly</title><link>https://weilet.me/Rust%20with%20WebAssembly</link><description>&lt;blockquote&gt;
 &lt;p&gt;大人，时代变了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="about-wasm"&gt;About wasm&lt;a class="headerlink" href="#about-wasm" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;WebAssembly ，亦称 wasm ，是一种基于浏览器的虚拟机的代码。由于它是二进制的，因此机器能够较快的执行。wasm 目前不能直接编写，它可以由 C/C++/Rust 生成。目前，Chrome 、 Microsoft Edge 、 Firefox 、 Safari 支持&amp;nbsp;wasm。&lt;/p&gt;
 &lt;h3 id="why-rust"&gt;Why Rust?&lt;a class="headerlink" href="#why-rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
+&lt;p&gt;俺在学习 Rust ，Rust&amp;nbsp;是一门写起来很愉快的语言。&lt;/p&gt;
 &lt;h3 id="_1"&gt;准备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="rust"&gt;安装Rust&lt;a class="headerlink" href="#rust" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;a href="https://www.rust-lang.org/zh-CN/tools/install"&gt;Rust官网&lt;/a&gt;&lt;/p&gt;
@@ -144,30 +71,37 @@
 
 &lt;p&gt;添加依赖&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[dependencies]&lt;/span&gt;
-&lt;span class="n"&gt;wasm-bindgen …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 10 Mar 2020 05:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-10:/Rust with WebAssembly</guid><category>Tech</category><category>Rust</category><category>wasm</category></item><item><title>安装 spf13-vim</title><link>https://weilet.me/%E5%AE%89%E8%A3%85%20spf13-vim</link><description>&lt;blockquote&gt;
+&lt;span class="n"&gt;wasm-bindgen …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 10 Mar 2020 05:09:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-10:/Rust with WebAssembly</guid><category>Tech</category><category>Rust</category><category>wasm</category></item><item><title>安装spf13-vim</title><link>https://weilet.me/%E5%AE%89%E8%A3%85spf13-vim</link><description>&lt;blockquote&gt;
 &lt;p&gt;spf13-vim之于vim，恰如oh-my-zsh之于zsh&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;背景&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;由于课程需要，我需要（真正地）使用 vim 这一编辑器。鉴于“颜值即是第一生产力的说法”，我是无法在黑黑丑丑的界面下写代码滴。其实在去年我就开始折腾 vim 的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天我发现了&lt;a href="https://github.com/spf13/spf13-vim"&gt;spf13-vim&lt;/a&gt;这个好东西，当然是赶紧装上体验一番啦！&lt;/p&gt;
+&lt;p&gt;由于课程需要，俺需要（真正地）使用vim这一编辑器。鉴于“颜值即是第一生产力的说法”，俺是无法在黑黑丑丑的界面下写代码滴。其实在去年俺就开始折腾vim的外观配置，然而由于艺术天赋有限而艺术追求无限的缘故，最终放弃。直到前几天俺发现了&lt;a href="https://github.com/spf13/spf13-vim"&gt;spf13-vim&lt;/a&gt;这个好东西，当然是赶紧装上体验一番啦！&lt;/p&gt;
 &lt;h3 id="_2"&gt;准备&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;spf13-vim 需要 vim with lua，因为它有些插件是用 lua&amp;nbsp;编写的。&lt;/p&gt;
-&lt;p&gt;查看是否支持&amp;nbsp;lua&lt;/p&gt;
+&lt;p&gt;spf13-vim需要vim with&amp;nbsp;lua，因为它有些插件是用lua编写的。&lt;/p&gt;
+&lt;p&gt;查看是否支持lua&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim --version &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;+lua&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim with lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Vim witho&lt;/span&gt;
 &lt;span class="s2"&gt;ut lua&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;如果不支持需要安装&lt;code&gt;vim-nox …&lt;/code&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 03 Mar 2020 23:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-03:/安装 spf13-vim</guid><category>Tech</category><category>Linux</category></item><item><title>谈谈 Python 中的 for 循环（2）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88%20Python%20%E4%B8%AD%E7%9A%84%20for%20%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89</link><description>&lt;blockquote&gt;
+&lt;p&gt;如果不支持需要安装&lt;code&gt;vim-nox&lt;/code&gt;（安装什么取决于你的图形环境：&lt;a href="https://github.com/Shougo/neocomplete.vim#debian-or-ubuntu"&gt;详情&lt;/a&gt;）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install vim-nox
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="_3"&gt;安装&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;根据官方文档直接安装&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl https …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 03 Mar 2020 23:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-03-03:/安装spf13-vim</guid><category>Tech</category><category>Linux</category></item><item><title>谈谈Python中的for循环（2）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%882%EF%BC%89</link><description>&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;作用域&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Python 中的 for&amp;nbsp;循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。&lt;/p&gt;
+&lt;p&gt;Python中的for循环并没有引入作用域(scope)的概念，但函数定义有引入作用域。&lt;/p&gt;
 &lt;h4 id="legb"&gt;LEGB法则&lt;a class="headerlink" href="#legb" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;python&amp;nbsp;中变量的搜索按照以下路径进行：&lt;/p&gt;
+&lt;p&gt;python中变量的搜索按照以下路径进行：&lt;/p&gt;
 &lt;p&gt;本地作用域（Local）→当前作用域被嵌入的本地作用域（Enclosing&amp;nbsp;locals）→全局/模块作用域（Global）→内置作用域（Built-in）&lt;/p&gt;
 &lt;h4 id="_3"&gt;引用计数机制&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;Python 语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为 0 时会被回收。默认创建的对象引用计数永不为&amp;nbsp;0&lt;/p&gt;
+&lt;p&gt;Python语言默认采用引用计数机制垃圾回收机制，当对象的引用计数为0时会被回收。默认创建的对象引用计数永不为0&lt;/p&gt;
 &lt;h3 id="_4"&gt;&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id="for"&gt;for循环变量在外部的状态&lt;a class="headerlink" href="#for" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -178,49 +112,59 @@
 
 
 &lt;p&gt;看上去会抛出异常，然而事实上它运作正常。&lt;/p&gt;
-&lt;p&gt;我们用前置知识去解释它：&lt;/p&gt;
-&lt;p&gt;首先由于 for 没有作用域的概念，所以全局的 x …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 26 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-26:/谈谈 Python 中的 for 循环（2）</guid><category>Tech</category><category>Python</category></item><item><title>谈谈 Python 中的 for 循环（1）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88%20Python%20%E4%B8%AD%E7%9A%84%20for%20%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89</link><description>&lt;blockquote&gt;
+&lt;p&gt;俺们用前置知识去解释它：&lt;/p&gt;
+&lt;p&gt;首先由于for没有作用域的概念，所以全局的x的会得到for循环中最后的值。&lt;/p&gt;
+&lt;p&gt;因为x为默认创建的对象（常量为解释器默认创建的对象），它当然不会被回收，所以的确存在。因此最终的print(x)能够运作并打印出10。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Wed, 26 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-26:/谈谈Python中的for循环（2）</guid><category>Tech</category><category>Python</category></item><item><title>谈谈Python中的for循环（1）</title><link>https://weilet.me/%E8%B0%88%E8%B0%88Python%E4%B8%AD%E7%9A%84for%E5%BE%AA%E7%8E%AF%EF%BC%881%EF%BC%89</link><description>&lt;blockquote&gt;
 &lt;p&gt;总忘记for语句的原理，属文记之&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;前置知识&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id="_2"&gt;可迭代对象&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，我们称之为可迭代对象&lt;/p&gt;
+&lt;p&gt;对于任何一个实现了 &lt;code&gt;__iter__&lt;/code&gt; 方法的对象，俺们称之为可迭代对象&lt;/p&gt;
 &lt;h4 id="_3"&gt;迭代器对象&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;当调用可迭代对象的 &lt;code&gt;__iter__&lt;/code&gt;方法，它会返回一个迭代器对象；&lt;/p&gt;
 &lt;p&gt;迭代器对象是&lt;strong&gt;已经&lt;/strong&gt;实现了 &lt;code&gt;__next__&lt;/code&gt; 方法的对象&lt;/p&gt;
 &lt;h4 id="stopiteration"&gt;StopIteration异常&lt;a class="headerlink" href="#stopiteration" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出 StopIteration&amp;nbsp;异常&lt;/p&gt;
+&lt;p&gt;当调用迭代器对象的 &lt;code&gt;__next__&lt;/code&gt; 方法而无下一个元素时，它会抛出StopIteration异常&lt;/p&gt;
 &lt;h4 id="_4"&gt;魔法方法&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;以双下划线开头和结尾的方法；&lt;/p&gt;
-&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为&amp;nbsp;abc(object_xyz)&lt;/p&gt;
+&lt;p&gt;一般而言，对于对象 &lt;code&gt;object_xyz&lt;/code&gt; 魔法方法 &lt;code&gt;__abc__&lt;/code&gt; ，其调用方式为abc(object_xyz)&lt;/p&gt;
 &lt;h3 id="_5"&gt;整体流程&lt;a class="headerlink" href="#_5" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;在上述前置知识和一定的 python&amp;nbsp;基础下，我们来看这段代码：&lt;/p&gt;
+&lt;p&gt;在上述前置知识和一定的python基础下，俺们来看这段代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# A&lt;/span&gt;
 &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈 Python 中的 for 循环（1）</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal 折腾指南</title><link>https://weilet.me/Windows%20Terminal%20%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
+    &lt;span class="n"&gt;iterator&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;iter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;test_case&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterator …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Tue, 25 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-25:/谈谈Python中的for循环（1）</guid><category>Tech</category><category>Python</category></item><item><title>Windows Terminal折腾指南</title><link>https://weilet.me/Windows%20Terminal%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97</link><description>&lt;blockquote&gt;
 &lt;p&gt;终端是程序员的浪漫&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;我从 2017 年年底开始接触终端这个概念，那时候我对它一知半解，是个被 &lt;span class="caps"&gt;GUI&lt;/span&gt;&amp;nbsp;宠坏的巨婴。&lt;/p&gt;
-&lt;p&gt;直到后来，我碰见了&lt;a href="https://hyper.is/"&gt;Hyper&lt;/a&gt;，它的高颜值和高度定制使我沉迷。然而渐渐地我觉得它的速度比起原生的慢太多了。而且有些时候我需要切换 PowerShell 和 &lt;span class="caps"&gt;WSL&lt;/span&gt;，它并不支持。&lt;/p&gt;
-&lt;p&gt;能够打败原生的，只有原生。某天我在 Django 交流群里了解到&lt;a href="https://github.com/microsoft/terminal"&gt;Windows Terminal&lt;/a&gt;（下称 Terminal），一番折腾，流畅的同时还能够多个 shell&amp;nbsp;切换，值得安利！&lt;/p&gt;
+&lt;p&gt;俺从2017年年底开始接触终端这个概念，那时候俺对它一知半解，是个被GUI宠坏的巨婴。&lt;/p&gt;
+&lt;p&gt;直到后来，俺碰见了&lt;a href="https://hyper.is/"&gt;Hyper&lt;/a&gt;，它的高颜值和高度定制使俺沉迷。然而渐渐地俺觉得它的速度比起原生的慢太多了。而且有些时候俺需要切换PowerShell和WSL，它并不支持。&lt;/p&gt;
+&lt;p&gt;能够打败原生的，只有原生。某天俺在Django交流群里了解到&lt;a href="https://github.com/microsoft/terminal"&gt;Windows Terminal&lt;/a&gt;（下称Terminal），一番折腾，流畅的同时还能够多个shell切换，值得安利！&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;注意：Windows Terminal需要Windows 10 1903或更高版本&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id="_1"&gt;预备&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我假设你是使用 &lt;span class="caps"&gt;WSL&lt;/span&gt;&amp;nbsp;的：&lt;/p&gt;
-&lt;p&gt;首先，开启 &lt;span class="caps"&gt;WSL&lt;/span&gt; 功能（Cortana&amp;nbsp;里搜索功能，一溜儿找下来）&lt;/p&gt;
-&lt;p&gt;然后，在 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 14 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-14:/Windows Terminal 折腾指南</guid><category>Tech</category><category>Windows</category><category>Terminal</category></item><item><title>新的钢笔</title><link>https://weilet.me/%E6%96%B0%E7%9A%84%E9%92%A2%E7%AC%94</link><description>&lt;blockquote&gt;
+&lt;p&gt;俺假设你是使用WSL的：&lt;/p&gt;
+&lt;p&gt;首先，开启WSL功能（Cortana里搜索功能，一溜儿找下来）&lt;/p&gt;
+&lt;p&gt;然后，在Microsoft&amp;nbsp;Store找到你喜欢的发行版（比如俺就喜欢Ubuntu）安装&lt;/p&gt;
+&lt;h3 id="_2"&gt;安装&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="microsoft-store"&gt;Microsoft Store&lt;a class="headerlink" href="#microsoft-store" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;最简单的方法，目前使用下来没有任何问题。&lt;/p&gt;
+&lt;h4 id="_3"&gt;自行编译&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://github.com/microsoft/terminal#manually-installing-builds-from-this-repository"&gt;官方文档&lt;/a&gt;请。大哥都选择自行编译了，看看文档肯定会。&lt;/p&gt;
+&lt;h4 id="chocolatey"&gt;Chocolatey&lt;a class="headerlink" href="#chocolatey" title="Permanent link"&gt; &lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;choco install microsoft-windows-terminal …&lt;/code&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 14 Feb 2020 22:25:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-14:/Windows Terminal折腾指南</guid><category>Tech</category><category>Windows</category><category>Terminal</category></item><item><title>新的钢笔</title><link>https://weilet.me/%E6%96%B0%E7%9A%84%E9%92%A2%E7%AC%94</link><description>&lt;blockquote&gt;
 &lt;p&gt;年前朋友送了一支凌美演绎，用到现在也快两周了，说说体验。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="_1"&gt;流畅性&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我之前买过一支百乐的&amp;nbsp;78G，使用后惊叹于日式钢笔的顺滑。同时我还试用过同学的狩猎者。一直觉得凌美的钢笔虽然容易出锋但是真的很涩。但实际上，演绎比狩猎者要顺滑很多，而且还是一样容易出锋。&lt;/p&gt;
+&lt;p&gt;俺之前买过一支百乐的78G，使用后惊叹于日式钢笔的顺滑。同时俺还试用过同学的狩猎者。一直觉得凌美的钢笔虽然容易出锋但是真的很涩。但实际上，演绎比狩猎者要顺滑很多，而且还是一样容易出锋。&lt;/p&gt;
 &lt;h3 id="_2"&gt;舒适性&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;金属笔杆很滑很舒服。如果把笔帽盖到后面会有点重，我不喜欢。目前只它用来写小抄和做手帐，不知道大书写量下会不会累人。&lt;/p&gt;
+&lt;p&gt;金属笔杆很滑很舒服。如果把笔帽盖到后面会有点重，俺不喜欢。目前只它用来写小抄和做手帐，不知道大书写量下会不会累人。&lt;/p&gt;
 &lt;h3 id="_3"&gt;美观性&lt;a class="headerlink" href="#_3" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我这支是纯黑的，我觉得普通但有质感。网上看蓝色和白金色很好看，但是既然是送的也就不奢求这么多啦。&lt;/p&gt;
+&lt;p&gt;俺这支是纯黑的，俺觉得普通但有质感。网上看蓝色和白金色很好看，但是既然是送的也就不奢求这么多啦。&lt;/p&gt;
 &lt;h3 id="_4"&gt;便捷性&lt;a class="headerlink" href="#_4" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;上墨只需三步：旋开笔，换墨囊，旋回笔。等送的墨囊用完了还是用墨水吧，虽然麻烦一点，但一罐百乐 ink30&amp;nbsp;可以用三四个月，比墨囊划算。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 07 Feb 2020 19:42:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-07:/新的钢笔</guid><category>Daily</category><category>Pen</category></item><item><title>Python3.8 新特性</title><link>https://weilet.me/Python3.8%20%E6%96%B0%E7%89%B9%E6%80%A7</link><description>&lt;h3 id="_1"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions"&gt;海象运算符&lt;/a&gt;&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;我期待很久的特性，可以在表达式内赋值&lt;/p&gt;
+&lt;p&gt;上墨只需三步：旋开笔，换墨囊，旋回笔。等送的墨囊用完了还是用墨水吧，虽然麻烦一点，但一罐百乐ink30可以用三四个月，比墨囊划算。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Fri, 07 Feb 2020 19:42:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-07:/新的钢笔</guid><category>Unboxing</category><category>Pen</category></item><item><title>Python3.8新特性</title><link>https://weilet.me/Python3.8%E6%96%B0%E7%89%B9%E6%80%A7</link><description>&lt;h3 id="_1"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#assignment-expressions"&gt;海象运算符&lt;/a&gt;&lt;a class="headerlink" href="#_1" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;俺期待很久的特性，可以在表达式内赋值&lt;/p&gt;
 &lt;p&gt;先前的写法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{len(a)}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -233,7 +177,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;明显减少了一次&amp;nbsp;len()函数的调用，当然可读性会稍有下降。&lt;/p&gt;
+&lt;p&gt;明显减少了一次len()函数的调用，当然可读性会稍有下降。&lt;/p&gt;
 &lt;h3 id="_2"&gt;&lt;a href="https://docs.python.org/zh-cn/3.8/whatsnew/3.8.html#positional-only-parameters"&gt;仅限位置形参&lt;/a&gt;&lt;a class="headerlink" href="#_2" title="Permanent link"&gt; &lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# do something&lt;/span&gt;
@@ -242,5 +186,9 @@
 
 &lt;p&gt;形参位置的“/”前为仅限位置形参，后为关键字形参。&lt;/p&gt;
 &lt;p&gt;所谓仅限位置形参，就是你不能通过指定关键字去给它赋值。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;假设我们常用的 sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Thu, 06 Feb 2020 21:46:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-06:/Python3.8 新特性</guid><category>Tech</category><category>Python</category></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;假设俺们常用的sort()函数的形参全为仅限位置形参，那么下面这种写法是错的&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# THIS IS WRONG&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;目前来看 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Weilet</dc:creator><pubDate>Thu, 06 Feb 2020 21:46:00 +0800</pubDate><guid isPermaLink="false">tag:weilet.me,2020-02-06:/Python3.8新特性</guid><category>Tech</category><category>Python</category></item></channel></rss>
